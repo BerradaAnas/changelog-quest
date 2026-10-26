@@ -20,6 +20,7 @@ Current stage: **design and conception**.
 
 - [x] Interactive mock-up (`mockup/`)
 - [x] Data model and architecture (`docs/conception.md`)
+- [x] Workspace, schemas, content validator and CI
 - [ ] Ingestion pipeline (daily changelog check)
 - [ ] Static website
 - [ ] First public release
@@ -27,11 +28,25 @@ Current stage: **design and conception**.
 ## Repository layout
 
 ```
+schemas/             Zod schemas and shared rules (@cq/schemas)
+pipeline/            Ingestion scripts and content validator (@cq/pipeline)
+content/             The content, as JSON (releases, summaries, features, demos)
+site/                Static website (coming)
 mockup/              Interactive design mock-up
-  index.html         The mock-up (open it in a browser)
-  support.js         Tiny runtime that renders the mock-up without a build step
 docs/
-  conception.md      Data model, architecture, security and build plan
+  conception.md      Data model, rules, security and build plan
+  architecture.md    How the parts fit together
+  decisions/         Decision records
+```
+
+## Develop
+
+Requires Node 24. pnpm comes through Corepack.
+
+```bash
+corepack enable
+pnpm install
+pnpm check      # lint, typecheck, tests and content validation
 ```
 
 ## View the mock-up

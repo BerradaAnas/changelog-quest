@@ -10,71 +10,76 @@ The experience must be **simple, fast, easy and accessible**: clean pages, plain
 
 ## 2. Scope
 
-| Phase | Covers | Status |
-|---|---|---|
-| 1 | Claude Code changelog, Claude Code features | In progress |
-| 2 | Claude Developer Platform changelog and features | Later, once phase 1 is stable |
+| Phase | Covers                                           | Status                        |
+| ----- | ------------------------------------------------ | ----------------------------- |
+| 1     | Claude Code changelog, Claude Code features      | In progress                   |
+| 2     | Claude Developer Platform changelog and features | Later, once phase 1 is stable |
 
 ## 3. Sources
 
-| Source | What we take | Notes |
-|---|---|---|
-| Claude Code `CHANGELOG.md` on GitHub (`anthropics/claude-code`) | Versions and their bullet points | One Markdown file. Versions have no dates or titles. |
-| npm registry (`@anthropic-ai/claude-code`) | Publish date of each version | Reliable date source for every version. |
-| Claude Code documentation | Feature descriptions and doc links | Used for the feature catalog and doc pages. |
+| Source                                                          | What we take                       | Notes                                                |
+| --------------------------------------------------------------- | ---------------------------------- | ---------------------------------------------------- |
+| Claude Code `CHANGELOG.md` on GitHub (`anthropics/claude-code`) | Versions and their bullet points   | One Markdown file. Versions have no dates or titles. |
+| npm registry (`@anthropic-ai/claude-code`)                      | Publish date of each version       | Reliable date source for every version.              |
+| Claude Code documentation                                       | Feature descriptions and doc links | Used for the feature catalog and doc pages.          |
 
 ## 4. Data model
 
-TypeScript notation. Every entity is validated with a schema (Zod) before it is saved or published.
+The Zod schemas in `schemas/src/` are authoritative; this section summarizes them. Changes from
+the first draft are recorded in `docs/decisions/` (0001, 0002).
 
-### 4.1 Ingested data (source of truth, never edited by hand)
+### 4.1 Ingested data (`content/releases/<version>.json`, never edited by hand)
 
 ```ts
 Release {
-  version: string            // "2.0.14", primary key
+  version: string            // "2.0.14", primary key and file name
   publishedAt: datetime      // from the npm registry
   sourceUrl: string          // link to the changelog section
-  sourceHash: string         // hash of the raw section, detects silent edits
+  sourceCommit: string       // anthropics/claude-code commit the text was read from
+  sourceHash: string         // sha256 of rawMarkdown, detects silent edits
   rawMarkdown: string        // exact original text
   fetchedAt: datetime
+  items: ChangeItem[]
 }
 
 ChangeItem {
-  id: string                 // "2.0.14#3" (version + bullet position)
-  version: string            // -> Release
-  position: number
+  id: string                 // "2.0.14#0a1b2c3d": hash of the normalized bullet (ADR 0001)
+  position: number           // display order
   rawText: string            // the original bullet, word for word
-  kind: "added" | "changed" | "fixed" | "removed" | "other"   // AI-classified, reviewer can override
-  featureIds: string[]       // -> Feature (can be empty)
 }
 ```
 
-### 4.2 Generated content (AI drafts, a human approves)
+### 4.2 Generated content (`content/summaries/<version>.json`, AI drafts, a human approves)
 
 ```ts
+ChangeKind = "added" | "changed" | "fixed" | "removed" | "other"
+
 ReleaseSummary {
-  version: string            // -> Release (one per release)
+  version: string
+  sourceHash: string         // Release.sourceHash this summary was reviewed against
   title: string              // e.g. "Plugins (public beta)"
   headline: string           // one plain-language sentence
   lines: SummaryLine[]
-  status: "draft" | "approved" | "published"
-  model: string              // which Claude model wrote it
-  promptVersion: string      // which prompt template, so results can be reproduced
+  classifications: Record<ChangeItemId, { kind: ChangeKind, featureIds: string[] }>
+                             // AI-suggested, reviewer-edited; the only item -> feature link
+  status: "draft" | "approved"   // approved + merged = published
+  model: string
+  promptVersion: string
   generatedAt: datetime
-  approvedAt?: datetime
+  approvedAt?: datetime      // required when approved
 }
 
 SummaryLine {
-  kind: "added" | "changed" | "fixed" | "removed"
+  kind: ChangeKind
   text: string
-  covers: string[]           // ChangeItem ids this line summarizes
+  covers: ChangeItemId[]     // at least one
 }
 ```
 
 ### 4.3 Editorial content (written by hand, reviewed)
 
 ```ts
-Feature {
+Feature {                    // content/features/<id>.json
   id: string                 // slug, e.g. "hooks"
   name: string
   area: "core" | "extend" | "anywhere"
@@ -84,34 +89,30 @@ Feature {
   howItWorks: string[]
   docUrls: string[]
   status: "active" | "deprecated" | "removed"
-  introducedIn: string       // -> Release version
+  events: FeatureEvent[]     // exactly one "introduced"; introducedIn is derived from it
 }
 
 FeatureEvent {               // powers "Update history" on a feature page
-  featureId: string
-  version: string
+  version: string            // -> Release
   type: "introduced" | "updated" | "deprecated" | "removed"
-  note: string
-  changeItemIds: string[]
+  note: string               // related items are derived from summary classifications
 }
 
-Demo {                       // scripted JavaScript simulation, no AI at runtime
+Demo {                       // content/demos/<featureId>.json, no AI at runtime
   featureId: string
   title: string
   intro: string
-  kind: "choose" | "type" | "toggle"       // how the visitor interacts
+  kind: "choose" | "type" | "toggle"
   inputs: { id: string, label: string, options?: string[], placeholder?: string }[]
-  rules: {                                 // checked in order, first match wins
-    when: { input: string, equals?: string, matches?: string }[]  // all conditions must hold
-    show: {
-      title: string
-      detail: string
-      outcome: "success" | "blocked" | "info"
-      trace: { who: string, text: string, code?: boolean }[]      // step-by-step playback
-    }
+  rules: {                   // checked in order, first match wins
+    when: { input: string, equals?: string, matches?: string }[]
+                             // all must hold; exactly one of equals (trimmed, case-insensitive)
+                             // or matches (regex, "i" flag)
+    show: { title, detail, outcome: "success" | "blocked" | "info",
+            trace: { who: string, text: string, code?: boolean }[] }
   }[]
-  fallback: { title: string, detail: string }   // shown when nothing matches
-  configPreview?: string     // template for the "your settings file" snippet
+  fallback: { title: string, detail: string }
+  configPreview?: string     // "{{inputId}}" placeholders, filled as plain text
   quiz: { question: string, options: string[], answerIndex: number, explanation: string }
   status: "draft" | "approved"
 }
@@ -120,9 +121,10 @@ Demo {                       // scripted JavaScript simulation, no AI at runtime
 ### 4.4 Operations
 
 ```ts
-IngestRun {                  // audit log of every pipeline run
+IngestRun {                  // content/runs/<date>.json, only when something changed or failed
   id: string
   startedAt: datetime
+  sourceCommit: string
   newVersions: string[]
   changedVersions: string[]  // a past section whose hash changed
   status: "ok" | "failed"
@@ -133,8 +135,9 @@ IngestRun {                  // audit log of every pipeline run
 ### 4.5 Visitor side (browser only, never sent anywhere)
 
 ```ts
-LocalProgress {              // stored in localStorage
-  tried: string[]            // feature ids
+LocalProgress {              // localStorage key "changelog-quest:progress"
+  v: 1                       // schema version for migrations
+  tried: string[]
   quiz: Record<string, boolean>
   theme: "system" | "light" | "dark"
 }
@@ -143,8 +146,9 @@ LocalProgress {              // stored in localStorage
 ### 4.6 Relationships
 
 ```
-Release 1──* ChangeItem *──* Feature
-Release 1──1 ReleaseSummary 1──* SummaryLine *──* ChangeItem (covers)
+Release 1──* ChangeItem
+Release 1──0..1 ReleaseSummary 1──* SummaryLine *──* ChangeItem (covers)
+ReleaseSummary.classifications: ChangeItem *──* Feature
 Feature 1──* FeatureEvent *──1 Release
 Feature 1──0..1 Demo
 ```
@@ -153,22 +157,28 @@ Feature 1──0..1 Demo
 
 ### 5.1 "Nothing lost" (checked automatically, blocks approval)
 
-1. Every `ChangeItem` of a release is covered by at least one `SummaryLine`.
+1. Every `ChangeItem` of a release is covered by at least one `SummaryLine` and has a classification.
 2. Every `SummaryLine` covers at least one real `ChangeItem` of that release. The AI can't invent changes.
 3. Nothing is published unless its status is `approved`.
-4. If a past release's `sourceHash` changes, its summary goes back to `draft` for review.
+4. If a past release's `sourceHash` changes, its summary goes back to `draft` for review. (Checked statically: an approved summary must carry its release's `sourceHash`.)
+5. A line covering more than 5 items is a warning for the reviewer (ADR 0007).
+
+All of these run in `pnpm validate`, a required CI check on every pull request.
+
+Releases without an approved summary are shown with their original bullets and a "summary pending" label (ADR 0003). Releases published before the summary cut-off are always shown this way (ADR 0004).
 
 ### 5.2 Display grouping (applied when the site is built, not stored)
 
 Releases are grouped by calendar week (Monday to Sunday, UTC):
 
 - **One version in a week:** shown as its own release card.
-- **Two or more versions in a week:** shown as one "Week of [date]" digest card. Inside it, every version is listed with its own summary.
+- **Two or more versions in a week:** shown as one "Week of [date]" digest card. Inside it, every version is listed with its own summary. The digest's own title and list are built from data, not generated (ADR 0007).
 
 ### 5.3 Demos
 
 - Demos are plain JavaScript rules. No AI runs in the browser.
 - Every demo is reviewed before it's published, and each rule's outcome must match the documentation.
+- When a feature gets an `updated`, `deprecated` or `removed` event, its demo goes back to `draft`.
 - Visitor input is only matched against rules and shown back as text. It is never executed or sent anywhere.
 
 ## 6. Architecture
@@ -177,13 +187,13 @@ Releases are grouped by calendar week (Monday to Sunday, UTC):
 
 ```
         ┌──────────────────────────────────────────────────────┐
-        │ GitHub Actions (scheduled, daily)                     │
+        │ GitHub Actions (scheduled, daily)                    │
         │                                                      │
  GitHub │ 1. Fetch CHANGELOG.md + npm publish dates            │
  npm  ─▶│ 2. Parse into Release + ChangeItem JSON              │
         │ 3. For new versions: Claude API drafts the summary   │
         │ 4. Validate schemas + coverage rules                 │
-        │ 5. Open a pull request with the drafts               │
+        │ 5. Update the single bot/ingest PR (ADR 0006)        │
         └──────────────────────┬───────────────────────────────┘
                                │
                     You review, edit, merge
@@ -194,50 +204,53 @@ Releases are grouped by calendar week (Monday to Sunday, UTC):
         └──────────────────────────────────────────────────────┘
 ```
 
-### 6.1 Planned repository layout
+### 6.1 Repository layout
 
 ```
 content/
   releases/<version>.json       Release + ChangeItems (ingested)
-  summaries/<version>.json      ReleaseSummary (generated, reviewed)
+  summaries/<version>.json      ReleaseSummary + classifications (generated, reviewed)
   features/<id>.json            Feature + FeatureEvents (editorial)
-  demos/<id>.json               Demo (editorial)
+  demos/<featureId>.json        Demo (editorial)
   runs/<date>.json              IngestRun log
-pipeline/                       Ingestion scripts (TypeScript)
-schemas/                        Zod schemas shared by pipeline and site
-site/                           Astro static site
+schemas/                        Zod schemas + shared pure rules (@cq/schemas)
+pipeline/                       Ingestion scripts and content validator (@cq/pipeline)
+site/                           Astro static site (not created yet)
 mockup/                         Design mock-up
-docs/                           This document and later docs
+docs/                           This document, architecture.md, decisions/
 ```
+
+See `docs/architecture.md` for how the parts connect.
 
 ### 6.2 Stack
 
-| Layer | Choice | Why |
-|---|---|---|
-| Language | TypeScript | One language for pipeline and site |
-| Validation | Zod | Strict schemas for all content and AI output |
-| Site | Astro | Static output, fast, little JavaScript by default |
-| Pipeline | GitHub Actions | Free for public repos, close to the code |
-| AI | Claude API, small model (Haiku class) | Summaries are short; keeps cost very low |
-| Hosting | Cloudflare Pages (recommended, pending decision) | Security headers and a preview link for every pull request |
+| Layer       | Choice                                                    | Why                                                        |
+| ----------- | --------------------------------------------------------- | ---------------------------------------------------------- |
+| Language    | TypeScript on Node 24, pnpm workspaces                    | One language for pipeline and site                         |
+| Validation  | Zod 4 (one pinned version)                                | Strict schemas for all content and AI output               |
+| Tests, lint | Vitest, Biome                                             | Fast, little config                                        |
+| Site        | Astro                                                     | Static output, fast, little JavaScript by default          |
+| Pipeline    | GitHub Actions                                            | Free for public repos, close to the code                   |
+| AI          | Claude API, pinned small model (`pipeline/src/config.ts`) | Summaries are short; max tokens capped per call            |
+| Hosting     | Cloudflare Pages (recommended, pending decision)          | Security headers and a preview link for every pull request |
 
 ### 6.3 Hosting comparison
 
-| | GitHub Pages | Cloudflare Pages |
-|---|---|---|
-| Price | Free | Free |
-| Traffic | Soft limit of 100 GB per month | No bandwidth limit listed on the free plan |
-| Builds | Soft limit of 10 per hour (not applied to custom Actions workflows) | 500 per month, one at a time |
-| Custom security headers | Not supported | `_headers` file, up to 100 rules |
-| Pull request previews | No | Yes |
-| Setup | Simplest | One extra account |
+|                         | GitHub Pages                                                        | Cloudflare Pages                           |
+| ----------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
+| Price                   | Free                                                                | Free                                       |
+| Traffic                 | Soft limit of 100 GB per month                                      | No bandwidth limit listed on the free plan |
+| Builds                  | Soft limit of 10 per hour (not applied to custom Actions workflows) | 500 per month, one at a time               |
+| Custom security headers | Not supported                                                       | `_headers` file, up to 100 rules           |
+| Pull request previews   | No                                                                  | Yes                                        |
+| Setup                   | Simplest                                                            | One extra account                          |
 
 Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits), [Cloudflare Pages limits](https://developers.cloudflare.com/pages/platform/limits) (checked October 2026).
 
 ## 7. Security
 
 - **No public write paths.** No logins, forms, database or API exposed to visitors.
-- **Secrets.** The Claude API key lives only in GitHub Actions secrets. Workflows use least-privilege `GITHUB_TOKEN` permissions.
+- **Secrets.** The Claude API key and the ingest GitHub App key live only in GitHub Actions secrets. Workflows use least-privilege permissions (ADR 0006).
 - **Untrusted text.** Changelog text and AI output are data, never instructions. They are rendered as plain text (no raw HTML), and the AI step has no tools it could be tricked into using.
 - **Schema gate.** AI output that doesn't match the schema is rejected, never patched by hand.
 - **Repository hygiene.** Protected `main` branch, changes only through reviewed pull requests, pinned action versions, Dependabot updates.
@@ -252,19 +265,26 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 
 ## 9. Build plan
 
-| Step | Deliverable |
-|---|---|
-| 1 | Zod schemas for every entity in section 4 |
-| 2 | Changelog parser: `CHANGELOG.md` -> `Release` + `ChangeItem` JSON, with tests |
-| 3 | npm date lookup and backfill of all past versions |
-| 4 | Summary drafting with the Claude API + coverage checker |
-| 5 | Daily GitHub Action that opens a pull request |
-| 6 | Feature catalog seed (hand-written) and first demos |
-| 7 | Astro site: home, release timeline with weekly grouping, feature pages, demos |
-| 8 | Hosting, security headers, custom domain |
-| 9 | Public launch of phase 1 |
+| Step | Deliverable                                                                              | Status |
+| ---- | ---------------------------------------------------------------------------------------- | ------ |
+| 0    | Workspace, CI, validator, docs and Claude skills                                         | Done   |
+| 1    | Zod schemas for every entity in section 4                                                | Done   |
+| 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   |        |
+| 3    | npm date lookup and raw backfill of all past versions                                    |        |
+| 4    | Minimal Astro site showing raw releases (timeline, weekly grouping)                      |        |
+| 5    | Summary drafting with the Claude API (from the cut-off date)                             |        |
+| 6    | Daily GitHub Action updating the ingest PR                                               |        |
+| 7    | Feature catalog seed and first demos                                                     |        |
+| 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks |        |
+| 9    | Hosting, security headers, custom domain                                                 |        |
+| 10   | Public launch of phase 1                                                                 |        |
+
+The site moved before summaries so the data model is exercised end to end early.
 
 ## 10. Open decisions
 
 - Hosting: Cloudflare Pages (recommended) or GitHub Pages.
 - Domain name.
+- Summary cut-off date (currently 2026-01-01, ADR 0004).
+- Licence of the upstream changelog: confirm that quoting `rawMarkdown` with attribution is acceptable before launch.
+- Visual identity: the mock-up borrows Anthropic-like type and colours; the real site needs its own to support the "not affiliated" disclaimer.

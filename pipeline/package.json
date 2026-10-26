@@ -1,0 +1,18 @@
+{
+  "name": "@cq/pipeline",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "vitest run",
+    "validate": "tsx src/validate.ts ../content"
+  },
+  "dependencies": {
+    "@cq/schemas": "workspace:*",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "tsx": "4.23.15"
+  }
+}

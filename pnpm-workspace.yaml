@@ -1,0 +1,5 @@
+packages:
+  - schemas
+  - pipeline
+onlyBuiltDependencies:
+  - esbuild
