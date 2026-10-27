@@ -269,7 +269,7 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 | ---- | ---------------------------------------------------------------------------------------- | ------ |
 | 0    | Workspace, CI, validator, docs and Claude skills                                         | Done   |
 | 1    | Zod schemas for every entity in section 4                                                | Done   |
-| 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   |        |
+| 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   | Done   |
 | 3    | npm date lookup and raw backfill of all past versions                                    |        |
 | 4    | Minimal Astro site showing raw releases (timeline, weekly grouping)                      |        |
 | 5    | Summary drafting with the Claude API (from the cut-off date)                             |        |

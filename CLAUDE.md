@@ -32,7 +32,7 @@ npx serve mockup                             # view the design mock-up
 ## Architecture in brief
 
 - `@cq/schemas` (Zod 4) is the single source of truth for every content shape, plus pure shared rules: the "nothing lost" coverage check and the demo engine. The pipeline and the future site import it; never redefine schemas elsewhere. It must stay free of Node APIs.
-- `@cq/pipeline` holds Node scripts: the content validator, hash-based item ids, config (pinned model, cut-off, bot branch). Parser, npm dates and AI drafting come next.
+- `@cq/pipeline` holds Node scripts: the strict changelog parser, the content validator, hash-based item ids, config (pinned model, cut-off, bot branch). npm dates, raw backfill and AI drafting come next.
 - Packages export TypeScript source directly (no build step); imports use `.ts` extensions.
 - Key data rules (ADRs 0001 to 0003):
   - Item ids are text hashes (`2.0.14#0a1b2c3d`), not positions.
