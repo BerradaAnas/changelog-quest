@@ -275,7 +275,7 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 | 1    | Zod schemas for every entity in section 4                                                | Done   |
 | 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   | Done   |
 | 3    | npm date lookup and backfill of release records for all past versions                    | Done   |
-| 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links      |        |
+| 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links      | Done   |
 | 5    | Summary drafting with the Claude API; backfill newest first, 20 per review PR            |        |
 | 6    | Daily GitHub Action updating the ingest PR                                               |        |
 | 7    | Feature catalog seed and first demos                                                     |        |

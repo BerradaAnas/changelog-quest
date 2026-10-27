@@ -1,0 +1,39 @@
+---
+import WeekCard from "../components/WeekCard.astro";
+import Base from "../layouts/Base.astro";
+import { releases, summaries } from "../lib/content";
+import { monthLabel } from "../lib/format";
+import { buildTimeline, timelineStats } from "../lib/timeline";
+
+const months = buildTimeline(releases, summaries);
+const stats = timelineStats(months);
+---
+
+<Base
+  title="Changelog Quest: every Claude Code update"
+  description="Every Claude Code release, grouped by week, summarized in plain words, and linked to the official changelog."
+>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Every Claude Code update, in plain words.</h1>
+      <p>
+        We follow the official Claude Code changelog. Each release is summarized in our own words with
+        nothing left out, and links back to the original.
+      </p>
+      <p class="stats">
+        {stats.releases} releases tracked · {stats.summarized} summarized so far, newest first
+      </p>
+    </section>
+
+    {
+      months.map((m, i) => (
+        <section class="month" aria-labelledby={`m-${m.month}`}>
+          <h2 id={`m-${m.month}`}>{monthLabel(m.month)}</h2>
+          {m.cards.map((card, j) => (
+            <WeekCard card={card} open={i === 0 && j === 0} />
+          ))}
+        </section>
+      ))
+    }
+  </main>
+</Base>

@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/"><strong>Changelog Quest</strong><span>for Claude Code</span></a>
+        <nav aria-label="External links">
+          <a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code docs</a>
+          <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Official changelog</a>
+          <a href="https://github.com/BerradaAnas/changelog-quest">Source</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>Independent open-source project, not affiliated with or endorsed by Anthropic.</span>
+        <span>
+          Summaries are written in our own words. The original changelog belongs to Anthropic and is
+          linked from every release.
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

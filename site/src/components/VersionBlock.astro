@@ -1,0 +1,50 @@
+---
+import { plural, releaseDate } from "../lib/format";
+import type { VersionEntry } from "../lib/timeline";
+
+interface Props {
+  entry: VersionEntry;
+  /** In a weekly digest each version gets its own heading. */
+  showHead: boolean;
+}
+const { entry, showHead } = Astro.props;
+const { summary } = entry;
+const changes = plural(entry.itemCount, "change");
+---
+
+<section class="version" id={`v${entry.version}`}>
+  {
+    showHead && (
+      <div>
+        <span class="kicker">
+          Version {entry.version} · {releaseDate(entry.publishedAt, entry.estimated)}
+        </span>
+        <h3>{summary ? summary.title : "Summary coming"}</h3>
+        {summary && <p class="headline">{summary.headline}</p>}
+      </div>
+    )
+  }
+  {
+    !summary && (
+      <p class="pending-note">
+        We haven't summarized this release yet. Its {changes} are listed in the original changelog.
+      </p>
+    )
+  }
+  {
+    summary?.sections.map((s) => (
+      <div class="kind">
+        <h4>{s.label}</h4>
+        <ul>
+          {s.lines.map((line) => (
+            <li>{line}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+  <footer>
+    {summary && <span class="covered">All {changes} from the original changelog are covered</span>}
+    <a href={entry.sourceUrl} rel="noopener">Read the original on GitHub ↗</a>
+  </footer>
+</section>

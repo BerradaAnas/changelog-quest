@@ -12,9 +12,11 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "validate": "pnpm --filter @cq/pipeline validate",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate && pnpm build",
     "source": "pnpm --filter @cq/pipeline run source",
-    "ingest": "pnpm --filter @cq/pipeline run ingest"
+    "ingest": "pnpm --filter @cq/pipeline run ingest",
+    "build": "pnpm --filter @cq/site build",
+    "dev": "pnpm --filter @cq/site dev"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",

@@ -1,0 +1,48 @@
+---
+import { plural, releaseDate, shortDate } from "../lib/format";
+import type { WeekCard } from "../lib/timeline";
+import VersionBlock from "./VersionBlock.astro";
+
+interface Props {
+  card: WeekCard;
+  open: boolean;
+}
+const { card, open } = Astro.props;
+const [first] = card.entries;
+if (!first) throw new Error(`empty week ${card.week}`);
+const digest = card.entries.length > 1;
+const changes = card.entries.reduce((n, e) => n + e.itemCount, 0);
+const summarized = card.entries.filter((e) => e.summary);
+const pending = card.entries.length - summarized.length;
+const last = card.entries.at(-1) ?? first;
+
+const day = digest ? `Week of ${shortDate(card.week)}` : shortDate(first.publishedAt);
+const kicker = digest
+  ? `${card.entries.length} releases · ${last.version} to ${first.version}`
+  : `Version ${first.version} · ${releaseDate(first.publishedAt, first.estimated)}`;
+const title = digest
+  ? summarized.length > 0
+    ? summarized.map((e) => e.summary?.title).join(" · ")
+    : "Summaries coming"
+  : (first.summary?.title ?? "Summary coming");
+const headline = digest
+  ? pending > 0
+    ? `${pending} of ${card.entries.length} summaries coming · ${plural(changes, "change")}`
+    : plural(changes, "change")
+  : (first.summary?.headline ?? `${plural(changes, "change")} in this release.`);
+---
+
+<details class="card" id={digest ? `week-${card.week}` : `v${first.version}`} open={open}>
+  <summary>
+    <span class="day">{day}</span>
+    <span class="head">
+      <span class="kicker">{kicker}</span>
+      <span class:list={["title", { pending: summarized.length === 0 }]}>{title}</span>
+      <span class="headline">{headline}</span>
+    </span>
+    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+  </summary>
+  <div class="body">
+    {card.entries.map((entry) => <VersionBlock entry={entry} showHead={digest} />)}
+  </div>
+</details>

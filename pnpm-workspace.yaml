@@ -1,5 +1,6 @@
 packages:
   - schemas
   - pipeline
+  - site
 onlyBuiltDependencies:
   - esbuild

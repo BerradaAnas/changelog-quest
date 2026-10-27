@@ -29,6 +29,8 @@ pnpm source show 2.1.311                     # print a version's upstream bullet
 pnpm source verify                           # re-check stored hashes and ids against upstream (network)
 pnpm ingest                                  # add new/changed releases from upstream HEAD (network)
 pnpm format                                  # Biome autofix
+pnpm dev                                     # site dev server (Astro)
+pnpm build                                   # static site into site/dist
 npx serve mockup                             # view the design mock-up
 ```
 

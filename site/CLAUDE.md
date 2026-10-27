@@ -1,16 +1,19 @@
-# site/
+# site/ (@cq/site)
 
-Not created yet. It will be an Astro static site (conception.md build plan steps 4 and 8).
+Astro static site. `pnpm dev` / `pnpm build` from the root; output in `site/dist`.
 
-When building it:
-
-- Read content through `@cq/schemas`; do not redefine schemas or re-implement the coverage
-  check or the demo engine.
-- Render changelog text, summaries and visitor input as text, never with `set:html`.
-- Only our own words appear (ADR 0008). Releases without an approved summary show version,
-  date, change count, "summary coming" and the GitHub link. Every release links to its
-  `sourceUrl`.
-  Weekly grouping and digest titles follow conception.md 5.2 and ADR 0007.
-- Show estimated dates (`dateSource: "estimated"`, ADR 0009) as "by <date>".
-- `mockup/` shows the intended layout (release cards, weekly digests, pending cards, demos).
-  Use it as a visual reference, not its code or its Anthropic-like palette.
+- Content comes from `src/lib/content.ts`, which globs `content/` and re-validates every file
+  with `@cq/schemas`. Do not redefine schemas or re-implement the coverage check or demo
+  engine here.
+- Display logic lives in pure, tested modules in `src/lib/` (`timeline.ts`: weekly grouping,
+  summary visibility). Keep `.astro` files to markup; test new logic in `test/`.
+- Only our own words appear (ADR 0008). A summary is shown only when approved and its
+  `sourceHash` matches the release; otherwise the release shows "summary coming" with its
+  change count. Every release links to its `sourceUrl`.
+- Estimated dates (`dateSource: "estimated"`, ADR 0009) are shown as "by <date>".
+- Render all content as text. Never use `set:html`, and ship no client JavaScript unless a
+  feature needs it (demos, step 8).
+- Styling is plain CSS in `src/styles/global.css` with light and dark palettes. The palette is
+  deliberately not Anthropic's (see conception.md open decisions).
+- `mockup/` shows the intended layout for later steps (feature pages, demos). Use it as a
+  visual reference, not its code.
