@@ -11,5 +11,6 @@ When building it:
   date, change count, "summary coming" and the GitHub link. Every release links to its
   `sourceUrl`.
   Weekly grouping and digest titles follow conception.md 5.2 and ADR 0007.
+- Show estimated dates (`dateSource: "estimated"`, ADR 0009) as "by <date>".
 - `mockup/` shows the intended layout (release cards, weekly digests, pending cards, demos).
   Use it as a visual reference, not its code or its Anthropic-like palette.

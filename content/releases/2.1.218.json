@@ -1,0 +1,155 @@
+{
+  "version": "2.1.218",
+  "publishedAt": "2026-07-22T19:55:32.144Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#21218",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "d163190c96985b51c381bc60619f4183667c2e60193e32dc3151826edd40cb07",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.218#5898b808",
+      "position": 0
+    },
+    {
+      "id": "2.1.218#7d23b8fe",
+      "position": 1
+    },
+    {
+      "id": "2.1.218#21e75878",
+      "position": 2
+    },
+    {
+      "id": "2.1.218#085cb1e2",
+      "position": 3
+    },
+    {
+      "id": "2.1.218#eefb0f50",
+      "position": 4
+    },
+    {
+      "id": "2.1.218#f279e853",
+      "position": 5
+    },
+    {
+      "id": "2.1.218#fe472fad",
+      "position": 6
+    },
+    {
+      "id": "2.1.218#5d2acd5d",
+      "position": 7
+    },
+    {
+      "id": "2.1.218#c3be1c8f",
+      "position": 8
+    },
+    {
+      "id": "2.1.218#8170ec17",
+      "position": 9
+    },
+    {
+      "id": "2.1.218#d7b9a5ef",
+      "position": 10
+    },
+    {
+      "id": "2.1.218#3f552d47",
+      "position": 11
+    },
+    {
+      "id": "2.1.218#587ad5ea",
+      "position": 12
+    },
+    {
+      "id": "2.1.218#d9a17b7d",
+      "position": 13
+    },
+    {
+      "id": "2.1.218#d297f9d9",
+      "position": 14
+    },
+    {
+      "id": "2.1.218#cd0dc950",
+      "position": 15
+    },
+    {
+      "id": "2.1.218#03475052",
+      "position": 16
+    },
+    {
+      "id": "2.1.218#6adca1aa",
+      "position": 17
+    },
+    {
+      "id": "2.1.218#9663f4a4",
+      "position": 18
+    },
+    {
+      "id": "2.1.218#ea8ef307",
+      "position": 19
+    },
+    {
+      "id": "2.1.218#aa296a1c",
+      "position": 20
+    },
+    {
+      "id": "2.1.218#71a2a239",
+      "position": 21
+    },
+    {
+      "id": "2.1.218#909bf41f",
+      "position": 22
+    },
+    {
+      "id": "2.1.218#39489315",
+      "position": 23
+    },
+    {
+      "id": "2.1.218#7d279e1d",
+      "position": 24
+    },
+    {
+      "id": "2.1.218#112de0c2",
+      "position": 25
+    },
+    {
+      "id": "2.1.218#ecfce505",
+      "position": 26
+    },
+    {
+      "id": "2.1.218#b983dbd2",
+      "position": 27
+    },
+    {
+      "id": "2.1.218#ff4de3f9",
+      "position": 28
+    },
+    {
+      "id": "2.1.218#752606e6",
+      "position": 29
+    },
+    {
+      "id": "2.1.218#d1afac81",
+      "position": 30
+    },
+    {
+      "id": "2.1.218#9cb79f61",
+      "position": 31
+    },
+    {
+      "id": "2.1.218#8cbdc7d5",
+      "position": 32
+    },
+    {
+      "id": "2.1.218#e7bc3cfb",
+      "position": 33
+    },
+    {
+      "id": "2.1.218#2defb0c3",
+      "position": 34
+    },
+    {
+      "id": "2.1.218#292c3239",
+      "position": 35
+    }
+  ]
+}

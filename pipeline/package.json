@@ -7,7 +7,8 @@
     "typecheck": "tsc -p .",
     "test": "vitest run",
     "validate": "tsx src/validate.ts ../content",
-    "source": "tsx src/source.ts"
+    "source": "tsx src/source.ts",
+    "ingest": "tsx src/ingest.ts"
   },
   "dependencies": {
     "@cq/schemas": "workspace:*",

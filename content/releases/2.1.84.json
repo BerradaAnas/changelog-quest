@@ -1,0 +1,171 @@
+{
+  "version": "2.1.84",
+  "publishedAt": "2026-03-25T23:50:13.505Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#2184",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "62d13e1fccf7b93f585ea819e374794257d8442e16f17894919e999237cba59a",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.84#1b22a2d6",
+      "position": 0
+    },
+    {
+      "id": "2.1.84#4e81e995",
+      "position": 1
+    },
+    {
+      "id": "2.1.84#4fffbc0b",
+      "position": 2
+    },
+    {
+      "id": "2.1.84#432b25c4",
+      "position": 3
+    },
+    {
+      "id": "2.1.84#22bf0041",
+      "position": 4
+    },
+    {
+      "id": "2.1.84#5c43fb1f",
+      "position": 5
+    },
+    {
+      "id": "2.1.84#9655dbe5",
+      "position": 6
+    },
+    {
+      "id": "2.1.84#cf24071b",
+      "position": 7
+    },
+    {
+      "id": "2.1.84#f1ee12ab",
+      "position": 8
+    },
+    {
+      "id": "2.1.84#4bc27852",
+      "position": 9
+    },
+    {
+      "id": "2.1.84#811d06e9",
+      "position": 10
+    },
+    {
+      "id": "2.1.84#27c4a39a",
+      "position": 11
+    },
+    {
+      "id": "2.1.84#600101dd",
+      "position": 12
+    },
+    {
+      "id": "2.1.84#7dd3ed29",
+      "position": 13
+    },
+    {
+      "id": "2.1.84#4e7c0bf7",
+      "position": 14
+    },
+    {
+      "id": "2.1.84#a4566be2",
+      "position": 15
+    },
+    {
+      "id": "2.1.84#f40cdf8c",
+      "position": 16
+    },
+    {
+      "id": "2.1.84#a8b497ae",
+      "position": 17
+    },
+    {
+      "id": "2.1.84#f9e0247d",
+      "position": 18
+    },
+    {
+      "id": "2.1.84#e1165a7b",
+      "position": 19
+    },
+    {
+      "id": "2.1.84#d982736a",
+      "position": 20
+    },
+    {
+      "id": "2.1.84#aad25b06",
+      "position": 21
+    },
+    {
+      "id": "2.1.84#dc4aa0c7",
+      "position": 22
+    },
+    {
+      "id": "2.1.84#370e9f6c",
+      "position": 23
+    },
+    {
+      "id": "2.1.84#44e51da7",
+      "position": 24
+    },
+    {
+      "id": "2.1.84#c1f0a2c9",
+      "position": 25
+    },
+    {
+      "id": "2.1.84#1660c74b",
+      "position": 26
+    },
+    {
+      "id": "2.1.84#dfc95aa3",
+      "position": 27
+    },
+    {
+      "id": "2.1.84#0c5245fa",
+      "position": 28
+    },
+    {
+      "id": "2.1.84#f2d70fe7",
+      "position": 29
+    },
+    {
+      "id": "2.1.84#2651a180",
+      "position": 30
+    },
+    {
+      "id": "2.1.84#c7d39841",
+      "position": 31
+    },
+    {
+      "id": "2.1.84#fcdd569c",
+      "position": 32
+    },
+    {
+      "id": "2.1.84#18659a87",
+      "position": 33
+    },
+    {
+      "id": "2.1.84#d4053793",
+      "position": 34
+    },
+    {
+      "id": "2.1.84#bda425d6",
+      "position": 35
+    },
+    {
+      "id": "2.1.84#2be50017",
+      "position": 36
+    },
+    {
+      "id": "2.1.84#1ac0d847",
+      "position": 37
+    },
+    {
+      "id": "2.1.84#563f365a",
+      "position": 38
+    },
+    {
+      "id": "2.1.84#2df7f775",
+      "position": 39
+    }
+  ]
+}

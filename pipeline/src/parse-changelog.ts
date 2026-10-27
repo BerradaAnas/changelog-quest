@@ -89,6 +89,7 @@ export const sectionUrl = (commit: string, version: string): string =>
 export interface ReleaseSource {
   sourceCommit: string;
   publishedAt: string;
+  dateSource: "npm" | "estimated";
   fetchedAt: string;
 }
 
@@ -101,6 +102,7 @@ export function toRelease(section: ChangelogSection, source: ReleaseSource): Rel
   return Release.parse({
     version: section.version,
     publishedAt: source.publishedAt,
+    dateSource: source.dateSource,
     sourceUrl: sectionUrl(source.sourceCommit, section.version),
     sourceCommit: source.sourceCommit,
     sourceHash: sha256(section.rawMarkdown),

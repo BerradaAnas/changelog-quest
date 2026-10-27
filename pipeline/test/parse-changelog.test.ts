@@ -72,6 +72,7 @@ describe("toRelease", () => {
     const release = toRelease(section, {
       sourceCommit: COMMIT,
       publishedAt: "2026-10-25T18:00:00Z",
+      dateSource: "npm" as const,
       fetchedAt: "2026-10-26T06:00:00Z",
     });
     expect(release.sourceHash).toBe(sha256(section.rawMarkdown));

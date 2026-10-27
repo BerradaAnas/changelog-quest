@@ -14,6 +14,7 @@ function content() {
     "releases/2.0.14.json": {
       version: "2.0.14",
       publishedAt: "2026-10-01T12:00:00Z",
+      dateSource: "npm",
       sourceUrl: "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md#2014",
       sourceCommit: "b".repeat(40),
       sourceHash: sha256(raw),

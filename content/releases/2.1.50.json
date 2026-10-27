@@ -1,0 +1,111 @@
+{
+  "version": "2.1.50",
+  "publishedAt": "2026-02-20T23:09:38.385Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#2150",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "22dedf468644de38ed5d2a1a8275468fdd2d7a35048b4777b8b3543b7936ed2b",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.50#a1173e0a",
+      "position": 0
+    },
+    {
+      "id": "2.1.50#85bacdc3",
+      "position": 1
+    },
+    {
+      "id": "2.1.50#de50cf39",
+      "position": 2
+    },
+    {
+      "id": "2.1.50#db67155a",
+      "position": 3
+    },
+    {
+      "id": "2.1.50#586ddf2c",
+      "position": 4
+    },
+    {
+      "id": "2.1.50#53473189",
+      "position": 5
+    },
+    {
+      "id": "2.1.50#bba6da20",
+      "position": 6
+    },
+    {
+      "id": "2.1.50#890b0271",
+      "position": 7
+    },
+    {
+      "id": "2.1.50#a04580ed",
+      "position": 8
+    },
+    {
+      "id": "2.1.50#bd1816dd",
+      "position": 9
+    },
+    {
+      "id": "2.1.50#b6cb4fe5",
+      "position": 10
+    },
+    {
+      "id": "2.1.50#a57fb94e",
+      "position": 11
+    },
+    {
+      "id": "2.1.50#dbe842cd",
+      "position": 12
+    },
+    {
+      "id": "2.1.50#7b4346dc",
+      "position": 13
+    },
+    {
+      "id": "2.1.50#a189c2bd",
+      "position": 14
+    },
+    {
+      "id": "2.1.50#a9ad0c9b",
+      "position": 15
+    },
+    {
+      "id": "2.1.50#55c420bd",
+      "position": 16
+    },
+    {
+      "id": "2.1.50#3812f96e",
+      "position": 17
+    },
+    {
+      "id": "2.1.50#e7191bd7",
+      "position": 18
+    },
+    {
+      "id": "2.1.50#5bcfa651",
+      "position": 19
+    },
+    {
+      "id": "2.1.50#0617bb9c",
+      "position": 20
+    },
+    {
+      "id": "2.1.50#8d87429f",
+      "position": 21
+    },
+    {
+      "id": "2.1.50#721f1a0f",
+      "position": 22
+    },
+    {
+      "id": "2.1.50#b47693b2",
+      "position": 23
+    },
+    {
+      "id": "2.1.50#da229c25",
+      "position": 24
+    }
+  ]
+}

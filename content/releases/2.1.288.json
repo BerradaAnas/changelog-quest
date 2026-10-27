@@ -1,0 +1,367 @@
+{
+  "version": "2.1.288",
+  "publishedAt": "2026-10-02T18:30:40.093Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#21288",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "bc01319be15c15249efed5becef537a9ce77a323bbd97e2f9f9889ed18de3677",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.288#6694dc3a",
+      "position": 0
+    },
+    {
+      "id": "2.1.288#8550fe5d",
+      "position": 1
+    },
+    {
+      "id": "2.1.288#ce2dbc2a",
+      "position": 2
+    },
+    {
+      "id": "2.1.288#8a5e4dec",
+      "position": 3
+    },
+    {
+      "id": "2.1.288#b91b18ad",
+      "position": 4
+    },
+    {
+      "id": "2.1.288#1f8fd1f0",
+      "position": 5
+    },
+    {
+      "id": "2.1.288#681b4f78",
+      "position": 6
+    },
+    {
+      "id": "2.1.288#aea0c7ba",
+      "position": 7
+    },
+    {
+      "id": "2.1.288#820dbd1b",
+      "position": 8
+    },
+    {
+      "id": "2.1.288#772536d4",
+      "position": 9
+    },
+    {
+      "id": "2.1.288#dba46ada",
+      "position": 10
+    },
+    {
+      "id": "2.1.288#7c4cea78",
+      "position": 11
+    },
+    {
+      "id": "2.1.288#d3d20469",
+      "position": 12
+    },
+    {
+      "id": "2.1.288#ba423623",
+      "position": 13
+    },
+    {
+      "id": "2.1.288#dbb966e7",
+      "position": 14
+    },
+    {
+      "id": "2.1.288#154481a6",
+      "position": 15
+    },
+    {
+      "id": "2.1.288#c8d24c21",
+      "position": 16
+    },
+    {
+      "id": "2.1.288#eadb1706",
+      "position": 17
+    },
+    {
+      "id": "2.1.288#9461ea32",
+      "position": 18
+    },
+    {
+      "id": "2.1.288#6aefd5cf",
+      "position": 19
+    },
+    {
+      "id": "2.1.288#50184fc7",
+      "position": 20
+    },
+    {
+      "id": "2.1.288#ece42fdf",
+      "position": 21
+    },
+    {
+      "id": "2.1.288#b9606bdd",
+      "position": 22
+    },
+    {
+      "id": "2.1.288#41671ee5",
+      "position": 23
+    },
+    {
+      "id": "2.1.288#0db28c6a",
+      "position": 24
+    },
+    {
+      "id": "2.1.288#fc120027",
+      "position": 25
+    },
+    {
+      "id": "2.1.288#701d0d4a",
+      "position": 26
+    },
+    {
+      "id": "2.1.288#cd074f8b",
+      "position": 27
+    },
+    {
+      "id": "2.1.288#7504d1a8",
+      "position": 28
+    },
+    {
+      "id": "2.1.288#68029dab",
+      "position": 29
+    },
+    {
+      "id": "2.1.288#7bfd3a8a",
+      "position": 30
+    },
+    {
+      "id": "2.1.288#bc2103bf",
+      "position": 31
+    },
+    {
+      "id": "2.1.288#e91933f3",
+      "position": 32
+    },
+    {
+      "id": "2.1.288#bc3a11d9",
+      "position": 33
+    },
+    {
+      "id": "2.1.288#ec943122",
+      "position": 34
+    },
+    {
+      "id": "2.1.288#3b210ddb",
+      "position": 35
+    },
+    {
+      "id": "2.1.288#41e54679",
+      "position": 36
+    },
+    {
+      "id": "2.1.288#cd672a89",
+      "position": 37
+    },
+    {
+      "id": "2.1.288#f2d6908f",
+      "position": 38
+    },
+    {
+      "id": "2.1.288#9d568286",
+      "position": 39
+    },
+    {
+      "id": "2.1.288#7990d1e9",
+      "position": 40
+    },
+    {
+      "id": "2.1.288#007af2e2",
+      "position": 41
+    },
+    {
+      "id": "2.1.288#73290031",
+      "position": 42
+    },
+    {
+      "id": "2.1.288#79f798e1",
+      "position": 43
+    },
+    {
+      "id": "2.1.288#8b33e11e",
+      "position": 44
+    },
+    {
+      "id": "2.1.288#cc89de03",
+      "position": 45
+    },
+    {
+      "id": "2.1.288#c195759e",
+      "position": 46
+    },
+    {
+      "id": "2.1.288#477581ee",
+      "position": 47
+    },
+    {
+      "id": "2.1.288#46a2e001",
+      "position": 48
+    },
+    {
+      "id": "2.1.288#dd329c89",
+      "position": 49
+    },
+    {
+      "id": "2.1.288#064c34c2",
+      "position": 50
+    },
+    {
+      "id": "2.1.288#e03ccef2",
+      "position": 51
+    },
+    {
+      "id": "2.1.288#908796a0",
+      "position": 52
+    },
+    {
+      "id": "2.1.288#e24f0cc5",
+      "position": 53
+    },
+    {
+      "id": "2.1.288#625f1099",
+      "position": 54
+    },
+    {
+      "id": "2.1.288#cc6cfabe",
+      "position": 55
+    },
+    {
+      "id": "2.1.288#a6b5dc2b",
+      "position": 56
+    },
+    {
+      "id": "2.1.288#58d63e96",
+      "position": 57
+    },
+    {
+      "id": "2.1.288#498800a4",
+      "position": 58
+    },
+    {
+      "id": "2.1.288#f4e93710",
+      "position": 59
+    },
+    {
+      "id": "2.1.288#c15ab3b6",
+      "position": 60
+    },
+    {
+      "id": "2.1.288#bf621131",
+      "position": 61
+    },
+    {
+      "id": "2.1.288#fd44613f",
+      "position": 62
+    },
+    {
+      "id": "2.1.288#bde21f7d",
+      "position": 63
+    },
+    {
+      "id": "2.1.288#37562bd2",
+      "position": 64
+    },
+    {
+      "id": "2.1.288#7a152328",
+      "position": 65
+    },
+    {
+      "id": "2.1.288#6083946d",
+      "position": 66
+    },
+    {
+      "id": "2.1.288#d07b5243",
+      "position": 67
+    },
+    {
+      "id": "2.1.288#b4446404",
+      "position": 68
+    },
+    {
+      "id": "2.1.288#277ce4f1",
+      "position": 69
+    },
+    {
+      "id": "2.1.288#49d3187d",
+      "position": 70
+    },
+    {
+      "id": "2.1.288#e202bdbc",
+      "position": 71
+    },
+    {
+      "id": "2.1.288#24a51c0a",
+      "position": 72
+    },
+    {
+      "id": "2.1.288#d83814d5",
+      "position": 73
+    },
+    {
+      "id": "2.1.288#65e7d4f1",
+      "position": 74
+    },
+    {
+      "id": "2.1.288#78ec06ad",
+      "position": 75
+    },
+    {
+      "id": "2.1.288#38704ea9",
+      "position": 76
+    },
+    {
+      "id": "2.1.288#982abd64",
+      "position": 77
+    },
+    {
+      "id": "2.1.288#6ae54f4d",
+      "position": 78
+    },
+    {
+      "id": "2.1.288#d3aef520",
+      "position": 79
+    },
+    {
+      "id": "2.1.288#1943a516",
+      "position": 80
+    },
+    {
+      "id": "2.1.288#25e8933c",
+      "position": 81
+    },
+    {
+      "id": "2.1.288#8dd51669",
+      "position": 82
+    },
+    {
+      "id": "2.1.288#dcc87943",
+      "position": 83
+    },
+    {
+      "id": "2.1.288#941a1552",
+      "position": 84
+    },
+    {
+      "id": "2.1.288#160a0fc4",
+      "position": 85
+    },
+    {
+      "id": "2.1.288#29560f27",
+      "position": 86
+    },
+    {
+      "id": "2.1.288#2703f425",
+      "position": 87
+    },
+    {
+      "id": "2.1.288#5595699b",
+      "position": 88
+    }
+  ]
+}

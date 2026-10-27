@@ -7,6 +7,7 @@ const v1 = "# Changelog\n\n## 1.0.1\n\n- Added sample A\n- Fixed sample B\n\n## 
 const source = {
   sourceCommit: COMMIT,
   publishedAt: "2026-01-01T00:00:00Z",
+  dateSource: "npm" as const,
   fetchedAt: "2026-01-02T00:00:00Z",
 };
 const releases = parseChangelog(v1).map((s) => toRelease(s, source));

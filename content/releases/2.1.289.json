@@ -1,0 +1,119 @@
+{
+  "version": "2.1.289",
+  "publishedAt": "2026-10-03T20:12:02.717Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#21289",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "ebcdf31576d9e40595abadb534ff0c7a95ae954f703dc34071cdc2637e255e0b",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.289#e69d3c9b",
+      "position": 0
+    },
+    {
+      "id": "2.1.289#7d298dcb",
+      "position": 1
+    },
+    {
+      "id": "2.1.289#b3ddf4ed",
+      "position": 2
+    },
+    {
+      "id": "2.1.289#f5c293ee",
+      "position": 3
+    },
+    {
+      "id": "2.1.289#9c257883",
+      "position": 4
+    },
+    {
+      "id": "2.1.289#801d1d04",
+      "position": 5
+    },
+    {
+      "id": "2.1.289#1c5c6c7a",
+      "position": 6
+    },
+    {
+      "id": "2.1.289#c63eaa59",
+      "position": 7
+    },
+    {
+      "id": "2.1.289#127dd378",
+      "position": 8
+    },
+    {
+      "id": "2.1.289#32a476cc",
+      "position": 9
+    },
+    {
+      "id": "2.1.289#b2e4ab44",
+      "position": 10
+    },
+    {
+      "id": "2.1.289#8e808cd5",
+      "position": 11
+    },
+    {
+      "id": "2.1.289#b9d6e928",
+      "position": 12
+    },
+    {
+      "id": "2.1.289#3c6a3d07",
+      "position": 13
+    },
+    {
+      "id": "2.1.289#095b59fe",
+      "position": 14
+    },
+    {
+      "id": "2.1.289#8f329633",
+      "position": 15
+    },
+    {
+      "id": "2.1.289#bb394495",
+      "position": 16
+    },
+    {
+      "id": "2.1.289#b6726939",
+      "position": 17
+    },
+    {
+      "id": "2.1.289#16d2da77",
+      "position": 18
+    },
+    {
+      "id": "2.1.289#3633dd79",
+      "position": 19
+    },
+    {
+      "id": "2.1.289#1a20bf5e",
+      "position": 20
+    },
+    {
+      "id": "2.1.289#6f465cd7",
+      "position": 21
+    },
+    {
+      "id": "2.1.289#9da42068",
+      "position": 22
+    },
+    {
+      "id": "2.1.289#93c9c4ad",
+      "position": 23
+    },
+    {
+      "id": "2.1.289#ce4f399d",
+      "position": 24
+    },
+    {
+      "id": "2.1.289#ec9ac786",
+      "position": 25
+    },
+    {
+      "id": "2.1.289#4f6d75c5",
+      "position": 26
+    }
+  ]
+}

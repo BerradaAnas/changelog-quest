@@ -16,6 +16,11 @@ export type ChangeItem = z.infer<typeof ChangeItem>;
 export const Release = z.strictObject({
   version: Version,
   publishedAt: DateTime,
+  /**
+   * "npm": the npm publish time. "estimated": the version was never published to npm, so
+   * publishedAt is the publish time of the next newer version, an upper bound (ADR 0009).
+   */
+  dateSource: z.enum(["npm", "estimated"]),
   sourceUrl: z.url(),
   /** Commit of anthropics/claude-code that CHANGELOG.md was read from. */
   sourceCommit: z.string().regex(/^[0-9a-f]{40}$/),

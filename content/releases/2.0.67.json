@@ -1,0 +1,55 @@
+{
+  "version": "2.0.67",
+  "publishedAt": "2025-12-11T23:56:31.532Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#2067",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "feea023e23c7558bd0b5299eba63f734b1b0624e3e26e09b77412d8dc41e2b6d",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.0.67#979489b3",
+      "position": 0
+    },
+    {
+      "id": "2.0.67#b40e82f8",
+      "position": 1
+    },
+    {
+      "id": "2.0.67#ff23fdf7",
+      "position": 2
+    },
+    {
+      "id": "2.0.67#52d8a2d8",
+      "position": 3
+    },
+    {
+      "id": "2.0.67#b4f7f4c8",
+      "position": 4
+    },
+    {
+      "id": "2.0.67#1a55ebba",
+      "position": 5
+    },
+    {
+      "id": "2.0.67#7eb88346",
+      "position": 6
+    },
+    {
+      "id": "2.0.67#947f72de",
+      "position": 7
+    },
+    {
+      "id": "2.0.67#57f6f955",
+      "position": 8
+    },
+    {
+      "id": "2.0.67#20b196a1",
+      "position": 9
+    },
+    {
+      "id": "2.0.67#40554cb9",
+      "position": 10
+    }
+  ]
+}

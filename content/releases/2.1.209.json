@@ -1,0 +1,15 @@
+{
+  "version": "2.1.209",
+  "publishedAt": "2026-07-14T04:45:37.792Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#21209",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "42878bb3b9d666a36209ac5b44c24ea84ceef0231d332c51631ca036792ff1f8",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.209#1121aed7",
+      "position": 0
+    }
+  ]
+}

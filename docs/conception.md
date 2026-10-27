@@ -36,7 +36,9 @@ Release files hold no upstream wording (ADR 0008). The text is fetched when need
 ```ts
 Release {
   version: string            // "2.0.14", primary key and file name
-  publishedAt: datetime      // from the npm registry
+  publishedAt: datetime      // npm publish time; for the few versions never on npm, the
+                             // publish time of the next newer version (ADR 0009)
+  dateSource: "npm" | "estimated"
   sourceUrl: string          // link to the changelog section
   sourceCommit: string       // anthropics/claude-code commit the text was read from
   sourceHash: string         // sha256 of the upstream section, detects silent edits
@@ -272,7 +274,7 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 | 0    | Workspace, CI, validator, docs and Claude skills                                         | Done   |
 | 1    | Zod schemas for every entity in section 4                                                | Done   |
 | 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   | Done   |
-| 3    | npm date lookup and backfill of release records for all past versions                    |        |
+| 3    | npm date lookup and backfill of release records for all past versions                    | Done   |
 | 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links      |        |
 | 5    | Summary drafting with the Claude API; backfill newest first, 20 per review PR            |        |
 | 6    | Daily GitHub Action updating the ingest PR                                               |        |

@@ -1,0 +1,111 @@
+{
+  "version": "2.1.6",
+  "publishedAt": "2026-01-13T01:42:47.331Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#216",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "da031765f9e1d348b3a002e3bdb5d853fab862b503f4aec4d3975afe3508f2b5",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.6#e36ae19c",
+      "position": 0
+    },
+    {
+      "id": "2.1.6#3b900aac",
+      "position": 1
+    },
+    {
+      "id": "2.1.6#3b844ac3",
+      "position": 2
+    },
+    {
+      "id": "2.1.6#772cb463",
+      "position": 3
+    },
+    {
+      "id": "2.1.6#7ccc9c0a",
+      "position": 4
+    },
+    {
+      "id": "2.1.6#144a3771",
+      "position": 5
+    },
+    {
+      "id": "2.1.6#8a5c5edd",
+      "position": 6
+    },
+    {
+      "id": "2.1.6#3e8cde51",
+      "position": 7
+    },
+    {
+      "id": "2.1.6#28fcfb21",
+      "position": 8
+    },
+    {
+      "id": "2.1.6#26152e50",
+      "position": 9
+    },
+    {
+      "id": "2.1.6#de847c54",
+      "position": 10
+    },
+    {
+      "id": "2.1.6#c7e7101b",
+      "position": 11
+    },
+    {
+      "id": "2.1.6#9fe47a33",
+      "position": 12
+    },
+    {
+      "id": "2.1.6#66c20458",
+      "position": 13
+    },
+    {
+      "id": "2.1.6#753e6ffc",
+      "position": 14
+    },
+    {
+      "id": "2.1.6#cd0c1ad3",
+      "position": 15
+    },
+    {
+      "id": "2.1.6#60e57eeb",
+      "position": 16
+    },
+    {
+      "id": "2.1.6#0030decf",
+      "position": 17
+    },
+    {
+      "id": "2.1.6#28100506",
+      "position": 18
+    },
+    {
+      "id": "2.1.6#3758d185",
+      "position": 19
+    },
+    {
+      "id": "2.1.6#df21d1fe",
+      "position": 20
+    },
+    {
+      "id": "2.1.6#61dc9cd9",
+      "position": 21
+    },
+    {
+      "id": "2.1.6#e9af617c",
+      "position": 22
+    },
+    {
+      "id": "2.1.6#d4136912",
+      "position": 23
+    },
+    {
+      "id": "2.1.6#ceb3421f",
+      "position": 24
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "version": "2.1.219",
+  "publishedAt": "2026-07-24T16:11:49.832Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#21219",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "586b09084eb2956e649691ae42bce0ba8fb9d58c99357e544aa40e9a098b86c7",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.219#bb304bb4",
+      "position": 0
+    },
+    {
+      "id": "2.1.219#3110d463",
+      "position": 1
+    },
+    {
+      "id": "2.1.219#da0ea8d5",
+      "position": 2
+    },
+    {
+      "id": "2.1.219#8ebf42b7",
+      "position": 3
+    },
+    {
+      "id": "2.1.219#ef211b35",
+      "position": 4
+    },
+    {
+      "id": "2.1.219#42e316fc",
+      "position": 5
+    },
+    {
+      "id": "2.1.219#da1ce281",
+      "position": 6
+    },
+    {
+      "id": "2.1.219#e3936b6a",
+      "position": 7
+    },
+    {
+      "id": "2.1.219#099f0cb8",
+      "position": 8
+    },
+    {
+      "id": "2.1.219#c6ddef4d",
+      "position": 9
+    },
+    {
+      "id": "2.1.219#2328b999",
+      "position": 10
+    },
+    {
+      "id": "2.1.219#b7a82e32",
+      "position": 11
+    },
+    {
+      "id": "2.1.219#386c76c9",
+      "position": 12
+    },
+    {
+      "id": "2.1.219#693ddf3b",
+      "position": 13
+    },
+    {
+      "id": "2.1.219#72016042",
+      "position": 14
+    },
+    {
+      "id": "2.1.219#f212ebd7",
+      "position": 15
+    },
+    {
+      "id": "2.1.219#6bc30389",
+      "position": 16
+    },
+    {
+      "id": "2.1.219#37ad3319",
+      "position": 17
+    },
+    {
+      "id": "2.1.219#cd768841",
+      "position": 18
+    },
+    {
+      "id": "2.1.219#5a04c0ce",
+      "position": 19
+    },
+    {
+      "id": "2.1.219#605c3d7e",
+      "position": 20
+    },
+    {
+      "id": "2.1.219#99acbc22",
+      "position": 21
+    },
+    {
+      "id": "2.1.219#6777b647",
+      "position": 22
+    },
+    {
+      "id": "2.1.219#747c6522",
+      "position": 23
+    }
+  ]
+}

@@ -18,4 +18,8 @@ Node scripts that write and check `content/`. Run with `tsx`, no build.
 - `src/parse-changelog.ts` is strict: any unrecognised line fails the whole parse. Upstream
   is flat `## X.Y.Z` sections of `- ` bullets. If it changes format, extend the parser with a
   test; never skip lines. `test/fixtures/` holds invented text in the upstream format.
-- Next steps (conception.md section 9): npm date lookup, backfill of release records.
+- `pnpm ingest` (`src/ingest.ts`) fetches the changelog and npm dates, writes new or changed
+  `content/releases/*.json`, and a run record only when something was written. Dates follow
+  ADR 0009. The decision logic (`releaseDates`, `planIngest`) is pure and tested; keep I/O in
+  `main()`.
+- Next steps (conception.md section 9): minimal Astro site (step 4), then summary drafting.

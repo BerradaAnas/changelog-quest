@@ -1,0 +1,111 @@
+{
+  "version": "2.1.94",
+  "publishedAt": "2026-04-07T21:04:05.380Z",
+  "dateSource": "npm",
+  "sourceUrl": "https://github.com/anthropics/claude-code/blob/08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b/CHANGELOG.md#2194",
+  "sourceCommit": "08c6a4f5121ae140d3c1b5c96e3e5ae53587b54b",
+  "sourceHash": "1b338b7dcb6e4cffbddb45fdec840e0bbf4a13a310f0bc9435b05c92edb9de15",
+  "fetchedAt": "2026-10-27T00:08:11.466Z",
+  "items": [
+    {
+      "id": "2.1.94#7050bceb",
+      "position": 0
+    },
+    {
+      "id": "2.1.94#f11c1649",
+      "position": 1
+    },
+    {
+      "id": "2.1.94#b08aa6bd",
+      "position": 2
+    },
+    {
+      "id": "2.1.94#471610f4",
+      "position": 3
+    },
+    {
+      "id": "2.1.94#9eafaa90",
+      "position": 4
+    },
+    {
+      "id": "2.1.94#db85e07f",
+      "position": 5
+    },
+    {
+      "id": "2.1.94#5fba6066",
+      "position": 6
+    },
+    {
+      "id": "2.1.94#42a85d28",
+      "position": 7
+    },
+    {
+      "id": "2.1.94#6ecb78f6",
+      "position": 8
+    },
+    {
+      "id": "2.1.94#4bc0380f",
+      "position": 9
+    },
+    {
+      "id": "2.1.94#c0a7a012",
+      "position": 10
+    },
+    {
+      "id": "2.1.94#d26d2f50",
+      "position": 11
+    },
+    {
+      "id": "2.1.94#91019afd",
+      "position": 12
+    },
+    {
+      "id": "2.1.94#d368c8af",
+      "position": 13
+    },
+    {
+      "id": "2.1.94#985b479b",
+      "position": 14
+    },
+    {
+      "id": "2.1.94#4639cea4",
+      "position": 15
+    },
+    {
+      "id": "2.1.94#858a6076",
+      "position": 16
+    },
+    {
+      "id": "2.1.94#b00b64c6",
+      "position": 17
+    },
+    {
+      "id": "2.1.94#70ba3872",
+      "position": 18
+    },
+    {
+      "id": "2.1.94#e13e46d9",
+      "position": 19
+    },
+    {
+      "id": "2.1.94#968b1376",
+      "position": 20
+    },
+    {
+      "id": "2.1.94#fae65f17",
+      "position": 21
+    },
+    {
+      "id": "2.1.94#d0bdea00",
+      "position": 22
+    },
+    {
+      "id": "2.1.94#4ca96c39",
+      "position": 23
+    },
+    {
+      "id": "2.1.94#74fb6cfc",
+      "position": 24
+    }
+  ]
+}
