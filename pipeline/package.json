@@ -6,7 +6,8 @@
   "scripts": {
     "typecheck": "tsc -p .",
     "test": "vitest run",
-    "validate": "tsx src/validate.ts ../content"
+    "validate": "tsx src/validate.ts ../content",
+    "source": "tsx src/source.ts"
   },
   "dependencies": {
     "@cq/schemas": "workspace:*",

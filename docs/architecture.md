@@ -6,13 +6,13 @@ invariant changes.
 
 ## Packages
 
-| Path        | Package         | Role                                                                                                                                                                                                     |
-| ----------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `schemas/`  | `@cq/schemas`   | Zod schemas for every content file, plus pure rules shared by pipeline and site: coverage check (`coverage.ts`), demo engine (`demo-engine.ts`). No Node APIs, so the site can import it in the browser. |
-| `pipeline/` | `@cq/pipeline`  | Node scripts: changelog parser (`parse-changelog.ts`), content validator (`validate.ts`), id hashing (`ids.ts`), config. npm dates, summary drafting and the ingest workflow come next.                  |
-| `site/`     | not created yet | Astro static site (build plan step 7).                                                                                                                                                                   |
-| `content/`  | data            | The database. JSON only, validated in CI.                                                                                                                                                                |
-| `mockup/`   | prototype       | Design reference only; not shared with the real site.                                                                                                                                                    |
+| Path        | Package         | Role                                                                                                                                                                                                                                |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `schemas/`  | `@cq/schemas`   | Zod schemas for every content file, plus pure rules shared by pipeline and site: coverage check (`coverage.ts`), demo engine (`demo-engine.ts`). No Node APIs, so the site can import it in the browser.                            |
+| `pipeline/` | `@cq/pipeline`  | Node scripts: changelog parser (`parse-changelog.ts`), upstream reader and verifier (`source.ts`), content validator (`validate.ts`), id hashing (`ids.ts`), config. npm dates, summary drafting and the ingest workflow come next. |
+| `site/`     | not created yet | Astro static site (build plan step 7).                                                                                                                                                                                              |
+| `content/`  | data            | The database. JSON only, validated in CI.                                                                                                                                                                                           |
+| `mockup/`   | prototype       | Design reference only; not shared with the real site.                                                                                                                                                                               |
 
 Packages export TypeScript source directly (no build). Import with `.ts` extensions.
 
@@ -43,7 +43,7 @@ File names must equal the entity key; the validator enforces it.
 
 ## Invariants (enforced by `pnpm validate`)
 
-- Release `sourceHash` = sha256(`rawMarkdown`); item ids = hash of their text (ADR 0001); positions are 0..n-1.
+- Item ids belong to their release, are unique, and positions are 0..n-1.
 - Every item is covered by a summary line and classified; every `covers` id exists (5.1).
 - An `approved` summary's `sourceHash` equals its release's (5.1.4).
 - Feature, release and input references resolve; demo regexes compile.

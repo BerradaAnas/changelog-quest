@@ -7,12 +7,12 @@ import {
   Feature,
   IngestRun,
   type Issue,
+  outcomePlaceholders,
   Release,
   ReleaseSummary,
 } from "@cq/schemas";
 import type { z } from "zod";
 import { readCollection } from "./content.ts";
-import { changeItemIds, sha256 } from "./ids.ts";
 
 export interface FileIssue extends Issue {
   file: string;
@@ -64,15 +64,14 @@ export async function validateContent(root: string): Promise<FileIssue[]> {
   for (const { file, key, value: r } of releases) {
     const { error } = at(file);
     if (key !== r.version) error(`file name must be ${r.version}.json`);
-    if (sha256(r.rawMarkdown) !== r.sourceHash) error("sourceHash does not match rawMarkdown");
-    const expected = changeItemIds(
-      r.version,
-      r.items.map((i) => i.rawText),
-    );
+    // Ids and sourceHash are checked against upstream by `pnpm source verify`.
+    const ids = new Set<string>();
     r.items.forEach((item, n) => {
       if (item.position !== n)
         error(`item ${item.id} has position ${item.position}, expected ${n}`);
-      if (item.id !== expected[n]) error(`item ${n} id should be ${expected[n]}`);
+      if (!item.id.startsWith(`${r.version}#`)) error(`item ${item.id} is not from ${r.version}`);
+      if (ids.has(item.id)) error(`item ${item.id} appears twice`);
+      ids.add(item.id);
     });
   }
 
@@ -134,6 +133,14 @@ export async function validateContent(root: string): Promise<FileIssue[]> {
         }
       }
     });
+    d.rules.forEach((rule, n) => {
+      for (const p of outcomePlaceholders(rule.show)) {
+        if (!inputs.has(p)) error(`rule ${n + 1} outcome uses unknown input ${p}`);
+      }
+    });
+    if (d.inputs.some((i) => i.options && i.suggestions)) {
+      error("suggestions are for free-text inputs; inputs with options can't have them");
+    }
     for (const p of configPreviewPlaceholders(d.configPreview ?? "")) {
       if (!inputs.has(p)) error(`configPreview uses unknown input ${p}`);
     }

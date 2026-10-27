@@ -75,6 +75,7 @@ describe("toRelease", () => {
       fetchedAt: "2026-10-26T06:00:00Z",
     });
     expect(release.sourceHash).toBe(sha256(section.rawMarkdown));
+    expect(JSON.stringify(release)).not.toContain("sample");
     expect(release.items.map((i) => i.id)).toEqual(changeItemIds("9.1.2", section.bullets));
     expect(release.items.map((i) => i.position)).toEqual([0, 1, 2]);
     expect(release.sourceUrl).toBe(

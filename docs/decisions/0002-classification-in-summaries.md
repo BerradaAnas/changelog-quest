@@ -13,7 +13,7 @@ stored twice (`ChangeItem.featureIds` and `FeatureEvent.changeItemIds`), plus
 
 ## Decision
 
-- `content/releases/*.json` holds only ingested data: id, position, rawText.
+- `content/releases/*.json` holds only ingested data: item id and position (no text since ADR 0008).
 - `ReleaseSummary.classifications` maps every item id to `{ kind, featureIds }`. The AI
   suggests it, the reviewer edits it, and it is the **only** item -> feature link.
 - `FeatureEvent` keeps `version`, `type`, `note`. Related items are derived from

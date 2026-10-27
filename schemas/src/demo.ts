@@ -18,6 +18,7 @@ export const Condition = z
   });
 export type Condition = z.infer<typeof Condition>;
 
+/** Title, detail and trace text may contain "{{inputId}}" placeholders, filled as plain text. */
 export const Outcome = z.strictObject({
   title: z.string().min(1),
   detail: z.string().min(1),
@@ -45,6 +46,8 @@ export const Demo = z.strictObject({
         label: z.string().min(1),
         options: z.array(z.string().min(1)).min(2).optional(),
         placeholder: z.string().optional(),
+        /** One-tap example values for free-text inputs. */
+        suggestions: z.array(z.string().min(1)).optional(),
       }),
     )
     .min(1),

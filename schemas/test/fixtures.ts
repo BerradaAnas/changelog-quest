@@ -8,11 +8,10 @@ export const release = (): Release => ({
   sourceUrl: "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md#2014",
   sourceCommit: "b".repeat(40),
   sourceHash: HASH,
-  rawMarkdown: "## 2.0.14\n\n- Added hooks\n- Fixed a crash\n",
   fetchedAt: "2026-10-02T06:00:00Z",
   items: [
-    { id: "2.0.14#11111111", position: 0, rawText: "Added hooks" },
-    { id: "2.0.14#22222222", position: 1, rawText: "Fixed a crash" },
+    { id: "2.0.14#11111111", position: 0 },
+    { id: "2.0.14#22222222", position: 1 },
   ],
 });
 

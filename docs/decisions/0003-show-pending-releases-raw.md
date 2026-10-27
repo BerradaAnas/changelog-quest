@@ -1,6 +1,6 @@
 # 0003. Show releases without an approved summary as raw entries
 
-Status: Accepted
+Status: Superseded by 0008
 Date: 2026-10-26
 
 ## Context

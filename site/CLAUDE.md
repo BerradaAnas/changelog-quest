@@ -7,6 +7,9 @@ When building it:
 - Read content through `@cq/schemas`; do not redefine schemas or re-implement the coverage
   check or the demo engine.
 - Render changelog text, summaries and visitor input as text, never with `set:html`.
-- Releases without an approved summary show their raw items with "summary pending" (ADR 0003).
+- Only our own words appear (ADR 0008). Releases without an approved summary show version,
+  date, change count, "summary coming" and the GitHub link. Every release links to its
+  `sourceUrl`.
   Weekly grouping and digest titles follow conception.md 5.2 and ADR 0007.
-- Use `mockup/` only as a visual reference, not its code or its Anthropic-like branding.
+- `mockup/` shows the intended layout (release cards, weekly digests, pending cards, demos).
+  Use it as a visual reference, not its code or its Anthropic-like palette.

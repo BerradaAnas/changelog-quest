@@ -4,7 +4,7 @@
 
 Changelog Quest is an open, no-login website that turns the official Claude Code changelog and documentation into something you can understand in a few minutes:
 
-- **Short summaries** of every release, with nothing left out. Each summary can be compared line by line with the original changelog.
+- **Short summaries** of every release, in our own words, with nothing left out. Every release links to its section of the original changelog.
 - **Plain-language feature pages**: what a feature does, why it matters, and how it works.
 - **Hands-on examples**: small scripted JavaScript simulations. You type or pick something and see what the feature would do. No AI runs in your browser, and every outcome is written and reviewed in advance.
 

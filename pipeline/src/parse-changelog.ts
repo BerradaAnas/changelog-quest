@@ -92,7 +92,10 @@ export interface ReleaseSource {
   fetchedAt: string;
 }
 
-/** Builds the ingested Release record for one section, validated against the schema. */
+/**
+ * Builds the ingested Release record for one section, validated against the schema.
+ * The upstream wording stays in memory: only its hash and the item ids are kept (ADR 0008).
+ */
 export function toRelease(section: ChangelogSection, source: ReleaseSource): Release {
   const ids = changeItemIds(section.version, section.bullets);
   return Release.parse({
@@ -101,8 +104,7 @@ export function toRelease(section: ChangelogSection, source: ReleaseSource): Rel
     sourceUrl: sectionUrl(source.sourceCommit, section.version),
     sourceCommit: source.sourceCommit,
     sourceHash: sha256(section.rawMarkdown),
-    rawMarkdown: section.rawMarkdown,
     fetchedAt: source.fetchedAt,
-    items: section.bullets.map((rawText, position) => ({ id: ids[position], position, rawText })),
+    items: ids.map((id, position) => ({ id, position })),
   });
 }

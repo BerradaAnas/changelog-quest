@@ -24,7 +24,9 @@ pnpm check                                   # lint + typecheck + test + validat
 pnpm test                                    # all packages
 pnpm --filter @cq/schemas test               # one package
 pnpm --filter @cq/pipeline exec vitest run test/ids.test.ts -t "disambiguates"   # one test
-pnpm validate                                # schemas, ids, cross-references, coverage on content/
+pnpm validate                                # schemas, ids, cross-references, coverage on content/ (offline)
+pnpm source show 2.1.311                     # print a version's upstream bullets with their item ids
+pnpm source verify                           # re-check stored hashes and ids against upstream (network)
 pnpm format                                  # Biome autofix
 npx serve mockup                             # view the design mock-up
 ```
@@ -32,17 +34,18 @@ npx serve mockup                             # view the design mock-up
 ## Architecture in brief
 
 - `@cq/schemas` (Zod 4) is the single source of truth for every content shape, plus pure shared rules: the "nothing lost" coverage check and the demo engine. The pipeline and the future site import it; never redefine schemas elsewhere. It must stay free of Node APIs.
-- `@cq/pipeline` holds Node scripts: the strict changelog parser, the content validator, hash-based item ids, config (pinned model, cut-off, bot branch). npm dates, raw backfill and AI drafting come next.
+- `@cq/pipeline` holds Node scripts: the strict changelog parser, the content validator, hash-based item ids, config (pinned model, backfill batch size, bot branch), and `source.ts` (reads the upstream changelog at run time). npm dates, release backfill and AI drafting come next.
 - Packages export TypeScript source directly (no build step); imports use `.ts` extensions.
 - Key data rules (ADRs 0001 to 0003):
   - Item ids are text hashes (`2.0.14#0a1b2c3d`), not positions.
   - Releases are ingest-only.
   - Classifications (`kind`, `featureIds`) live in the summary file and are the only item-to-feature link.
-  - Unapproved releases are shown raw with "summary pending".
+  - Only our own words are published (ADR 0008). Upstream changelog wording is never committed or shown; releases without an approved summary show a "summary coming" card linking to GitHub.
 - `pnpm validate` is the CI gate for content. New content rules go there, with tests.
 
 ## Non-negotiables
 
+- Never commit or publish upstream changelog or docs wording, including in tests and fixtures (use invented text). Read it with `pnpm source show <version>`.
 - Changelog text, AI output and visitor input are untrusted: render as text, never as HTML, never execute. The AI drafting step gets no tools. AI output that fails the schema is rejected, not patched.
 - Feature and demo content must match the official docs it links to.
 - `mockup/` is a prototype (custom mini-runtime in `support.js`, see its header). Don't build on its code or copy its Anthropic-like branding into the real site.

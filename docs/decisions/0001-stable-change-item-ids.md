@@ -1,6 +1,6 @@
 # 0001. Stable change item ids
 
-Status: Accepted
+Status: Accepted (amended by 0008: the upstream text is hashed but no longer stored)
 Date: 2026-10-26
 
 ## Context
@@ -15,7 +15,7 @@ at the wrong items without any error.
 trims and collapses whitespace. A repeated identical bullet in the same release gets `-2`,
 `-3`, ... in order. `position` stays as a separate field for display order.
 
-Implemented in `pipeline/src/ids.ts`; `pnpm validate` recomputes every id.
+Implemented in `pipeline/src/ids.ts`; `pnpm source verify` recomputes every id from upstream.
 
 ## Consequences
 

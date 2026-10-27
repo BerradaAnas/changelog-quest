@@ -17,13 +17,8 @@ function content() {
       sourceUrl: "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md#2014",
       sourceCommit: "b".repeat(40),
       sourceHash: sha256(raw),
-      rawMarkdown: raw,
       fetchedAt: "2026-10-02T06:00:00Z",
-      items: bullets.map((rawText, position) => ({
-        id: [hookId, crashId][position],
-        position,
-        rawText,
-      })),
+      items: [hookId, crashId].map((id, position) => ({ id, position })),
     },
     "summaries/2.0.14.json": {
       version: "2.0.14",
@@ -78,14 +73,15 @@ describe("validateContent", () => {
     expect(issues.some((i) => i.file === "features/x.json")).toBe(true);
   });
 
-  it("detects tampered raw text and wrong ids", async () => {
+  it("checks item ids and positions", async () => {
     const files = content();
-    const r = files["releases/2.0.14.json"] as { rawMarkdown: string; items: { id: string }[] };
-    r.rawMarkdown += "edited";
-    r.items[0]!.id = "2.0.14#00000000";
+    const r = files["releases/2.0.14.json"] as { items: { id: string; position: number }[] };
+    r.items[1] = { id: hookId, position: 3 };
+    r.items.push({ id: "2.0.15#00000000", position: 2 });
     const messages = (await run(files)).map((i) => i.message);
-    expect(messages).toContain("sourceHash does not match rawMarkdown");
-    expect(messages).toContain(`item 0 id should be ${hookId}`);
+    expect(messages).toContain(`item ${hookId} has position 3, expected 1`);
+    expect(messages).toContain(`item ${hookId} appears twice`);
+    expect(messages).toContain("item 2.0.15#00000000 is not from 2.0.14");
   });
 
   it("checks cross references", async () => {
@@ -118,7 +114,7 @@ describe("validateContent", () => {
             { input: "other", equals: "x" },
             { input: "command", matches: "(" },
           ],
-          show: { title: "t", detail: "d", outcome: "info", trace: [] },
+          show: { title: "{{nope}}", detail: "d", outcome: "info", trace: [] },
         },
       ],
       fallback: { title: "f", detail: "d" },
@@ -130,6 +126,7 @@ describe("validateContent", () => {
     expect(messages).toEqual([
       "rule 1 uses unknown input other",
       "rule 1 has an invalid regular expression",
+      "rule 1 outcome uses unknown input nope",
       "configPreview uses unknown input missing",
     ]);
   });

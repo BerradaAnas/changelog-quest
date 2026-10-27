@@ -1,24 +1,26 @@
 import { z } from "zod";
 import { ChangeItemId, DateTime, Sha256, Version } from "./common.ts";
 
-/** One bullet of a release, word for word. Classification lives in the summary file. */
+/**
+ * One bullet of a release. Its wording is never stored (ADR 0008): the id is a hash of the
+ * upstream text, which `pnpm source` fetches when someone needs to read it.
+ * Classification lives in the summary file.
+ */
 export const ChangeItem = z.strictObject({
   id: ChangeItemId,
   position: z.int().nonnegative(),
-  rawText: z.string().min(1),
 });
 export type ChangeItem = z.infer<typeof ChangeItem>;
 
-/** content/releases/<version>.json — ingested, never edited by hand. */
+/** content/releases/<version>.json — ingested, never edited by hand. Holds no upstream text. */
 export const Release = z.strictObject({
   version: Version,
   publishedAt: DateTime,
   sourceUrl: z.url(),
   /** Commit of anthropics/claude-code that CHANGELOG.md was read from. */
   sourceCommit: z.string().regex(/^[0-9a-f]{40}$/),
-  /** sha256 of rawMarkdown; a change on a past release sends its summary back to draft. */
+  /** sha256 of the upstream section; a change on a past release sends its summary back to draft. */
   sourceHash: Sha256,
-  rawMarkdown: z.string().min(1),
   fetchedAt: DateTime,
   items: z.array(ChangeItem),
 });

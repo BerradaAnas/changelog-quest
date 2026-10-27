@@ -43,7 +43,7 @@ describe("checkSummary", () => {
     const s = summary();
     for (let n = 0; n < MAX_COVERS_PER_LINE; n++) {
       const id = `2.0.14#3333333${n}`;
-      r.items.push({ id, position: n + 2, rawText: `item ${n}` });
+      r.items.push({ id, position: n + 2 });
       s.classifications[id] = { kind: "fixed", featureIds: [] };
       s.lines[1]!.covers.push(id);
     }

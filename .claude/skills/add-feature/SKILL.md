@@ -10,13 +10,14 @@ description: Add or update a feature page in content/features/. Use when asked t
    be backed by a page you put in `docUrls`. Don't rely on memory: features change often.
 2. Pick the id: a short kebab-case slug (`hooks`, `sub-agents`). The file is
    `content/features/<id>.json`; the schema is `Feature` in `schemas/src/feature.ts`.
-3. Write in plain language for a newcomer:
+3. Write in plain language for a newcomer, in your own words (never copy doc or changelog
+   sentences):
    - `summary`: one sentence. `what`: a short paragraph.
    - `impact`: 2 to 4 concrete benefits. `howItWorks`: 3 to 6 short steps.
    - `area`: `core` (built in), `extend` (hooks, MCP, plugins, skills...), `anywhere`
      (IDE, web, CI and other surfaces).
 4. Events: exactly one `introduced` event with the first version that shipped the feature. Find
-   it in `content/releases/`. Add `updated`, `deprecated` or `removed` events for later
+   it with the summaries in `content/summaries/` or `pnpm source show <version>`. Add `updated`, `deprecated` or `removed` events for later
    milestones, each with a one-line `note`.
 5. Link the matching changelog items: in each relevant `content/summaries/<version>.json`, add
    the feature id to the items' `classifications[...].featureIds`. This is the only place

@@ -27,13 +27,14 @@ button{font-family:inherit;cursor:pointer}
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 32px">
         <button onClick="{{goCode}}" style="display: flex; align-items: center; gap: 10px; padding: 0; min-height: 44px; border: none; background: transparent; color: var(--text)">
           <span style="width: 12px; height: 12px; border-radius: 999px; background: var(--clay)"></span>
-          <span style="font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: 500">Changelog Quest</span>
+          <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: 500">Changelog Quest</span>
         </button>
         <span style="font-size: 14px; color: var(--faint)">for Claude Code</span>
       </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
         <a class="navlink" href="https://docs.claude.com" style="color: var(--muted); text-decoration: none; font-size: 14px">Docs</a>
         <a class="navlink" href="https://github.com" style="color: var(--muted); text-decoration: none; font-size: 14px">GitHub</a>
+        <a class="navlink" href="#rss" style="color: var(--muted); text-decoration: none; font-size: 14px">RSS</a>
         <div role="group" aria-label="Color theme" style="display: flex; padding: 3px; gap: 2px; border-radius: 10px; background: var(--chip)">
           <button aria-label="Light mode" aria-pressed="{{isLightStr}}" onClick="{{setLight}}" style="{{lightBtnStyle}}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -53,7 +54,7 @@ button{font-family:inherit;cursor:pointer}
       <sc-if value="{{isChangelog}}" hint-placeholder-val="{{ true }}">
         <section style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
           <span style="font-size: 14px; color: var(--link)">Open to everyone · No sign-up</span>
-          <h1 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 52px; line-height: 1.15; font-weight: 400">Every Claude update, summarized and playable.</h1>
+          <h1 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 52px; line-height: 1.15; font-weight: 400">Every Claude update, summarized and playable.</h1>
           <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted)">We follow the official changelogs and documentation. Each release is compacted into a short summary with nothing left out, and every new feature gets a plain-language brief and a hands-on example.</p>
           <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
             <a href="#timeline" class="cta" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 10px; background: var(--clay); color: #141413; font-size: 15px; font-weight: 500; text-decoration: none">See the latest changes</a>
@@ -67,8 +68,8 @@ button{font-family:inherit;cursor:pointer}
         <section style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end; justify-content: space-between">
           <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 14px; max-width: 720px">
             <span style="font-size: 14px; color: var(--link)">Open to everyone · No sign-up</span>
-            <h1 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 48px; line-height: 1.15; font-weight: 400">Every Claude Code update, summarized and playable.</h1>
-            <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted)">We follow the official Claude Code changelog. Every feature is explained simply with a hands-on example, what's new sits at the top, and each release is compacted into a summary with nothing left out.</p>
+            <h1 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 48px; line-height: 1.15; font-weight: 400">Every Claude Code update, summarized and playable.</h1>
+            <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted)">We follow the official Claude Code changelog. Every feature is explained simply with a hands-on example, what's new sits at the top, and each release is summarized in our own words with nothing left out.</p>
           </div>
           <a href="https://docs.claude.com" class="soft" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 10px; border: 0.5px solid var(--border-strong); color: var(--text); font-size: 15px; text-decoration: none">
             Claude Code docs
@@ -80,8 +81,8 @@ button{font-family:inherit;cursor:pointer}
           <h2 style="margin: 0; font-size: 14px; font-weight: 500; color: var(--faint)">Latest update</h2>
           <div style="padding: 32px; border-radius: 16px; background: var(--surface); border: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 20px">
             <div style="display: flex; flex-direction: column; gap: 8px">
-              <span style="font-size: 14px; color: var(--faint)">{{ccLatest.date}}</span>
-              <span style="font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 32px; line-height: 1.25; font-weight: 400">{{ccLatest.title}}</span>
+              <span style="font-size: 14px; color: var(--faint)">{{ccLatest.date}} · Version {{ccLatest.version}}</span>
+              <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 32px; line-height: 1.25; font-weight: 400">{{ccLatest.title}}</span>
               <span style="font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 640px">{{ccLatest.headline}}</span>
             </div>
             <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
@@ -93,7 +94,9 @@ button{font-family:inherit;cursor:pointer}
               </sc-for>
             </ul>
             <div style="display: flex; flex-wrap: wrap; gap: 12px">
-              <button class="cta" onClick="{{ccLatest.openFeature}}" style="min-height: 44px; padding: 0 20px; border: none; border-radius: 10px; background: var(--clay); color: #141413; font-size: 15px; font-weight: 500">Try {{ccLatest.featureName}}</button>
+              <sc-if value="{{ccLatest.hasFeature}}" hint-placeholder-val="{{ true }}">
+                <button class="cta" onClick="{{ccLatest.openFeature}}" style="min-height: 44px; padding: 0 20px; border: none; border-radius: 10px; background: var(--clay); color: #141413; font-size: 15px; font-weight: 500">Try {{ccLatest.featureName}}</button>
+              </sc-if>
               <button class="soft" onClick="{{ccLatest.openRelease}}" style="min-height: 44px; padding: 0 18px; border-radius: 10px; border: 0.5px solid var(--border-strong); background: transparent; color: var(--text); font-size: 15px">Full release summary</button>
             </div>
           </div>
@@ -101,7 +104,7 @@ button{font-family:inherit;cursor:pointer}
 
         <section style="display: flex; flex-direction: column; gap: 24px">
           <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 14px; border-bottom: 0.5px solid var(--border)">
-            <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 28px; font-weight: 500">Built-in features</h2>
+            <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 28px; font-weight: 500">Built-in features</h2>
             <span style="font-size: 15px; color: var(--muted)">What Claude Code can do today. Open any feature to read about it and try it.</span>
           </div>
           <sc-for list="{{ccAreas}}" as="a" hint-placeholder-count="3">
@@ -116,6 +119,9 @@ button{font-family:inherit;cursor:pointer}
                         <sc-if value="{{f.isNew}}" hint-placeholder-val="{{ false }}">
                           <span style="font-size: 12px; font-weight: 600; color: var(--link)">New</span>
                         </sc-if>
+                        <sc-if value="{{f.tried}}" hint-placeholder-val="{{ false }}">
+                          <span style="font-size: 12px; font-weight: 600; color: var(--ok-line)">Tried</span>
+                        </sc-if>
                       </span>
                       <span style="font-size: 14px; line-height: 1.5; color: var(--muted)">{{f.summary}}</span>
                     </span>
@@ -129,89 +135,87 @@ button{font-family:inherit;cursor:pointer}
         </section>
       </sc-if>
 
-      <!-- SHARED: release timeline -->
+      <!-- SHARED: release timeline. One card per week; weeks with several versions become a digest (conception 5.2). -->
       <section id="timeline" style="display: flex; flex-direction: column; gap: 28px">
-        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; border-bottom: 0.5px solid var(--border)">
-          <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 14px">
-            <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 28px; font-weight: 500">{{tlTitle}}</h2>
-            <span style="font-size: 15px; color: var(--muted)">Each release is summarized from the official changelog. Open one to see every change, or compare it with the original.</span>
-          </div>
-          <sc-if value="{{isChangelog}}" hint-placeholder-val="{{ true }}">
-            <div style="display: flex; flex-wrap: wrap; gap: 4px" role="group" aria-label="Filter by product">
-              <sc-for list="{{sources}}" as="c" hint-placeholder-count="3">
-                <button class="tab" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button>
-              </sc-for>
-            </div>
-          </sc-if>
+        <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 14px; border-bottom: 0.5px solid var(--border)">
+          <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 28px; font-weight: 500">{{tlTitle}}</h2>
+          <span style="font-size: 15px; color: var(--muted)">Every release, summarized in our own words with every change covered. Each one links to the original changelog on GitHub.</span>
         </div>
 
         <sc-for list="{{months}}" as="m" hint-placeholder-count="3">
           <div style="display: flex; flex-direction: column; gap: 12px">
             <h3 style="margin: 0; font-size: 14px; font-weight: 500; color: var(--faint)">{{m.label}}</h3>
-            <sc-for list="{{m.items}}" as="r" hint-placeholder-count="2">
-              <article id="{{r.anchor}}" style="border-radius: 14px; background: var(--surface); border: 0.5px solid var(--border); overflow: hidden; scroll-margin-top: 24px">
-                <button class="row" onClick="{{r.toggle}}" aria-expanded="{{r.expandedStr}}" style="width: 100%; text-align: left; display: flex; align-items: flex-start; gap: 20px; padding: 20px 22px; border: none; background: var(--surface); color: var(--text)">
-                  <span style="flex: 0 0 64px; font-size: 14px; color: var(--faint); padding-top: 2px">{{r.day}}</span>
+            <sc-for list="{{m.items}}" as="c" hint-placeholder-count="2">
+              <article id="{{c.anchor}}" style="border-radius: 14px; background: var(--surface); border: 0.5px solid var(--border); overflow: hidden; scroll-margin-top: 24px">
+                <button class="row" onClick="{{c.toggle}}" aria-expanded="{{c.expandedStr}}" style="width: 100%; text-align: left; display: flex; align-items: flex-start; gap: 20px; padding: 20px 22px; border: none; background: var(--surface); color: var(--text)">
+                  <span style="flex: 0 0 64px; font-size: 14px; color: var(--faint); padding-top: 2px">{{c.day}}</span>
                   <span style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px">
-                    <span style="font-size: 13px; color: var(--faint)">{{r.product}}</span>
-                    <span style="font-size: 18px; font-weight: 500; color: var(--text)">{{r.title}}</span>
-                    <span style="font-size: 15px; line-height: 1.5; color: var(--muted)">{{r.headline}}</span>
-                    <span style="font-size: 13px; color: var(--faint)">{{r.counts}}</span>
+                    <span style="font-size: 13px; color: var(--faint)">{{c.kicker}}</span>
+                    <span style="{{c.titleStyle}}">{{c.title}}</span>
+                    <span style="font-size: 15px; line-height: 1.5; color: var(--muted)">{{c.headline}}</span>
+                    <span style="font-size: 13px; color: var(--faint)">{{c.counts}}</span>
                   </span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{r.chevStyle}}"><path d="M6 9l6 6 6-6"/></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{c.chevStyle}}"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
 
-                <sc-if value="{{r.open}}" hint-placeholder-val="{{ false }}">
-                  <div style="padding: 4px 22px 24px 106px; display: flex; flex-direction: column; gap: 20px">
-                    <sc-for list="{{r.sections}}" as="sec" hint-placeholder-count="2">
-                      <div style="display: flex; flex-direction: column; gap: 8px">
-                        <h4 style="margin: 0; font-size: 13px; font-weight: 600; color: var(--text)">{{sec.label}}</h4>
-                        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
-                          <sc-for list="{{sec.items}}" as="it" hint-placeholder-count="2">
-                            <li style="display: flex; gap: 12px; align-items: baseline">
-                              <span style="flex: 0 0 6px; height: 6px; border-radius: 999px; background: var(--clay); transform: translateY(-2px)"></span>
-                              <span style="font-size: 15px; line-height: 1.6; color: var(--text2)">{{it}}</span>
-                            </li>
-                          </sc-for>
-                        </ul>
-                      </div>
-                    </sc-for>
+                <sc-if value="{{c.open}}" hint-placeholder-val="{{ false }}">
+                  <div style="padding: 4px 22px 24px 106px; display: flex; flex-direction: column; gap: 24px">
+                    <sc-for list="{{c.versions}}" as="v" hint-placeholder-count="1">
+                      <div id="{{v.anchor}}" style="{{v.blockStyle}}">
+                        <sc-if value="{{v.showHead}}" hint-placeholder-val="{{ false }}">
+                          <div style="display: flex; flex-direction: column; gap: 4px">
+                            <span style="font-size: 13px; color: var(--faint)">{{v.kicker}}</span>
+                            <span style="font-size: 17px; font-weight: 500; color: var(--text)">{{v.title}}</span>
+                            <span style="font-size: 15px; line-height: 1.5; color: var(--muted)">{{v.headline}}</span>
+                          </div>
+                        </sc-if>
 
-                    <sc-if value="{{r.hasFeats}}" hint-placeholder-val="{{ true }}">
-                      <div style="display: flex; flex-direction: column; gap: 10px">
-                        <h4 style="margin: 0; font-size: 13px; font-weight: 600; color: var(--text)">Explore the features from this release</h4>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px">
-                          <sc-for list="{{r.feats}}" as="ft" hint-placeholder-count="2">
-                            <button class="pill" onClick="{{ft.open}}" style="display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 0.5px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 14px">
-                              {{ft.name}}
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-                            </button>
-                          </sc-for>
+                        <sc-if value="{{v.isPending}}" hint-placeholder-val="{{ false }}">
+                          <span style="font-size: 15px; line-height: 1.6; color: var(--text2); padding: 14px 16px; border-radius: 10px; background: var(--subtle)">{{v.pendingText}}</span>
+                        </sc-if>
+
+                        <sc-for list="{{v.sections}}" as="sec" hint-placeholder-count="2">
+                          <div style="display: flex; flex-direction: column; gap: 8px">
+                            <h4 style="margin: 0; font-size: 13px; font-weight: 600; color: var(--text)">{{sec.label}}</h4>
+                            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+                              <sc-for list="{{sec.items}}" as="it" hint-placeholder-count="2">
+                                <li style="display: flex; gap: 12px; align-items: baseline">
+                                  <span style="flex: 0 0 6px; height: 6px; border-radius: 999px; background: var(--clay); transform: translateY(-2px)"></span>
+                                  <span style="font-size: 15px; line-height: 1.6; color: var(--text2)">{{it}}</span>
+                                </li>
+                              </sc-for>
+                            </ul>
+                          </div>
+                        </sc-for>
+
+                        <sc-if value="{{v.hasFeats}}" hint-placeholder-val="{{ false }}">
+                          <div style="display: flex; flex-direction: column; gap: 10px">
+                            <h4 style="margin: 0; font-size: 13px; font-weight: 600; color: var(--text)">Explore the features from this release</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                              <sc-for list="{{v.feats}}" as="ft" hint-placeholder-count="2">
+                                <button class="pill" onClick="{{ft.open}}" style="display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 0.5px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 14px">
+                                  {{ft.name}}
+                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                                </button>
+                              </sc-for>
+                            </div>
+                          </div>
+                        </sc-if>
+
+                        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 0.5px solid var(--border)">
+                          <sc-if value="{{v.isSummarized}}" hint-placeholder-val="{{ true }}">
+                            <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted)">
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; color: var(--ok-line)"><path d="M5 12l5 5 9-10"/></svg>
+                              {{v.coverNote}}
+                            </span>
+                          </sc-if>
+                          <a href="{{v.src}}" style="font-size: 14px; display: flex; align-items: center; gap: 6px">
+                            Read the original on GitHub
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                          </a>
                         </div>
                       </div>
-                    </sc-if>
-
-                    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; border-top: 0.5px solid var(--border)">
-                      <button class="soft" onClick="{{r.toggleOrig}}" aria-expanded="{{r.origStr}}" style="min-height: 40px; padding: 0 12px; border: none; border-radius: 8px; background: transparent; color: var(--text); font-size: 14px; font-weight: 500">{{r.origLabel}}</button>
-                      <a href="{{r.src}}" style="font-size: 14px; display: flex; align-items: center; gap: 6px">
-                        Read the official changelog
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
-                      </a>
-                    </div>
-
-                    <sc-if value="{{r.showOrig}}" hint-placeholder-val="{{ false }}">
-                      <div style="border-radius: 12px; background: var(--subtle); padding: 18px; display: flex; flex-direction: column; gap: 12px">
-                        <span style="font-size: 13px; color: var(--muted)">Original changelog, {{r.origCount}} entries. Each one is covered in the summary above.</span>
-                        <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
-                          <sc-for list="{{r.original}}" as="o" hint-placeholder-count="3">
-                            <li style="display: flex; gap: 12px; align-items: baseline">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="Covered" role="img" style="flex: 0 0 14px; color: var(--ok-line); transform: translateY(2px)"><path d="M5 12l5 5 9-10"/></svg>
-                              <span style="font-family: 'Anthropic Mono', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 13px; line-height: 1.6; color: var(--text2)">{{o}}</span>
-                            </li>
-                          </sc-for>
-                        </ol>
-                      </div>
-                    </sc-if>
+                    </sc-for>
                   </div>
                 </sc-if>
               </article>
@@ -222,6 +226,7 @@ button{font-family:inherit;cursor:pointer}
 
       <footer style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; border-top: 0.5px solid var(--border); font-size: 13px; color: var(--faint)">
         <span>Open source · Independent project, not affiliated with Anthropic</span>
+        <span>Summaries in our own words. The original changelog belongs to Anthropic and is linked from every release.</span>
         <span>Sample entries for this mock-up</span>
       </footer>
     </main>
@@ -238,10 +243,10 @@ button{font-family:inherit;cursor:pointer}
       <section style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end; justify-content: space-between">
         <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px; max-width: 760px">
           <span style="font-size: 14px; color: var(--faint)">{{sel.product}} · {{sel.area}}</span>
-          <h1 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 44px; line-height: 1.2; font-weight: 400">{{sel.name}}</h1>
+          <h1 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 44px; line-height: 1.2; font-weight: 400">{{sel.name}}</h1>
           <p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--muted)">{{sel.summary}}</p>
         </div>
-        <a href="https://docs.claude.com" class="soft" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 10px; border: 0.5px solid var(--border-strong); color: var(--text); font-size: 15px; text-decoration: none">
+        <a href="{{sel.docUrl}}" class="soft" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 10px; border: 0.5px solid var(--border-strong); color: var(--text); font-size: 15px; text-decoration: none">
           Open documentation
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
@@ -251,12 +256,12 @@ button{font-family:inherit;cursor:pointer}
 
         <div style="flex: 999 1 540px; min-width: 0; display: flex; flex-direction: column; gap: 36px">
           <article style="display: flex; flex-direction: column; gap: 10px">
-            <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">What it does</h2>
+            <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">What it does</h2>
             <p style="margin: 0; font-size: 16px; line-height: 1.7; color: var(--text2)">{{sel.what}}</p>
           </article>
 
           <article style="display: flex; flex-direction: column; gap: 14px">
-            <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">Why it matters</h2>
+            <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">Why it matters</h2>
             <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
               <sc-for list="{{sel.impact}}" as="im" hint-placeholder-count="3">
                 <li style="display: flex; gap: 12px; align-items: baseline">
@@ -268,7 +273,7 @@ button{font-family:inherit;cursor:pointer}
           </article>
 
           <article style="display: flex; flex-direction: column; gap: 14px">
-            <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">How it works</h2>
+            <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">How it works</h2>
             <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px">
               <sc-for list="{{sel.how}}" as="h" hint-placeholder-count="3">
                 <li style="display: flex; gap: 14px; align-items: flex-start">
@@ -280,7 +285,7 @@ button{font-family:inherit;cursor:pointer}
           </article>
 
           <article style="display: flex; flex-direction: column; gap: 14px">
-            <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">Update history</h2>
+            <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">Update history</h2>
             <div style="border-radius: 12px; background: var(--surface); border: 0.5px solid var(--border); overflow: hidden">
               <sc-for list="{{sel.history}}" as="hi" hint-placeholder-count="2">
                 <button class="row" onClick="{{hi.go}}" style="{{hi.style}}">
@@ -296,13 +301,12 @@ button{font-family:inherit;cursor:pointer}
           </article>
 
           <article style="display: flex; flex-direction: column; gap: 14px">
-            <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">Documentation pages</h2>
+            <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">Documentation</h2>
             <div style="border-radius: 12px; background: var(--surface); border: 0.5px solid var(--border); overflow: hidden">
-              <sc-for list="{{sel.diff}}" as="d" hint-placeholder-count="2">
-                <a href="https://docs.claude.com" style="{{d.style}}">
-                  <span style="flex: 0 0 auto; font-size: 12px; font-weight: 600; color: var(--muted); padding: 2px 8px; border-radius: 6px; background: var(--chip)">{{d.label}}</span>
-                  <span style="flex: 1 1 auto; font-size: 15px; color: var(--text2)">{{d.s}}</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--icon)"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <sc-for list="{{sel.docs}}" as="d" hint-placeholder-count="2">
+                <a href="{{d.url}}" style="{{d.style}}">
+                  <span style="flex: 1 1 auto; min-width: 0; font-size: 15px; color: var(--text2); overflow-wrap: anywhere">{{d.label}}</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; color: var(--icon)"><path d="M7 17 17 7M8 7h9v9"/></svg>
                 </a>
               </sc-for>
             </div>
@@ -310,107 +314,90 @@ button{font-family:inherit;cursor:pointer}
         </div>
 
         <aside style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-          <sc-if value="{{isSim}}" hint-placeholder-val="{{ false }}">
-          <section style="padding: 24px; border-radius: 16px; background: var(--surface); border: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 20px">
-            <div style="display: flex; flex-direction: column; gap: 6px">
-              <span style="font-size: 13px; font-weight: 500; color: var(--link)">Try it yourself</span>
-              <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">{{simTitle}}</h2>
-              <span style="font-size: 15px; line-height: 1.5; color: var(--muted)">{{simIntro}}</span>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 10px">
-              <span style="font-size: 14px; font-weight: 600; color: var(--text)">1. When should it run?</span>
-              <div style="display: flex; flex-wrap: wrap; gap: 8px" role="group" aria-label="Hook event">
-                <sc-for list="{{simEvents}}" as="e" hint-placeholder-count="3">
-                  <button onClick="{{e.pick}}" aria-pressed="{{e.pressed}}" style="{{e.style}}">{{e.label}}</button>
-                </sc-for>
+          <!-- Demo: scripted rules from content/demos/<featureId>.json (conception 4.3, 5.3). No AI at runtime. -->
+          <sc-if value="{{hasDemo}}" hint-placeholder-val="{{ true }}">
+            <section style="padding: 24px; border-radius: 16px; background: var(--surface); border: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 20px">
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <span style="font-size: 13px; font-weight: 500; color: var(--link)">Try it yourself</span>
+                <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">{{demoTitle}}</h2>
+                <span style="font-size: 15px; line-height: 1.5; color: var(--muted)">{{demoIntro}}</span>
               </div>
-              <span style="font-size: 13px; line-height: 1.5; color: var(--faint)">{{simHint}}</span>
-            </div>
 
-            <div style="display: flex; flex-direction: column; gap: 10px">
-              <label for="sim-cmd" style="font-size: 14px; font-weight: 600; color: var(--text)">2. What command should it run?</label>
-              <input id="sim-cmd" type="text" value="{{simCmd}}" onChange="{{onCmd}}" placeholder="e.g. npx prettier --write ." autocomplete="off" spellcheck="false" style="min-height: 44px; padding: 0 14px; border-radius: 10px; border: 0.5px solid var(--border-strong); background: var(--bg); color: var(--text); font-family: 'Anthropic Mono', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 14px; box-sizing: border-box; width: 100%">
-              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px">
-                <span style="font-size: 13px; color: var(--faint)">Try:</span>
-                <sc-for list="{{simSuggestions}}" as="sg" hint-placeholder-count="3">
-                  <button class="soft" onClick="{{sg.pick}}" style="min-height: 32px; padding: 0 10px; border-radius: 8px; border: none; background: var(--chip); color: var(--text2); font-family: 'Anthropic Mono', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 12px">{{sg.label}}</button>
-                </sc-for>
-              </div>
-            </div>
-
-            <button class="cta" onClick="{{runSim}}" style="min-height: 48px; padding: 12px 18px; border: none; border-radius: 10px; background: var(--clay); color: #141413; font-size: 15px; font-weight: 500">Run the simulation</button>
-
-            <sc-if value="{{simRun}}" hint-placeholder-val="{{ false }}">
-              <div style="display: flex; flex-direction: column; gap: 12px">
-                <div style="display: flex; flex-direction: column; gap: 8px">
-                  <sc-for list="{{simTrace}}" as="t" hint-placeholder-count="3">
-                    <div style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 10px; background: var(--subtle)">
-                      <span style="font-size: 12px; font-weight: 600; color: var(--faint)">{{t.who}}</span>
-                      <span style="{{t.textStyle}}">{{t.text}}</span>
+              <sc-for list="{{demoInputs}}" as="inp" hint-placeholder-count="2">
+                <div style="display: flex; flex-direction: column; gap: 10px">
+                  <sc-if value="{{inp.isChoose}}" hint-placeholder-val="{{ true }}">
+                    <span style="font-size: 14px; font-weight: 600; color: var(--text)">{{inp.label}}</span>
+                    <div role="group" aria-label="{{inp.label}}" style="display: flex; flex-wrap: wrap; gap: 8px">
+                      <sc-for list="{{inp.opts}}" as="o" hint-placeholder-count="3">
+                        <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="{{o.style}}">{{o.label}}</button>
+                      </sc-for>
                     </div>
-                  </sc-for>
+                  </sc-if>
+                  <sc-if value="{{inp.isText}}" hint-placeholder-val="{{ false }}">
+                    <label for="{{inp.domId}}" style="font-size: 14px; font-weight: 600; color: var(--text)">{{inp.label}}</label>
+                    <input id="{{inp.domId}}" type="text" value="{{inp.value}}" onChange="{{inp.onInput}}" placeholder="{{inp.placeholder}}" autocomplete="off" spellcheck="false" style="min-height: 44px; padding: 0 14px; border-radius: 10px; border: 0.5px solid var(--border-strong); background: var(--bg); color: var(--text); font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 14px; box-sizing: border-box; width: 100%">
+                    <sc-if value="{{inp.hasSuggestions}}" hint-placeholder-val="{{ true }}">
+                      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px">
+                        <span style="font-size: 13px; color: var(--faint)">Try:</span>
+                        <sc-for list="{{inp.suggestions}}" as="sg" hint-placeholder-count="3">
+                          <button class="soft" onClick="{{sg.pick}}" style="min-height: 32px; padding: 0 10px; border-radius: 8px; border: none; background: var(--chip); color: var(--text2); font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 12px">{{sg.label}}</button>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </sc-if>
                 </div>
-                <div style="{{simOutcomeStyle}}">
-                  <span style="font-size: 15px; font-weight: 600; color: var(--text)">{{simOutTitle}}</span>
-                  <span style="font-size: 14px; line-height: 1.5; color: var(--text2)">{{simOutDetail}}</span>
-                </div>
-              </div>
-            </sc-if>
-
-            <div style="display: flex; flex-direction: column; gap: 8px">
-              <span style="font-size: 13px; font-weight: 500; color: var(--faint)">What this looks like in your settings file</span>
-              <pre style="margin: 0; padding: 14px; border-radius: 10px; background: var(--subtle); overflow-x: auto; font-family: 'Anthropic Mono', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 12px; line-height: 1.6; color: var(--text2)">{{simConfig}}</pre>
-            </div>
-          </section>
-          </sc-if>
-          <sc-if value="{{isSteps}}" hint-placeholder-val="{{ true }}">
-          <section style="padding: 24px; border-radius: 16px; background: var(--surface); border: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 18px">
-            <div style="display: flex; flex-direction: column; gap: 6px">
-              <span style="font-size: 13px; font-weight: 500; color: var(--link)">Try it yourself</span>
-              <h2 style="margin: 0; font-family: 'Anthropic Serif', Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">{{sel.gameTitle}}</h2>
-              <span style="font-size: 15px; line-height: 1.5; color: var(--muted)">{{sel.gameIntro}}</span>
-            </div>
-            <div style="display: flex; gap: 6px" aria-hidden="true">
-              <sc-for list="{{pips}}" as="p" hint-placeholder-count="3">
-                <span style="{{p.style}}"></span>
               </sc-for>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px">
-              <sc-if value="{{noLog}}" hint-placeholder-val="{{ true }}">
-                <span style="font-size: 14px; color: var(--faint); padding: 16px; border-radius: 10px; background: var(--subtle)">Press the button below to take the first step.</span>
+
+              <button class="cta" onClick="{{runDemo}}" style="min-height: 48px; padding: 12px 18px; border: none; border-radius: 10px; background: var(--clay); color: #141413; font-size: 15px; font-weight: 500">Run the simulation</button>
+
+              <sc-if value="{{demoRun}}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column; gap: 12px">
+                  <div style="display: flex; flex-direction: column; gap: 8px">
+                    <sc-for list="{{demoTrace}}" as="t" hint-placeholder-count="3">
+                      <div style="display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 10px; background: var(--subtle)">
+                        <span style="font-size: 12px; font-weight: 600; color: var(--faint)">{{t.who}}</span>
+                        <span style="{{t.textStyle}}">{{t.text}}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="{{demoOutcomeStyle}}">
+                    <span style="font-size: 15px; font-weight: 600; color: var(--text)">{{demoOutTitle}}</span>
+                    <span style="font-size: 14px; line-height: 1.5; color: var(--text2)">{{demoOutDetail}}</span>
+                  </div>
+                </div>
               </sc-if>
-              <sc-for list="{{log}}" as="l" hint-placeholder-count="0">
-                <div style="padding: 14px 16px; border-radius: 10px; background: var(--subtle); display: flex; flex-direction: column; gap: 4px">
-                  <span style="font-size: 13px; color: var(--faint)">{{l.btn}}</span>
-                  <span style="font-size: 15px; line-height: 1.5; color: var(--text)">{{l.out}}</span>
-                </div>
-              </sc-for>
-            </div>
-            <sc-if value="{{hasNext}}" hint-placeholder-val="{{ true }}">
-              <button class="cta" onClick="{{advance}}" style="min-height: 48px; padding: 12px 18px; border: none; border-radius: 10px; background: var(--clay); color: #141413; font-size: 15px; font-weight: 500">{{nextBtn}}</button>
-            </sc-if>
-            <sc-if value="{{gameDone}}" hint-placeholder-val="{{ false }}">
-              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
-                <span style="font-size: 15px; font-weight: 500; color: var(--text)">Nice, you've seen it work.</span>
-                <button class="soft" onClick="{{replay}}" style="min-height: 44px; padding: 0 16px; border: 0.5px solid var(--border-strong); border-radius: 10px; background: transparent; color: var(--text); font-size: 14px">Play again</button>
-              </div>
-            </sc-if>
-          </section>
 
+              <sc-if value="{{hasConfig}}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; gap: 8px">
+                  <span style="font-size: 13px; font-weight: 500; color: var(--faint)">What this looks like in your settings file</span>
+                  <pre style="margin: 0; padding: 14px; border-radius: 10px; background: var(--subtle); overflow-x: auto; font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 12px; line-height: 1.6; color: var(--text2)">{{demoConfig}}</pre>
+                </div>
+              </sc-if>
+
+              <span style="font-size: 12px; line-height: 1.5; color: var(--faint)">A scripted example: fixed rules checked against the documentation. No AI runs here, and what you type never leaves your browser.</span>
+            </section>
+
+            <section style="padding: 24px; border-radius: 16px; background: var(--surface); border: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 14px">
+              <span style="font-size: 13px; font-weight: 500; color: var(--faint)">Quick check</span>
+              <h2 style="margin: 0; font-size: 17px; line-height: 1.45; font-weight: 500">{{quizQ}}</h2>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <sc-for list="{{opts}}" as="o" hint-placeholder-count="3">
+                  <button onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button>
+                </sc-for>
+              </div>
+              <sc-if value="{{answered}}" hint-placeholder-val="{{ false }}">
+                <span style="font-size: 14px; line-height: 1.5; color: var(--text2)">{{feedback}}</span>
+              </sc-if>
+            </section>
           </sc-if>
-          <section style="padding: 24px; border-radius: 16px; background: var(--surface); border: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 14px">
-            <span style="font-size: 13px; font-weight: 500; color: var(--faint)">Quick check</span>
-            <h2 style="margin: 0; font-size: 17px; line-height: 1.45; font-weight: 500">{{sel.q}}</h2>
-            <div style="display: flex; flex-direction: column; gap: 8px">
-              <sc-for list="{{opts}}" as="o" hint-placeholder-count="3">
-                <button onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button>
-              </sc-for>
-            </div>
-            <sc-if value="{{answered}}" hint-placeholder-val="{{ false }}">
-              <span style="font-size: 14px; line-height: 1.5; color: var(--text2)">{{feedback}}</span>
-            </sc-if>
-          </section>
+
+          <sc-if value="{{noDemo}}" hint-placeholder-val="{{ false }}">
+            <section style="padding: 24px; border-radius: 16px; background: var(--surface); border: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 12px">
+              <span style="font-size: 13px; font-weight: 500; color: var(--link)">Try it yourself</span>
+              <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; font-weight: 500">Hands-on example coming</h2>
+              <span style="font-size: 15px; line-height: 1.6; color: var(--muted)">The interactive example for this feature is still being written and checked against the documentation. Until then, the steps on this page and the documentation links cover how it works.</span>
+            </section>
+          </sc-if>
         </aside>
       </div>
     </main>
@@ -435,313 +422,248 @@ var THEMES = {
   }
 };
 
-var PRODUCT_NAME = { platform: "Developer Platform", code: "Claude Code" };
+/*
+ * Sample data shaped like content/ (docs/conception.md section 4). Every text here is our own
+ * wording: the site never shows the upstream changelog text (ADR 0008). `items` is the number
+ * of original changelog bullets; `c` on a line is how many of them it covers.
+ */
+var CHANGELOG_URL = "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md";
 
-/* ---------- Releases (summaries of official changelog entries) ---------- */
 var RELEASES = [
-  { id: "cc-web", product: "code", date: "Oct 20, 2025", title: "Claude Code on the web",
+  { version: "2.0.21", date: "Oct 22, 2025", status: "draft", items: 6 },
+
+  { version: "2.0.20", date: "Oct 20, 2025", status: "approved", items: 5,
+    title: "Claude Code on the web",
     headline: "Start coding tasks from your browser and let them run in the cloud.",
-    added: ["Claude Code on the web, a research preview for Pro and Max plans", "Run several coding tasks in parallel on cloud environments", "Connect GitHub repositories; Claude opens pull requests when done", "Claude Code in the Claude iOS app"],
-    changed: [], fixed: [],
-    original: ["Research preview: Claude Code on the web for Pro and Max users", "Tasks run on Anthropic-managed cloud infrastructure", "Multiple tasks can run in parallel across repositories", "GitHub integration: connect a repo and receive pull requests", "Claude Code is now available in the Claude iOS app (preview)"],
+    lines: [
+      { k: "added", t: "Claude Code on the web, a research preview for Pro and Max plans", c: 1 },
+      { k: "added", t: "Run several coding tasks in parallel on cloud environments", c: 2 },
+      { k: "added", t: "Connect GitHub repositories; Claude opens pull requests when done", c: 1 },
+      { k: "added", t: "Claude Code in the Claude iOS app", c: 1 }
+    ],
     feats: ["cc-webapp"] },
 
-  { id: "r-skills", product: "platform", date: "Oct 16, 2025", title: "Agent Skills",
-    headline: "Folders of instructions and scripts that Claude loads only when a task needs them.",
-    added: ["Agent Skills (beta) across the API, the Claude apps and Claude Code", "Ready-made skills for Excel, Word, PowerPoint and PDF files", "Upload and manage your own custom skills"],
-    changed: ["Skills run inside the code execution tool's container"], fixed: [],
-    original: ["Introducing Agent Skills (beta)", "Skills are available in Claude apps, Claude Code and the Claude API", "Anthropic-managed skills: xlsx, docx, pptx, pdf", "New endpoints to create and manage custom skills", "Skills require the code execution tool when used via the API", "New documentation: Agent Skills overview and best practices"],
-    feats: ["skills"] },
-
-  { id: "cc-plugins", product: "code", date: "Oct 9, 2025", title: "Plugins (public beta)",
+  { version: "2.0.12", date: "Oct 9, 2025", status: "approved", items: 5,
+    title: "Plugins (public beta)",
     headline: "Install bundles of commands, subagents, hooks and MCP servers with one command.",
-    added: ["The /plugin command to browse and install plugins", "Plugin marketplaces hosted from any git repository", "Plugins can bundle slash commands, subagents, MCP servers and hooks"],
-    changed: ["Plugins can be switched on and off to keep context small"], fixed: [],
-    original: ["Plugins are now in public beta", "Install plugins with /plugin", "Anyone can host a marketplace from a git repository", "A plugin can contain slash commands, subagents, MCP servers and hooks", "Enable or disable plugins as needed"],
-    feats: ["cc-plugins"] },
+    lines: [
+      { k: "added", t: "The /plugin command to browse and install plugins", c: 2 },
+      { k: "added", t: "Plugin marketplaces hosted from any git repository", c: 1 },
+      { k: "added", t: "Plugins can bundle slash commands, subagents, MCP servers and hooks", c: 1 },
+      { k: "changed", t: "Plugins can be switched on and off to keep context small", c: 1 }
+    ],
+    feats: ["cc-plugins", "cc-hooks", "cc-subagents", "cc-slash"] },
 
-  { id: "cc-2", product: "code", date: "Sep 29, 2025", title: "Claude Code 2.0",
+  { version: "2.0.0", date: "Sep 29, 2025", status: "approved", items: 5,
+    title: "Claude Code 2.0",
     headline: "Checkpoints you can rewind to, a native VS Code extension and a refreshed terminal.",
-    added: ["Checkpoints: rewind code and conversation with /rewind or Esc twice", "Native VS Code extension (beta)"],
-    changed: ["Refreshed terminal interface", "The Claude Code SDK is now the Claude Agent SDK"], fixed: [],
-    original: ["New: checkpoints saved automatically before each change", "Rewind with Esc Esc or the /rewind command", "Native VS Code extension available in beta", "Updated terminal UX", "Claude Code SDK renamed to Claude Agent SDK"],
+    lines: [
+      { k: "added", t: "Checkpoints: rewind code and conversation with /rewind or Esc twice", c: 2 },
+      { k: "added", t: "Native VS Code extension (beta)", c: 1 },
+      { k: "changed", t: "Refreshed terminal interface", c: 1 },
+      { k: "changed", t: "The Claude Code SDK is now the Claude Agent SDK", c: 1 }
+    ],
     feats: ["cc-checkpoints"] },
 
-  { id: "r-sonnet45", product: "platform", date: "Sep 29, 2025", title: "Claude Sonnet 4.5 and context management",
-    headline: "A new model plus two tools that help long-running agents manage their context.",
-    added: ["Claude Sonnet 4.5", "Memory tool (beta): Claude stores and reads notes in files you control", "Context editing (beta): old tool results are cleared automatically"],
-    changed: ["The Claude Code SDK is renamed the Claude Agent SDK"], fixed: [],
-    original: ["Launched Claude Sonnet 4.5", "Memory tool released in beta", "Memory tool runs client-side on developer-managed storage", "Context editing released in beta", "Context editing clears stale tool results near the context limit", "Claude Code SDK renamed to Claude Agent SDK"],
-    feats: ["memory", "ctxedit"] },
-
-  { id: "r-webfetch", product: "platform", date: "Sep 10, 2025", title: "Web fetch tool",
-    headline: "Claude can read the full content of a web page or PDF from a URL.",
-    added: ["Web fetch tool (beta) for web pages and PDFs"],
-    changed: ["Allowed and blocked domain lists control where it can go"], fixed: [],
-    original: ["Web fetch tool now available in beta", "Retrieves full text content from web pages and PDF documents", "Supports allowed_domains and blocked_domains"],
-    feats: ["webfetch"] },
-
-  { id: "cc-subagents", product: "code", date: "Jul 24, 2025", title: "Custom subagents",
+  { version: "1.0.60", date: "Jul 24, 2025", status: "approved", items: 4,
+    title: "Custom subagents",
     headline: "Create specialist helpers with their own instructions, tools and context.",
-    added: ["Custom subagents, defined as Markdown files", "The /agents command to create and manage them"],
-    changed: [], fixed: [],
-    original: ["Added support for custom subagents", "Subagents have their own system prompt, tools and context window", "Define them in .claude/agents/ as Markdown files", "Create and edit subagents with /agents"],
+    lines: [
+      { k: "added", t: "Custom subagents, defined as Markdown files with their own prompt and tools", c: 3 },
+      { k: "added", t: "The /agents command to create and manage them", c: 1 }
+    ],
     feats: ["cc-subagents"] },
 
-  { id: "cc-hooks", product: "code", date: "Jun 30, 2025", title: "Hooks",
+  { version: "1.0.38", date: "Jun 30, 2025", status: "approved", items: 4,
+    title: "Hooks",
     headline: "Run your own shell commands at set moments in Claude Code's workflow.",
-    added: ["Hooks that run at events such as before or after a tool is used", "Configure hooks with /hooks or in settings files"],
-    changed: [], fixed: [],
-    original: ["Introduced hooks", "Events: PreToolUse, PostToolUse, Notification, Stop", "Hooks are shell commands configured in settings", "New /hooks command for configuration"],
+    lines: [
+      { k: "added", t: "Hooks that run at events such as before or after a tool is used", c: 3 },
+      { k: "added", t: "Configure hooks with /hooks or in settings files", c: 1 }
+    ],
     feats: ["cc-hooks"] },
 
-  { id: "r-may22", product: "platform", date: "May 22, 2025", title: "Claude 4 models and new API tools",
-    headline: "Two new models and a set of building blocks for agents.",
-    added: ["Claude Opus 4 and Claude Sonnet 4", "Files API (beta)", "MCP connector (beta)", "Code execution tool (beta)"],
-    changed: ["Prompt caching gains an optional one-hour cache lifetime"], fixed: [],
-    original: ["Released Claude Opus 4", "Released Claude Sonnet 4", "Files API in beta: upload once, reference by file_id", "MCP connector in beta: connect remote MCP servers from the Messages API", "Code execution tool in beta", "Extended prompt caching: 1-hour TTL option"],
-    feats: ["files", "caching"] },
-
-  { id: "cc-ga", product: "code", date: "May 22, 2025", title: "Claude Code 1.0",
+  { version: "1.0.0", date: "May 22, 2025", status: "approved", items: 3,
+    title: "Claude Code 1.0",
     headline: "Claude Code becomes generally available, with editor integrations and an SDK.",
-    added: ["General availability", "VS Code and JetBrains integrations (beta)", "Claude Code SDK for building your own agents"],
-    changed: [], fixed: [],
-    original: ["Claude Code is now generally available", "Beta extensions for VS Code and JetBrains IDEs", "Released the Claude Code SDK"],
+    lines: [
+      { k: "added", t: "General availability", c: 1 },
+      { k: "added", t: "VS Code and JetBrains integrations (beta)", c: 1 },
+      { k: "added", t: "Claude Code SDK for building your own agents", c: 1 }
+    ],
     feats: [] },
 
-  { id: "r-websearch", product: "platform", date: "May 7, 2025", title: "Web search tool",
-    headline: "Claude can search the web during a request and cite its sources.",
-    added: ["Web search tool with citations"],
-    changed: ["Domain allow and block lists"], fixed: [],
-    original: ["Web search now available on the Anthropic API", "Responses include citations to sources", "Organizations can allow or block domains"],
-    feats: ["websearch"] },
-
-  { id: "cc-preview", product: "code", date: "Feb 24, 2025", title: "Claude Code research preview",
-    headline: "An agentic coding tool that works in your terminal.",
-    added: ["Claude Code in the terminal, as a research preview", "Built-in and custom slash commands"],
-    changed: [], fixed: [],
-    original: ["Claude Code released as a limited research preview", "Runs in the terminal and works directly in your codebase", "Supports slash commands, including custom commands"],
-    feats: ["cc-slash"] },
-
-  { id: "r-feb24", product: "platform", date: "Feb 24, 2025", title: "Claude 3.7 Sonnet and extended thinking",
-    headline: "A model that can think step by step before it answers, within a budget you set.",
-    added: ["Claude 3.7 Sonnet", "Extended thinking with a budget_tokens setting"],
-    changed: [], fixed: [],
-    original: ["Released Claude 3.7 Sonnet", "Extended thinking available via the thinking parameter", "budget_tokens controls the reasoning budget"],
-    feats: ["thinking"] },
-
-  { id: "r-cache", product: "platform", date: "Aug 14, 2024", title: "Prompt caching (beta)",
-    headline: "Reuse a long prompt prefix so repeated calls are faster and cheaper.",
-    added: ["Prompt caching with cache_control markers"],
-    changed: [], fixed: [],
-    original: ["Prompt caching available in public beta", "Mark cacheable content with cache_control", "Cache reads are billed at a reduced rate"],
-    feats: ["caching"] }
+  /* Older releases get summaries newest first (ADR 0008), so these are still pending. */
+  { version: "0.2.21", date: "Mar 3, 2025", status: "draft", items: 4 },
+  { version: "0.2.9", date: "Feb 24, 2025", status: "draft", items: 3 }
 ];
 
-/* ---------- Features ---------- */
+var AREA = { core: "Core", extend: "Extend and customize", anywhere: "Work from anywhere" };
+var EVENT = { introduced: "Introduced", updated: "Updated", deprecated: "Deprecated", removed: "Removed" };
+var DOCS = "https://docs.claude.com/en/docs/claude-code/";
+
 var FEATURES = [
-  { id: "skills", product: "platform", area: "Agents", name: "Agent Skills",
-    summary: "Package instructions, scripts and resources into folders that Claude loads only when a task needs them.",
-    what: "A skill is a folder with a SKILL.md file (a name, a description and instructions) plus any scripts or reference files. Claude sees only each skill's short description up front, and pulls in the full contents when your request matches it. The same skill works across the Claude apps, Claude Code and the API.",
-    impact: [ { t: "Reusable expertise", d: "Write a workflow once and every agent follows it the same way." }, { t: "Lean context", d: "Unused skills cost almost nothing, so you can install many." }, { t: "Real tooling", d: "Skills can ship scripts Claude runs, not just prose." } ],
-    how: [ "Create a folder with a SKILL.md holding a name and a description of when to use it.", "At the start of a session Claude reads only those names and descriptions.", "When a request matches, Claude loads the full instructions and any bundled files, then follows them." ],
-    history: [ { rid: "r-skills", note: "Introduced in beta across the API, apps and Claude Code" } ],
-    diff: [ { t: "+", s: "Agent Skills / Overview" }, { t: "+", s: "Agent Skills / Best practices" }, { t: "~", s: "Code execution tool" } ],
-    gameTitle: "Which skill opens?", gameIntro: "Watch Claude pick the right skill for a request.",
-    steps: [ { btn: "Start a session", out: "Claude sees three short skill descriptions: xlsx, pdf, brand-voice. The full files stay closed." }, { btn: "Ask for a sales report in Excel", out: "The request matches the xlsx description, so that skill's full instructions are loaded." }, { btn: "Run the task", out: "Claude follows the skill's steps and scripts. The spreadsheet is ready." } ],
-    q: "When does Claude load a skill's full instructions?", opts: ["Always, at the start of every session", "Only when the task matches the skill's description", "Only when you type the skill's file name"], ans: 1 },
-
-  { id: "memory", product: "platform", area: "Tools", name: "Memory tool",
-    summary: "Lets Claude save and look up notes in a file directory that outlives a single conversation.",
-    what: "The memory tool gives Claude file operations (view, create, edit, delete) on a memory directory. It runs client-side: your application decides where those files live and executes each operation. Claude can check its memory before starting work and record what it learned afterwards.",
-    impact: [ { t: "Long-running agents", d: "Progress and decisions survive past the context window." }, { t: "You own the data", d: "Storage is in your infrastructure, so you control retention." }, { t: "Less repetition", d: "Users stop re-explaining the same preferences." } ],
-    how: [ "Enable the memory tool in your API request.", "Claude issues file commands such as view or create against a memory directory.", "Your app carries out each command on its own storage and returns the result." ],
-    history: [ { rid: "r-sonnet45", note: "Introduced in beta alongside Claude Sonnet 4.5" } ],
-    diff: [ { t: "+", s: "Tools / Memory tool" } ],
-    gameTitle: "Remember this", gameIntro: "Carry one fact across two separate conversations.",
-    steps: [ { btn: "Conversation 1: say 'we deploy on Fridays'", out: "Claude saves the fact to a memory file through your app." }, { btn: "Close the conversation", out: "The chat is gone, but the memory file is still there." }, { btn: "Conversation 2: ask when to ship", out: "Claude checks its memory first and answers: Friday." } ],
-    q: "Where does memory-tool data live?", opts: ["Hidden on Anthropic's servers", "In the system prompt", "In storage your application controls"], ans: 2 },
-
-  { id: "ctxedit", product: "platform", area: "API", name: "Context editing",
-    summary: "Clears stale tool results automatically as a conversation nears its context limit.",
-    what: "In long agent runs, old tool results pile up and crowd the context window. Context editing removes the oldest ones once a threshold you set is crossed, leaving a marker in their place, so the agent can keep working without you trimming history by hand.",
-    impact: [ { t: "Longer runs", d: "Agents go further before hitting the limit." }, { t: "Lower cost", d: "You stop paying to resend results nobody needs." }, { t: "Less glue code", d: "No custom pruning logic in your loop." } ],
-    how: [ "Turn on context editing and choose a trigger threshold.", "When the conversation crosses it, the oldest tool results are cleared.", "Claude continues with recent results and the rest of the conversation intact." ],
-    history: [ { rid: "r-sonnet45", note: "Introduced in beta alongside Claude Sonnet 4.5" } ],
-    diff: [ { t: "+", s: "Context management / Context editing" } ],
-    gameTitle: "Making room", gameIntro: "Keep an agent going as its context fills up.",
-    steps: [ { btn: "Run six tool calls", out: "The context window is now mostly old search results." }, { btn: "Cross the threshold", out: "The oldest tool results are cleared and replaced with short markers." }, { btn: "Keep working", out: "The agent finishes the task with room to spare." } ],
-    q: "What does context editing remove first?", opts: ["The oldest tool results", "The user's latest message", "The system prompt"], ans: 0 },
-
-  { id: "webfetch", product: "platform", area: "Tools", name: "Web fetch tool",
-    summary: "Claude retrieves the full content of a web page or PDF from a URL.",
-    what: "Give Claude a URL and the web fetch tool brings back the page's contents, including PDFs, so Claude can read and analyse the whole document rather than a search snippet. You can restrict which domains it may reach.",
-    impact: [ { t: "Deep reading", d: "Analyse a full article or spec, not a summary." }, { t: "Pairs with search", d: "Search finds pages; fetch reads them." }, { t: "Guardrails", d: "Domain allow and block lists keep it on target." } ],
-    how: [ "Add the web fetch tool to your request, optionally with allowed domains.", "Claude calls it with a URL from the conversation.", "The page content returns to Claude, which answers from it." ],
-    history: [ { rid: "r-webfetch", note: "Introduced in beta" } ],
-    diff: [ { t: "+", s: "Tools / Web fetch tool" } ],
-    gameTitle: "From link to answer", gameIntro: "Turn a link into a full read.",
-    steps: [ { btn: "Paste a link to a PDF spec", out: "Claude calls web fetch with that URL." }, { btn: "Fetch it", out: "The whole PDF text comes back, not just a preview." }, { btn: "Ask about a detail on page 12", out: "Claude answers from the fetched document." } ],
-    q: "How do you keep web fetch away from unwanted sites?", opts: ["You can't", "Set allowed or blocked domains", "Use a shorter URL"], ans: 1 },
-
-  { id: "files", product: "platform", area: "API", name: "Files API",
-    summary: "Upload a file once, then reference it by ID in as many requests as you like.",
-    what: "Instead of re-sending a document with every request, you upload it to the Files API and get back a file ID. Later messages point to that ID, which keeps requests small and lets several conversations use the same document.",
-    impact: [ { t: "Smaller requests", d: "No repeated file payloads." }, { t: "Reuse", d: "One upload serves many prompts." }, { t: "Cleaner code", d: "Manage files separately from messages." } ],
-    how: [ "Upload the file and receive a file_id.", "Reference the file_id in a message.", "Reuse the same ID in later requests." ],
-    history: [ { rid: "r-may22", note: "Introduced in beta with the Claude 4 models" } ],
-    diff: [ { t: "+", s: "Build with Claude / Files API" } ],
-    gameTitle: "Upload once", gameIntro: "Count how many times the file is sent.",
-    steps: [ { btn: "Upload contract.pdf", out: "You get back a file ID. Times sent: 1." }, { btn: "Ask for a summary", out: "The message points to the file ID. Times sent: still 1." }, { btn: "Ask for risky clauses", out: "Same file ID again. Times sent: still 1." } ],
-    q: "What do later requests send instead of the file?", opts: ["Its file_id", "A screenshot of it", "The file again, compressed"], ans: 0 },
-
-  { id: "websearch", product: "platform", area: "Tools", name: "Web search tool",
-    summary: "Claude searches the web during a request and cites what it found.",
-    what: "With the web search tool enabled, Claude decides when a question needs fresh information, runs searches, and answers with citations to the sources it used.",
-    impact: [ { t: "Current answers", d: "Go past the training cutoff." }, { t: "Citations", d: "Users can check every claim." }, { t: "No extra stack", d: "No separate search integration to maintain." } ],
-    how: [ "Add the web search tool to your request.", "Claude runs one or more searches when it needs them.", "The answer comes back with citations to the sources." ],
-    history: [ { rid: "r-websearch", note: "Introduced on the API" } ],
-    diff: [ { t: "+", s: "Tools / Web search tool" } ],
-    gameTitle: "Fresh facts", gameIntro: "See when Claude reaches for the web.",
-    steps: [ { btn: "Ask: what is 2 + 2?", out: "No search needed. Claude answers directly." }, { btn: "Ask about this week's release", out: "Claude runs a web search." }, { btn: "Read the answer", out: "The reply cites the pages it came from." } ],
-    q: "What comes back with a web-search answer?", opts: ["A list of ads", "Citations to sources", "Nothing extra"], ans: 1 },
-
-  { id: "thinking", product: "platform", area: "Models", name: "Extended thinking",
-    summary: "Give Claude a reasoning budget to work through hard problems before answering.",
-    what: "With extended thinking on, Claude produces reasoning steps before its final answer, within a token budget you set. Bigger budgets help with maths, coding and multi-step analysis.",
-    impact: [ { t: "Better hard answers", d: "More room to plan and check." }, { t: "Tunable", d: "Trade speed and cost against depth." }, { t: "Transparency", d: "Inspect how Claude got there." } ],
-    how: [ "Enable thinking and set budget_tokens.", "Claude reasons first, within that budget.", "The final answer follows the thinking." ],
-    history: [ { rid: "r-feb24", note: "Introduced with Claude 3.7 Sonnet" } ],
-    diff: [ { t: "+", s: "Build with Claude / Extended thinking" } ],
-    gameTitle: "Room to think", gameIntro: "Give Claude space to reason.",
-    steps: [ { btn: "Set a thinking budget", out: "Claude may now reason before replying." }, { btn: "Ask a tricky logic puzzle", out: "Claude works through the cases step by step." }, { btn: "Get the answer", out: "The final reply comes after the reasoning." } ],
-    q: "Which setting caps how much Claude thinks?", opts: ["temperature", "budget_tokens", "max_retries"], ans: 1 },
-
-  { id: "caching", product: "platform", area: "API", name: "Prompt caching",
-    summary: "Reuse a long, repeated prompt prefix so later calls are faster and cheaper.",
-    what: "Mark the stable start of your prompt (a long system prompt, a document, tool definitions) as cacheable. The first request stores it; requests that reuse the same prefix soon after read it back at a fraction of the normal input price.",
-    impact: [ { t: "Lower cost", d: "Cache reads cost far less than fresh input." }, { t: "Faster", d: "Long prefixes are not reprocessed." }, { t: "Bigger prompts", d: "Rich context becomes affordable." } ],
-    how: [ "Add a cache_control marker at the end of the stable prefix.", "The first request stores that prefix in the cache.", "Matching requests within the cache lifetime read it instead." ],
-    history: [ { rid: "r-may22", note: "Added an optional one-hour cache lifetime" }, { rid: "r-cache", note: "Introduced in public beta" } ],
-    diff: [ { t: "+", s: "Build with Claude / Prompt caching" } ],
-    gameTitle: "Hit the cache", gameIntro: "Send the same long prompt twice.",
-    steps: [ { btn: "Send request 1", out: "The prefix is stored in the cache." }, { btn: "Send request 2 a minute later", out: "Cache hit: the prefix is read back quickly and cheaply." }, { btn: "Wait too long, then send again", out: "The cache expired, so the prefix is stored again." } ],
-    q: "Which part of a prompt should you cache?", opts: ["The part that changes every call", "The stable prefix you reuse", "Only the last user message"], ans: 1 },
-
-  /* Claude Code built-in features */
-  { id: "cc-webapp", product: "code", area: "Anywhere", name: "Claude Code on the web",
+  { id: "cc-webapp", area: "anywhere", name: "Claude Code on the web",
     summary: "Start coding tasks from the browser; they run in the cloud and come back as pull requests.",
     what: "Connect a GitHub repository, describe a task, and Claude Code works on it in a cloud environment managed by Anthropic. You can start several tasks at once and follow their progress from the browser or your phone. When a task is done, Claude can open a pull request.",
-    impact: [ { t: "No local setup", d: "Hand off work without opening a terminal." }, { t: "Parallel work", d: "Several tasks run at the same time." }, { t: "Review-ready", d: "Results arrive as pull requests." } ],
-    how: [ "Connect your GitHub account and pick a repository.", "Describe the task; it starts in a cloud environment.", "Follow progress, steer if needed, and review the pull request." ],
-    history: [ { rid: "cc-web", note: "Introduced as a research preview" } ],
-    diff: [ { t: "+", s: "Claude Code / Claude Code on the web" } ],
-    gameTitle: "Hand it off", gameIntro: "Send two tasks to the cloud at once.",
-    steps: [ { btn: "Connect a repository", out: "Your GitHub repo is linked." }, { btn: "Start two tasks", out: "Fix a failing test and update the README run side by side in the cloud." }, { btn: "Check back later", out: "Both tasks finished. Two pull requests are waiting for review." } ],
-    q: "Where do tasks in Claude Code on the web run?", opts: ["On your laptop", "In cloud environments", "Inside GitHub Actions only"], ans: 1 },
+    impact: [ { title: "No local setup", detail: "Hand off work without opening a terminal." }, { title: "Parallel work", detail: "Several tasks run at the same time." }, { title: "Review-ready", detail: "Results arrive as pull requests." } ],
+    howItWorks: [ "Connect your GitHub account and pick a repository.", "Describe the task; it starts in a cloud environment.", "Follow progress, steer if needed, and review the pull request." ],
+    docUrls: [ DOCS + "claude-code-on-the-web" ],
+    events: [ { version: "2.0.20", type: "introduced", note: "Released as a research preview" } ] },
 
-  { id: "cc-plugins", product: "code", area: "Extend", name: "Plugins",
+  { id: "cc-plugins", area: "extend", name: "Plugins",
     summary: "Install bundles of slash commands, subagents, hooks and MCP servers in one step.",
     what: "A plugin packages Claude Code customizations so a team can share them. You add a marketplace (any git repository that lists plugins), then install what you need with /plugin. Plugins can be turned on and off.",
-    impact: [ { t: "Team standards", d: "Everyone gets the same commands and checks." }, { t: "One install", d: "No copying config files around." }, { t: "Context control", d: "Switch plugins off when you don't need them." } ],
-    how: [ "Add a plugin marketplace from a git repository.", "Run /plugin and pick a plugin to install.", "Its commands, subagents, hooks and MCP servers become available." ],
-    history: [ { rid: "cc-plugins", note: "Introduced in public beta" } ],
-    diff: [ { t: "+", s: "Claude Code / Plugins" }, { t: "+", s: "Claude Code / Plugin marketplaces" } ],
-    gameTitle: "One-step setup", gameIntro: "Give a new teammate your whole setup.",
-    steps: [ { btn: "Add your team's marketplace", out: "Claude Code lists the plugins your team publishes." }, { btn: "Install the 'review' plugin", out: "A /review command, a reviewer subagent and a lint hook are added." }, { btn: "Run /review", out: "The teammate gets the same review flow as everyone else." } ],
-    q: "What can a plugin contain?", opts: ["Only themes", "Slash commands, subagents, hooks and MCP servers", "Just one prompt"], ans: 1 },
+    impact: [ { title: "Team standards", detail: "Everyone gets the same commands and checks." }, { title: "One install", detail: "No copying config files around." }, { title: "Context control", detail: "Switch plugins off when you don't need them." } ],
+    howItWorks: [ "Add a plugin marketplace from a git repository.", "Run /plugin and pick a plugin to install.", "Its commands, subagents, hooks and MCP servers become available." ],
+    docUrls: [ DOCS + "plugins", DOCS + "plugin-marketplaces" ],
+    events: [ { version: "2.0.12", type: "introduced", note: "Released in public beta" } ] },
 
-  { id: "cc-checkpoints", product: "code", area: "Core", name: "Checkpoints and rewind",
+  { id: "cc-checkpoints", area: "core", name: "Checkpoints and rewind",
     summary: "Claude Code saves your code before each change so you can jump back.",
     what: "Before each edit, Claude Code records a checkpoint. If a change goes the wrong way, press Esc twice or run /rewind to restore the code, the conversation, or both, to an earlier point.",
-    impact: [ { t: "Try bolder changes", d: "Undo is always one step away." }, { t: "Fewer manual reverts", d: "No need to dig through git for small mistakes." }, { t: "Branch your thinking", d: "Rewind the chat and try another approach." } ],
-    how: [ "Work as usual; checkpoints are saved automatically.", "Press Esc twice or run /rewind.", "Pick a checkpoint and choose to restore code, conversation, or both." ],
-    history: [ { rid: "cc-2", note: "Introduced in Claude Code 2.0" } ],
-    diff: [ { t: "+", s: "Claude Code / Checkpointing" } ],
-    gameTitle: "Undo the refactor", gameIntro: "Make a change, regret it, go back.",
-    steps: [ { btn: "Ask Claude to refactor auth.ts", out: "A checkpoint is saved, then the file is rewritten." }, { btn: "Tests fail", out: "The refactor broke two tests." }, { btn: "Press Esc twice and rewind", out: "auth.ts is back to how it was before the refactor." } ],
-    q: "How do you open rewind?", opts: ["Press Esc twice or run /rewind", "Restart your computer", "Delete the .claude folder"], ans: 0 },
+    impact: [ { title: "Try bolder changes", detail: "Undo is always one step away." }, { title: "Fewer manual reverts", detail: "No need to dig through git for small mistakes." }, { title: "Branch your thinking", detail: "Rewind the chat and try another approach." } ],
+    howItWorks: [ "Work as usual; checkpoints are saved automatically.", "Press Esc twice or run /rewind.", "Pick a checkpoint and choose to restore code, conversation, or both." ],
+    docUrls: [ DOCS + "checkpointing" ],
+    events: [ { version: "2.0.0", type: "introduced", note: "Part of Claude Code 2.0" } ] },
 
-  { id: "cc-subagents", product: "code", area: "Extend", name: "Subagents",
+  { id: "cc-subagents", area: "extend", name: "Subagents",
     summary: "Specialist helpers with their own instructions, tools and context.",
     what: "A subagent is a Markdown file describing a specialist (for example a code reviewer or test runner), with its own system prompt and allowed tools. Claude Code hands it suitable work, and it runs in its own context window so the main conversation stays focused.",
-    impact: [ { t: "Focus", d: "Side tasks don't clutter the main conversation." }, { t: "Safer tools", d: "Give each helper only the tools it needs." }, { t: "Shareable", d: "Check subagents into the repo or ship them in plugins." } ],
-    how: [ "Create a subagent with /agents or add a file in .claude/agents/.", "Describe what it's for and which tools it may use.", "Claude delegates matching tasks to it, or you ask for it by name." ],
-    history: [ { rid: "cc-plugins", note: "Can now be shared inside plugins" }, { rid: "cc-subagents", note: "Introduced" } ],
-    diff: [ { t: "+", s: "Claude Code / Subagents" } ],
-    gameTitle: "Call a specialist", gameIntro: "Let a reviewer subagent check your work.",
-    steps: [ { btn: "Create a 'reviewer' subagent", out: "It may read files but not edit them." }, { btn: "Finish a feature", out: "Claude hands the diff to the reviewer." }, { btn: "Read the review", out: "The reviewer reports two issues; the main chat stays uncluttered." } ],
-    q: "Why does a subagent keep the main chat focused?", opts: ["It uses its own context window", "It deletes old messages", "It only works offline"], ans: 0 },
+    impact: [ { title: "Focus", detail: "Side tasks don't clutter the main conversation." }, { title: "Safer tools", detail: "Give each helper only the tools it needs." }, { title: "Shareable", detail: "Check subagents into the repo or ship them in plugins." } ],
+    howItWorks: [ "Create a subagent with /agents or add a file in .claude/agents/.", "Describe what it's for and which tools it may use.", "Claude delegates matching tasks to it, or you ask for it by name." ],
+    docUrls: [ DOCS + "sub-agents" ],
+    events: [ { version: "2.0.12", type: "updated", note: "Can be shared inside plugins" }, { version: "1.0.60", type: "introduced", note: "Custom subagents and the /agents command" } ] },
 
-  { id: "cc-hooks", product: "code", area: "Extend", name: "Hooks",
+  { id: "cc-hooks", area: "extend", name: "Hooks",
     summary: "Run your own shell commands at set moments in Claude Code's workflow.",
     what: "Hooks are shell commands that run automatically at events such as before a tool is used, after it finishes, or when Claude stops. Use them to format code after edits, block risky commands, or send notifications.",
-    impact: [ { t: "Guaranteed steps", d: "Things happen every time, not only when Claude remembers." }, { t: "Guardrails", d: "Block actions you never want." }, { t: "Automation", d: "Formatting and checks run on their own." } ],
-    how: [ "Open /hooks or edit your settings file.", "Pick an event, such as after a file is edited.", "Give the shell command to run at that moment." ],
-    history: [ { rid: "cc-plugins", note: "Can now be bundled in plugins" }, { rid: "cc-hooks", note: "Introduced" } ],
-    diff: [ { t: "+", s: "Claude Code / Hooks" } ],
-    demo: {
-      title: "Build a hook",
-      intro: "Pick a moment, type a command, and see what Claude Code would do.",
-      events: [
-        { id: "pre", code: "PreToolUse", matcher: "Bash", label: "Before a command runs", hint: "Runs before Claude uses a tool. If your command exits with code 2, the tool call is blocked." },
-        { id: "post", code: "PostToolUse", matcher: "Edit|Write", label: "After a file is edited", hint: "Runs right after Claude edits or writes a file." },
-        { id: "stop", code: "Stop", matcher: "", label: "When Claude finishes", hint: "Runs when Claude has finished responding." }
-      ],
-      defaultEvent: "post",
-      suggestions: ["npx prettier --write .", "./scripts/block-dangerous.sh", "notify-send 'Claude is done'"],
-      empty: { outcome: "info", title: "Type a command first", detail: "Pick a moment above, then type the shell command the hook should run, or tap a suggestion.", trace: [] },
-      rules: [
-        { event: "pre", matches: "block|guard|deny|check|protect", outcome: "blocked", title: "Dangerous command blocked",
-          detail: "Your hook checked the command and exited with code 2, so Claude Code stopped the tool call and told Claude why.",
-          trace: [ { who: "Claude", text: "Wants to run: rm -rf build/" }, { who: "Hook ({event})", text: "{cmd}", code: true }, { who: "Hook", text: "Exit code 2: command not allowed" }, { who: "Claude Code", text: "Tool call blocked. Claude chooses a safer approach." } ] },
-        { event: "pre", outcome: "info", title: "Your check runs before every command",
-          detail: "The hook runs first. If it exits with code 2 the command is blocked; otherwise Claude carries on.",
-          trace: [ { who: "Claude", text: "Wants to run: npm test" }, { who: "Hook ({event})", text: "{cmd}", code: true }, { who: "Hook", text: "Exit code 0: allowed" }, { who: "Claude Code", text: "npm test runs as normal." } ] },
-        { event: "post", matches: "prettier|format|lint|eslint|black|gofmt|rustfmt", outcome: "success", title: "File formatted automatically",
-          detail: "Every time Claude edits a file, your formatter runs. You never have to ask for it.",
-          trace: [ { who: "Claude", text: "Edits src/auth.ts" }, { who: "Hook ({event})", text: "{cmd}", code: true }, { who: "Result", text: "src/auth.ts is reformatted to match the rest of the codebase." } ] },
-        { event: "post", outcome: "info", title: "Runs after every edit",
-          detail: "Your command runs each time Claude edits or writes a file. Formatters and linters are the usual choice here.",
-          trace: [ { who: "Claude", text: "Edits src/auth.ts" }, { who: "Hook ({event})", text: "{cmd}", code: true }, { who: "Result", text: "Your command finished. Claude continues." } ] },
-        { event: "stop", matches: "notify|say|osascript|slack|curl|echo", outcome: "success", title: "You get pinged when it's done",
-          detail: "Start a long task, walk away, and get a notification the moment Claude finishes.",
-          trace: [ { who: "Claude", text: "Finishes the task" }, { who: "Hook ({event})", text: "{cmd}", code: true }, { who: "You", text: "A notification appears: Claude is done." } ] },
-        { event: "stop", outcome: "info", title: "Runs when Claude finishes",
-          detail: "Good for notifications, summaries or a final test run.",
-          trace: [ { who: "Claude", text: "Finishes the task" }, { who: "Hook ({event})", text: "{cmd}", code: true }, { who: "Result", text: "Your command finished." } ] }
-      ]
-    },
-    gameTitle: "Always formatted", gameIntro: "Make formatting happen after every edit.",
-    steps: [ { btn: "Add a hook after file edits", out: "The hook runs your formatter." }, { btn: "Ask Claude to edit a file", out: "Claude edits the file." }, { btn: "Look at the result", out: "The hook ran automatically; the file is formatted." } ],
-    q: "What is a hook?", opts: ["A shell command that runs at a set event", "A new Claude model", "A type of git branch"], ans: 0 },
+    impact: [ { title: "Guaranteed steps", detail: "Things happen every time, not only when Claude remembers." }, { title: "Guardrails", detail: "Block actions you never want." }, { title: "Automation", detail: "Formatting and checks run on their own." } ],
+    howItWorks: [ "Open /hooks or edit your settings file.", "Pick an event, such as after a file is edited.", "Give the shell command to run at that moment." ],
+    docUrls: [ DOCS + "hooks-guide", DOCS + "hooks" ],
+    events: [ { version: "2.0.12", type: "updated", note: "Can be bundled in plugins" }, { version: "1.0.38", type: "introduced", note: "Hooks and the /hooks command" } ] },
 
-  { id: "cc-slash", product: "code", area: "Core", name: "Custom slash commands",
+  { id: "cc-slash", area: "core", name: "Custom slash commands",
     summary: "Turn prompts you use often into your own /commands.",
     what: "Save a prompt as a Markdown file in .claude/commands and it becomes a slash command. Commands can take arguments, so one file can serve many situations.",
-    impact: [ { t: "Faster", d: "Repeat workflows with a few keystrokes." }, { t: "Consistent", d: "Everyone runs the same prompt." }, { t: "Shareable", d: "Commit them to the repo or ship them in plugins." } ],
-    how: [ "Create a Markdown file in .claude/commands/.", "Write the prompt; use $ARGUMENTS for inputs.", "Type / and the file name to run it." ],
-    history: [ { rid: "cc-plugins", note: "Can now be shared through plugins" }, { rid: "cc-preview", note: "Available since the research preview" } ],
-    diff: [ { t: "+", s: "Claude Code / Slash commands" } ],
-    gameTitle: "Make a command", gameIntro: "Save a prompt you use every day.",
-    steps: [ { btn: "Create fix-issue.md", out: "The prompt reads: find and fix issue $ARGUMENTS." }, { btn: "Type /fix-issue 42", out: "Claude receives the prompt with 42 filled in." }, { btn: "Watch it run", out: "Claude finds issue 42 and fixes it." } ],
-    q: "Where do project slash commands live?", opts: [".claude/commands/", "/usr/bin", "package.json"], ans: 0 }
+    impact: [ { title: "Faster", detail: "Repeat workflows with a few keystrokes." }, { title: "Consistent", detail: "Everyone runs the same prompt." }, { title: "Shareable", detail: "Commit them to the repo or ship them in plugins." } ],
+    howItWorks: [ "Create a Markdown file in .claude/commands/.", "Write the prompt; use $ARGUMENTS for inputs.", "Type / and the file name to run it." ],
+    docUrls: [ DOCS + "slash-commands" ],
+    events: [ { version: "2.0.12", type: "updated", note: "Can be shared through plugins" }, { version: "0.2.9", type: "introduced", note: "Available since the research preview" } ] }
 ];
 
-/* Phase 1: Claude Code only. Developer Platform entries are kept for phase 2. */
-RELEASES = RELEASES.filter(function (r) { return r.product === "code"; });
-FEATURES = FEATURES.filter(function (f) { return f.product === "code"; });
+/* Demos (content/demos/<featureId>.json). Features without an approved demo show "coming". */
+var HOOK_TRACE_CMD = { who: "Hook ({{event}})", text: "{{command}}", code: true };
+var DEMOS = {
+  "cc-hooks": {
+    featureId: "cc-hooks", title: "Build a hook", kind: "type", status: "approved",
+    intro: "Pick a moment, type a command, and see what Claude Code would do.",
+    inputs: [
+      { id: "event", label: "When should it run?", options: ["PreToolUse", "PostToolUse", "Stop"] },
+      { id: "command", label: "What command should it run?", placeholder: "e.g. npx prettier --write .",
+        suggestions: ["npx prettier --write .", "./scripts/block-dangerous.sh", "notify-send 'Claude is done'"] }
+    ],
+    rules: [
+      { when: [ { input: "command", matches: "^\\s*$" } ],
+        show: { outcome: "info", title: "Type a command first", detail: "Pick a moment above, then type the shell command the hook should run, or tap a suggestion.", trace: [] } },
+      { when: [ { input: "event", equals: "PreToolUse" }, { input: "command", matches: "block|guard|deny|check|protect" } ],
+        show: { outcome: "blocked", title: "Dangerous command blocked",
+          detail: "Your hook checked the command and exited with code 2, so Claude Code stopped the tool call and told Claude why.",
+          trace: [ { who: "Claude", text: "Wants to run: rm -rf build/" }, HOOK_TRACE_CMD, { who: "Hook", text: "Exit code 2: command not allowed" }, { who: "Claude Code", text: "Tool call blocked. Claude chooses a safer approach." } ] } },
+      { when: [ { input: "event", equals: "PreToolUse" } ],
+        show: { outcome: "info", title: "Your check runs before every tool call",
+          detail: "The hook runs first. If it exits with code 2 the call is blocked; otherwise Claude carries on.",
+          trace: [ { who: "Claude", text: "Wants to run: npm test" }, HOOK_TRACE_CMD, { who: "Hook", text: "Exit code 0: allowed" }, { who: "Claude Code", text: "npm test runs as normal." } ] } },
+      { when: [ { input: "event", equals: "PostToolUse" }, { input: "command", matches: "prettier|format|lint|eslint|black|gofmt|rustfmt" } ],
+        show: { outcome: "success", title: "File formatted automatically",
+          detail: "Every time Claude edits a file, your formatter runs. You never have to ask for it.",
+          trace: [ { who: "Claude", text: "Edits src/auth.ts" }, HOOK_TRACE_CMD, { who: "Result", text: "src/auth.ts is reformatted to match the rest of the codebase." } ] } },
+      { when: [ { input: "event", equals: "PostToolUse" } ],
+        show: { outcome: "info", title: "Runs after every tool call",
+          detail: "Your command runs each time a tool finishes, such as after Claude edits a file. Formatters and linters are the usual choice here.",
+          trace: [ { who: "Claude", text: "Edits src/auth.ts" }, HOOK_TRACE_CMD, { who: "Result", text: "Your command finished. Claude continues." } ] } },
+      { when: [ { input: "event", equals: "Stop" }, { input: "command", matches: "notify|say|osascript|slack|curl|echo" } ],
+        show: { outcome: "success", title: "You get pinged when it's done",
+          detail: "Start a long task, walk away, and get a notification the moment Claude finishes.",
+          trace: [ { who: "Claude", text: "Finishes the task" }, HOOK_TRACE_CMD, { who: "You", text: "A notification appears: Claude is done." } ] } },
+      { when: [ { input: "event", equals: "Stop" } ],
+        show: { outcome: "info", title: "Runs when Claude finishes",
+          detail: "Good for notifications, summaries or a final test run.",
+          trace: [ { who: "Claude", text: "Finishes the task" }, HOOK_TRACE_CMD, { who: "Result", text: "Your command finished." } ] } }
+    ],
+    fallback: { title: "Not scripted", detail: "This example only covers a few cases. The documentation lists every hook event." },
+    configPreview: '{\n  "hooks": {\n    "{{event}}": [\n      {\n        "hooks": [\n          { "type": "command", "command": "{{command}}" }\n        ]\n      }\n    ]\n  }\n}',
+    quiz: { question: "Which exit code from a PreToolUse hook blocks the tool call?", options: ["0", "1", "2"], answerIndex: 2,
+      explanation: "Exit code 2 blocks the call, and what the hook printed to stderr is passed to Claude." } },
 
-var MONTHS = { Jan: "January", Feb: "February", Mar: "March", Apr: "April", May: "May", Jun: "June", Jul: "July", Aug: "August", Sep: "September", Oct: "October", Nov: "November", Dec: "December" };
-function findRel(id) { return RELEASES.filter(function (r) { return r.id === id; })[0]; }
+  "cc-checkpoints": {
+    featureId: "cc-checkpoints", title: "Undo a bad refactor", kind: "choose", status: "approved",
+    intro: "Claude refactored auth.ts and two tests now fail. You open rewind and pick the checkpoint from before the refactor.",
+    inputs: [ { id: "restore", label: "What do you restore?", options: ["Code only", "Conversation only", "Code and conversation"] } ],
+    rules: [
+      { when: [ { input: "restore", equals: "Code only" } ],
+        show: { outcome: "success", title: "Files are back, the chat stays",
+          detail: "auth.ts returns to the checkpoint, while the conversation keeps going, so Claude still knows what it tried and why it failed.",
+          trace: [ { who: "You", text: "Press Esc twice" }, { who: "Claude Code", text: "Lists checkpoints, one before each of your messages" }, { who: "You", text: "Pick the one before the refactor: restore {{restore}}" }, { who: "Result", text: "auth.ts restored. Tests pass again." } ] } },
+      { when: [ { input: "restore", equals: "Conversation only" } ],
+        show: { outcome: "info", title: "The chat rewinds, your files don't",
+          detail: "The conversation goes back to that point, but the refactored files stay as they are. Useful when the code is fine and only the discussion went off track.",
+          trace: [ { who: "You", text: "Press Esc twice" }, { who: "You", text: "Pick the one before the refactor: restore {{restore}}" }, { who: "Result", text: "The conversation is rewound. auth.ts still has the refactor, so the tests still fail." } ] } },
+      { when: [ { input: "restore", equals: "Code and conversation" } ],
+        show: { outcome: "success", title: "Back to before the refactor",
+          detail: "Both the files and the conversation return to the checkpoint, as if the refactor never happened.",
+          trace: [ { who: "You", text: "Run /rewind" }, { who: "You", text: "Pick the one before the refactor: restore {{restore}}" }, { who: "Result", text: "auth.ts and the chat are both back. Try a different approach." } ] } }
+    ],
+    fallback: { title: "Pick an option", detail: "Choose what to restore." },
+    quiz: { question: "How do you open rewind?", options: ["Press Esc twice or run /rewind", "Restart your terminal", "Delete the .claude folder"], answerIndex: 0,
+      explanation: "Esc twice or /rewind opens the list of checkpoints." } }
+};
+
+/* ---------- Demo engine: same rules as schemas/src/demo-engine.ts ---------- */
+function norm(t) { return String(t || "").trim().toLowerCase(); }
+function holds(c, vals) {
+  var v = vals[c.input] || "";
+  if (c.equals !== undefined) return norm(v) === norm(c.equals);
+  try { return new RegExp(c.matches, "i").test(v); } catch (e) { return false; }
+}
+function runDemo(demo, vals) {
+  for (var i = 0; i < demo.rules.length; i++) {
+    if (demo.rules[i].when.every(function (c) { return holds(c, vals); })) return demo.rules[i].show;
+  }
+  return null;
+}
+function fill(t, vals) { return t.replace(/\{\{\s*([a-zA-Z][a-zA-Z0-9]*)\s*\}\}/g, function (_, id) { return vals[id] || ""; }); }
+
+/* ---------- Derived data ---------- */
+var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function parseDate(d) { var t = new Date(d + " 00:00 UTC"); return isNaN(t) ? new Date(Date.parse(d)) : t; }
+function mondayOf(d) { var t = parseDate(d); var m = new Date(Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate())); m.setUTCDate(m.getUTCDate() - ((m.getUTCDay() + 6) % 7)); return m; }
+function shortDay(t) { return SHORT[t.getUTCMonth()] + " " + t.getUTCDate(); }
+function findRel(v) { return RELEASES.filter(function (r) { return r.version === v; })[0]; }
 function findFeat(id) { return FEATURES.filter(function (f) { return f.id === id; })[0]; }
-function dayOf(d) { var p = d.replace(",", "").split(" "); return p[0] + " " + p[1]; }
-function monthOf(d) { var p = d.replace(",", "").split(" "); return MONTHS[p[0]] + " " + p[2]; }
+function isApproved(r) { return r && r.status === "approved"; }
+function introducedIn(f) { return f.events.filter(function (e) { return e.type === "introduced"; })[0].version; }
+function anchorOf(v) { return v.replace(/[^0-9A-Za-z-]/g, ""); }
+
+/* Weekly cards: one version alone, or a "Week of" digest (conception 5.2, ADR 0007). */
+var CARDS = [];
+var CARD_OF = {};
+RELEASES.forEach(function (r) {
+  var mon = mondayOf(r.date);
+  var key = "wk-" + mon.toISOString().slice(0, 10);
+  var card = CARDS.length && CARDS[CARDS.length - 1].key === key ? CARDS[CARDS.length - 1] : null;
+  if (!card) { card = { key: key, monday: mon, releases: [] }; CARDS.push(card); }
+  card.releases.push(r);
+  CARD_OF[r.version] = key;
+});
+var LATEST = RELEASES.filter(isApproved)[0];
 
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { view: "code", from: "code", sel: "skills", source: "All", step: 0, answer: null, done: {}, mode: null, sysDark: false, openRel: { "cc-web": true }, origOpen: {}, scrollTo: null, scrollN: 0, simEvent: null, simCmd: "", simRun: false };
+    var open = {}; open[CARD_OF[LATEST.version]] = true;
+    this.state = { view: "code", from: "code", sel: "cc-hooks", answer: null, done: {}, mode: null, sysDark: false, openCard: open, scrollTo: null, scrollN: 0, demoVals: {}, demoRun: false };
   }
 
   componentDidMount() {
@@ -766,110 +688,103 @@ class Component extends DCLogic {
     var pref = s.mode || this.props.theme || "system";
     var dark = pref === "dark" || (pref === "system" && s.sysDark);
     var T = THEMES[dark ? "dark" : "light"];
-    var rootStyle = "min-height: 100vh; box-sizing: border-box; background: var(--bg); color: var(--text); font-family: 'Anthropic Sans', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background 0.2s, color 0.2s; color-scheme: " + (dark ? "dark" : "light") + ";";
+    var rootStyle = "min-height: 100vh; box-sizing: border-box; background: var(--bg); color: var(--text); font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background 0.2s, color 0.2s; color-scheme: " + (dark ? "dark" : "light") + ";";
     Object.keys(T).forEach(function (k) { rootStyle += " " + k + ": " + T[k] + ";"; });
     var tg = "width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 8px; ";
     var tgOn = tg + "background: var(--toggle-on); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.12)";
     var tgOff = tg + "background: transparent; color: var(--faint)";
+    var mono = "font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; ";
 
     /* navigation */
     var go = function (view, extra) {
-      var st = Object.assign({ view: view, scrollTo: null, scrollN: self.state.scrollN + 1 }, extra || {});
-      self.setState(st);
+      self.setState(Object.assign({ view: view, scrollTo: null, scrollN: self.state.scrollN + 1 }, extra || {}));
     };
     var openFeature = function (id) {
       return function () {
         var cur = self.state.view === "detail" ? self.state.from : self.state.view;
-        go("detail", { sel: id, step: 0, answer: null, from: cur, simEvent: null, simCmd: "", simRun: false });
+        go("detail", { sel: id, answer: null, from: cur, demoVals: {}, demoRun: false });
       };
     };
-    var openRelease = function (rid) {
+    var openRelease = function (version) {
       return function () {
-        var r = findRel(rid);
-        var view = r.product === "code" ? "code" : "changelog";
-        var o = Object.assign({}, self.state.openRel); o[rid] = true;
-        self.setState({ view: view, source: "All", openRel: o, scrollTo: "rel-" + rid, scrollN: self.state.scrollN + 1 });
+        var key = CARD_OF[version];
+        var o = Object.assign({}, self.state.openCard); o[key] = true;
+        self.setState({ view: "code", openCard: o, scrollTo: "rel-" + anchorOf(version), scrollN: self.state.scrollN + 1 });
       };
     };
 
-    var listView = s.view === "detail" ? s.from : s.view;
-    var navBase = "min-height: 44px; padding: 0 12px; border: none; background: transparent; font-size: 15px; ";
-    var navOn = navBase + "color: var(--text); font-weight: 600; box-shadow: inset 0 -2px 0 var(--clay)";
-    var navOff = navBase + "color: var(--faint)";
-
-    /* sources filter */
-    var tabBase = "min-height: 44px; padding: 0 12px; border: none; background: transparent; font-size: 14px; margin-bottom: -1px; ";
-    var sources = ["All", "Developer Platform", "Claude Code"].map(function (c) {
-      var on = c === s.source;
-      return { label: c, style: tabBase + (on ? "color: var(--text); font-weight: 600; border-bottom: 2px solid var(--clay)" : "color: var(--faint); border-bottom: 2px solid transparent"), pick: function () { self.setState({ source: c }); } };
-    });
-
-    /* releases for this page */
-    var rels = RELEASES.filter(function (r) {
-      if (s.view === "code") return r.product === "code";
-      if (s.source === "Developer Platform") return r.product === "platform";
-      if (s.source === "Claude Code") return r.product === "code";
-      return true;
-    });
-    var groups = [];
-    rels.forEach(function (r) {
-      var label = monthOf(r.date);
-      var g = groups.length && groups[groups.length - 1].label === label ? groups[groups.length - 1] : null;
-      if (!g) { g = { label: label, items: [] }; groups.push(g); }
-      g.items.push(r);
-    });
-    var months = groups.map(function (g) {
+    /* one version's block inside a card */
+    var versionBlock = function (r, inDigest, i) {
+      var pending = !isApproved(r);
+      var sections = [];
+      if (!pending) {
+        [["added", "Added"], ["changed", "Changed"], ["fixed", "Fixed"], ["removed", "Removed"], ["other", "Other"]].forEach(function (k) {
+          var items = r.lines.filter(function (l) { return l.k === k[0]; }).map(function (l) { return l.t; });
+          if (items.length) sections.push({ label: k[1], items: items });
+        });
+      }
+      var feats = pending ? [] : r.feats.map(function (fid) { var f = findFeat(fid); return { name: f.name, open: openFeature(fid) }; });
       return {
-        label: g.label,
-        items: g.items.map(function (r) {
-          var isOpen = !!s.openRel[r.id];
-          var showOrig = !!s.origOpen[r.id];
-          var sections = [];
-          if (r.added.length) sections.push({ label: "Added", items: r.added });
-          if (r.changed.length) sections.push({ label: "Changed", items: r.changed });
-          if (r.fixed.length) sections.push({ label: "Fixed", items: r.fixed });
-          var counts = [];
-          if (r.added.length) counts.push(r.added.length + " added");
-          if (r.changed.length) counts.push(r.changed.length + " changed");
-          if (r.fixed.length) counts.push(r.fixed.length + " fixed");
-          var feats = r.feats.map(function (fid) { var f = findFeat(fid); return { name: f.name, open: openFeature(fid) }; });
-          return {
-            anchor: "rel-" + r.id,
-            day: dayOf(r.date), title: r.title, headline: r.headline, product: PRODUCT_NAME[r.product],
-            counts: counts.join(" · "),
-            open: isOpen, expandedStr: isOpen ? "true" : "false",
-            chevStyle: "flex: 0 0 18px; color: var(--icon); margin-top: 4px; transition: transform 0.15s; transform: rotate(" + (isOpen ? "180" : "0") + "deg)",
-            toggle: function () { var o = Object.assign({}, self.state.openRel); o[r.id] = !o[r.id]; self.setState({ openRel: o }); },
-            sections: sections,
-            hasFeats: feats.length > 0, feats: feats,
-            showOrig: showOrig, origStr: showOrig ? "true" : "false",
-            origLabel: showOrig ? "Hide the original changelog" : "Compare with the original (" + r.original.length + " entries)",
-            toggleOrig: function () { var o = Object.assign({}, self.state.origOpen); o[r.id] = !o[r.id]; self.setState({ origOpen: o }); },
-            origCount: r.original.length, original: r.original,
-            src: "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
-          };
-        })
+        showHead: inDigest,
+        kicker: "Version " + r.version + " · " + r.date,
+        title: pending ? "Summary coming" : r.title,
+        headline: pending ? "" : r.headline,
+        isPending: pending,
+        pendingText: "We haven't summarized this release yet. Its " + r.items + " changes are listed in the original changelog, linked below.",
+        isSummarized: !pending,
+        coverNote: "All " + r.items + " changes from the original changelog are covered",
+        sections: sections, hasFeats: feats.length > 0, feats: feats,
+        src: CHANGELOG_URL + "#" + anchorOf(r.version),
+        blockStyle: "display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 24px;" + (inDigest && i > 0 ? " padding-top: 24px; border-top: 0.5px solid var(--border)" : "")
       };
+    };
+
+    var months = [];
+    CARDS.forEach(function (card) {
+      var rs = card.releases;
+      var digest = rs.length > 1;
+      var first = rs[0];
+      var monthLabel = MONTHS[card.monday.getUTCMonth()] + " " + card.monday.getUTCFullYear();
+      var isOpen = !!s.openCard[card.key];
+      var single = !digest ? first : null;
+      var pendingSingle = single && !isApproved(single);
+      var approvedRs = rs.filter(isApproved);
+      var c = {
+        anchor: digest ? card.key : "rel-" + anchorOf(first.version),
+        day: digest ? "Week of " + shortDay(card.monday) : shortDay(parseDate(first.date)),
+        kicker: digest ? rs.length + " releases · " + rs.map(function (r) { return r.version; }).join(", ") : "Version " + first.version,
+        title: digest ? (approvedRs.length ? approvedRs.map(function (r) { return r.title; }).join(" · ") : "Summaries coming") : (pendingSingle ? "Summary coming" : single.title),
+        titleStyle: "font-size: 18px; font-weight: 500; color: " + (pendingSingle ? "var(--muted)" : "var(--text)"),
+        headline: digest
+          ? (rs.length - approvedRs.length ? (rs.length - approvedRs.length) + " of " + rs.length + " summaries coming." : "")
+          : (pendingSingle ? single.items + " changes in this release." : single.headline),
+        counts: pendingSingle ? "" : rs.filter(isApproved).reduce(function (n, r) { return n + r.items; }, 0) + " changes covered",
+        open: isOpen, expandedStr: isOpen ? "true" : "false",
+        chevStyle: "flex: 0 0 18px; color: var(--icon); margin-top: 4px; transition: transform 0.15s; transform: rotate(" + (isOpen ? "180" : "0") + "deg)",
+        toggle: function () { var o = Object.assign({}, self.state.openCard); o[card.key] = !o[card.key]; self.setState({ openCard: o }); },
+        versions: rs.map(function (r, i) { return Object.assign(versionBlock(r, digest, i), { anchor: digest ? "rel-" + anchorOf(r.version) : "" }); })
+      };
+      var m = months.length && months[months.length - 1].label === monthLabel ? months[months.length - 1] : null;
+      if (!m) { m = { label: monthLabel, items: [] }; months.push(m); }
+      m.items.push(c);
     });
 
     /* Claude Code page */
-    var latestCC = RELEASES.filter(function (r) { return r.product === "code"; })[0];
-    var lf = findFeat(latestCC.feats[0]);
-    var points = latestCC.added.map(function (t) { return { kind: "Added", text: t }; }).concat(latestCC.changed.map(function (t) { return { kind: "Changed", text: t }; }));
-    var ccLatest = { date: latestCC.date, title: latestCC.title, headline: latestCC.headline, points: points, featureName: lf.name, openFeature: openFeature(lf.id), openRelease: openRelease(latestCC.id) };
+    var lf = LATEST.feats.length ? findFeat(LATEST.feats[0]) : null;
+    var points = LATEST.lines.map(function (l) { return { kind: l.k.charAt(0).toUpperCase() + l.k.slice(1), text: l.t }; });
+    var ccLatest = { date: LATEST.date, version: LATEST.version, title: LATEST.title, headline: LATEST.headline, points: points,
+      hasFeature: !!lf, featureName: lf ? lf.name : "", openFeature: lf ? openFeature(lf.id) : null, openRelease: openRelease(LATEST.version) };
 
-    var areaOrder = ["Core", "Extend", "Anywhere"];
-    var areaLabel = { Core: "Core", Extend: "Extend and customize", Anywhere: "Work from anywhere" };
-    var ccAreas = areaOrder.map(function (a) {
-      var items = FEATURES.filter(function (f) { return f.product === "code" && f.area === a; });
+    var ccAreas = ["core", "extend", "anywhere"].map(function (a) {
+      var items = FEATURES.filter(function (f) { return f.area === a; });
       return {
-        label: areaLabel[a],
+        label: AREA[a],
         items: items.map(function (f, i) {
-          var intro = findRel(f.history[f.history.length - 1].rid);
+          var v = introducedIn(f);
           return {
             name: f.name, summary: f.summary, open: openFeature(f.id),
-            isNew: intro.id === latestCC.id,
-            since: "Since " + intro.date,
+            isNew: v === LATEST.version, tried: !!s.done[f.id],
+            since: "Since " + v,
             rowStyle: "width: 100%; text-align: left; display: flex; align-items: center; gap: 20px; padding: 18px 22px; border: none; background: var(--surface); color: var(--text);" + (i > 0 ? " border-top: 0.5px solid var(--border)" : "")
           };
         })
@@ -878,93 +793,80 @@ class Component extends DCLogic {
 
     /* feature detail */
     var f = findFeat(s.sel) || FEATURES[0];
-    var n = f.steps.length;
-    var labels = { "+": "New page", "~": "Updated", "-": "Removed" };
     var sel = {
-      name: f.name, product: PRODUCT_NAME[f.product], area: f.area, summary: f.summary, what: f.what,
-      impact: f.impact,
-      how: f.how.map(function (h, i) { return { n: i + 1, s: h }; }),
-      history: f.history.map(function (h, i) {
-        var r = findRel(h.rid);
-        return { date: r.date, title: r.title, note: h.note, go: openRelease(h.rid),
+      name: f.name, product: "Claude Code", area: AREA[f.area], summary: f.summary, what: f.what, docUrl: f.docUrls[0],
+      impact: f.impact.map(function (im) { return { t: im.title, d: im.detail }; }),
+      how: f.howItWorks.map(function (h, i) { return { n: i + 1, s: h }; }),
+      history: f.events.map(function (e, i) {
+        var r = findRel(e.version);
+        return { date: r.date, title: EVENT[e.type] + " in " + e.version + (isApproved(r) ? " · " + r.title : ""), note: e.note, go: openRelease(e.version),
           style: "width: 100%; text-align: left; display: flex; align-items: center; gap: 16px; padding: 16px 18px; border: none; background: var(--surface); color: var(--text);" + (i > 0 ? " border-top: 0.5px solid var(--border)" : "") };
       }),
-      diff: f.diff.map(function (d, i) {
-        return { label: labels[d.t], s: d.s, style: "display: flex; align-items: center; gap: 12px; padding: 14px 18px; text-decoration: none;" + (i > 0 ? " border-top: 0.5px solid var(--border)" : "") };
-      }),
-      gameTitle: f.gameTitle, gameIntro: f.gameIntro, q: f.q
+      docs: f.docUrls.map(function (u, i) {
+        return { url: u, label: u.replace(/^https:\/\//, ""), style: "display: flex; align-items: center; gap: 12px; padding: 14px 18px; text-decoration: none;" + (i > 0 ? " border-top: 0.5px solid var(--border)" : "") };
+      })
     };
-    var log = f.steps.slice(0, s.step).map(function (st) { return { btn: st.btn, out: st.out }; });
-    var pips = f.steps.map(function (st, i) { return { style: "flex: 1 1 0; height: 4px; border-radius: 999px; background: " + (i < s.step ? "var(--clay)" : "var(--track)") }; });
-    var answered = s.answer !== null;
-    var opts = f.opts.map(function (o, i) {
-      var st = "min-height: 48px; padding: 12px 16px; border-radius: 10px; font-size: 15px; text-align: left; color: var(--text); ";
-      if (answered && i === f.ans) st += "border: 1px solid var(--ok-line); background: var(--ok-bg)";
-      else if (answered && i === s.answer) st += "border: 1px solid var(--bad-line); background: var(--bad-bg)";
-      else st += "border: 0.5px solid var(--border-strong); background: var(--surface)";
-      return { label: o, style: st, pick: function () { if (self.state.answer === null) self.setState({ answer: i }); } };
-    });
-    var correct = answered && s.answer === f.ans;
 
-    /* scripted JavaScript simulation (no AI at runtime) */
-    var D = f.demo;
-    var simV = { isSim: !!D, isSteps: !D };
+    /* demo + quiz (no AI at runtime) */
+    var D = DEMOS[f.id];
+    var demoV = { hasDemo: !!D, noDemo: !D };
     if (D) {
-      var evId = s.simEvent || D.defaultEvent;
-      var ev = D.events.filter(function (e) { return e.id === evId; })[0];
-      var cmd = (s.simCmd || "").trim();
+      var vals = Object.assign({}, s.demoVals);
+      D.inputs.forEach(function (inp) { if (inp.options && !vals[inp.id]) vals[inp.id] = inp.options[0]; });
+      var setVal = function (id, v) { var nv = Object.assign({}, self.state.demoVals); nv[id] = v; self.setState({ demoVals: nv, demoRun: false }); };
+      var res = runDemo(D, vals);
+      var shown = res || { outcome: "info", title: D.fallback.title, detail: D.fallback.detail, trace: [] };
+      var tone = { success: ["var(--ok-line)", "var(--ok-bg)"], blocked: ["var(--bad-line)", "var(--bad-bg)"], info: ["var(--border-strong)", "var(--subtle)"] }[shown.outcome];
       var chipB = "min-height: 40px; padding: 0 14px; border-radius: 999px; font-size: 14px; ";
-      var res = null;
-      if (!cmd) res = D.empty;
-      else {
-        for (var i = 0; i < D.rules.length; i++) {
-          var r = D.rules[i];
-          var okEv = !r.event || r.event === evId;
-          var okM = true;
-          if (r.matches) { try { okM = new RegExp(r.matches, "i").test(cmd); } catch (e) { okM = false; } }
-          if (okEv && okM) { res = r; break; }
-        }
-        if (!res) res = D.empty;
-      }
-      var fill = function (t) { return t.split("{cmd}").join(cmd).split("{event}").join(ev.code); };
-      var tone = { success: ["var(--ok-line)", "var(--ok-bg)"], blocked: ["var(--bad-line)", "var(--bad-bg)"], info: ["var(--border-strong)", "var(--subtle)"] }[res.outcome];
-      var entry = { type: "command", command: cmd || "your-command-here" };
-      var block = ev.matcher ? { matcher: ev.matcher, hooks: [entry] } : { hooks: [entry] };
-      var cfg = { hooks: {} }; cfg.hooks[ev.code] = [block];
-      simV = {
-        isSim: true, isSteps: false,
-        simTitle: D.title, simIntro: D.intro, simHint: ev.hint,
-        simEvents: D.events.map(function (e) {
-          var on = e.id === evId;
-          return { label: e.label, pressed: on ? "true" : "false",
-            style: chipB + (on ? "border: 1px solid var(--clay); background: var(--chip); color: var(--text); font-weight: 600" : "border: 0.5px solid var(--border-strong); background: var(--surface); color: var(--muted)"),
-            pick: function () { self.setState({ simEvent: e.id, simRun: false }); } };
+      var previewVals = {};
+      D.inputs.forEach(function (inp) { previewVals[inp.id] = vals[inp.id] || "your-" + inp.id + "-here"; });
+      var q = D.quiz;
+      var answered = s.answer !== null;
+      demoV = {
+        hasDemo: true, noDemo: false,
+        demoTitle: D.title, demoIntro: D.intro,
+        demoInputs: D.inputs.map(function (inp, n) {
+          var label = (n + 1) + ". " + inp.label;
+          return {
+            label: label, isChoose: !!inp.options, isText: !inp.options,
+            opts: (inp.options || []).map(function (o) {
+              var on = vals[inp.id] === o;
+              return { label: o, pressed: on ? "true" : "false", pick: function () { setVal(inp.id, o); },
+                style: chipB + (on ? "border: 1px solid var(--clay); background: var(--chip); color: var(--text); font-weight: 600" : "border: 0.5px solid var(--border-strong); background: var(--surface); color: var(--muted)") };
+            }),
+            domId: "demo-" + inp.id, value: vals[inp.id] || "", placeholder: inp.placeholder || "",
+            onInput: function (e) { setVal(inp.id, e.target.value); },
+            hasSuggestions: !!(inp.suggestions && inp.suggestions.length),
+            suggestions: (inp.suggestions || []).map(function (x) { return { label: x, pick: function () { setVal(inp.id, x); } }; })
+          };
         }),
-        simCmd: s.simCmd,
-        onCmd: function (e) { self.setState({ simCmd: e.target.value, simRun: false }); },
-        simSuggestions: D.suggestions.map(function (x) { return { label: x, pick: function () { self.setState({ simCmd: x, simRun: false }); } }; }),
-        runSim: function () { var d = Object.assign({}, self.state.done); if (cmd) d[f.id] = true; self.setState({ simRun: true, done: d }); },
-        simRun: s.simRun,
-        simTrace: res.trace.map(function (t) {
-          return { who: fill(t.who), text: fill(t.text),
-            textStyle: t.code ? "font-family: 'Anthropic Mono', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace; font-size: 13px; color: var(--text)" : "font-size: 15px; line-height: 1.5; color: var(--text)" };
+        runDemo: function () { var d = Object.assign({}, self.state.done); d[f.id] = true; self.setState({ demoRun: true, done: d }); },
+        demoRun: s.demoRun,
+        demoTrace: shown.trace.map(function (t) {
+          return { who: fill(t.who, vals), text: fill(t.text, vals),
+            textStyle: t.code ? mono + "font-size: 13px; color: var(--text)" : "font-size: 15px; line-height: 1.5; color: var(--text)" };
         }),
-        simOutTitle: fill(res.title), simOutDetail: fill(res.detail),
-        simOutcomeStyle: "display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 10px; border: 1px solid " + tone[0] + "; background: " + tone[1],
-        simConfig: JSON.stringify(cfg, null, 2)
+        demoOutTitle: fill(shown.title, vals), demoOutDetail: fill(shown.detail, vals),
+        demoOutcomeStyle: "display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 10px; border: 1px solid " + tone[0] + "; background: " + tone[1],
+        hasConfig: !!D.configPreview, demoConfig: D.configPreview ? fill(D.configPreview, previewVals) : "",
+        quizQ: q.question, answered: answered,
+        opts: q.options.map(function (o, i) {
+          var st = "min-height: 48px; padding: 12px 16px; border-radius: 10px; font-size: 15px; text-align: left; color: var(--text); ";
+          if (answered && i === q.answerIndex) st += "border: 1px solid var(--ok-line); background: var(--ok-bg)";
+          else if (answered && i === s.answer) st += "border: 1px solid var(--bad-line); background: var(--bad-bg)";
+          else st += "border: 0.5px solid var(--border-strong); background: var(--surface)";
+          return { label: o, style: st, pick: function () { if (self.state.answer === null) self.setState({ answer: i }); } };
+        }),
+        feedback: (s.answer === q.answerIndex ? "That's right. " : "Not quite. ") + q.explanation
       };
     }
 
-    return Object.assign(simV, {
+    return Object.assign(demoV, {
       rootStyle: rootStyle,
       isLightStr: dark ? "false" : "true", isDarkStr: dark ? "true" : "false",
       lightBtnStyle: dark ? tgOff : tgOn, darkBtnStyle: dark ? tgOn : tgOff,
       setLight: function () { self.setState({ mode: "light" }); },
       setDark: function () { self.setState({ mode: "dark" }); },
-
-      navChangelogStyle: listView === "changelog" ? navOn : navOff,
-      navCodeStyle: listView === "code" ? navOn : navOff,
-      goChangelog: function () { go("changelog"); },
       goCode: function () { go("code"); },
 
       isList: s.view !== "detail",
@@ -972,21 +874,14 @@ class Component extends DCLogic {
       isCode: s.view === "code",
       isDetail: s.view === "detail",
 
-      sources: sources,
-      tlTitle: s.view === "code" ? "Version history" : "All updates",
+      tlTitle: "Version history",
       months: months,
       ccLatest: ccLatest,
       ccAreas: ccAreas,
 
-      backLabel: s.from === "code" ? "Claude Code" : "Changelog",
+      backLabel: "Claude Code",
       goBack: function () { go(self.state.from); },
-      sel: sel, log: log, pips: pips,
-      noLog: s.step === 0, hasNext: s.step < n, gameDone: s.step >= n,
-      nextBtn: s.step < n ? f.steps[s.step].btn : "",
-      advance: function () { var cur = self.state; var nx = cur.step + 1; var d = Object.assign({}, cur.done); if (nx === n) d[f.id] = true; self.setState({ step: nx, done: d }); },
-      replay: function () { self.setState({ step: 0 }); },
-      opts: opts, answered: answered,
-      feedback: correct ? "That's right." : "Not quite. The correct answer is highlighted in green."
+      sel: sel
     });
   }
 }

@@ -1,6 +1,6 @@
 # 0004. Backfill with a summary cut-off date
 
-Status: Accepted
+Status: Superseded by 0008
 Date: 2026-10-26
 
 ## Context

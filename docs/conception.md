@@ -17,11 +17,11 @@ The experience must be **simple, fast, easy and accessible**: clean pages, plain
 
 ## 3. Sources
 
-| Source                                                          | What we take                       | Notes                                                |
-| --------------------------------------------------------------- | ---------------------------------- | ---------------------------------------------------- |
-| Claude Code `CHANGELOG.md` on GitHub (`anthropics/claude-code`) | Versions and their bullet points   | One Markdown file. Versions have no dates or titles. |
-| npm registry (`@anthropic-ai/claude-code`)                      | Publish date of each version       | Reliable date source for every version.              |
-| Claude Code documentation                                       | Feature descriptions and doc links | Used for the feature catalog and doc pages.          |
+| Source                                                          | What we take                       | Notes                                                                                                                            |
+| --------------------------------------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Claude Code `CHANGELOG.md` on GitHub (`anthropics/claude-code`) | Versions and their bullet points   | One Markdown file. Versions have no dates or titles. Read at run time only; its wording is never stored or published (ADR 0008). |
+| npm registry (`@anthropic-ai/claude-code`)                      | Publish date of each version       | Reliable date source for every version.                                                                                          |
+| Claude Code documentation                                       | Feature descriptions and doc links | Used for the feature catalog and doc pages.                                                                                      |
 
 ## 4. Data model
 
@@ -30,14 +30,16 @@ the first draft are recorded in `docs/decisions/` (0001, 0002).
 
 ### 4.1 Ingested data (`content/releases/<version>.json`, never edited by hand)
 
+Release files hold no upstream wording (ADR 0008). The text is fetched when needed
+(`pnpm source show <version>`) and checked against these records by `pnpm source verify`.
+
 ```ts
 Release {
   version: string            // "2.0.14", primary key and file name
   publishedAt: datetime      // from the npm registry
   sourceUrl: string          // link to the changelog section
   sourceCommit: string       // anthropics/claude-code commit the text was read from
-  sourceHash: string         // sha256 of rawMarkdown, detects silent edits
-  rawMarkdown: string        // exact original text
+  sourceHash: string         // sha256 of the upstream section, detects silent edits
   fetchedAt: datetime
   items: ChangeItem[]
 }
@@ -45,7 +47,6 @@ Release {
 ChangeItem {
   id: string                 // "2.0.14#0a1b2c3d": hash of the normalized bullet (ADR 0001)
   position: number           // display order
-  rawText: string            // the original bullet, word for word
 }
 ```
 
@@ -103,12 +104,13 @@ Demo {                       // content/demos/<featureId>.json, no AI at runtime
   title: string
   intro: string
   kind: "choose" | "type" | "toggle"
-  inputs: { id: string, label: string, options?: string[], placeholder?: string }[]
+  inputs: { id: string, label: string, options?: string[], placeholder?: string,
+            suggestions?: string[] }[]   // suggestions: one-tap examples for free-text inputs
   rules: {                   // checked in order, first match wins
     when: { input: string, equals?: string, matches?: string }[]
                              // all must hold; exactly one of equals (trimmed, case-insensitive)
                              // or matches (regex, "i" flag)
-    show: { title, detail, outcome: "success" | "blocked" | "info",
+    show: { title, detail, outcome: "success" | "blocked" | "info",   // text may use {{inputId}}
             trace: { who: string, text: string, code?: boolean }[] }
   }[]
   fallback: { title: string, detail: string }
@@ -165,7 +167,7 @@ Feature 1──0..1 Demo
 
 All of these run in `pnpm validate`, a required CI check on every pull request.
 
-Releases without an approved summary are shown with their original bullets and a "summary pending" label (ADR 0003). Releases published before the summary cut-off are always shown this way (ADR 0004).
+Only our own words are published (ADR 0008). A release without an approved summary is shown as a short card: version, date, number of changes, "summary coming", and a link to its section of the original changelog on GitHub. Every summarized release links there too, with a note that all its changes are covered. Past releases get summaries newest first, in batches of 20 per review.
 
 ### 5.2 Display grouping (applied when the site is built, not stored)
 
@@ -270,9 +272,9 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 | 0    | Workspace, CI, validator, docs and Claude skills                                         | Done   |
 | 1    | Zod schemas for every entity in section 4                                                | Done   |
 | 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   | Done   |
-| 3    | npm date lookup and raw backfill of all past versions                                    |        |
-| 4    | Minimal Astro site showing raw releases (timeline, weekly grouping)                      |        |
-| 5    | Summary drafting with the Claude API (from the cut-off date)                             |        |
+| 3    | npm date lookup and backfill of release records for all past versions                    |        |
+| 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links      |        |
+| 5    | Summary drafting with the Claude API; backfill newest first, 20 per review PR            |        |
 | 6    | Daily GitHub Action updating the ingest PR                                               |        |
 | 7    | Feature catalog seed and first demos                                                     |        |
 | 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks |        |
@@ -285,6 +287,5 @@ The site moved before summaries so the data model is exercised end to end early.
 
 - Hosting: Cloudflare Pages (recommended) or GitHub Pages.
 - Domain name.
-- Summary cut-off date (currently 2026-01-01, ADR 0004).
-- Licence of the upstream changelog: confirm that quoting `rawMarkdown` with attribution is acceptable before launch.
-- Visual identity: the mock-up borrows Anthropic-like type and colours; the real site needs its own to support the "not affiliated" disclaimer.
+- Visual identity: the mock-up no longer names Anthropic's fonts, but its palette is still close to Anthropic's; the real site needs its own to support the "not affiliated" disclaimer.
+- Optional: tell Anthropic about the project. Not required, since nothing of theirs is copied (ADR 0008).

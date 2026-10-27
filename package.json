@@ -12,7 +12,8 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "validate": "pnpm --filter @cq/pipeline validate",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate",
+    "source": "pnpm --filter @cq/pipeline run source"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
