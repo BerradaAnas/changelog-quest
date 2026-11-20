@@ -2,6 +2,7 @@
 
 name: write-demo
 description: Write or update a scripted demo in content/demos/ for a feature. Use when asked to create, edit, or fix a hands-on example, simulation, or quiz for a feature.
+model: sonnet
 ---
 
 # Write a feature demo

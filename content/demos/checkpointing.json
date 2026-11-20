@@ -1,0 +1,146 @@
+{
+  "featureId": "checkpointing",
+  "title": "What does each rewind option restore?",
+  "intro": "You asked for a refactor, Claude edited several files, and you want to go back. You open the rewind menu, select the prompt that started it, and choose an action.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "action",
+      "label": "Action in the rewind menu",
+      "options": [
+        "Restore code and conversation",
+        "Restore conversation",
+        "Restore code",
+        "Summarize from here"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "Restore code and conversation"
+        }
+      ],
+      "show": {
+        "title": "Files and conversation both go back",
+        "detail": "The tracked file edits are reverted and the conversation returns to the selected prompt, which is placed back in the input so you can edit or resend it.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/rewind",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Reverts the files Claude edited to their state at that prompt."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Rewinds the conversation to the same point."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "Restore conversation"
+        }
+      ],
+      "show": {
+        "title": "Conversation goes back, files stay",
+        "detail": "The conversation returns to the selected message while your code stays as it is now.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/rewind",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Rewinds the conversation to that message."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Leaves the current files untouched."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "Restore code"
+        }
+      ],
+      "show": {
+        "title": "Files go back, conversation stays",
+        "detail": "The file changes are reverted while the conversation is kept. Files changed only by shell commands are not tracked, so use Git for those.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/rewind",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Reverts the tracked file edits."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Keeps the whole conversation."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "Summarize from here"
+        }
+      ],
+      "show": {
+        "title": "Nothing is undone; context is freed",
+        "detail": "The conversation from that point on is compressed into a summary. Files on disk do not change, and the original messages remain in the session transcript.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/rewind",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Replaces the later messages with a summary."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Leaves every file as it is."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an action",
+    "detail": "This demo scripts four actions of the rewind menu. Choose one to see what it restores."
+  },
+  "quiz": {
+    "question": "Claude ran a shell command that changed a file it never edited with its editing tools. Will /rewind restore that file?",
+    "options": [
+      "Yes, every change is tracked",
+      "No, use version control such as Git"
+    ],
+    "answerIndex": 1,
+    "explanation": "A file that only shell commands changed is not tracked by checkpoints and stays as it is."
+  },
+  "status": "draft"
+}

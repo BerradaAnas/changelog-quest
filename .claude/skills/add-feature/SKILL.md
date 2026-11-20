@@ -2,6 +2,7 @@
 
 name: add-feature
 description: Add or update a feature page in content/features/. Use when asked to add, document, or update a Claude Code feature, or to record a feature event (introduced, updated, deprecated, removed).
+model: sonnet
 ---
 
 # Add or update a feature

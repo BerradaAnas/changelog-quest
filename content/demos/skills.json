@@ -1,0 +1,117 @@
+{
+  "featureId": "skills",
+  "title": "Who can start a skill?",
+  "intro": "Two optional frontmatter fields change who is allowed to invoke a skill. Pick a setting for a skill named deploy and see what changes.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "setting",
+      "label": "Frontmatter of the deploy skill",
+      "options": [
+        "No extra field (default)",
+        "disable-model-invocation: true",
+        "user-invocable: false"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "setting",
+          "equals": "No extra field (default)"
+        }
+      ],
+      "show": {
+        "title": "You and Claude can both start it",
+        "detail": "By default you can type /deploy, and Claude can load the skill when your request matches its description. The description sits in context; the full skill loads when it is invoked.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/deploy staging",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Runs the skill directly."
+          },
+          {
+            "who": "Claude",
+            "text": "May also load the skill by itself when a request matches the description."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "setting",
+          "equals": "disable-model-invocation: true"
+        }
+      ],
+      "show": {
+        "title": "Only you can start it",
+        "detail": "Claude cannot invoke the skill on its own, and its description is not kept in context. This suits actions with side effects, where you want to choose the moment yourself.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "You",
+            "text": "The code looks ready."
+          },
+          {
+            "who": "Claude",
+            "text": "Cannot start the deploy skill on its own; it can suggest that you run /deploy."
+          },
+          {
+            "who": "You",
+            "text": "/deploy staging",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Runs the skill directly."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "setting",
+          "equals": "user-invocable: false"
+        }
+      ],
+      "show": {
+        "title": "Only Claude can start it",
+        "detail": "You cannot invoke the skill as a command, but Claude can still load it when relevant. This suits background knowledge that is not an action in itself.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Cannot invoke it as /deploy."
+          },
+          {
+            "who": "Claude",
+            "text": "Loads the skill when the conversation calls for it."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick a setting",
+    "detail": "This demo scripts the three cases above. Choose one to see who can invoke the skill."
+  },
+  "quiz": {
+    "question": "You want a skill that only runs when you type its command. Which frontmatter field do you add?",
+    "options": [
+      "user-invocable: false",
+      "disable-model-invocation: true",
+      "Neither: that is the default"
+    ],
+    "answerIndex": 1,
+    "explanation": "disable-model-invocation: true stops Claude from invoking the skill on its own, while you can still run it with its slash command."
+  },
+  "status": "draft"
+}

@@ -2,6 +2,7 @@
 
 name: review-summary
 description: Review, fix and approve a release summary in content/summaries/. Use when asked to review, check, approve or fix a summary or an ingest pull request.
+model: sonnet
 ---
 
 # Review a release summary

@@ -4,14 +4,16 @@ Node scripts that write and check `content/`. Run with `tsx`, no build.
 
 - `pnpm validate` (from the root) runs `src/validate.ts` on `content/`. Every new content rule
   goes there with a test in `test/validate.test.ts`; pure per-entity rules go in `@cq/schemas`.
-- `src/config.ts` holds the model id, token cap, backfill batch size and bot branch. Changing it is
+- `src/config.ts` holds the drafting prompt version, backfill batch limits and bot branch. Changing it is
   a reviewed change.
 - Item ids come only from `changeItemIds()` in `src/ids.ts` (ADR 0001). Never derive ids
   elsewhere.
 - Releases are written by the pipeline only. Re-ingesting must never touch summaries,
   features or demos (ADR 0002).
 - Changelog text and model output are untrusted: parse them as data, validate with the schema,
-  and reject (never patch) output that fails. The summary call gets no tools.
+  and reject (never patch) output that fails.
+- `pnpm summaries` (`src/summaries.ts`): `pending` lists the next batch; `write` builds a
+  `draft` summary file from a session's compact draft (ADR 0010). Nothing here calls an API.
 - Upstream wording is read at run time (`src/source.ts`) and must never be written to
   `content/`, logs committed to the repo, or fixtures (ADR 0008). `toRelease()` keeps only the
   hash and item ids.
@@ -22,4 +24,3 @@ Node scripts that write and check `content/`. Run with `tsx`, no build.
   `content/releases/*.json`, and a run record only when something was written. Dates follow
   ADR 0009. The decision logic (`releaseDates`, `planIngest`) is pure and tested; keep I/O in
   `main()`.
-- Next steps (conception.md section 9): minimal Astro site (step 4), then summary drafting.

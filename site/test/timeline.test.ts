@@ -1,12 +1,6 @@
 import type { Release, ReleaseSummary } from "@cq/schemas";
 import { describe, expect, it } from "vitest";
-import {
-  buildTimeline,
-  compareVersions,
-  summaryView,
-  timelineStats,
-  weekOf,
-} from "../src/lib/timeline.ts";
+import { buildTimeline, summaryView, timelineStats, weekOf } from "../src/lib/timeline.ts";
 
 const hash = (c: string) => c.repeat(64);
 
@@ -50,13 +44,6 @@ describe("weekOf", () => {
     expect(weekOf("2026-10-26T19:47:57.395Z")).toBe("2026-10-26"); // Monday
     expect(weekOf("2026-10-25T23:59:59Z")).toBe("2026-10-19"); // Sunday
     expect(weekOf("2026-10-01T08:00:00Z")).toBe("2026-09-28"); // week spanning two months
-  });
-});
-
-describe("compareVersions", () => {
-  it("orders numerically and puts pre-releases first", () => {
-    const sorted = ["2.0.10", "2.0.9", "2.0.10-beta.1", "10.0.0"].sort(compareVersions);
-    expect(sorted).toEqual(["2.0.9", "2.0.10-beta.1", "2.0.10", "10.0.0"]);
   });
 });
 

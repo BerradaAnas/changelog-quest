@@ -1,4 +1,5 @@
 ---
+import { featureById } from "../lib/content";
 import { plural, releaseDate } from "../lib/format";
 import type { VersionEntry } from "../lib/timeline";
 
@@ -6,24 +7,35 @@ interface Props {
   entry: VersionEntry;
   /** In a weekly digest each version gets its own heading. */
   showHead: boolean;
+  /** Off on the release's own page. */
+  permalink?: boolean;
 }
-const { entry, showHead } = Astro.props;
+const { entry, showHead, permalink = true } = Astro.props;
 const { summary } = entry;
 const changes = plural(entry.itemCount, "change");
+// Heading levels follow the page: under a month (h3) on the timeline, under the h1 on a
+// release page. A digest adds one level for each version's own title.
+const Title = "h4";
+const Kind = showHead ? "h5" : permalink ? "h4" : "h2";
+const linked = (summary?.featureIds ?? []).flatMap((id) => {
+  const feature = featureById.get(id);
+  return feature ? [feature] : [];
+});
 ---
 
-<section class="version" id={`v${entry.version}`}>
+<section class="version" id={permalink ? `v${entry.version}` : undefined}>
   {
     showHead && (
       <div>
         <span class="kicker">
           Version {entry.version} · {releaseDate(entry.publishedAt, entry.estimated)}
         </span>
-        <h3>{summary ? summary.title : "Summary coming"}</h3>
+        <Title class="version-title">{summary ? summary.title : "Summary coming"}</Title>
         {summary && <p class="headline">{summary.headline}</p>}
       </div>
     )
   }
+  {summary?.draft && <p class="draft-note">Draft summary, shown in local preview only.</p>}
   {
     !summary && (
       <p class="pending-note">
@@ -34,7 +46,7 @@ const changes = plural(entry.itemCount, "change");
   {
     summary?.sections.map((s) => (
       <div class="kind">
-        <h4>{s.label}</h4>
+        <Kind class="kind-title">{s.label}</Kind>
         <ul>
           {s.lines.map((line) => (
             <li>{line}</li>
@@ -43,8 +55,23 @@ const changes = plural(entry.itemCount, "change");
       </div>
     ))
   }
+  {
+    linked.length > 0 && (
+      <p class="pills">
+        <span>Features in this release:</span>
+        {linked.map((f) => (
+          <a class="pill" href={`/features/${f.id}/`}>
+            {f.name}
+          </a>
+        ))}
+      </p>
+    )
+  }
   <footer>
     {summary && <span class="covered">All {changes} from the original changelog are covered</span>}
-    <a href={entry.sourceUrl} rel="noopener">Read the original on GitHub ↗</a>
+    <span class="links">
+      {permalink && <a href={`/releases/${entry.version}/`}>Release page</a>}
+      <a href={entry.sourceUrl} rel="noopener">Read the original on GitHub ↗</a>
+    </span>
   </footer>
 </section>

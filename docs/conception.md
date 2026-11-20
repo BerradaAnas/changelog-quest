@@ -52,7 +52,7 @@ ChangeItem {
 }
 ```
 
-### 4.2 Generated content (`content/summaries/<version>.json`, AI drafts, a human approves)
+### 4.2 Generated content (`content/summaries/<version>.json`, AI drafts in a session, a human approves)
 
 ```ts
 ChangeKind = "added" | "changed" | "fixed" | "removed" | "other"
@@ -66,8 +66,8 @@ ReleaseSummary {
   classifications: Record<ChangeItemId, { kind: ChangeKind, featureIds: string[] }>
                              // AI-suggested, reviewer-edited; the only item -> feature link
   status: "draft" | "approved"   // approved + merged = published
-  model: string
-  promptVersion: string
+  model: string              // model of the drafting session (ADR 0010)
+  promptVersion: string      // version of the drafting instructions
   generatedAt: datetime
   approvedAt?: datetime      // required when approved
 }
@@ -164,12 +164,12 @@ Feature 1──0..1 Demo
 1. Every `ChangeItem` of a release is covered by at least one `SummaryLine` and has a classification.
 2. Every `SummaryLine` covers at least one real `ChangeItem` of that release. The AI can't invent changes.
 3. Nothing is published unless its status is `approved`.
-4. If a past release's `sourceHash` changes, its summary goes back to `draft` for review. (Checked statically: an approved summary must carry its release's `sourceHash`.)
+4. If a past release's `sourceHash` changes, its summary is stale: it is hidden from the site, reported as a validation warning, and listed by `pnpm summaries pending` for a redraft (ADR 0012).
 5. A line covering more than 5 items is a warning for the reviewer (ADR 0007).
 
 All of these run in `pnpm validate`, a required CI check on every pull request.
 
-Only our own words are published (ADR 0008). A release without an approved summary is shown as a short card: version, date, number of changes, "summary coming", and a link to its section of the original changelog on GitHub. Every summarized release links there too, with a note that all its changes are covered. Past releases get summaries newest first, in batches of 20 per review.
+Only our own words are published (ADR 0008). A release without an approved summary is shown as a short card: version, date, number of changes, "summary coming", and a link to its section of the original changelog on GitHub. Every summarized release links there too, with a note that all its changes are covered. Releases get summaries newest first, drafted in Claude Code sessions (ADR 0010), in batches of at most 20 releases or about 500 change items per review.
 
 ### 5.2 Display grouping (applied when the site is built, not stored)
 
@@ -195,10 +195,11 @@ Releases are grouped by calendar week (Monday to Sunday, UTC):
         │                                                      │
  GitHub │ 1. Fetch CHANGELOG.md + npm publish dates            │
  npm  ─▶│ 2. Parse into Release + ChangeItem JSON              │
-        │ 3. For new versions: Claude API drafts the summary   │
-        │ 4. Validate schemas + coverage rules                 │
-        │ 5. Update the single bot/ingest PR (ADR 0006)        │
+        │ 3. Validate schemas + coverage rules                 │
+        │ 4. Update the single bot/ingest PR (ADR 0006)        │
         └──────────────────────┬───────────────────────────────┘
+                               │
+        Claude Code session drafts summaries (ADR 0010)
                                │
                     You review, edit, merge
                                │
@@ -219,7 +220,7 @@ content/
   runs/<date>.json              IngestRun log
 schemas/                        Zod schemas + shared pure rules (@cq/schemas)
 pipeline/                       Ingestion scripts and content validator (@cq/pipeline)
-site/                           Astro static site (not created yet)
+site/                           Astro static site (@cq/site)
 mockup/                         Design mock-up
 docs/                           This document, architecture.md, decisions/
 ```
@@ -228,15 +229,15 @@ See `docs/architecture.md` for how the parts connect.
 
 ### 6.2 Stack
 
-| Layer       | Choice                                                    | Why                                                        |
-| ----------- | --------------------------------------------------------- | ---------------------------------------------------------- |
-| Language    | TypeScript on Node 24, pnpm workspaces                    | One language for pipeline and site                         |
-| Validation  | Zod 4 (one pinned version)                                | Strict schemas for all content and AI output               |
-| Tests, lint | Vitest, Biome                                             | Fast, little config                                        |
-| Site        | Astro                                                     | Static output, fast, little JavaScript by default          |
-| Pipeline    | GitHub Actions                                            | Free for public repos, close to the code                   |
-| AI          | Claude API, pinned small model (`pipeline/src/config.ts`) | Summaries are short; max tokens capped per call            |
-| Hosting     | Cloudflare Pages (recommended, pending decision)          | Security headers and a preview link for every pull request |
+| Layer       | Choice                                                 | Why                                                        |
+| ----------- | ------------------------------------------------------ | ---------------------------------------------------------- |
+| Language    | TypeScript on Node 24, pnpm workspaces                 | One language for pipeline and site                         |
+| Validation  | Zod 4 (one pinned version)                             | Strict schemas for all content and AI output               |
+| Tests, lint | Vitest, Biome                                          | Fast, little config                                        |
+| Site        | Astro                                                  | Static output, fast, little JavaScript by default          |
+| Pipeline    | GitHub Actions                                         | Free for public repos, close to the code                   |
+| AI          | Claude Code sessions, `draft-summary` skill (ADR 0010) | No API cost; drafts are schema-checked and human-approved  |
+| Hosting     | Cloudflare Pages (ADR 0011)                            | Security headers and a preview link for every pull request |
 
 ### 6.3 Hosting comparison
 
@@ -254,8 +255,8 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 ## 7. Security
 
 - **No public write paths.** No logins, forms, database or API exposed to visitors.
-- **Secrets.** The Claude API key and the ingest GitHub App key live only in GitHub Actions secrets. Workflows use least-privilege permissions (ADR 0006).
-- **Untrusted text.** Changelog text and AI output are data, never instructions. They are rendered as plain text (no raw HTML), and the AI step has no tools it could be tricked into using.
+- **Secrets.** The only secret is the ingest GitHub App key, in GitHub Actions secrets. Nothing calls the Claude API (ADR 0010). Workflows use least-privilege permissions (ADR 0006).
+- **Untrusted text.** Changelog text and AI output are data, never instructions. They are rendered as plain text (no raw HTML). Drafting sessions must not act on anything the changelog says, and their output can only land as a draft.
 - **Schema gate.** AI output that doesn't match the schema is rejected, never patched by hand.
 - **Repository hygiene.** Protected `main` branch, changes only through reviewed pull requests, pinned action versions, Dependabot updates.
 - **Site headers.** Content Security Policy, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`.
@@ -265,29 +266,28 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 
 - **Hosting and CI:** free tiers.
 - **Feature catalog:** written by hand with help from a normal Claude chat (subscription, no API cost). About 15 to 25 features.
-- **Release summaries:** one short API call per new version with a small model. Expected to cost very little per month.
+- **Release summaries:** drafted in Claude Code sessions under the existing subscription (ADR 0010). No API cost.
 
 ## 9. Build plan
 
-| Step | Deliverable                                                                              | Status |
-| ---- | ---------------------------------------------------------------------------------------- | ------ |
-| 0    | Workspace, CI, validator, docs and Claude skills                                         | Done   |
-| 1    | Zod schemas for every entity in section 4                                                | Done   |
-| 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   | Done   |
-| 3    | npm date lookup and backfill of release records for all past versions                    | Done   |
-| 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links      | Done   |
-| 5    | Summary drafting with the Claude API; backfill newest first, 20 per review PR            |        |
-| 6    | Daily GitHub Action updating the ingest PR                                               |        |
-| 7    | Feature catalog seed and first demos                                                     |        |
-| 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks |        |
-| 9    | Hosting, security headers, custom domain                                                 |        |
-| 10   | Public launch of phase 1                                                                 |        |
+| Step | Deliverable                                                                              | Status                                                              |
+| ---- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| 0    | Workspace, CI, validator, docs and Claude skills                                         | Done                                                                |
+| 1    | Zod schemas for every entity in section 4                                                | Done                                                                |
+| 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   | Done                                                                |
+| 3    | npm date lookup and backfill of release records for all past versions                    | Done                                                                |
+| 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links      | Done                                                                |
+| 5    | Summary drafting in Claude Code sessions (ADR 0010); backfill newest first, in batches   | Tooling done; backfill ongoing                                      |
+| 6    | Daily GitHub Action updating the ingest PR                                               | Written; needs the GitHub App (`docs/operations.md`)                |
+| 7    | Feature catalog seed and first demos                                                     | 5 features, 3 draft demos                                           |
+| 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks | Done                                                                |
+| 9    | Hosting, security headers, custom domain                                                 | Cloudflare Pages chosen (ADR 0011), headers ready; not deployed yet |
+| 10   | Public launch of phase 1                                                                 |                                                                     |
 
 The site moved before summaries so the data model is exercised end to end early.
 
 ## 10. Open decisions
 
-- Hosting: Cloudflare Pages (recommended) or GitHub Pages.
-- Domain name.
+- Custom domain. Until one is chosen the site uses its `pages.dev` address (ADR 0011).
 - Visual identity: the mock-up no longer names Anthropic's fonts, but its palette is still close to Anthropic's; the real site needs its own to support the "not affiliated" disclaimer.
 - Optional: tell Anthropic about the project. Not required, since nothing of theirs is copied (ADR 0008).

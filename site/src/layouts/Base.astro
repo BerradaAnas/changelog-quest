@@ -1,11 +1,13 @@
 ---
 import "../styles/global.css";
+import { SITE_NAME } from "../lib/content";
 
 interface Props {
   title: string;
   description: string;
 }
 const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -15,20 +17,28 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} releases`} href="/rss.xml" />
     <title>{title}</title>
+    <script is:inline src="/theme.js"></script>
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/"><strong>Changelog Quest</strong><span>for Claude Code</span></a>
-        <nav aria-label="External links">
-          <a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code docs</a>
-          <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Official changelog</a>
-          <a href="https://github.com/BerradaAnas/changelog-quest">Source</a>
+        <a class="brand" href="/"><strong>{SITE_NAME}</strong><span>for Claude Code</span></a>
+        <nav aria-label="Main">
+          <a href="/#timeline">Releases</a>
+          <a href="/features/">Features</a>
+          <a href="/search/">Search</a>
+          <a href="/rss.xml">RSS</a>
+          <button type="button" class="theme-toggle" data-theme-toggle hidden>Theme: system</button>
         </nav>
       </div>
     </header>
-    <slot />
+    <main id="main" class="wrap">
+      <slot />
+    </main>
     <footer class="site-footer">
       <div class="wrap">
         <span>Independent open-source project, not affiliated with or endorsed by Anthropic.</span>
@@ -36,7 +46,15 @@ const { title, description } = Astro.props;
           Summaries are written in our own words. The original changelog belongs to Anthropic and is
           linked from every release.
         </span>
+        <nav aria-label="External links">
+          <a href="https://code.claude.com/docs/en/overview">Claude Code docs</a>
+          <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Official changelog</a>
+          <a href="https://github.com/BerradaAnas/changelog-quest">Source</a>
+        </nav>
       </div>
     </footer>
+    <script>
+      import "../scripts/theme.ts";
+    </script>
   </body>
 </html>

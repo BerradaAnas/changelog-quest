@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "dev:drafts": "CQ_DRAFTS=1 astro dev",
+    "build": "astro build && pagefind --site dist",
+    "check:dist": "tsx scripts/check-dist.ts",
     "preview": "astro preview",
     "typecheck": "astro check",
     "test": "vitest run"
@@ -15,6 +17,11 @@
     "astro": "7.3.8"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.10"
+    "@astrojs/check": "0.9.10",
+    "@types/jsdom": "30.0.0",
+    "axe-core": "4.14.0",
+    "jsdom": "31.0.1",
+    "pagefind": "1.6.0",
+    "tsx": "4.23.15"
   }
 }

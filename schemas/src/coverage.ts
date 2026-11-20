@@ -11,7 +11,8 @@ export interface Issue {
 
 /**
  * The "nothing lost" rules (conception.md 5.1) for one release and its summary.
- * Errors block approval; warnings are for the reviewer.
+ * Errors block approval; warnings are for the reviewer. A summary written against an older
+ * release text is reported once, as a warning, and not checked further.
  */
 export function checkSummary(release: Release, summary: ReleaseSummary): Issue[] {
   const issues: Issue[] = [];
@@ -21,8 +22,14 @@ export function checkSummary(release: Release, summary: ReleaseSummary): Issue[]
   if (summary.version !== release.version) {
     error(`summary is for ${summary.version}, release is ${release.version}`);
   }
-  if (summary.status === "approved" && summary.sourceHash !== release.sourceHash) {
-    error("release source changed since approval; set status back to draft and re-review");
+  if (summary.sourceHash !== release.sourceHash) {
+    // Stale (ADR 0012): the site hides it and `pnpm summaries pending` lists it for a redraft.
+    // Its item ids may no longer exist, so the coverage rules below would only add noise.
+    issues.push({
+      level: "warning",
+      message: "release text changed since this summary was written; it is hidden until redrafted",
+    });
+    return issues;
   }
 
   const covered = new Set<string>();

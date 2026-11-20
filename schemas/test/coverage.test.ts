@@ -31,11 +31,16 @@ describe("checkSummary", () => {
     expect(errors(s)).toHaveLength(2);
   });
 
-  it("blocks an approved summary when the source changed", () => {
+  it("reports a summary written against an older release text once, as a warning", () => {
     const r = release();
     r.sourceHash = "c".repeat(64);
-    expect(errors(summary(), r)).toHaveLength(1);
-    expect(errors({ ...summary(), status: "draft" }, r)).toHaveLength(0);
+    r.items = [{ id: "2.0.14#33333333", position: 0 }];
+    for (const s of [summary(), { ...summary(), status: "draft" as const }]) {
+      const issues = checkSummary(r, s);
+      expect(issues).toHaveLength(1);
+      expect(issues[0]).toMatchObject({ level: "warning" });
+      expect(issues[0]?.message).toMatch(/hidden until redrafted/);
+    }
   });
 
   it("warns on lines that cover too much", () => {

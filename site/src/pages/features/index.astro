@@ -1,0 +1,23 @@
+---
+import FeatureGroups from "../../components/FeatureGroups.astro";
+import Base from "../../layouts/Base.astro";
+import { features } from "../../lib/content";
+import { plural } from "../../lib/format";
+---
+
+<Base
+  title="Claude Code features explained | Changelog Quest"
+  description="Plain-language pages for Claude Code features: what each one does, why it matters, how it works, and how it changed over time."
+>
+  <section class="hero">
+    <h1>Features, explained simply.</h1>
+    <p>
+      What each feature does, why it matters and how it works, checked against the official
+      documentation. Some come with a small hands-on example.
+    </p>
+    <p class="stats">{plural(features.length, "feature")} so far · more are added over time</p>
+  </section>
+  <section class="block">
+    <FeatureGroups level={2} />
+  </section>
+</Base>

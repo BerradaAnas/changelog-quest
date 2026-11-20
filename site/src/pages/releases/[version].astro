@@ -1,0 +1,42 @@
+---
+import VersionBlock from "../../components/VersionBlock.astro";
+import Base from "../../layouts/Base.astro";
+import { includeDrafts, releases, summaries } from "../../lib/content";
+import { plural, releaseDate } from "../../lib/format";
+import { newestFirst, versionEntry } from "../../lib/timeline";
+
+export function getStaticPaths() {
+  const sorted = [...releases].sort(newestFirst);
+  return sorted.map((release, n) => ({
+    params: { version: release.version },
+    props: { release, newer: sorted[n - 1]?.version, older: sorted[n + 1]?.version },
+  }));
+}
+
+const { release, newer, older } = Astro.props;
+const entry = versionEntry(release, summaries.get(release.version), includeDrafts);
+const { summary } = entry;
+const changes = plural(entry.itemCount, "change");
+const description =
+  summary?.headline ?? `Claude Code ${entry.version}: ${changes}. Summary coming.`;
+---
+
+<Base title={`Claude Code ${entry.version}${summary ? `: ${summary.title}` : ""} | Changelog Quest`} description={description}>
+  <article class="release" data-pagefind-body={summary && !summary.draft ? "" : undefined}>
+    <header class="hero">
+      <p class="kicker">
+        <a href="/#timeline">Releases</a> · {releaseDate(entry.publishedAt, entry.estimated)} · {changes}
+      </p>
+      <h1>Claude Code {entry.version}</h1>
+      <p>{summary ? summary.title : "Summary coming"}</p>
+      {summary && <p class="stats">{summary.headline}</p>}
+    </header>
+    <div class="card-static">
+      <VersionBlock entry={entry} showHead={false} permalink={false} />
+    </div>
+    <nav class="pager" aria-label="Other releases" data-pagefind-ignore>
+      {older ? <a href={`/releases/${older}/`}>← {older}</a> : <span />}
+      {newer ? <a href={`/releases/${newer}/`}>{newer} →</a> : <span />}
+    </nav>
+  </article>
+</Base>
