@@ -1,0 +1,39 @@
+{
+  "id": "checkpointing",
+  "name": "Checkpointing",
+  "area": "core",
+  "summary": "Undo Claude's file edits or roll the conversation back to an earlier prompt.",
+  "what": "Claude Code records the state of the files it edits before each prompt you send. The rewind menu lists your prompts; pick one to restore the code, the conversation, or both to that point. The same menu can also shrink part of the conversation into a summary to free up context.",
+  "impact": [
+    {
+      "title": "Try things safely",
+      "detail": "Explore a different approach knowing you can return to where you started."
+    },
+    {
+      "title": "Quick recovery",
+      "detail": "Revert edits that introduced a bug without leaving the session."
+    },
+    {
+      "title": "More room in context",
+      "detail": "Summarize a long stretch of the conversation while keeping the rest intact."
+    }
+  ],
+  "howItWorks": [
+    "Work as usual: every prompt that starts a turn creates a checkpoint automatically.",
+    "Run /rewind, or press Esc twice with an empty prompt, to open the rewind menu.",
+    "Select the prompt you want to go back to.",
+    "Choose what to restore: code and conversation, conversation only, or code only. Or choose one of the summarize options.",
+    "Keep using Git for anything permanent: changes made only by shell commands are not tracked, and checkpoints are for session-level recovery."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/checkpointing"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.0.0",
+      "type": "introduced",
+      "note": "The /rewind command arrived, undoing code changes from a conversation."
+    }
+  ]
+}

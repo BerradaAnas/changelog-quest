@@ -3,7 +3,8 @@
 The database. JSON files only; `pnpm validate` must pass after any change.
 
 - `releases/` is written by the pipeline. Do not hand-edit it; fix the parser instead.
-- `summaries/`: edit `title`, `headline`, `lines` and `classifications` freely while
+- `summaries/`: created by `pnpm summaries write` from a session draft (`draft-summary`
+  skill). Then edit `title`, `headline`, `lines` and `classifications` freely while
   `status` is `draft`. Approving means setting `status: "approved"` and `approvedAt`. Use the
   `review-summary` skill.
 - `features/` and `demos/` are editorial. Use the `add-feature` and `write-demo` skills.

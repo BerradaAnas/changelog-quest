@@ -30,4 +30,5 @@ jobs:
       - run: pnpm test
       - run: pnpm validate
       - run: pnpm build
+      - run: pnpm check:dist
       - run: pnpm source verify

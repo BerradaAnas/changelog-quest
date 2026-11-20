@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Slug, Version } from "./common.ts";
+import { HttpsUrl, Slug, Version } from "./common.ts";
 
 /**
  * Editorial milestone in a feature's history. Which items it relates to is derived
@@ -22,7 +22,7 @@ export const Feature = z
     what: z.string().min(1),
     impact: z.array(z.strictObject({ title: z.string().min(1), detail: z.string().min(1) })),
     howItWorks: z.array(z.string().min(1)),
-    docUrls: z.array(z.url()).min(1),
+    docUrls: z.array(HttpsUrl).min(1),
     status: z.enum(["active", "deprecated", "removed"]),
     events: z.array(FeatureEvent).min(1),
   })

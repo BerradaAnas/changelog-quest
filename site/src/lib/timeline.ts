@@ -1,4 +1,4 @@
-import type { ChangeKind, Release, ReleaseSummary } from "@cq/schemas";
+import { type ChangeKind, compareVersions, type Release, type ReleaseSummary } from "@cq/schemas";
 
 /**
  * Release timeline for display (conception.md 5.2, ADRs 0007-0009). Pure: takes validated
@@ -11,6 +11,8 @@ export interface SummaryView {
   headline: string;
   sections: { kind: ChangeKind; label: string; lines: string[] }[];
   featureIds: string[];
+  /** Only ever true in local preview. */
+  draft: boolean;
 }
 
 export interface VersionEntry {
@@ -44,19 +46,42 @@ const KINDS: { kind: ChangeKind; label: string }[] = [
   { kind: "other", label: "Other" },
 ];
 
-export function summaryView(release: Release, summary: ReleaseSummary | undefined) {
-  if (summary?.status !== "approved" || summary.sourceHash !== release.sourceHash) {
-    return undefined;
-  }
+/**
+ * The summary a visitor may see: approved, and written against the release's current text.
+ * `includeDrafts` is for local preview only (`pnpm dev:drafts`).
+ */
+export function visibleSummary(
+  release: Release,
+  summary: ReleaseSummary | undefined,
+  includeDrafts = false,
+): ReleaseSummary | undefined {
+  if (!summary || summary.sourceHash !== release.sourceHash) return undefined;
+  if (summary.status !== "approved" && !includeDrafts) return undefined;
+  return summary;
+}
+
+export function summaryView(
+  release: Release,
+  summary: ReleaseSummary | undefined,
+  includeDrafts = false,
+): SummaryView | undefined {
+  const visible = visibleSummary(release, summary, includeDrafts);
+  if (!visible) return undefined;
   const sections = KINDS.map(({ kind, label }) => ({
     kind,
     label,
-    lines: summary.lines.filter((l) => l.kind === kind).map((l) => l.text),
+    lines: visible.lines.filter((l) => l.kind === kind).map((l) => l.text),
   })).filter((s) => s.lines.length > 0);
   const featureIds = [
-    ...new Set(Object.values(summary.classifications).flatMap((c) => c.featureIds)),
+    ...new Set(Object.values(visible.classifications).flatMap((c) => c.featureIds)),
   ];
-  return { title: summary.title, headline: summary.headline, sections, featureIds };
+  return {
+    title: visible.title,
+    headline: visible.headline,
+    sections,
+    featureIds,
+    draft: visible.status !== "approved",
+  };
 }
 
 /** Monday (UTC) of the calendar week containing the date, as YYYY-MM-DD. */
@@ -67,41 +92,36 @@ export function weekOf(iso: string): string {
   return monday.toISOString().slice(0, 10);
 }
 
-/** Compares "1.2.3" style versions numerically; pre-releases sort before their release. */
-export function compareVersions(a: string, b: string): number {
-  const [coreA = "", preA] = a.split("-", 2);
-  const [coreB = "", preB] = b.split("-", 2);
-  const pa = coreA.split(".").map(Number);
-  const pb = coreB.split(".").map(Number);
-  for (let i = 0; i < 3; i++) {
-    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
-    if (diff !== 0) return diff;
-  }
-  if (preA === preB) return 0;
-  if (preA === undefined) return 1;
-  if (preB === undefined) return -1;
-  return preA < preB ? -1 : 1;
+export function versionEntry(
+  release: Release,
+  summary: ReleaseSummary | undefined,
+  includeDrafts = false,
+): VersionEntry {
+  const view = summaryView(release, summary, includeDrafts);
+  return {
+    version: release.version,
+    publishedAt: release.publishedAt,
+    estimated: release.dateSource === "estimated",
+    sourceUrl: release.sourceUrl,
+    itemCount: release.items.length,
+    ...(view ? { summary: view } : {}),
+  };
 }
+
+/** Newest first: by date, then by version. */
+export const newestFirst = (
+  a: { publishedAt: string; version: string },
+  b: { publishedAt: string; version: string },
+) => b.publishedAt.localeCompare(a.publishedAt) || compareVersions(b.version, a.version);
 
 export function buildTimeline(
   releases: readonly Release[],
   summaries: ReadonlyMap<string, ReleaseSummary>,
+  includeDrafts = false,
 ): MonthGroup[] {
-  const entries: VersionEntry[] = releases
-    .map((r) => {
-      const summary = summaryView(r, summaries.get(r.version));
-      return {
-        version: r.version,
-        publishedAt: r.publishedAt,
-        estimated: r.dateSource === "estimated",
-        sourceUrl: r.sourceUrl,
-        itemCount: r.items.length,
-        ...(summary ? { summary } : {}),
-      };
-    })
-    .sort(
-      (a, b) => b.publishedAt.localeCompare(a.publishedAt) || compareVersions(b.version, a.version),
-    );
+  const entries = releases
+    .map((r) => versionEntry(r, summaries.get(r.version), includeDrafts))
+    .sort(newestFirst);
 
   const months: MonthGroup[] = [];
   for (const entry of entries) {

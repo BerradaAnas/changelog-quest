@@ -1,0 +1,21 @@
+---
+import type { Feature } from "@cq/schemas";
+
+interface Props {
+  feature: Feature;
+  introducedIn: string;
+  hasDemo: boolean;
+}
+const { feature, introducedIn, hasDemo } = Astro.props;
+---
+
+<li class="feature-card">
+  <a href={`/features/${feature.id}/`}>{feature.name}</a>
+  <p>{feature.summary}</p>
+  <p class="meta">
+    <span>Since {introducedIn}</span>
+    {feature.status !== "active" && <span class="tag">{feature.status}</span>}
+    {hasDemo && <span class="tag">Hands-on example</span>}
+    <span class="tag done" data-progress-for={feature.id} hidden></span>
+  </p>
+</li>

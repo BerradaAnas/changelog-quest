@@ -1,0 +1,25 @@
+{
+  "version": "2.1.322",
+  "sourceHash": "8b8fc421990e3187a1a6861561e85b1806061239f2166653397af15d21bb5b01",
+  "title": "Fast mode on Vertex",
+  "headline": "Fast mode is now available on Vertex in three regions.",
+  "lines": [
+    {
+      "kind": "added",
+      "text": "Vertex users get fast mode in the global, US and EU regions. When Vertex turns a fast request down, it is served at standard speed.",
+      "covers": [
+        "2.1.322#e0958449"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.322#e0958449": {
+      "kind": "added",
+      "featureIds": []
+    }
+  },
+  "status": "draft",
+  "model": "claude-fable-5-2",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-15T01:44:51.971Z"
+}

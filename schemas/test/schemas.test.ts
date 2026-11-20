@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   ChangeItemId,
+  compareVersions,
   Demo,
   Feature,
   introducedIn,
@@ -9,12 +10,26 @@ import {
 } from "../src/index.ts";
 import { demo, feature, release, summary } from "./fixtures.ts";
 
+describe("compareVersions", () => {
+  it("orders numerically and puts pre-releases first", () => {
+    const sorted = ["2.0.10", "2.0.9", "2.0.10-beta.1", "10.0.0"].sort(compareVersions);
+    expect(sorted).toEqual(["2.0.9", "2.0.10-beta.1", "2.0.10", "10.0.0"]);
+  });
+});
+
 describe("schemas", () => {
   it("accepts valid fixtures", () => {
     expect(Release.safeParse(release()).success).toBe(true);
     expect(ReleaseSummary.safeParse(summary()).success).toBe(true);
     expect(Feature.safeParse(feature()).success).toBe(true);
     expect(Demo.safeParse(demo()).success).toBe(true);
+  });
+
+  it("accepts only https links", () => {
+    for (const url of ["javascript:alert(1)", "http://example.com/docs", "data:text/html,x"]) {
+      expect(Feature.safeParse({ ...feature(), docUrls: [url] }).success).toBe(false);
+      expect(Release.safeParse({ ...release(), sourceUrl: url }).success).toBe(false);
+    }
   });
 
   it("rejects unknown keys", () => {

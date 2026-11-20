@@ -1,0 +1,123 @@
+---
+import Demo from "../../components/Demo.astro";
+import Base from "../../layouts/Base.astro";
+import { demos, features, includeDrafts, releaseByVersion, summaries } from "../../lib/content";
+import { AREAS, EVENT_LABELS, featureView } from "../../lib/features";
+import { releaseDate } from "../../lib/format";
+
+export function getStaticPaths() {
+  return features.map((feature) => ({ params: { id: feature.id }, props: { feature } }));
+}
+
+const view = featureView(Astro.props.feature, {
+  releases: releaseByVersion,
+  summaries,
+  demos,
+  includeDrafts,
+});
+const { feature, history, demo } = view;
+const area = AREAS.find((a) => a.area === feature.area);
+const docLabel = (url: string) =>
+  new URL(url).pathname.replace(/^\/docs\/en\//, "").replace(/\/$/, "");
+---
+
+<Base title={`${feature.name} in Claude Code | Changelog Quest`} description={feature.summary}>
+  <article class="feature" data-pagefind-body>
+    <header class="hero">
+      <p class="kicker">
+        <a href="/features/">Features</a> · {area?.label} · since version {view.introducedIn}
+        {feature.status !== "active" && <span class="tag">{feature.status}</span>}
+      </p>
+      <h1>{feature.name}</h1>
+      <p>{feature.summary}</p>
+    </header>
+
+    <section aria-labelledby="what">
+      <h2 id="what">What it is</h2>
+      <p>{feature.what}</p>
+    </section>
+
+    {
+      feature.impact.length > 0 && (
+        <section aria-labelledby="why">
+          <h2 id="why">Why it matters</h2>
+          <ul class="impact">
+            {feature.impact.map((i) => (
+              <li>
+                <strong>{i.title}</strong>
+                <span>{i.detail}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      feature.howItWorks.length > 0 && (
+        <section aria-labelledby="how">
+          <h2 id="how">How it works</h2>
+          <ol class="steps">
+            {feature.howItWorks.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      demo ? (
+        <Demo demo={demo} />
+      ) : (
+        <section class="demo" data-pagefind-ignore>
+          <h2>Hands-on example coming</h2>
+          <p>This feature has no reviewed example yet. The official documentation below has the details.</p>
+        </section>
+      )
+    }
+
+    <section aria-labelledby="history">
+      <h2 id="history">Update history</h2>
+      <ol class="history">
+        {
+          history.map((h) => (
+            <li>
+              <p class="kicker">
+                <a href={`/releases/${h.version}/`}>Version {h.version}</a> ·{" "}
+                {releaseDate(h.publishedAt, h.estimated)}
+              </p>
+              {h.events.map((e) => (
+                <p>
+                  <span class="tag">{EVENT_LABELS[e.type]}</span> {e.note}
+                </p>
+              ))}
+              {h.lines.length > 0 && (
+                <ul>
+                  {h.lines.map((l) => (
+                    <li>{l.text}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section aria-labelledby="docs">
+      <h2 id="docs">Official documentation</h2>
+      <ul class="docs">
+        {
+          feature.docUrls.map((url) => (
+            <li>
+              <a href={url} rel="noopener">
+                {docLabel(url)} ↗
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
+</Base>

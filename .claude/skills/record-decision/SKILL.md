@@ -2,6 +2,7 @@
 
 name: record-decision
 description: Record an architecture or data-model decision and keep the design docs in sync. Use when a change alters schemas, content rules, pipeline behaviour, stack, hosting, or anything stated in docs/conception.md.
+model: opus
 ---
 
 # Record a decision

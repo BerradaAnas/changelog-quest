@@ -1,0 +1,90 @@
+---
+import type { Demo } from "@cq/schemas";
+import { renderConfigPreview } from "@cq/schemas/demo-engine";
+
+interface Props {
+  demo: Demo;
+}
+const { demo } = Astro.props;
+const id = `demo-${demo.featureId}`;
+---
+
+<section class="demo" data-demo={JSON.stringify(demo)} aria-labelledby={`${id}-title`}>
+  <span class="kicker">Hands-on example · scripted, no AI runs here</span>
+  <h2 id={`${id}-title`}>{demo.title}</h2>
+  {demo.status !== "approved" && <p class="draft-note">Draft example, shown in local preview only.</p>}
+  <p>{demo.intro}</p>
+  <noscript><p class="pending-note">This example needs JavaScript. Everything else on the page works without it.</p></noscript>
+
+  <form data-demo-form>
+    {
+      demo.inputs.map((input) =>
+        input.options ? (
+          <fieldset>
+            <legend>{input.label}</legend>
+            {input.options.map((option) => (
+              <label class="choice">
+                <input type="radio" name={input.id} value={option} />
+                <span>{option}</span>
+              </label>
+            ))}
+          </fieldset>
+        ) : (
+          <div class="field">
+            <label for={`${id}-${input.id}`}>{input.label}</label>
+            <input
+              type="text"
+              id={`${id}-${input.id}`}
+              name={input.id}
+              placeholder={input.placeholder}
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              maxlength="200"
+            />
+            {input.suggestions && (
+              <div class="pills" role="group" aria-label="Examples to try">
+                {input.suggestions.map((s) => (
+                  <button type="button" class="pill" data-suggest={input.id} data-value={s}>
+                    {s}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ),
+      )
+    }
+    <button type="submit" class="cta">Run the example</button>
+  </form>
+
+  <div class="outcome" data-demo-outcome aria-live="polite" hidden></div>
+
+  {
+    demo.configPreview && (
+      <div class="config">
+        <h3>Settings behind this example</h3>
+        <pre tabindex="0" data-demo-config>{renderConfigPreview(demo.configPreview, {})}</pre>
+      </div>
+    )
+  }
+
+  <form class="quiz" data-demo-quiz>
+    <fieldset>
+      <legend>Quick check: {demo.quiz.question}</legend>
+      {
+        demo.quiz.options.map((option, n) => (
+          <label class="choice">
+            <input type="radio" name="answer" value={n} />
+            <span>{option}</span>
+          </label>
+        ))
+      }
+    </fieldset>
+    <button type="submit" class="soft">Check answer</button>
+    <p class="quiz-result" data-quiz-result aria-live="polite" hidden></p>
+  </form>
+</section>
+<script>
+  import "../scripts/demo.ts";
+</script>

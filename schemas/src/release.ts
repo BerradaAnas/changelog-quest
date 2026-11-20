@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ChangeItemId, DateTime, Sha256, Version } from "./common.ts";
+import { ChangeItemId, DateTime, HttpsUrl, Sha256, Version } from "./common.ts";
 
 /**
  * One bullet of a release. Its wording is never stored (ADR 0008): the id is a hash of the
@@ -21,7 +21,7 @@ export const Release = z.strictObject({
    * publishedAt is the publish time of the next newer version, an upper bound (ADR 0009).
    */
   dateSource: z.enum(["npm", "estimated"]),
-  sourceUrl: z.url(),
+  sourceUrl: HttpsUrl,
   /** Commit of anthropics/claude-code that CHANGELOG.md was read from. */
   sourceCommit: z.string().regex(/^[0-9a-f]{40}$/),
   /** sha256 of the upstream section; a change on a past release sends its summary back to draft. */

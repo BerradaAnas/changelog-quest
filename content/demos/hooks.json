@@ -1,0 +1,106 @@
+{
+  "featureId": "hooks",
+  "title": "Block a command with a hook",
+  "intro": "A PreToolUse hook on the Bash tool runs a small script before every shell command. The script blocks commands that start with rm. Type a command Claude might want to run and see what the hook decides.",
+  "kind": "type",
+  "inputs": [
+    {
+      "id": "command",
+      "label": "Command Claude wants to run",
+      "placeholder": "rm -rf build",
+      "suggestions": [
+        "rm -rf build",
+        "npm test",
+        "git status"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "^\\s*rm(\\s|$)"
+        }
+      ],
+      "show": {
+        "title": "Blocked by the hook",
+        "detail": "The script saw a command starting with rm and exited with code 2. On PreToolUse, exit code 2 blocks the tool call, and the text the script wrote to standard error is the reason Claude receives.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "About to run a Bash command: {{command}}",
+            "code": true
+          },
+          {
+            "who": "Hook",
+            "text": "Reads the event as JSON on standard input and extracts the command."
+          },
+          {
+            "who": "Hook",
+            "text": "echo \"Blocked: rm commands are not allowed\" >&2; exit 2",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Exit code 2: the tool call is prevented."
+          },
+          {
+            "who": "Claude",
+            "text": "Receives the hook's message as the tool's error and can change its plan."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "\\S"
+        }
+      ],
+      "show": {
+        "title": "The hook lets it through",
+        "detail": "The command does not start with rm, so the script exits with code 0. That is not an approval: the hook made no decision, and the normal permission flow applies.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "About to run a Bash command: {{command}}",
+            "code": true
+          },
+          {
+            "who": "Hook",
+            "text": "Reads the event as JSON on standard input and extracts the command."
+          },
+          {
+            "who": "Hook",
+            "text": "exit 0",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Exit code 0: the action continues with the usual permission checks."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Type a command first",
+    "detail": "This demo only scripts one rule: commands that start with rm are blocked, and everything else passes. Enter a command to see which case applies."
+  },
+  "configPreview": "{\n  \"hooks\": {\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Bash\",\n        \"hooks\": [\n          { \"type\": \"command\", \"command\": \".claude/hooks/block-rm.sh\" }\n        ]\n      }\n    ]\n  }\n}",
+  "quiz": {
+    "question": "A PreToolUse hook must stop a tool call. Which exit code does that?",
+    "options": [
+      "0",
+      "1",
+      "2"
+    ],
+    "answerIndex": 2,
+    "explanation": "Exit code 2 is the blocking error. Exit code 0 means success, and any other code is a non-blocking error: the action normally goes ahead."
+  },
+  "status": "draft"
+}

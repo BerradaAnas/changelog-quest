@@ -1,0 +1,39 @@
+{
+  "id": "plugins",
+  "name": "Plugins",
+  "area": "extend",
+  "summary": "Install a ready-made bundle of skills, subagents, hooks and MCP servers as one unit.",
+  "what": "A plugin is a directory that packages several extensions together, usually with a manifest file that names it. Most plugins come from a marketplace, which is a catalog listing plugins and where to fetch them. Each piece also works alone; a plugin is for when you want them installed, updated and shared together.",
+  "impact": [
+    {
+      "title": "One install for a whole setup",
+      "detail": "Get a configuration someone else built with a single command, and receive its updates from the marketplace."
+    },
+    {
+      "title": "Share your own setup",
+      "detail": "Package your skills, subagents and hooks to give them to teammates or reuse them across projects."
+    },
+    {
+      "title": "Easy to switch off",
+      "detail": "A plugin can be disabled without uninstalling it. This matters because an enabled plugin takes part in every session."
+    }
+  ],
+  "howItWorks": [
+    "Run /plugin in a Claude Code terminal session.",
+    "Browse the Discover tab, which lists the plugins from your marketplaces, and install one.",
+    "Claude Code loads everything in the plugin: its skills, subagents, hooks and MCP servers.",
+    "A plugin skill runs under the plugin's name, in the form /plugin-name:skill-name.",
+    "Disable a plugin from /plugin, or with claude plugin disable in your shell, to stop it without removing it."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/plugins/overview"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.0.12",
+      "type": "introduced",
+      "note": "The plugin system was released, with marketplaces and the /plugin command."
+    }
+  ]
+}

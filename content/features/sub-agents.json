@@ -1,0 +1,43 @@
+{
+  "id": "sub-agents",
+  "name": "Subagents",
+  "area": "extend",
+  "summary": "Hand a side task to a specialised helper that works in its own context and reports back a summary.",
+  "what": "A subagent is an assistant set up for one kind of task. It has its own context window, its own system prompt and its own list of allowed tools. Claude delegates a matching task to it, the subagent does the work separately, and only its result comes back to your main conversation.",
+  "impact": [
+    {
+      "title": "A cleaner main conversation",
+      "detail": "Search results, logs and file contents from a side task stay in the subagent's context instead of filling yours."
+    },
+    {
+      "title": "Tighter limits",
+      "detail": "Each subagent can be restricted to the tools it needs, for example read-only tools for a reviewer."
+    },
+    {
+      "title": "Reuse",
+      "detail": "A subagent saved in your home folder is available in all your projects; one saved in a repository is shared with the team."
+    },
+    {
+      "title": "Cost control",
+      "detail": "A subagent can be set to run on a faster, lower-cost model."
+    }
+  ],
+  "howItWorks": [
+    "Create a Markdown file in .claude/agents/ (this project) or ~/.claude/agents/ (all your projects).",
+    "At the top, add YAML frontmatter with a name and a description, and optionally the tools and model it may use.",
+    "Write the subagent's system prompt below the frontmatter.",
+    "Claude delegates a task when it matches the description, or you can name the subagent yourself with an @-mention.",
+    "The subagent works on its own and returns its result to the main conversation."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/sub-agents"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.60",
+      "type": "introduced",
+      "note": "Custom subagents arrived, created with the /agents command."
+    }
+  ]
+}

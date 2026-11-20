@@ -1,0 +1,22 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Search | Changelog Quest"
+  description="Search Claude Code features and summarized releases on Changelog Quest."
+>
+  <section class="hero">
+    <h1>Search</h1>
+    <p>Find a feature or a change across the summarized releases.</p>
+  </section>
+  <section class="search">
+    <label for="q">Search for</label>
+    <input type="search" id="q" data-search-input autocomplete="off" spellcheck="false" />
+    <p class="stats" data-search-status role="status">Search needs JavaScript.</p>
+    <ol class="results" data-search-results></ol>
+  </section>
+</Base>
+<script>
+  import "../scripts/search.ts";
+</script>

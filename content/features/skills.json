@@ -1,0 +1,43 @@
+{
+  "id": "skills",
+  "name": "Skills",
+  "area": "extend",
+  "summary": "Save a set of instructions once; Claude loads it when relevant, or you run it as a slash command.",
+  "what": "A skill is a folder containing a SKILL.md file: a short description of when to use it, followed by the instructions to follow. Claude sees the description and loads the full instructions only when the skill is used, so long procedures cost almost nothing until they are needed. You can also start a skill yourself by typing a slash and its name.",
+  "impact": [
+    {
+      "title": "Stop pasting the same instructions",
+      "detail": "A checklist or multi-step procedure you keep repeating becomes a skill you write once."
+    },
+    {
+      "title": "Light on context",
+      "detail": "Only the description is loaded up front; the body loads when the skill is invoked."
+    },
+    {
+      "title": "Easy to share",
+      "detail": "Put a skill in your home folder for all your projects, or commit it to a repository so the whole team gets it."
+    },
+    {
+      "title": "You decide who can start it",
+      "detail": "Frontmatter settings can stop Claude from starting a skill on its own, or hide it from the slash menu."
+    }
+  ],
+  "howItWorks": [
+    "Create a folder for the skill, for example ~/.claude/skills/my-skill/ or .claude/skills/my-skill/ in a project.",
+    "Add a SKILL.md file with YAML frontmatter between --- markers; the description tells Claude when to use the skill.",
+    "Write the instructions below the frontmatter.",
+    "Claude loads the skill when your request matches the description, or you type /my-skill to run it directly.",
+    "Older files in .claude/commands/ keep working: custom commands were merged into skills."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/skills"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.0.20",
+      "type": "introduced",
+      "note": "Support for skills was added."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "hooks",
+  "name": "Hooks",
+  "area": "extend",
+  "summary": "Run your own shell commands at set moments in a session, so some things always happen.",
+  "what": "A hook is a shell command you register in a settings file. Claude Code runs it at a chosen point, for example before a tool call, after a file edit, or when it needs your input. Because the hook is ordinary code, the result does not depend on the model deciding to do something: the rule is applied every time.",
+  "impact": [
+    {
+      "title": "Rules that always apply",
+      "detail": "A hook that runs before a tool call can stop it, so a project rule such as \"never delete these files\" is enforced instead of suggested."
+    },
+    {
+      "title": "Less repeated work",
+      "detail": "Format a file after each edit or run a check when a task ends, without asking for it each time."
+    },
+    {
+      "title": "Know when you are needed",
+      "detail": "A notification hook can alert you when Claude Code is waiting for your input."
+    }
+  ],
+  "howItWorks": [
+    "Add a hooks block to a settings file, such as ~/.claude/settings.json.",
+    "Pick the event to react to (for example PreToolUse or Notification) and, where it applies, a matcher such as the tool name.",
+    "When the event happens, Claude Code runs your command and passes it details of the event as JSON on standard input.",
+    "The exit code decides what happens next: 0 lets the action continue, and 2 blocks it on events that can be blocked.",
+    "When a hook blocks an action, what it wrote to standard error is the reason Claude receives."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/hooks-guide",
+    "https://code.claude.com/docs/en/hooks"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.38",
+      "type": "introduced",
+      "note": "Hooks were released."
+    }
+  ]
+}

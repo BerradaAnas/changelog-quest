@@ -16,14 +16,15 @@ Documentation is long and sometimes tricky, and new features ship often. Develop
 
 **Phase 1: Claude Code only.** We start with one source, stabilize it, and only then add the Claude Developer Platform changelog (phase 2).
 
-Current stage: **design and conception**.
+Current stage: **built, filling in content before launch**.
 
 - [x] Interactive mock-up (`mockup/`)
 - [x] Data model and architecture (`docs/conception.md`)
 - [x] Workspace, schemas, content validator and CI
-- [ ] Ingestion pipeline (daily changelog check)
-- [ ] Static website
-- [ ] First public release
+- [x] Ingestion pipeline and daily workflow (the workflow needs a GitHub App, see `docs/operations.md`)
+- [x] Static website: timeline, feature pages, hands-on examples, search, RSS
+- [ ] Summaries for past releases (drafted in batches, each reviewed by a person)
+- [ ] Hosting and first public release
 
 ## Repository layout
 
@@ -31,11 +32,12 @@ Current stage: **design and conception**.
 schemas/             Zod schemas and shared rules (@cq/schemas)
 pipeline/            Ingestion scripts and content validator (@cq/pipeline)
 content/             The content, as JSON (releases, summaries, features, demos)
-site/                Static website (coming)
+site/                Static website (@cq/site, Astro)
 mockup/              Interactive design mock-up
 docs/
   conception.md      Data model, rules, security and build plan
   architecture.md    How the parts fit together
+  operations.md      Drafting summaries, the daily ingest, hosting
   decisions/         Decision records
 ```
 
@@ -46,7 +48,9 @@ Requires Node 24. pnpm comes through Corepack.
 ```bash
 corepack enable
 pnpm install
-pnpm check      # lint, typecheck, tests and content validation
+pnpm check      # lint, typecheck, tests, content validation, build and built-site checks
+pnpm dev        # the site, locally
+pnpm dev:drafts # the same, also showing draft summaries and examples
 ```
 
 ## View the mock-up
