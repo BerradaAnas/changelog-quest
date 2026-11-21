@@ -24,24 +24,38 @@ import { readCollection } from "./content.ts";
 export interface BatchLimits {
   releases: number;
   items: number;
+  /** ISO date: releases published before it are skipped unless they already have a summary. */
+  cutoff?: string;
+}
+
+/** Releases in scope (see `pendingSummaries`) with no summary, or a stale one. */
+export function needingSummary(
+  releases: readonly Release[],
+  summaries: ReadonlyMap<string, ReleaseSummary>,
+  cutoff?: string,
+): Release[] {
+  return releases.filter((r) => {
+    const summary = summaries.get(r.version);
+    if (summary?.sourceHash === r.sourceHash) return false;
+    return summary !== undefined || cutoff === undefined || r.publishedAt >= cutoff;
+  });
 }
 
 /**
  * The next releases to summarize, newest first: those with no summary, or whose summary was
- * written against an older source text. A batch stops at `limits.releases` releases or once
- * it holds `limits.items` change items, so one review stays readable; it always holds at
- * least one release.
+ * written against an older source text. With `limits.cutoff`, releases published before it
+ * are left out unless they already have a summary (ADR 0013). A batch stops at
+ * `limits.releases` releases or once it holds `limits.items` change items, so one review
+ * stays readable; it always holds at least one release.
  */
 export function pendingSummaries(
   releases: readonly Release[],
   summaries: ReadonlyMap<string, ReleaseSummary>,
   limits: BatchLimits,
 ): Release[] {
-  const pending = releases
-    .filter((r) => summaries.get(r.version)?.sourceHash !== r.sourceHash)
-    .sort(
-      (a, b) => b.publishedAt.localeCompare(a.publishedAt) || compareVersions(b.version, a.version),
-    );
+  const pending = needingSummary(releases, summaries, limits.cutoff).sort(
+    (a, b) => b.publishedAt.localeCompare(a.publishedAt) || compareVersions(b.version, a.version),
+  );
   const batch: Release[] = [];
   let items = 0;
   for (const release of pending) {
@@ -136,14 +150,15 @@ async function pending(root: string): Promise<void> {
   const batch = pendingSummaries(releases, summaries, {
     releases: config.backfillBatchSize,
     items: config.backfillBatchItems,
+    cutoff: config.summaryCutoff,
   });
-  const total = releases.filter((r) => summaries.get(r.version)?.sourceHash !== r.sourceHash);
+  const total = needingSummary(releases, summaries, config.summaryCutoff);
   for (const r of batch) {
     const stale = summaries.has(r.version) ? "  (source changed since its summary)" : "";
     console.log(`${r.version}  ${r.publishedAt.slice(0, 10)}  ${r.items.length} items${stale}`);
   }
   console.log(
-    `${batch.length} in this batch, ${total.length} release(s) without a current summary`,
+    `${batch.length} in this batch, ${total.length} release(s) since ${config.summaryCutoff.slice(0, 10)} without a current summary`,
   );
 }
 

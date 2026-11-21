@@ -4,7 +4,7 @@ Node scripts that write and check `content/`. Run with `tsx`, no build.
 
 - `pnpm validate` (from the root) runs `src/validate.ts` on `content/`. Every new content rule
   goes there with a test in `test/validate.test.ts`; pure per-entity rules go in `@cq/schemas`.
-- `src/config.ts` holds the drafting prompt version, backfill batch limits and bot branch. Changing it is
+- `src/config.ts` holds the drafting prompt version, the summary cut-off (ADR 0013), batch limits and bot branch. Changing it is
   a reviewed change.
 - Item ids come only from `changeItemIds()` in `src/ids.ts` (ADR 0001). Never derive ids
   elsewhere.

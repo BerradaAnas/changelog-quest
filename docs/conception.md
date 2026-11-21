@@ -169,7 +169,7 @@ Feature 1──0..1 Demo
 
 All of these run in `pnpm validate`, a required CI check on every pull request.
 
-Only our own words are published (ADR 0008). A release without an approved summary is shown as a short card: version, date, number of changes, "summary coming", and a link to its section of the original changelog on GitHub. Every summarized release links there too, with a note that all its changes are covered. Releases get summaries newest first, drafted in Claude Code sessions (ADR 0010), in batches of at most 20 releases or about 500 change items per review.
+Only our own words are published (ADR 0008). A release without an approved summary is shown as a short card: version, date, number of changes, "summary coming", and a link to its section of the original changelog on GitHub. Every summarized release links there too, with a note that all its changes are covered. Releases published since the summary cut-off (`config.summaryCutoff`, 2026-10-20) get summaries newest first; older ones keep the card (ADR 0013). Summaries are drafted in Claude Code sessions (ADR 0010), in batches of at most 20 releases or about 500 change items per review.
 
 ### 5.2 Display grouping (applied when the site is built, not stored)
 
@@ -270,19 +270,19 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 
 ## 9. Build plan
 
-| Step | Deliverable                                                                              | Status                                                              |
-| ---- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| 0    | Workspace, CI, validator, docs and Claude skills                                         | Done                                                                |
-| 1    | Zod schemas for every entity in section 4                                                | Done                                                                |
-| 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                   | Done                                                                |
-| 3    | npm date lookup and backfill of release records for all past versions                    | Done                                                                |
-| 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links      | Done                                                                |
-| 5    | Summary drafting in Claude Code sessions (ADR 0010); backfill newest first, in batches   | Tooling done; backfill ongoing                                      |
-| 6    | Daily GitHub Action updating the ingest PR                                               | Written; needs the GitHub App (`docs/operations.md`)                |
-| 7    | Feature catalog seed and first demos                                                     | 5 features, 3 draft demos                                           |
-| 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks | Done                                                                |
-| 9    | Hosting, security headers, custom domain                                                 | Cloudflare Pages chosen (ADR 0011), headers ready; not deployed yet |
-| 10   | Public launch of phase 1                                                                 |                                                                     |
+| Step | Deliverable                                                                                | Status                                                              |
+| ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| 0    | Workspace, CI, validator, docs and Claude skills                                           | Done                                                                |
+| 1    | Zod schemas for every entity in section 4                                                  | Done                                                                |
+| 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                     | Done                                                                |
+| 3    | npm date lookup and backfill of release records for all past versions                      | Done                                                                |
+| 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links        | Done                                                                |
+| 5    | Summary drafting in Claude Code sessions (ADR 0010); releases since the cut-off (ADR 0013) | Tooling done; 2 of 17 drafted                                       |
+| 6    | Daily GitHub Action updating the ingest PR                                                 | Written; needs the GitHub App (`docs/operations.md`)                |
+| 7    | Feature catalog (15 to 25 features) and demos, first priority before launch (ADR 0013)     | 5 features, 3 draft demos                                           |
+| 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks   | Done                                                                |
+| 9    | Hosting, security headers, custom domain                                                   | Cloudflare Pages chosen (ADR 0011), headers ready; not deployed yet |
+| 10   | Public launch of phase 1                                                                   |                                                                     |
 
 The site moved before summaries so the data model is exercised end to end early.
 

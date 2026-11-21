@@ -11,6 +11,12 @@ export const config = {
    */
   backfillBatchSize: 20,
   backfillBatchItems: 500,
+  /**
+   * Only releases published on or after this date get summaries (ADR 0013). Older ones keep
+   * the "summary coming" card; an older summary that already exists is still redrafted when
+   * its source changes.
+   */
+  summaryCutoff: "2026-10-20T00:00:00.000Z",
   /** The single branch the daily run updates; see docs/decisions/0006-pipeline-pull-requests.md. */
   ingestBranch: "bot/ingest",
 } as const;

@@ -1,6 +1,11 @@
 import type { Release, ReleaseSummary } from "@cq/schemas";
 import { describe, expect, it } from "vitest";
-import { buildSummary, pendingSummaries, type SummaryDraft } from "../src/summaries.ts";
+import {
+  type BatchLimits,
+  buildSummary,
+  pendingSummaries,
+  type SummaryDraft,
+} from "../src/summaries.ts";
 
 const release = (version: string, day: string, items = 2, hash = "a"): Release => ({
   version,
@@ -33,7 +38,7 @@ const draft = (): SummaryDraft => ({
 describe("pendingSummaries", () => {
   const releases = [release("1.0.1", "01"), release("1.0.3", "03", 4), release("1.0.2", "02", 3)];
   const none = new Map<string, ReleaseSummary>();
-  const versions = (limits: { releases: number; items: number }, summaries = none) =>
+  const versions = (limits: BatchLimits, summaries = none) =>
     pendingSummaries(releases, summaries, limits).map((r) => r.version);
 
   it("lists releases newest first up to the release limit", () => {
@@ -53,6 +58,23 @@ describe("pendingSummaries", () => {
     ]);
     const stale = { ...current, sourceHash: "c".repeat(64) };
     expect(versions({ releases: 20, items: 100 }, new Map([["1.0.2", stale]]))).toContain("1.0.2");
+  });
+
+  it("leaves out releases before the cut-off unless their summary went stale", () => {
+    const cutoff = "2026-01-02T00:00:00.000Z";
+    expect(versions({ releases: 20, items: 100, cutoff })).toEqual(["1.0.3", "1.0.2"]);
+    const oldDraft: SummaryDraft = {
+      ...draft(),
+      version: "1.0.1",
+      lines: [{ kind: "fixed", text: "Fixes a sample bug.", covers: ["11111111", "22222222"] }],
+    };
+    const old = buildSummary(release("1.0.1", "01"), oldDraft, meta);
+    const stale = new Map([["1.0.1", { ...old, sourceHash: "c".repeat(64) }]]);
+    expect(versions({ releases: 20, items: 100, cutoff }, stale)).toEqual([
+      "1.0.3",
+      "1.0.2",
+      "1.0.1",
+    ]);
   });
 });
 
