@@ -1,7 +1,15 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "includes": ["**", "!mockup", "!content", "!**/node_modules", "!**/dist", "!**/.astro"]
+    "includes": [
+      "**",
+      "!mockup",
+      "!content",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/.astro",
+      "!pnpm-lock.yaml"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
