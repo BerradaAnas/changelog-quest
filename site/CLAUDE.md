@@ -9,6 +9,9 @@ also builds the Pagefind search index; `pnpm check:dist` then checks the built p
 - Display logic lives in pure, tested modules in `src/lib/` (`timeline.ts`: weekly grouping,
   summary visibility; `features.ts`: feature history; `rss.ts`; `progress.ts`). Keep `.astro`
   files to markup; test new logic in `test/`.
+- Features are grouped like the official docs' sections (`src/lib/sections.ts`, tested so every
+  feature sits in exactly one section); feature pages show that sidebar, an "On this page" list
+  and previous/next links.
 - Pages: `/` (features and timeline), `/features/`, `/features/<id>/`, `/releases/<version>/`,
   `/search/`, `/rss.xml`. Only feature pages and summarized release pages carry
   `data-pagefind-body`, so only they are searchable.

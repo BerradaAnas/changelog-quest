@@ -7,12 +7,6 @@ import { newestFirst, visibleSummary } from "./timeline.ts";
  * events plus the summary lines whose items are classified with the feature (ADR 0002).
  */
 
-export const AREAS: { area: Feature["area"]; label: string; blurb: string }[] = [
-  { area: "core", label: "Built in", blurb: "Part of Claude Code from the first prompt." },
-  { area: "extend", label: "Extend it", blurb: "Ways to add your own rules, tools and helpers." },
-  { area: "anywhere", label: "Use it anywhere", blurb: "Editors, the web, CI and other surfaces." },
-];
-
 export const EVENT_LABELS: Record<FeatureEvent["type"], string> = {
   introduced: "Introduced",
   updated: "Updated",
@@ -88,14 +82,4 @@ export function featureView(feature: Feature, ctx: FeatureContext): FeatureView 
     history: [...entries.values()].sort(newestFirst),
     ...(showDemo ? { demo } : {}),
   };
-}
-
-/** Features grouped by area in display order, each group sorted by name; empty areas dropped. */
-export function featuresByArea<T extends { feature: Feature }>(views: readonly T[]) {
-  return AREAS.map((a) => ({
-    ...a,
-    features: views
-      .filter((v) => v.feature.area === a.area)
-      .sort((x, y) => x.feature.name.localeCompare(y.feature.name)),
-  })).filter((g) => g.features.length > 0);
 }

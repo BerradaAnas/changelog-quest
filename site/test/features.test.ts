@@ -1,6 +1,6 @@
 import type { Demo, Feature, Release, ReleaseSummary } from "@cq/schemas";
 import { describe, expect, it } from "vitest";
-import { featuresByArea, featureView } from "../src/lib/features.ts";
+import { featureView } from "../src/lib/features.ts";
 
 const release = (version: string, day: string): Release => ({
   version,
@@ -107,18 +107,5 @@ describe("featureView", () => {
     expect(featureView(feature(), ctx({ demos: draft, includeDrafts: true })).demo).toBeDefined();
     const approved = new Map([["hooks", demo("approved")]]);
     expect(featureView(feature(), ctx({ demos: approved })).demo?.title).toBe("Sample demo");
-  });
-});
-
-describe("featuresByArea", () => {
-  it("groups in display order, sorts by name and drops empty areas", () => {
-    const views = [
-      { feature: feature({ id: "skills", name: "Skills" }) },
-      { feature: feature() },
-      { feature: feature({ id: "rewind", name: "Rewind", area: "core" }) },
-    ];
-    const groups = featuresByArea(views);
-    expect(groups.map((g) => g.area)).toEqual(["core", "extend"]);
-    expect(groups[1]?.features.map((v) => v.feature.name)).toEqual(["Hooks", "Skills"]);
   });
 });

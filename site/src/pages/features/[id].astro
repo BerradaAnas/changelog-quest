@@ -1,9 +1,18 @@
 ---
 import Demo from "../../components/Demo.astro";
+import DocNav from "../../components/DocNav.astro";
 import Base from "../../layouts/Base.astro";
-import { demos, features, includeDrafts, releaseByVersion, summaries } from "../../lib/content";
-import { AREAS, EVENT_LABELS, featureView } from "../../lib/features";
+import {
+  demos,
+  featureById,
+  features,
+  includeDrafts,
+  releaseByVersion,
+  summaries,
+} from "../../lib/content";
+import { EVENT_LABELS, featureView } from "../../lib/features";
 import { releaseDate } from "../../lib/format";
+import { placeOf } from "../../lib/sections";
 
 export function getStaticPaths() {
   return features.map((feature) => ({ params: { id: feature.id }, props: { feature } }));
@@ -16,16 +25,36 @@ const view = featureView(Astro.props.feature, {
   includeDrafts,
 });
 const { feature, history, demo } = view;
-const area = AREAS.find((a) => a.area === feature.area);
+const place = placeOf(feature.id, new Set(featureById.keys()));
+const prev = place.prev ? featureById.get(place.prev) : undefined;
+const next = place.next ? featureById.get(place.next) : undefined;
+const toc = [
+  { id: "what", label: "What it is" },
+  ...(feature.impact.length > 0 ? [{ id: "why", label: "Why it matters" }] : []),
+  ...(feature.howItWorks.length > 0 ? [{ id: "how", label: "How it works" }] : []),
+  { id: "try", label: demo ? "Try it yourself" : "Hands-on example" },
+  { id: "history", label: "Update history" },
+  { id: "docs", label: "Official documentation" },
+];
 const docLabel = (url: string) =>
   new URL(url).pathname.replace(/^\/docs\/en\//, "").replace(/\/$/, "");
 ---
 
-<Base title={`${feature.name} in Claude Code | Changelog Quest`} description={feature.summary}>
+<Base title={`${feature.name} in Claude Code | Changelog Quest`} description={feature.summary} wide>
+  <div class="doc-layout">
+  <nav class="doc-nav" aria-label="All features">
+    <details class="doc-nav-mobile">
+      <summary>Browse all features</summary>
+      <DocNav current={feature.id} />
+    </details>
+    <div class="doc-nav-desktop">
+      <DocNav current={feature.id} />
+    </div>
+  </nav>
   <article class="feature" data-area={feature.area} data-pagefind-body>
     <header class="hero">
       <p class="kicker">
-        <a href="/features/">Features</a> · {area?.label} · since version {view.introducedIn}
+        <a href="/features/">Features</a> · {place.section?.label} · since version {view.introducedIn}
         {feature.status !== "active" && <span class="tag">{feature.status}</span>}
       </p>
       <h1>{feature.name}</h1>
@@ -66,6 +95,7 @@ const docLabel = (url: string) =>
       )
     }
 
+    <div id="try" class="anchor" />
     {
       demo ? (
         <Demo demo={demo} />
@@ -128,5 +158,21 @@ const docLabel = (url: string) =>
         }
       </ul>
     </section>
+
+    <nav class="pager" aria-label="Previous and next feature">
+      {prev ? <a href={`/features/${prev.id}/`}>← {prev.name}</a> : <span />}
+      {next ? <a href={`/features/${next.id}/`}>{next.name} →</a> : <span />}
+    </nav>
   </article>
+  <nav class="doc-toc" aria-label="On this page">
+    <p class="doc-toc-title">On this page</p>
+    <ul>
+      {toc.map((t) => (
+        <li>
+          <a href={`#${t.id}`}>{t.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+  </div>
 </Base>
