@@ -1,0 +1,41 @@
+{
+  "version": "2.1.306",
+  "sourceHash": "174fd0b7ee0cfff42baffeaf60f34367651e4cf5419fa6846fcda014d2cf2874",
+  "title": "Two fixes: claude -p in cloud sessions, many MCP tools",
+  "headline": "claude -p works inside cloud sessions without their environment variables, and sessions with many MCP tools keep their real API errors.",
+  "lines": [
+    {
+      "kind": "fixed",
+      "text": "Inside a cloud session, claude -p started without the session's environment variables no longer claims you are not logged in.",
+      "covers": [
+        "2.1.306#e9bd4e1a"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "In sessions with many MCP tools, an API error is no longer replaced by \"prompt is too long\" followed by a compaction that wasn't needed.",
+      "covers": [
+        "2.1.306#1b2cac7f"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.306#e9bd4e1a": {
+      "kind": "fixed",
+      "featureIds": [
+        "headless",
+        "web"
+      ]
+    },
+    "2.1.306#1b2cac7f": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp"
+      ]
+    }
+  },
+  "status": "draft",
+  "model": "claude-opus-5-5",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-22T19:56:20.216Z"
+}

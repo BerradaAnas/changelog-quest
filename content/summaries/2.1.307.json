@@ -1,0 +1,485 @@
+{
+  "version": "2.1.307",
+  "sourceHash": "6fe9ce10ce8ec16587506a8ba9e9542e19f8cb348ad3363703fc0e84a0fcfb15",
+  "title": "Safety events in OpenTelemetry, many MCP and cloud session fixes",
+  "headline": "A new OpenTelemetry event records every stopped or prompted tool call, /claude-api can move code to the 2026-10-21 API version, and MCP, VS Code and runner bugs are fixed.",
+  "lines": [
+    {
+      "kind": "added",
+      "text": "/claude-api api-version updates Claude API code to API version 2026-10-21.",
+      "covers": [
+        "2.1.307#a996ba99"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "OpenTelemetry gets a claude_code.safety_event for every tool call that a permission rule, auto mode, a safety check, a hook or the sandbox stopped, asked about or sent back.",
+      "covers": [
+        "2.1.307#df9bf2bf"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "With CLAUDE_CODE_DISABLE_1M_CONTEXT set, model aliases ending in [1m] such as opus[1m] no longer fail with a model-not-found error.",
+      "covers": [
+        "2.1.307#8c583f16"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "The prompt-caching-scope beta header is no longer sent to custom ANTHROPIC_BASE_URL gateways or Foundry, where it does nothing.",
+      "covers": [
+        "2.1.307#a53815fd"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "MCP connections: in claude -p on macOS with a locked login keychain, servers now explain why they need authentication and reconnect on the next run after unlocking without a new sign-in; servers connecting while the computer went to sleep are no longer marked timed out and left failed in headless runs.",
+      "covers": [
+        "2.1.307#cf705d31",
+        "2.1.307#4e204e15"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "HTTP MCP tool calls are no longer sent twice when the connection drops mid-call. Only read-only or idempotent tools are retried now.",
+      "covers": [
+        "2.1.307#ab86be5c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "While a background task runs, a turn no longer sometimes starts without an SDK MCP server's latest tools.",
+      "covers": [
+        "2.1.307#c2168af9"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Compaction: fewer \"Autocompact is thrashing\" errors in turns that read many PDF pages, images or other large results, and /autocompact in cloud sessions keeps its window after a restart.",
+      "covers": [
+        "2.1.307#d5de431b",
+        "2.1.307#fc9a13f5"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A conversation cleared with /clear no longer sometimes returns when a cloud or self-hosted runner session restarts.",
+      "covers": [
+        "2.1.307#714773ef"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude apps gateway sessions: CLAUDE_STREAM_FIRST_BYTE_TIMEOUT_MS is respected, and Claude Desktop telemetry is no longer rejected when OTEL_EXPORTER_OTLP_HEADERS is set.",
+      "covers": [
+        "2.1.307#57f5ab55",
+        "2.1.307#0eff47f0"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/permissions > Recently denied now shows the denied shell command, approving a row names the command instead of its description, and auto mode's local classifier respects that approval when the command is retried.",
+      "covers": [
+        "2.1.307#cdc7ddcf"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/help and the / menu show short descriptions for bundled skills such as /claude-api, not the long text meant for the model.",
+      "covers": [
+        "2.1.307#48fa3307"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Subagent transcripts record real token usage and stop reasons for streamed responses instead of placeholders.",
+      "covers": [
+        "2.1.307#840efd8b"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Model switches through the Agent SDK's setModel() are no longer refused when the API takes over 5 seconds to confirm; Claude Code now waits up to 15.",
+      "covers": [
+        "2.1.307#102d1904"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "When a connected app stops a background command, for example the desktop app archiving an idle session, Claude is no longer told you stopped it, and the notice names the command's output file.",
+      "covers": [
+        "2.1.307#2a69351c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "In Cowork cloud sessions, WebFetch treats a 4xx answer or a robots.txt refusal as a normal result, as local sessions do, rather than a tool error.",
+      "covers": [
+        "2.1.307#feafc523"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Desktop app Code tab: write tools on a directly configured GitHub MCP server no longer show a form that closes without creating anything.",
+      "covers": [
+        "2.1.307#4593e1e8"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Artifact tool reads no longer fail with a connection reset when the server had closed a reused connection.",
+      "covers": [
+        "2.1.307#1dce07cf"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Self-hosted runners: --use-anthropic-git-proxy sessions no longer commit a .claude/settings.local.json an earlier session left in the clone, and archiving, requeueing or stopping during a checkout hook no longer leaves its processes running and the slot taken.",
+      "covers": [
+        "2.1.307#4447b3bd",
+        "2.1.307#a683b6e2"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "When a tool call can't be parsed, Claude Code retries it up to twice before ending the turn with an error.",
+      "covers": [
+        "2.1.307#dd3387fc"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Fork subagents started together are each told which launch is theirs, so they rarely try to take over each other's work.",
+      "covers": [
+        "2.1.307#13f4c120"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Browser sign-in shows its success page as soon as sign-in finishes, without waiting for your profile to load.",
+      "covers": [
+        "2.1.307#a2991bdf"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud and self-hosted runner sessions: a web search refused with a 403 that gives a reason now shows that reason, not a generic \"Authentication error\".",
+      "covers": [
+        "2.1.307#16d32085"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Faster first reply in cloud sessions when one of the desktop app's MCP servers can't connect, and faster Remote Control connection for sessions with large pasted images or PDF reads in their transcript.",
+      "covers": [
+        "2.1.307#e98f8332",
+        "2.1.307#b36c352f"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "When the WebSearch budget runs out, Claude is also told not to use search engines through a browser or computer use.",
+      "covers": [
+        "2.1.307#e8a64cec"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "The axScreenReader setting and CLAUDE_AX_SCREEN_READER in a settings env block now only count from user, managed or --settings settings (since 2.1.305).",
+      "covers": [
+        "2.1.307#be2c29d0"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Self-hosted runners: checkout hooks are stopped after 30 minutes by default, failing setup (raise --checkout-hook-timeout-min or set it to 0 if you need longer), and the certificate file for Anthropic-managed git filters trusted certificates like the CLI, with a [runner:warn] line counting those left out.",
+      "covers": [
+        "2.1.307#5d964ec0",
+        "2.1.307#cd8194f4"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "VS Code: when voice dictation stops on its own, after 15 seconds without recognized speech or at the 2-minute limit, the microphone button says why and keeps the text so far.",
+      "covers": [
+        "2.1.307#97f12934"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: an expanded long prompt is capped at 40% of the panel and scrolls instead of covering the chat, and copying part of a list item or table cell with LaTeX math no longer pastes as a new list or table.",
+      "covers": [
+        "2.1.307#52b5f123",
+        "2.1.307#029113a4"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: dictation works behind a TLS-inspecting proxy when NODE_EXTRA_CA_CERTS is set only in ~/.claude/settings.json, and it also follows CLAUDE_CODE_CERT_STORE.",
+      "covers": [
+        "2.1.307#eb01b02e"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "VS Code: voice dictation and the extension's own requests filter trusted certificates like the CLI, and the extension trusts the NODE_EXTRA_CA_CERTS file named in the environment or user settings.",
+      "covers": [
+        "2.1.307#579faff9",
+        "2.1.307#49eee8ef"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "VS Code: the \"still open somewhere else\" notice also covers a Claude process left over from an extension restart, which usually exits by itself within about 10 minutes.",
+      "covers": [
+        "2.1.307#a8d080fb"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Cloud sessions: the repository picker shows \"Searching…\" until results arrive instead of \"No repositories match\", and the \"Waiting for a runner\" status on self-hosted environments is no longer cut off; with on-demand runners it counts up from your last message and shows failed attempts.",
+      "covers": [
+        "2.1.307#ede35520",
+        "2.1.307#86ff0929"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Code Review: @claude review stop (or off, or pause) ends an @claude review always subscription on a pull request without starting a review.",
+      "covers": [
+        "2.1.307#b2c0bd6e"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.307#a996ba99": {
+      "kind": "added",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.307#df9bf2bf": {
+      "kind": "added",
+      "featureIds": [
+        "permissions",
+        "auto-mode",
+        "hooks",
+        "sandboxing"
+      ]
+    },
+    "2.1.307#8c583f16": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#a53815fd": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#cf705d31": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp",
+        "headless"
+      ]
+    },
+    "2.1.307#4e204e15": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp",
+        "headless"
+      ]
+    },
+    "2.1.307#ab86be5c": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.307#c2168af9": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.307#d5de431b": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#fc9a13f5": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#714773ef": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#57f5ab55": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#0eff47f0": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#cdc7ddcf": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions",
+        "auto-mode"
+      ]
+    },
+    "2.1.307#48fa3307": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.307#840efd8b": {
+      "kind": "fixed",
+      "featureIds": [
+        "sub-agents"
+      ]
+    },
+    "2.1.307#102d1904": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#2a69351c": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#feafc523": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#4593e1e8": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.307#1dce07cf": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#4447b3bd": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#a683b6e2": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.307#dd3387fc": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.307#13f4c120": {
+      "kind": "changed",
+      "featureIds": [
+        "sub-agents"
+      ]
+    },
+    "2.1.307#a2991bdf": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.307#16d32085": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.307#e98f8332": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.307#b36c352f": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.307#e8a64cec": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.307#be2c29d0": {
+      "kind": "changed",
+      "featureIds": [
+        "settings"
+      ]
+    },
+    "2.1.307#5d964ec0": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.307#cd8194f4": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.307#97f12934": {
+      "kind": "added",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.307#52b5f123": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.307#029113a4": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.307#eb01b02e": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.307#579faff9": {
+      "kind": "changed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.307#49eee8ef": {
+      "kind": "changed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.307#a8d080fb": {
+      "kind": "changed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.307#ede35520": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.307#86ff0929": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.307#b2c0bd6e": {
+      "kind": "added",
+      "featureIds": []
+    }
+  },
+  "status": "draft",
+  "model": "claude-opus-5-5",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-22T19:57:08.879Z"
+}

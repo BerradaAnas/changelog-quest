@@ -1,0 +1,438 @@
+{
+  "version": "2.1.305",
+  "sourceHash": "0610785929e2d7581c52056e5e14dda93db33df8661164ea86081fc9f2008981",
+  "title": "User namespaces in the Linux sandbox, tool search retry fix",
+  "headline": "A new setting lets sandboxed Linux commands create user namespaces, requests no longer all fail when a provider rejects tool search, and many smaller fixes land.",
+  "lines": [
+    {
+      "kind": "added",
+      "text": "Linux sandbox: the new sandbox.allowNestedUserNamespaces setting lets sandboxed commands create user namespaces, which Chromium and rootless podman need. With it on, those commands can also get around the sandbox's file protections.",
+      "covers": [
+        "2.1.305#707e4e85"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Unattended retry mode (CLAUDE_CODE_RETRY_WATCHDOG) can now spot a usage limit that was lifted early, using the new CLAUDE_CODE_RETRY_WATCHDOG_USAGE_LIMIT_RECHECK_MS variable.",
+      "covers": [
+        "2.1.305#efa69c40"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "allowedMcpServers stops filtering stdio servers in managed-mcp.json that use ${VAR} only in env, so such a server your allowlist left out now loads after the upgrade. Use deniedMcpServers to keep it off.",
+      "covers": [
+        "2.1.305#1762050f"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "When managed settings set allowManagedPermissionRulesOnly, plugins mounted by path from Claude Desktop lose their allowed-tools.",
+      "covers": [
+        "2.1.305#22ec1f60"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "The /artifacts delete prompt now takes 1 or Enter to keep, 2 to delete and Esc to cancel. y and n no longer answer it.",
+      "covers": [
+        "2.1.305#f9e4a0cb"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "A mod's docked pane is capped at 45% of the terminal width, including a width carried over from a wider terminal.",
+      "covers": [
+        "2.1.305#1993caf0"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "/usage turns each warning into a one-line fix that names where it comes from, and f applies the fixes. VS Code and /doctor offer the same fixes.",
+      "covers": [
+        "2.1.305#931b5150"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "MCP consent dialogs are less likely to read an Enter you meant for the prompt as Accept.",
+      "covers": [
+        "2.1.305#bd96f16e"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "A mod's Image now draws its picture in iTerm2 3.5 or later with fullscreen rendering, where only the alt text appeared before.",
+      "covers": [
+        "2.1.305#d9d94f2e"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Remote Control: pressing w confirms that the spawn mode is saved for the folder, and a later claude remote-control start that uses it says where the mode came from.",
+      "covers": [
+        "2.1.305#2662213f"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "On Vertex, Bedrock and other providers, requests no longer all fail when the endpoint or a gateway rejects tool search, or when ToolSearch is disallowed or missing from --tools. Claude Code now retries without it. This broke in 2.1.304.",
+      "covers": [
+        "2.1.305#95551c1f"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/effort and /autocompact settings now apply when the model name differs from a modelOverrides entry only by letter case or a [1m] tag.",
+      "covers": [
+        "2.1.305#03b90d8a"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Worktrees: new ones in a bare repository start from the default branch instead of sometimes from local HEAD, and unchanged subagent worktrees get cleaned up.",
+      "covers": [
+        "2.1.305#c8a467a2"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "On a full disk, a failed Bash command now says the disk is full and that nothing ran, instead of showing a raw ENOSPC path.",
+      "covers": [
+        "2.1.305#457da1a7"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "An MCP server supplied by a cloud session or by the SDK's setMcpServers is no longer replaced mid-session by a server with the same name from your own settings.",
+      "covers": [
+        "2.1.305#9dfb870c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "When a subagent switches to a fallback model, Claude now names the model that actually did the work.",
+      "covers": [
+        "2.1.305#35d0f121"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Cloud sessions and teammates now let Claude know when a compaction had to drop the oldest messages from its summary to fit.",
+      "covers": [
+        "2.1.305#dc61fa2f"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "More cases fixed where scheduled Cowork cloud sessions waited five minutes per subagent for a WebFetch URL approval that no one was present to give.",
+      "covers": [
+        "2.1.305#ec267c82"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Resuming a Workflow takes finished pipeline() and parallel() agents from the run's journal instead of running them again.",
+      "covers": [
+        "2.1.305#8ae61123"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Remote Control no longer leaves blank \"(session)\" entries in /resume after you switch conversations with /resume.",
+      "covers": [
+        "2.1.305#7a2fc51b"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/usage rows are no longer truncated in narrow terminals.",
+      "covers": [
+        "2.1.305#625dac49"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Startup warnings no longer appear as raw text above the logo. They go to the debug log, and permission rules that restrict nothing show as warning rows below the banner.",
+      "covers": [
+        "2.1.305#71d75a5c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Screen reader mode: search boxes are read as \"Search:\" instead of a symbol name, and highlighted prompt text such as Ctrl+R matches or \"ultrathink\" no longer has spaces inside words.",
+      "covers": [
+        "2.1.305#da4b0768"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Self-hosted runners: a start script that shares only stdout no longer fails with \"Resource temporarily unavailable\" when TERM is set (broken since 2.1.300), repository access works again when a git credential helper or askpass reads its settings through GIT_CONFIG (broken since 2.1.296), and a spawn-runner hook is no longer reported as timed out when a background runner keeps its output open.",
+      "covers": [
+        "2.1.305#320848b2",
+        "2.1.305#0362c0c9",
+        "2.1.305#befb8d3a"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "VS Code: a \"Running start-up hooks\" spinner status, also announced to screen readers, appears while SessionStart or Setup hooks run.",
+      "covers": [
+        "2.1.305#f0e6ad4e"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: \"Compacting...\" is no longer cut short when your spinnerVerbs setting swaps in short verbs.",
+      "covers": [
+        "2.1.305#d33fe6ba"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "VS Code: when a session fails to start in time and no hook is running, the message now starts with the output logs and lists possible causes rather than pointing at sign-in and network.",
+      "covers": [
+        "2.1.305#0d9079c7"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Cloud sessions: the Cloud environments admin page no longer refuses to save an existing environment with a wrong \"installs packages\" error.",
+      "covers": [
+        "2.1.305#5e16314d"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud sessions: deleting a self-hosted environment now explains what stops the delete and what it would affect.",
+      "covers": [
+        "2.1.305#92aec8d8"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Claude Tag: the admin Add place search now lists public Slack channels Claude hasn't joined, so admins can set them up from there.",
+      "covers": [
+        "2.1.305#334aa379"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude Tag: a repository that moved to another GitHub account can be added to access bundles again, a routine in a Slack DM thread keeps posting after another routine there restarts the conversation, and thread routines that would claim success without posting after a conversation ended are skipped, with their creator told.",
+      "covers": [
+        "2.1.305#dd4c02e5",
+        "2.1.305#586023e8",
+        "2.1.305#5b1c3848"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Claude Tag: in large organizations, admin pages let you edit plugins, skills and bundles before the channel list finishes loading.",
+      "covers": [
+        "2.1.305#28f9f0a5"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Code Review: when several pushes land on a pull request during a review, the newest commit is no longer sometimes skipped.",
+      "covers": [
+        "2.1.305#2620aadf"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Code Review: a re-review no longer starts with LGTM while blocking findings from before are still open.",
+      "covers": [
+        "2.1.305#3f9b7f29"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.305#707e4e85": {
+      "kind": "added",
+      "featureIds": [
+        "sandboxing"
+      ]
+    },
+    "2.1.305#efa69c40": {
+      "kind": "added",
+      "featureIds": []
+    },
+    "2.1.305#1762050f": {
+      "kind": "changed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.305#22ec1f60": {
+      "kind": "changed",
+      "featureIds": [
+        "plugins",
+        "permissions"
+      ]
+    },
+    "2.1.305#f9e4a0cb": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.305#1993caf0": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.305#931b5150": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.305#bd96f16e": {
+      "kind": "changed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.305#d9d94f2e": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.305#2662213f": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.305#95551c1f": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#03b90d8a": {
+      "kind": "fixed",
+      "featureIds": [
+        "settings"
+      ]
+    },
+    "2.1.305#c8a467a2": {
+      "kind": "fixed",
+      "featureIds": [
+        "sub-agents"
+      ]
+    },
+    "2.1.305#457da1a7": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#9dfb870c": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.305#35d0f121": {
+      "kind": "fixed",
+      "featureIds": [
+        "sub-agents"
+      ]
+    },
+    "2.1.305#dc61fa2f": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#ec267c82": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#8ae61123": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#7a2fc51b": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#625dac49": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#71d75a5c": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.305#da4b0768": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#320848b2": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#0362c0c9": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#befb8d3a": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#f0e6ad4e": {
+      "kind": "added",
+      "featureIds": [
+        "ide",
+        "hooks"
+      ]
+    },
+    "2.1.305#d33fe6ba": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.305#0d9079c7": {
+      "kind": "changed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.305#5e16314d": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.305#92aec8d8": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.305#334aa379": {
+      "kind": "added",
+      "featureIds": []
+    },
+    "2.1.305#dd4c02e5": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#586023e8": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#5b1c3848": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#28f9f0a5": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.305#2620aadf": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.305#3f9b7f29": {
+      "kind": "changed",
+      "featureIds": []
+    }
+  },
+  "status": "draft",
+  "model": "claude-opus-5-5",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-22T19:56:19.736Z"
+}
