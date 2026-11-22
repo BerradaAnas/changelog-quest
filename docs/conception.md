@@ -169,7 +169,7 @@ Feature 1──0..1 Demo
 
 All of these run in `pnpm validate`, a required CI check on every pull request.
 
-Only our own words are published (ADR 0008). A release without an approved summary is shown as a short card: version, date, number of changes, "summary coming", and a link to its section of the original changelog on GitHub. Every summarized release links there too, with a note that all its changes are covered. Releases published since the summary cut-off (`config.summaryCutoff`, 2026-10-20) get summaries newest first; older ones keep the card (ADR 0013). Summaries are drafted in Claude Code sessions (ADR 0010), in batches of at most 20 releases or about 500 change items per review.
+Only our own words are published (ADR 0008). A release without an approved summary is shown as a short card: version, date, number of changes, "summary coming", and a link to its section of the original changelog on GitHub. Every summarized release links there too, with a note that all its changes are covered. Releases published since the summary cut-off (`SUMMARY_CUTOFF` in `@cq/schemas`, 2026-10-20) get summaries newest first; older ones are left off the home timeline, which links to the official changelog for them (ADRs 0013, 0015). Summaries are drafted in Claude Code sessions (ADR 0010), in batches of at most 20 releases or about 500 change items per review.
 
 ### 5.2 Display grouping (applied when the site is built, not stored)
 

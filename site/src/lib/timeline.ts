@@ -118,8 +118,10 @@ export function buildTimeline(
   releases: readonly Release[],
   summaries: ReadonlyMap<string, ReleaseSummary>,
   includeDrafts = false,
+  since?: string,
 ): MonthGroup[] {
   const entries = releases
+    .filter((r) => !since || r.publishedAt >= since)
     .map((r) => versionEntry(r, summaries.get(r.version), includeDrafts))
     .sort(newestFirst);
 
