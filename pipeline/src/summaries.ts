@@ -86,6 +86,14 @@ export const SummaryDraft = z.strictObject({
       }),
     )
     .min(1),
+  /** Small fixes and changes counted instead of summarized, by kind (ADR 0016). */
+  minor: z
+    .strictObject({
+      changed: z.array(z.string().min(1)).optional(),
+      fixed: z.array(z.string().min(1)).optional(),
+      other: z.array(z.string().min(1)).optional(),
+    })
+    .optional(),
 });
 export type SummaryDraft = z.infer<typeof SummaryDraft>;
 
@@ -117,6 +125,13 @@ export function buildSummary(release: Release, draft: SummaryDraft, meta: DraftM
       classifications[id] = c;
     }
   });
+  for (const [kind, ids] of Object.entries(draft.minor ?? {}) as [ChangeKind, string[]][]) {
+    for (const id of ids.map(fullId)) {
+      if (classifications[id])
+        throw new Error(`draft rejected:\n  item ${id} is minor but also covered by a line`);
+      classifications[id] = { kind, featureIds: [], minor: true };
+    }
+  }
   const summary = ReleaseSummary.parse({
     version: release.version,
     sourceHash: release.sourceHash,

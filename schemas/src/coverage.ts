@@ -10,7 +10,8 @@ export interface Issue {
 }
 
 /**
- * The "nothing lost" rules (conception.md 5.1) for one release and its summary.
+ * The "nothing lost" rules (conception.md 5.1) for one release and its summary. Every item
+ * is classified, and covered by a line unless it is marked minor (ADR 0016).
  * Errors block approval; warnings are for the reviewer. A summary written against an older
  * release text is reported once, as a warning, and not checked further.
  */
@@ -46,8 +47,17 @@ export function checkSummary(release: Release, summary: ReleaseSummary): Issue[]
     }
   });
   for (const id of itemIds) {
-    if (!covered.has(id)) error(`item ${id} is not covered by any line`);
-    if (!(id in summary.classifications)) error(`item ${id} has no classification`);
+    const c = summary.classifications[id];
+    if (!c) error(`item ${id} has no classification`);
+    if (c?.minor) {
+      // Counted, not summarized (ADR 0016).
+      if (c.kind === "added" || c.kind === "removed") {
+        error(`item ${id} is ${c.kind} and can't be minor; give it a line`);
+      }
+      if (covered.has(id)) error(`item ${id} is minor but also covered by a line`);
+    } else if (!covered.has(id)) {
+      error(`item ${id} is not covered by any line`);
+    }
   }
   for (const id of Object.keys(summary.classifications)) {
     if (!itemIds.has(id)) error(`classification for unknown item ${id}`);

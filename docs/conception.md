@@ -63,8 +63,9 @@ ReleaseSummary {
   title: string              // e.g. "Plugins (public beta)"
   headline: string           // one plain-language sentence
   lines: SummaryLine[]
-  classifications: Record<ChangeItemId, { kind: ChangeKind, featureIds: string[] }>
-                             // AI-suggested, reviewer-edited; the only item -> feature link
+  classifications: Record<ChangeItemId, { kind: ChangeKind, featureIds: string[], minor?: true }>
+                             // AI-suggested, reviewer-edited; the only item -> feature link.
+                             // minor: counted, not given a line (ADR 0016)
   status: "draft" | "approved"   // approved + merged = published
   model: string              // model of the drafting session (ADR 0010)
   promptVersion: string      // version of the drafting instructions
@@ -161,7 +162,7 @@ Feature 1──0..1 Demo
 
 ### 5.1 "Nothing lost" (checked automatically, blocks approval)
 
-1. Every `ChangeItem` of a release is covered by at least one `SummaryLine` and has a classification.
+1. Every `ChangeItem` of a release has a classification and is covered by at least one `SummaryLine`, unless it is a small fix or change marked `minor`, which the site counts instead (ADR 0016). Added and removed items are never minor.
 2. Every `SummaryLine` covers at least one real `ChangeItem` of that release. The AI can't invent changes.
 3. Nothing is published unless its status is `approved`.
 4. If a past release's `sourceHash` changes, its summary is stale: it is hidden from the site, reported as a validation warning, and listed by `pnpm summaries pending` for a redraft (ADR 0012).

@@ -17,6 +17,18 @@ const changes = plural(entry.itemCount, "change");
 // release page. A digest adds one level for each version's own title.
 const Title = "h4";
 const Kind = showHead ? "h5" : permalink ? "h4" : "h2";
+const MINOR_NOUN: Record<string, [string, string]> = {
+  fixed: ["small fix", "small fixes"],
+  changed: ["small change", "small changes"],
+  other: ["other small item", "other small items"],
+};
+const minorText = (summary?.minor ?? [])
+  .map(({ kind, count }) => {
+    const [one, many] = MINOR_NOUN[kind] ?? ["small item", "small items"];
+    return `${count} ${count === 1 ? one : many}`;
+  })
+  .join(", ");
+const minorCount = (summary?.minor ?? []).reduce((n, m) => n + m.count, 0);
 const linked = (summary?.featureIds ?? []).flatMap((id) => {
   const feature = featureById.get(id);
   return feature ? [feature] : [];
@@ -56,6 +68,13 @@ const linked = (summary?.featureIds ?? []).flatMap((id) => {
     ))
   }
   {
+    minorText && (
+      <p class="minor-note">
+        Plus {minorText}, listed in the original changelog.
+      </p>
+    )
+  }
+  {
     linked.length > 0 && (
       <p class="pills">
         <span>Features in this release:</span>
@@ -68,7 +87,14 @@ const linked = (summary?.featureIds ?? []).flatMap((id) => {
     )
   }
   <footer>
-    {summary && <span class="covered">All {changes} from the original changelog are covered</span>}
+    {
+      summary && (
+        <span class="covered">
+          All {changes} from the original changelog are covered
+          {minorCount > 0 && `, ${minorCount} of them counted as small`}
+        </span>
+      )
+    }
     <span class="links">
       {permalink && <a href={`/releases/${entry.version}/`}>Release page</a>}
       <a href={entry.sourceUrl} rel="noopener">Read the original on GitHub ↗</a>

@@ -54,6 +54,14 @@ describe("summaryView", () => {
     expect(view?.featureIds).toEqual(["hooks"]);
   });
 
+  it("counts minor items by kind (ADR 0016)", () => {
+    const r = release("1.0.0", "2026-01-01T00:00:00Z", 3);
+    const s = summary("1.0.0");
+    s.classifications["1.0.0#00000002"] = { kind: "fixed", featureIds: [], minor: true };
+    expect(summaryView(r, s)?.minor).toEqual([{ kind: "fixed", count: 1 }]);
+    expect(summaryView(r, summary("1.0.0"))?.minor).toEqual([]);
+  });
+
   it("hides drafts and summaries of changed source text", () => {
     const r = release("1.0.0", "2026-01-01T00:00:00Z");
     expect(summaryView(r, summary("1.0.0", "draft"))).toBeUndefined();

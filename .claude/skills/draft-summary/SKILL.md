@@ -24,11 +24,18 @@ Summaries are drafted here, in a session, and land as `draft` for a person to re
      "headline": "One plain sentence, 200 characters at most.",
      "lines": [
        { "kind": "added", "text": "...", "covers": ["0a1b2c3d"], "featureIds": ["hooks"] }
-     ]
+     ],
+     "minor": { "fixed": ["1b2c3d4e"], "changed": [], "other": [] }
    }
    ```
 
-   - Every item id must appear in some line's `covers` (the part after `#` is enough).
+   - Every item id must appear in some line's `covers` or in `minor` (the part after `#` is
+     enough), never both.
+   - Write a line for every change a user would notice: new or removed commands, settings,
+     flags and variables; behavior and default changes; permission, sandbox and security
+     changes; fixes for data loss, crashes, hangs or wrong results. Put cosmetic, layout,
+     wording and narrow platform or terminal fixes in `minor`, by kind (ADR 0016). Added and
+     removed items always get a line. When unsure, write the line.
    - `kind` is `added`, `changed`, `fixed`, `removed` or `other`, and must match what the
      covered items describe. An item takes the kind of the first line that covers it.
    - One line per change that matters to a user. Group only items about the same thing, five

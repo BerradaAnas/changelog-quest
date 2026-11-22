@@ -14,6 +14,11 @@ export const Classification = z.strictObject({
   kind: ChangeKind,
   /** The single source of truth for item -> feature links. */
   featureIds: z.array(Slug),
+  /**
+   * A small fix or change a user is unlikely to notice: it needs no summary line and is
+   * counted instead (ADR 0016). Never true for "added" or "removed" items.
+   */
+  minor: z.literal(true).optional(),
 });
 export type Classification = z.infer<typeof Classification>;
 

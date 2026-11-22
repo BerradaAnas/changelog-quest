@@ -18,6 +18,25 @@ describe("checkSummary", () => {
     );
   });
 
+  it("accepts minor items without a line, but not added or removed ones (ADR 0016)", () => {
+    const s = summary();
+    s.lines = s.lines.slice(0, 1);
+    s.classifications["2.0.14#22222222"] = { kind: "fixed", featureIds: [], minor: true };
+    expect(errors(s)).toEqual([]);
+    s.classifications["2.0.14#22222222"] = { kind: "added", featureIds: [], minor: true };
+    expect(errors(s).map((i) => i.message)).toEqual([
+      "item 2.0.14#22222222 is added and can't be minor; give it a line",
+    ]);
+  });
+
+  it("flags minor items that are also covered by a line", () => {
+    const s = summary();
+    s.classifications["2.0.14#22222222"] = { kind: "fixed", featureIds: [], minor: true };
+    expect(errors(s).map((i) => i.message)).toEqual([
+      "item 2.0.14#22222222 is minor but also covered by a line",
+    ]);
+  });
+
   it("flags invented items", () => {
     const s = summary();
     s.lines[0]!.covers.push("2.0.14#99999999");

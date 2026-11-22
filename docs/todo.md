@@ -44,8 +44,8 @@ and public.
 Under the "nothing lost" rule (`conception.md` 5.1), every item needs a summary line, so a
 release of 100–300 items takes hours to draft and review.
 
-- [ ] Track review time on the last-month batch.
-- [ ] If it is the bottleneck, record an ADR (`record-decision` skill): still classify every
+- [x] Track review time on the last-month batch: 2.1.326 alone had 367 items.
+- [x] Recorded as ADR 0016: if it is the bottleneck, record an ADR (`record-decision` skill): still classify every
       item, but write lines only for changes a user would notice, with small fixes counted
       (for example "plus 120 small fixes").
 

@@ -99,6 +99,22 @@ describe("buildSummary", () => {
     expect(() => buildSummary(release("1.0.2", "02"), unknown, meta)).toThrow(/unknown item/);
   });
 
+  it("classifies minor items without a line, and rejects ones a line also covers", () => {
+    const d: SummaryDraft = {
+      ...draft(),
+      lines: [{ kind: "added", text: "Adds a sample thing.", covers: ["11111111"] }],
+      minor: { fixed: ["22222222"] },
+    };
+    const s = buildSummary(release("1.0.2", "02"), d, meta);
+    expect(s.classifications["1.0.2#22222222"]).toEqual({
+      kind: "fixed",
+      featureIds: [],
+      minor: true,
+    });
+    const both = { ...d, minor: { fixed: ["11111111", "22222222"] } };
+    expect(() => buildSummary(release("1.0.2", "02"), both, meta)).toThrow(/also covered/);
+  });
+
   it("rejects a draft written for another version", () => {
     expect(() => buildSummary(release("1.0.3", "03"), draft(), meta)).toThrow(/draft is for/);
   });
