@@ -51,7 +51,10 @@ Summaries are drafted here, in a session, and land as `draft` for a person to re
    rejects the draft, fix the draft and run it again. Don't edit the generated file to get
    around an error. An existing draft is only overwritten with `--replace`: use it for your
    own redraft, never over a reviewer's edits.
-5. After the batch, run `pnpm validate` and report the versions drafted and any warnings.
+5. Run `pnpm source wording <version...>` for the versions you drafted. It lists lines whose
+   wording is too close to the upstream bullets (ADR 0008). Rewrite each one from the user's
+   side, or count it as `minor` if it is cosmetic, and write the draft again with `--replace`.
+6. After the batch, run `pnpm validate` and report the versions drafted and any warnings.
    Leave every summary as `draft`: approving is the reviewer's job (`review-summary` skill).
 
 Never edit `content/releases/`.

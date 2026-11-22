@@ -13,7 +13,8 @@ model, is responsible for its accuracy.
 1. Open `content/summaries/<version>.json` and print the original items with
    `pnpm source show <version>` (each bullet next to its item id). The repo never stores that
    text (ADR 0008): don't paste it into any file.
-2. Run `pnpm validate`. Fix every error before anything else. Errors mean an item is
+2. Run `pnpm validate` and `pnpm source wording <version>` (lines too close to the upstream
+   wording must be rewritten before approval). Fix every error before anything else. Errors mean an item is
    uncovered or unclassified, a line covers an item that doesn't exist, or the source changed
    since approval.
 3. For each summary line, compare its `text` with the original bullet of every id in `covers`:
