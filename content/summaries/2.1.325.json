@@ -488,7 +488,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Background sessions started on your claude.ai login no longer use, and bill, an API key or token from the shell that started the background service. More cases of a session moving to another sign-in in the background are now refused with a message saying what works, and a second Enter in the exit dialog no longer stops background work after that move was refused.",
+      "text": "Background sessions that run on your claude.ai login no longer pick up, and charge, an API key or token exported in the shell that launched the background service. Switching a background session to a different sign-in is refused in more situations, with an explanation of what does work, and pressing Enter twice in the exit dialog after such a refusal no longer halts background work.",
       "covers": [
         "2.1.325#25a318de",
         "2.1.325#8e75b697",
