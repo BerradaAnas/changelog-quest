@@ -1,6 +1,6 @@
 import type { Demo, Feature, Release, ReleaseSummary } from "@cq/schemas";
 import { describe, expect, it } from "vitest";
-import { featureView } from "../src/lib/features.ts";
+import { featureView, freshness, freshnessReference, newFeatures } from "../src/lib/features.ts";
 
 const release = (version: string, day: string): Release => ({
   version,
@@ -107,5 +107,48 @@ describe("featureView", () => {
     expect(featureView(feature(), ctx({ demos: draft, includeDrafts: true })).demo).toBeDefined();
     const approved = new Map([["hooks", demo("approved")]]);
     expect(featureView(feature(), ctx({ demos: approved })).demo?.title).toBe("Sample demo");
+  });
+});
+
+describe("freshness", () => {
+  const dated = new Map([
+    ["1.0.1", { ...release("1.0.1", "01"), publishedAt: "2026-01-01T00:00:00.000Z" }],
+    ["1.0.2", { ...release("1.0.2", "01"), publishedAt: "2026-02-20T00:00:00.000Z" }],
+    ["1.0.3", { ...release("1.0.3", "01"), publishedAt: "2026-03-01T00:00:00.000Z" }],
+  ]);
+  const view = (events: Feature["events"], id = "hooks") =>
+    featureView(feature({ id, events }), ctx({ releases: dated }));
+  const reference = freshnessReference(dated.values());
+
+  it("measures from the newest release", () => {
+    expect(reference).toBe("2026-03-01T00:00:00.000Z");
+    expect(freshnessReference([])).toBeUndefined();
+  });
+
+  it("marks features introduced within 30 days as new", () => {
+    const v = view([{ version: "1.0.2", type: "introduced", note: "N." }]);
+    expect(v.introducedAt).toBe("2026-02-20T00:00:00.000Z");
+    expect(freshness(v, reference)).toBe("new");
+  });
+
+  it("marks older features updated within 30 days as updated", () => {
+    const v = view([
+      { version: "1.0.1", type: "introduced", note: "N." },
+      { version: "1.0.3", type: "updated", note: "U." },
+    ]);
+    expect(v.updatedAt).toBe("2026-03-01T00:00:00.000Z");
+    expect(freshness(v, reference)).toBe("updated");
+  });
+
+  it("leaves older features unmarked", () => {
+    expect(freshness(view(feature().events), reference)).toBeUndefined();
+    expect(freshness(view(feature().events), undefined)).toBeUndefined();
+  });
+
+  it("lists new features newest first", () => {
+    const a = view([{ version: "1.0.2", type: "introduced", note: "N." }], "a");
+    const b = view([{ version: "1.0.3", type: "introduced", note: "N." }], "b");
+    const old = view(feature().events, "old");
+    expect(newFeatures([a, old, b], reference).map((v) => v.feature.id)).toEqual(["b", "a"]);
   });
 });

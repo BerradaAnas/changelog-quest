@@ -12,6 +12,9 @@ also builds the Pagefind search index; `pnpm check:dist` then checks the built p
 - Features are grouped like the official docs' sections (`src/lib/sections.ts`, tested so every
   feature sits in exactly one section); feature pages show that sidebar, an "On this page" list
   and previous/next links.
+- Features introduced in the last 30 days (`FRESH_DAYS` in `features.ts`) get a "New" badge and
+  a "New features" section; older ones updated in that window get "Updated". The window is
+  measured from the newest release, not the build time, so builds stay reproducible.
 - Pages: `/` (features and timeline), `/features/`, `/features/<id>/`, `/releases/<version>/`,
   `/search/`, `/rss.xml`. Only feature pages and summarized release pages carry
   `data-pagefind-body`, so only they are searchable.

@@ -1,20 +1,36 @@
 ---
 import type { Feature } from "@cq/schemas";
+import { releaseDate } from "../lib/format";
 
 interface Props {
   feature: Feature;
   introducedIn: string;
   /** Status of the feature's demo when it is shown, undefined when there is none. */
   demo?: "draft" | "approved";
+  /** Publish date of the introducing release. */
+  introducedAt?: string;
+  introducedEstimated?: boolean;
+  fresh?: "new" | "updated";
 }
-const { feature, introducedIn, demo } = Astro.props;
+const {
+  feature,
+  introducedIn,
+  demo,
+  introducedAt,
+  introducedEstimated = false,
+  fresh,
+} = Astro.props;
 ---
 
 <li class="feature-card" data-area={feature.area}>
   <a href={`/features/${feature.id}/`}>{feature.name}</a>
   <p>{feature.summary}</p>
   <p class="meta">
-    <span>Since {introducedIn}</span>
+    {fresh === "new" && <span class="tag fresh">New</span>}
+    {fresh === "updated" && <span class="tag fresh">Updated</span>}
+    <span>
+      Since {introducedIn}{introducedAt && ` · ${releaseDate(introducedAt, introducedEstimated)}`}
+    </span>
     {feature.status !== "active" && <span class="tag">{feature.status}</span>}
     {demo === "approved" && <span class="tag has-demo">Hands-on example</span>}
     {demo === "draft" && <span class="tag has-demo draft">Hands-on example (draft)</span>}

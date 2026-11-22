@@ -36,6 +36,7 @@ const PAIRS: [text: string, background: string][] = [
     ["bg", "surface", "subtle"].map((b) => [t, b] as [string, string]),
   ),
   ["text2", "chip"],
+  ["accent-text", "chip"],
   ["ok", "surface"],
   ["ok", "chip"],
   ["warn", "surface"],

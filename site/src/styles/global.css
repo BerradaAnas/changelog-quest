@@ -461,6 +461,9 @@ a:hover {
   font-size: 14px;
   font-weight: 700;
 }
+.tag.fresh {
+  color: var(--accent-text);
+}
 .tag.done {
   color: var(--ok);
 }
