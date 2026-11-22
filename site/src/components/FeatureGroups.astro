@@ -1,6 +1,6 @@
 ---
 import { demos, features, includeDrafts, releaseByVersion, summaries } from "../lib/content";
-import { featureView } from "../lib/features";
+import { featureView, freshness, freshnessReference, newFeatures } from "../lib/features";
 import { featuresBySection } from "../lib/sections";
 import FeatureCard from "./FeatureCard.astro";
 
@@ -11,8 +11,32 @@ interface Props {
 const { level } = Astro.props;
 const Heading = `h${level}` as "h2" | "h3";
 const ctx = { releases: releaseByVersion, summaries, demos, includeDrafts };
-const groups = featuresBySection(features.map((f) => featureView(f, ctx)));
+const views = features.map((f) => featureView(f, ctx));
+const groups = featuresBySection(views);
+const reference = freshnessReference(releaseByVersion.values());
+const fresh = newFeatures(views, reference);
 ---
+
+{
+  fresh.length > 0 && (
+    <section class="area new-features" aria-labelledby="section-new">
+      <Heading id="section-new">New features</Heading>
+      <p class="blurb">Introduced in the last 30 days of releases, newest first.</p>
+      <ul class="feature-grid">
+        {fresh.map((v) => (
+          <FeatureCard
+            feature={v.feature}
+            introducedIn={v.introducedIn}
+            introducedAt={v.introducedAt}
+            introducedEstimated={v.introducedEstimated}
+            demo={v.demo?.status}
+            fresh="new"
+          />
+        ))}
+      </ul>
+    </section>
+  )
+}
 
 {
   groups.map((g) => (
@@ -21,7 +45,14 @@ const groups = featuresBySection(features.map((f) => featureView(f, ctx)));
       <p class="blurb">{g.blurb}</p>
       <ul class="feature-grid">
         {g.features.map((v) => (
-          <FeatureCard feature={v.feature} introducedIn={v.introducedIn} demo={v.demo?.status} />
+          <FeatureCard
+            feature={v.feature}
+            introducedIn={v.introducedIn}
+            introducedAt={v.introducedAt}
+            introducedEstimated={v.introducedEstimated}
+            demo={v.demo?.status}
+            fresh={freshness(v, reference)}
+          />
         ))}
       </ul>
     </section>

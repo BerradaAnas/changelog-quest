@@ -26,6 +26,11 @@ export interface HistoryEntry {
 export interface FeatureView {
   feature: Feature;
   introducedIn: string;
+  /** Publish date of the introducing release, when that release is known. */
+  introducedAt?: string;
+  introducedEstimated: boolean;
+  /** Publish date of the newest release with an `updated` event, if any. */
+  updatedAt?: string;
   /** Newest first. */
   history: HistoryEntry[];
   /** Absent until the demo is approved. */
@@ -76,10 +81,51 @@ export function featureView(feature: Feature, ctx: FeatureContext): FeatureView 
   }
   const demo = ctx.demos.get(feature.id);
   const showDemo = demo && (demo.status === "approved" || ctx.includeDrafts);
+  const first = ctx.releases.get(introducedIn(feature));
+  const updates = feature.events
+    .filter((e) => e.type === "updated")
+    .map((e) => ctx.releases.get(e.version)?.publishedAt)
+    .filter((d): d is string => d !== undefined)
+    .sort();
   return {
     feature,
     introducedIn: introducedIn(feature),
+    ...(first ? { introducedAt: first.publishedAt } : {}),
+    introducedEstimated: first?.dateSource === "estimated",
+    ...(updates.length > 0 ? { updatedAt: updates[updates.length - 1] } : {}),
     history: [...entries.values()].sort(newestFirst),
     ...(showDemo ? { demo } : {}),
   };
+}
+
+/** Features count as new or recently updated for this many days. */
+export const FRESH_DAYS = 30;
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * The date "recent" is measured from: the newest release, not the build time, so the same
+ * content always builds the same site.
+ */
+export function freshnessReference(releases: Iterable<Release>): string | undefined {
+  let newest: string | undefined;
+  for (const r of releases) if (!newest || r.publishedAt > newest) newest = r.publishedAt;
+  return newest;
+}
+
+const within = (date: string | undefined, reference: string) =>
+  date !== undefined && Date.parse(reference) - Date.parse(date) <= FRESH_DAYS * DAY_MS;
+
+/** "new" if introduced in the window, "updated" if an older feature was updated in it. */
+export function freshness(view: FeatureView, reference: string | undefined) {
+  if (!reference) return undefined;
+  if (within(view.introducedAt, reference)) return "new" as const;
+  if (within(view.updatedAt, reference)) return "updated" as const;
+  return undefined;
+}
+
+/** Features introduced in the window, newest first. */
+export function newFeatures(views: readonly FeatureView[], reference: string | undefined) {
+  return views
+    .filter((v) => freshness(v, reference) === "new")
+    .sort((a, b) => (b.introducedAt ?? "").localeCompare(a.introducedAt ?? ""));
 }
