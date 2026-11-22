@@ -29,6 +29,34 @@ describe("checkSummary", () => {
     ]);
   });
 
+  it("warns about added items with no feature unless marked noFeature (ADR 0017)", () => {
+    const s = summary();
+    s.classifications["2.0.14#11111111"] = { kind: "added", featureIds: [] };
+    expect(checkSummary(release(), s)).toEqual([
+      {
+        level: "warning",
+        message:
+          "item 2.0.14#11111111 adds something but links no feature: link one, add the feature, or mark it noFeature",
+      },
+    ]);
+    s.classifications["2.0.14#11111111"] = { kind: "added", featureIds: [], noFeature: true };
+    expect(checkSummary(release(), s)).toEqual([]);
+  });
+
+  it("allows noFeature only on added items with no feature", () => {
+    const s = summary();
+    s.classifications["2.0.14#11111111"] = { kind: "fixed", featureIds: [], noFeature: true };
+    s.classifications["2.0.14#22222222"] = {
+      kind: "added",
+      featureIds: ["hooks"],
+      noFeature: true,
+    };
+    expect(errors(s).map((i) => i.message)).toEqual([
+      "item 2.0.14#11111111 is fixed; only added items can be noFeature",
+      "item 2.0.14#22222222 is noFeature but links a feature",
+    ]);
+  });
+
   it("flags minor items that are also covered by a line", () => {
     const s = summary();
     s.classifications["2.0.14#22222222"] = { kind: "fixed", featureIds: [], minor: true };

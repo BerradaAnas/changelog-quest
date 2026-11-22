@@ -115,6 +115,22 @@ describe("buildSummary", () => {
     expect(() => buildSummary(release("1.0.2", "02"), both, meta)).toThrow(/also covered/);
   });
 
+  it("marks items of a noFeature line (ADR 0017)", () => {
+    const d: SummaryDraft = {
+      ...draft(),
+      lines: [
+        { kind: "added", text: "Adds a sample thing.", covers: ["11111111"], noFeature: true },
+        { kind: "fixed", text: "Fixes a sample thing.", covers: ["22222222"] },
+      ],
+    };
+    const s = buildSummary(release("1.0.2", "02"), d, meta);
+    expect(s.classifications["1.0.2#11111111"]).toEqual({
+      kind: "added",
+      featureIds: [],
+      noFeature: true,
+    });
+  });
+
   it("rejects a draft written for another version", () => {
     expect(() => buildSummary(release("1.0.3", "03"), draft(), meta)).toThrow(/draft is for/);
   });

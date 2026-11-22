@@ -454,7 +454,7 @@
     },
     {
       "kind": "changed",
-      "text": "Claude apps gateway: failed upstream warnings name the upstream, and the spend limit error reads like \"spend limit reached \u00b7 resets Dec 1\", followed by admin.blocked_message if set.",
+      "text": "Claude apps gateway: failed upstream warnings name the upstream, and the spend limit error reads like \"spend limit reached · resets Dec 1\", followed by admin.blocked_message if set.",
       "covers": [
         "2.1.319#4c346048",
         "2.1.319#23708e9c"
@@ -476,7 +476,7 @@
     },
     {
       "kind": "changed",
-      "text": "In cloud sessions, /usage links to Settings \u2192 Usage on claude.ai when plan limits can't be shown.",
+      "text": "In cloud sessions, /usage links to Settings → Usage on claude.ai when plan limits can't be shown.",
       "covers": [
         "2.1.319#fc90782f"
       ]
@@ -717,7 +717,8 @@
     },
     "2.1.319#a12e4ed4": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.319#64241857": {
       "kind": "added",
@@ -773,11 +774,13 @@
     },
     "2.1.319#e2736cb4": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.319#19f0ab45": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.319#fa92375b": {
       "kind": "added",
@@ -1564,7 +1567,9 @@
     },
     "2.1.319#9de7e0c3": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "slack"
+      ]
     }
   },
   "status": "approved",

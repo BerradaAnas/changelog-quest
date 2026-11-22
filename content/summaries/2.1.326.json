@@ -284,7 +284,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Sign-in screens show a pasted code, display \"Finishing sign-in\u2026\" after submitting, and Esc goes back while waiting for the browser.",
+      "text": "Sign-in screens show a pasted code, display \"Finishing sign-in…\" after submitting, and Esc goes back while waiting for the browser.",
       "covers": [
         "2.1.326#8e917511",
         "2.1.326#b6a18c60",
@@ -489,7 +489,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Retries after server errors show a spinner and \"retrying\u2026\" instead of a frozen reply or \"Retrying in 0s\", and the countdown keeps moving.",
+      "text": "Retries after server errors show a spinner and \"retrying…\" instead of a frozen reply or \"Retrying in 0s\", and the countdown keeps moving.",
       "covers": [
         "2.1.326#147767a3",
         "2.1.326#337a9112"
@@ -581,7 +581,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Collapsed tool lines show the real state of calls awaiting permission, failed, blocked or stopped, and failed turns and skill or agent calls no longer show \"done\" or \"Initializing\u2026\".",
+      "text": "Collapsed tool lines show the real state of calls awaiting permission, failed, blocked or stopped, and failed turns and skill or agent calls no longer show \"done\" or \"Initializing…\".",
       "covers": [
         "2.1.326#7528ade4",
         "2.1.326#32f0b0de",
@@ -966,7 +966,7 @@
     },
     {
       "kind": "changed",
-      "text": "Dialogs get consistent key hints, text fields, \u2718 \u26a0 \u2714 markers and spacing, and deeper /hooks and /permissions screens say Esc goes back.",
+      "text": "Dialogs get consistent key hints, text fields, ✘ ⚠ ✔ markers and spacing, and deeper /hooks and /permissions screens say Esc goes back.",
       "covers": [
         "2.1.326#b66b639b",
         "2.1.326#4131fac9",
@@ -986,7 +986,7 @@
     },
     {
       "kind": "changed",
-      "text": "Small UI changes: a \"\u2193 to resume subagent\" hint after Ctrl+C, hidden-line counts on long prompts, new sliders for /autocompact and /scroll-speed, on/off labels, and a clearer \"Queued\" hint.",
+      "text": "Small UI changes: a \"↓ to resume subagent\" hint after Ctrl+C, hidden-line counts on long prompts, new sliders for /autocompact and /scroll-speed, on/off labels, and a clearer \"Queued\" hint.",
       "covers": [
         "2.1.326#1144b974",
         "2.1.326#84f9e575",
@@ -1306,7 +1306,8 @@
     },
     "2.1.326#cb94501d": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.326#fd0c9988": {
       "kind": "added",

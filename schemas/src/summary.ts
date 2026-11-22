@@ -19,6 +19,11 @@ export const Classification = z.strictObject({
    * counted instead (ADR 0016). Never true for "added" or "removed" items.
    */
   minor: z.literal(true).optional(),
+  /**
+   * Reviewed: this "added" item belongs to no feature page and is not a new feature either
+   * (ADR 0017). Without it, an added item with no `featureIds` is a validator warning.
+   */
+  noFeature: z.literal(true).optional(),
 });
 export type Classification = z.infer<typeof Classification>;
 

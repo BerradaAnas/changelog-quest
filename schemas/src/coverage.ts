@@ -59,6 +59,18 @@ export function checkSummary(release: Release, summary: ReleaseSummary): Issue[]
       error(`item ${id} is not covered by any line`);
     }
   }
+  for (const [id, c] of Object.entries(summary.classifications)) {
+    // Possible new feature (ADR 0017): every addition is linked or explicitly marked.
+    if (c.noFeature) {
+      if (c.kind !== "added") error(`item ${id} is ${c.kind}; only added items can be noFeature`);
+      if (c.featureIds.length > 0) error(`item ${id} is noFeature but links a feature`);
+    } else if (c.kind === "added" && c.featureIds.length === 0) {
+      issues.push({
+        level: "warning",
+        message: `item ${id} adds something but links no feature: link one, add the feature, or mark it noFeature`,
+      });
+    }
+  }
   for (const id of Object.keys(summary.classifications)) {
     if (!itemIds.has(id)) error(`classification for unknown item ${id}`);
   }

@@ -351,7 +351,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Stopped or rejected calls: a stopped MCP call or fullscreen shell command says no result was recorded and shows its input instead of \"Called\" or \"Ran\", and a call rejected with a reason shows \"Not run \u00b7 rejected\".",
+      "text": "Stopped or rejected calls: a stopped MCP call or fullscreen shell command says no result was recorded and shows its input instead of \"Called\" or \"Ran\", and a call rejected with a reason shows \"Not run · rejected\".",
       "covers": [
         "2.1.323#1c93c9d7",
         "2.1.323#636c15cc"
@@ -1137,7 +1137,7 @@
     },
     {
       "kind": "fixed",
-      "text": "VS Code: the \"extensions want to relaunch the terminal\" warning no longer returns after each reload, the sign-in screen shows \"Signing in\u2026\" after a pasted code, and dictation stops when you switch sessions.",
+      "text": "VS Code: the \"extensions want to relaunch the terminal\" warning no longer returns after each reload, the sign-in screen shows \"Signing in…\" after a pasted code, and dictation stops when you switch sessions.",
       "covers": [
         "2.1.323#1b9097e5",
         "2.1.323#6211e2af",
@@ -1291,7 +1291,8 @@
     },
     "2.1.323#c1ab8564": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.323#d218c783": {
       "kind": "added",
@@ -1310,7 +1311,9 @@
     },
     "2.1.323#c4bfa78f": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "keybindings"
+      ]
     },
     "2.1.323#7958a738": {
       "kind": "added",

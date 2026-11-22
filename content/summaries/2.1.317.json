@@ -489,7 +489,9 @@
     },
     "2.1.317#18ffd088": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "monitoring"
+      ]
     },
     "2.1.317#e1871561": {
       "kind": "added",

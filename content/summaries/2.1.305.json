@@ -256,7 +256,8 @@
     },
     "2.1.305#efa69c40": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.305#1762050f": {
       "kind": "changed",

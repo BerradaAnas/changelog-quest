@@ -63,9 +63,11 @@ ReleaseSummary {
   title: string              // e.g. "Plugins (public beta)"
   headline: string           // one plain-language sentence
   lines: SummaryLine[]
-  classifications: Record<ChangeItemId, { kind: ChangeKind, featureIds: string[], minor?: true }>
+  classifications: Record<ChangeItemId, { kind: ChangeKind, featureIds: string[], minor?: true,
+                                          noFeature?: true }>
                              // AI-suggested, reviewer-edited; the only item -> feature link.
                              // minor: counted, not given a line (ADR 0016)
+                             // noFeature: an added item reviewed as no feature (ADR 0017)
   status: "draft" | "approved"   // approved + merged = published
   model: string              // model of the drafting session (ADR 0010)
   promptVersion: string      // version of the drafting instructions
@@ -167,6 +169,7 @@ Feature 1──0..1 Demo
 3. Nothing is published unless its status is `approved`.
 4. If a past release's `sourceHash` changes, its summary is stale: it is hidden from the site, reported as a validation warning, and listed by `pnpm summaries pending` for a redraft (ADR 0012).
 5. A line covering more than 5 items is a warning for the reviewer (ADR 0007).
+6. An added item that links no feature and isn't marked `noFeature` is a warning: it may be a new feature that needs a page (ADR 0017).
 
 All of these run in `pnpm validate`, a required CI check on every pull request.
 

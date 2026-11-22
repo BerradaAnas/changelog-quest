@@ -103,7 +103,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 17px / 1.65 var(--sans);
+  font: 17px / 1.75 var(--sans);
 }
 a {
   color: var(--accent-text);
@@ -376,8 +376,8 @@ a:hover {
 .block {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 48px;
+  gap: 28px;
+  margin-bottom: 64px;
 }
 .block-head {
   display: flex;
@@ -409,14 +409,14 @@ a:hover {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 12px;
+  gap: 16px;
 }
 .feature-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 16px 18px;
+  gap: 8px;
+  padding: 20px 22px;
   border-radius: 14px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -509,8 +509,8 @@ a:hover {
 .release {
   display: flex;
   flex-direction: column;
-  gap: 36px;
-  margin-bottom: 56px;
+  gap: 48px;
+  margin-bottom: 72px;
 }
 .feature > .hero,
 .release > .hero {
@@ -519,7 +519,7 @@ a:hover {
 .feature > section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   max-width: 760px;
 }
 .feature > section > p {
@@ -779,6 +779,9 @@ pre {
   border-radius: 10px;
   background: var(--subtle);
   overflow-x: auto;
+  /* Long setting names wrap instead of hiding behind a scrollbar. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .quiz-result .right {
   color: var(--ok);
@@ -1255,12 +1258,12 @@ mark {
 
 /* Feature pages: docs-style layout with a sidebar, the article and an "On this page" list. */
 .wrap.wide {
-  max-width: 1320px;
+  max-width: 1440px;
 }
 .doc-layout {
   display: grid;
-  grid-template-columns: 230px minmax(0, 1fr) 190px;
-  gap: 40px;
+  grid-template-columns: 240px minmax(0, 1fr) 200px;
+  gap: 56px;
   align-items: start;
 }
 .doc-nav,
@@ -1322,7 +1325,7 @@ mark {
   border-top: 1px solid var(--border);
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1240px) {
   .doc-layout {
     grid-template-columns: 220px minmax(0, 1fr);
   }
@@ -1364,5 +1367,29 @@ mark {
 @media (max-width: 860px) {
   .doc-layout-index {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Room to read: space between feature groups, and an open demo gets the full width. */
+.area + .area {
+  margin-top: 20px;
+}
+.demo-body {
+  container-type: inline-size;
+}
+@container (max-width: 860px) {
+  .demo-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .demo-result {
+    position: static;
+  }
+}
+@media (min-width: 861px) {
+  .doc-layout:has(.demo[open]) {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+  .doc-layout:has(.demo[open]) .doc-toc {
+    display: none;
   }
 }

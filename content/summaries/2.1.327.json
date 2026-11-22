@@ -790,7 +790,9 @@
     },
     "2.1.327#8c8193a4": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "sessions"
+      ]
     },
     "2.1.327#54360819": {
       "kind": "added",
