@@ -102,5 +102,5 @@
     "explanation": "It's an experimental opt-in enabled with that environment variable, in your shell or settings env block."
   },
   "configPreview": "{\n  \"env\": {\n    \"CLAUDE_CODE_EXPERIMENTAL_CODE_MODE\": \"1\"\n  }\n}",
-  "status": "draft"
+  "status": "approved"
 }

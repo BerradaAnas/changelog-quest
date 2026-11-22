@@ -114,5 +114,5 @@
     "answerIndex": 0,
     "explanation": "Subagents work in their own context and return only a summary."
   },
-  "status": "draft"
+  "status": "approved"
 }

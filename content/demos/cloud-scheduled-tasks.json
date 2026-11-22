@@ -93,5 +93,5 @@
     "answerIndex": 1,
     "explanation": "Tasks can fire on a schedule, from an API call, or on GitHub events."
   },
-  "status": "draft"
+  "status": "approved"
 }

@@ -118,5 +118,5 @@
     "answerIndex": 1,
     "explanation": "Findings arrive as comments and a check run; reviews never approve or block a PR."
   },
-  "status": "draft"
+  "status": "approved"
 }

@@ -106,5 +106,5 @@
     "answerIndex": 1,
     "explanation": "Files listed in .worktreeinclude (gitignore syntax) are copied into new worktrees."
   },
-  "status": "draft"
+  "status": "approved"
 }

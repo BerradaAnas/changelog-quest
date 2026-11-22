@@ -98,5 +98,5 @@
     "answerIndex": 1,
     "explanation": "Edits to keybindings.json take effect right away; bad entries show in the debug log."
   },
-  "status": "draft"
+  "status": "approved"
 }

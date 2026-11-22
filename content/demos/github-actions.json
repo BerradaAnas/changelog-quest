@@ -96,5 +96,5 @@
     "answerIndex": 1,
     "explanation": "Subscription plans can use CLAUDE_CODE_OAUTH_TOKEN, made with claude setup-token."
   },
-  "status": "draft"
+  "status": "approved"
 }
