@@ -1,0 +1,42 @@
+{
+  "id": "headless",
+  "name": "Headless mode (claude -p)",
+  "area": "anywhere",
+  "summary": "Run Claude Code from scripts and CI with a single command that prints its answer and exits.",
+  "what": "Adding -p (short for --print) to the claude command runs one task without the interactive screen. Claude works on the prompt, prints the result and exits, so you can call it from a shell script, a Git hook or a CI job. You choose which tools it may use without asking, and can get the result as plain text, JSON or a stream of events.",
+  "impact": [
+    {
+      "title": "Automate routine tasks",
+      "detail": "Fix lint errors, write release notes or review a diff as one step of a script or pipeline."
+    },
+    {
+      "title": "Output your tools can read",
+      "detail": "JSON output includes the result and a session id, and a JSON Schema can make Claude return data in an exact shape."
+    },
+    {
+      "title": "Safe unattended runs",
+      "detail": "Pre-approve only the tools a task needs; anything else is refused instead of waiting for a person."
+    }
+  ],
+  "howItWorks": [
+    "Run claude -p \"your task\" and the answer is printed to the terminal.",
+    "Allow tools up front with --allowedTools, for example \"Read,Edit,Bash(git diff *)\".",
+    "Pick the format with --output-format: text (the default), json or stream-json.",
+    "Continue a run with --continue, or a specific one with --resume and its session id.",
+    "Check the exit code: 0 means success, anything else a failure."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/headless"],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.21",
+      "type": "introduced",
+      "note": "Already part of Claude Code when the changelog began with this version."
+    },
+    {
+      "version": "0.2.66",
+      "type": "updated",
+      "note": "Print mode can stream its output with --output-format=stream-json."
+    }
+  ]
+}

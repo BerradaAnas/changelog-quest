@@ -24,7 +24,7 @@ Launch early, then decide on more work based on whether people use it (ADR 0013)
 
 ## 3. Feature catalog and demos (the core)
 
-- [ ] Grow the catalog from 10 features (checkpointing, hooks, mcp, memory, permissions, plan-mode, plugins, settings, skills, sub-agents)
+- [ ] Grow the catalog from 17 features
       to 15–25 (`add-feature` skill), starting with the features newcomers use most.
 - [ ] Review and approve the 3 draft demos: `hooks`, `skills`, `checkpointing`.
 - [ ] Write demos for the new features (`write-demo` skill).

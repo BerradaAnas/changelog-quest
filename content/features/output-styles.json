@@ -1,0 +1,52 @@
+{
+  "id": "output-styles",
+  "name": "Output styles",
+  "area": "core",
+  "summary": "Change how Claude talks to you, from short and to the point to teaching as it goes.",
+  "what": "An output style is a set of instructions that changes Claude's tone and the shape of its answers for a whole session. Built-in styles include Concise (results first, little narration), Explanatory (adds short insights about the code) and Learning (leaves small parts for you to write). You can also write your own style as a Markdown file.",
+  "impact": [
+    {
+      "title": "Answers that fit how you work",
+      "detail": "Pick short replies when you know the code, or more explanation when you are learning it."
+    },
+    {
+      "title": "Learn while you build",
+      "detail": "The Learning style hands parts of the work back to you, marked TODO(human), to write yourself."
+    },
+    {
+      "title": "Your own style",
+      "detail": "A custom style can turn Claude into a reviewer, a writer or anything else you describe."
+    }
+  ],
+  "howItWorks": [
+    "Run /output-style to list the styles, or /output-style concise to switch.",
+    "The choice is saved as outputStyle in your local project settings; set it in ~/.claude/settings.json to use it everywhere.",
+    "Write a custom style as a Markdown file in ~/.claude/output-styles or .claude/output-styles.",
+    "Add keep-coding-instructions: true to its frontmatter to keep Claude's usual coding instructions.",
+    "A style is guidance Claude follows; use hooks when something must always happen."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/output-styles"],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.81",
+      "type": "introduced",
+      "note": "Output styles were released with the Explanatory and Learning styles."
+    },
+    {
+      "version": "2.0.30",
+      "type": "deprecated",
+      "note": "Output styles were marked deprecated."
+    },
+    {
+      "version": "2.0.32",
+      "type": "updated",
+      "note": "The deprecation was reversed after community feedback."
+    },
+    {
+      "version": "2.1.237",
+      "type": "updated",
+      "note": "A built-in Concise style was added."
+    }
+  ]
+}

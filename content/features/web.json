@@ -1,0 +1,42 @@
+{
+  "id": "web",
+  "name": "Claude Code on the web",
+  "area": "anywhere",
+  "summary": "Run Claude Code tasks in the cloud from your browser, phone or terminal, and pick them up later.",
+  "what": "Cloud sessions run Claude Code on a virtual machine managed by Anthropic instead of your computer. You start one at claude.ai/code, in the Claude mobile app or from the terminal, point it at a GitHub repository, and it keeps working after you close your laptop. When it's done you can review the changes, open a pull request, or bring the session into your terminal.",
+  "impact": [
+    {
+      "title": "Work keeps going without you",
+      "detail": "Start a task, close the laptop, and check the result later from any device."
+    },
+    {
+      "title": "Several tasks at once",
+      "detail": "Run separate sessions in parallel, each in its own cloud machine."
+    },
+    {
+      "title": "Move between cloud and terminal",
+      "detail": "Teleport a cloud session into your local terminal to continue it there."
+    }
+  ],
+  "howItWorks": [
+    "Open claude.ai/code, connect GitHub, and pick a repository and an environment.",
+    "Or start from the terminal with claude --cloud \"your task\".",
+    "Each environment sets its network access, environment variables and setup script.",
+    "Bring a session to your terminal with claude --teleport or /teleport.",
+    "Needs a Pro, Max, Ultra, Team or eligible Enterprise plan; it isn't available through third-party cloud providers."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/claude-code-on-the-web"],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.0.24",
+      "type": "introduced",
+      "note": "First changelog mention of Claude Code on the web, with teleport from web to terminal."
+    },
+    {
+      "version": "2.0.45",
+      "type": "updated",
+      "note": "Starting a message with & sends it to the web as a background task."
+    }
+  ]
+}
