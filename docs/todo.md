@@ -30,12 +30,12 @@ Launch early, then decide on more work based on whether people use it (ADR 0013)
 
 ## 4. Release summaries (last month only)
 
-The last month (since 2026-10-20) is 17 releases and about 1,360 items. The 2 already drafted
-are not approved, so the public build shows no summaries yet.
+The last month (since 2026-10-20) is 17 releases and about 1,360 items. All 17 are drafted;
+`2.1.325` and `2.1.322` are approved and public.
 
-- [ ] Review and approve `2.1.325` and `2.1.322` (`review-summary` skill).
-- [ ] Draft and approve the other 15 releases of the last month (`draft-summary` skill),
-      starting with `2.1.323` (294 items) and `2.1.321` (118 items).
+- [x] Review and approve `2.1.325` and `2.1.322` (`review-summary` skill).
+- [x] Draft the other 15 releases of the last month (`draft-summary` skill).
+- [ ] Review and approve those 15 drafts (`review-summary` skill; `pnpm dev:drafts` shows them).
 - [ ] After launch: keep up with new releases as the daily ingest brings them in.
 - [ ] Dropped: no backfill of the ~420 older releases. Revisit only if people ask for it.
 
