@@ -828,7 +828,6 @@ mark {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 180px;
   padding: 18px;
   border-radius: 12px;
   background: var(--subtle);
@@ -838,11 +837,26 @@ mark {
   margin: 0;
   font-size: 16px;
 }
-.demo-result .outcome:not([hidden]) ~ .result-empty {
+/* The result column stays hidden until the first run, then pops in beside the setup. */
+.demo-split:not(:has(.outcome:not([hidden]))) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.demo-result:not(:has(.outcome:not([hidden]))) {
   display: none;
 }
-.result-empty {
-  color: var(--muted);
+.demo-result {
+  animation: result-in 180ms ease-out;
+}
+@keyframes result-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-result {
+    animation: none;
+  }
 }
 @media (max-width: 760px) {
   .demo-split {
