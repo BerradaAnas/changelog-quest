@@ -31,6 +31,7 @@ pnpm --filter @cq/pipeline exec vitest run test/ids.test.ts -t "disambiguates"  
 pnpm validate                                # schemas, ids, cross-references, coverage on content/ (offline)
 pnpm source show 2.1.311                     # print a version's upstream bullets with their item ids
 pnpm source verify                           # re-check stored hashes and ids against upstream (network)
+pnpm source wording [version...]             # summary lines worded too close to upstream (network, ADR 0008)
 pnpm ingest                                  # add new/changed releases from upstream HEAD (network)
 pnpm summaries pending                       # next batch of releases to summarize
 pnpm summaries write <draft.json> --model <id>   # build a draft summary file from a session draft

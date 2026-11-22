@@ -1,11 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { Release } from "@cq/schemas";
+import { Release, ReleaseSummary } from "@cq/schemas";
 import { config } from "./config.ts";
 import { readCollection } from "./content.ts";
 import { changeItemIds, sha256 } from "./ids.ts";
 import { type ChangelogSection, parseChangelog } from "./parse-changelog.ts";
+import { closeLines } from "./wording.ts";
 
 /**
  * Access to the upstream changelog text. It is read at run time and never written to the
@@ -46,6 +47,9 @@ export function verifyReleases(releases: readonly Release[], markdown: string): 
   return problems;
 }
 
+/** Lines this close to the upstream wording are reported as copies. */
+export const WORDING_THRESHOLD = 0.8;
+
 async function loadReleases(root: string): Promise<Release[]> {
   return (await readCollection(root, "releases")).map((f) => Release.parse(f.data));
 }
@@ -80,13 +84,48 @@ async function verify(root: string): Promise<number> {
   return problems;
 }
 
+/** Lists summary lines worded too close to the upstream bullets (ADR 0008). */
+async function wording(root: string, versions: string[], threshold: number): Promise<number> {
+  const releases = new Map((await loadReleases(root)).map((r) => [r.version, r]));
+  const summaries = (await readCollection(root, "summaries"))
+    .map((f) => ReleaseSummary.parse(f.data))
+    .filter((s) => versions.length === 0 || versions.includes(s.version));
+  const texts = new Map<string, string>();
+  let close = 0;
+  for (const summary of summaries) {
+    const release = releases.get(summary.version);
+    if (!release || release.sourceHash !== summary.sourceHash) continue;
+    if (!texts.has(release.sourceCommit))
+      texts.set(release.sourceCommit, await fetchChangelog(release.sourceCommit));
+    const section = parseChangelog(texts.get(release.sourceCommit) ?? "").find(
+      (s) => s.version === summary.version,
+    );
+    if (!section) continue;
+    const ids = changeItemIds(summary.version, section.bullets);
+    const bullets = new Map(ids.map((id, n) => [id, section.bullets[n] ?? ""]));
+    for (const line of closeLines(summary, bullets, threshold)) {
+      console.log(
+        `✗ ${summary.version} line ${line.index + 1} (${line.score.toFixed(2)}): ${line.text}`,
+      );
+      close++;
+    }
+  }
+  console.log(`${close} line(s) at or above ${threshold} in ${summaries.length} summaries`);
+  return close;
+}
+
 async function main() {
-  const [command, arg] = process.argv.slice(2);
+  const [command, arg, ...rest] = process.argv.slice(2);
   const root = process.env.CONTENT_DIR ?? "../content";
   if (command === "show" && arg) await show(root, arg);
   else if (command === "verify") process.exitCode = (await verify(root)) > 0 ? 1 : 0;
-  else {
-    console.error("usage: pnpm source show <version> | pnpm source verify");
+  else if (command === "wording") {
+    const versions = [arg, ...rest].filter((v): v is string => Boolean(v));
+    process.exitCode = (await wording(root, versions, WORDING_THRESHOLD)) > 0 ? 1 : 0;
+  } else {
+    console.error(
+      "usage: pnpm source show <version> | pnpm source verify | pnpm source wording [version...]",
+    );
     process.exitCode = 2;
   }
 }
