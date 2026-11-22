@@ -24,7 +24,8 @@ also builds the Pagefind search index; `pnpm check:dist` then checks the built p
 - No inline scripts, styles, `style` attributes or event handlers: the Content Security Policy
   in `public/_headers` blocks them and `pnpm check:dist` fails the build.
 - New colours go in both palettes in `global.css` and in `test/contrast.test.ts` (WCAG AA).
-- Styling is plain CSS in `src/styles/global.css` with light and dark palettes. The palette is
-  deliberately not Anthropic's (see conception.md open decisions).
+- Styling is plain CSS in `src/styles/global.css` with light and dark palettes. The look is
+  Claude-inspired but our own (ADR 0014): never Anthropic's exact brand colours, typefaces,
+  logo or marks.
 - `mockup/` shows the intended layout for later steps (feature pages, demos). Use it as a
   visual reference, not its code.
