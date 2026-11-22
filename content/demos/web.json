@@ -1,0 +1,125 @@
+{
+  "featureId": "web",
+  "title": "Work in the cloud",
+  "intro": "Pick what you want to do with a cloud session.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "goal",
+      "label": "Goal",
+      "options": [
+        "Start a task from the browser",
+        "Start a task from the terminal",
+        "Continue a cloud session locally",
+        "Use it through Amazon Bedrock"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "goal",
+          "equals": "Start a task from the browser"
+        }
+      ],
+      "show": {
+        "title": "claude.ai/code",
+        "detail": "Connect GitHub, pick a repository and an environment, and describe the task. It keeps running if you close the tab.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Open claude.ai/code and choose a repository."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Runs the task on a cloud machine."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "goal",
+          "equals": "Start a task from the terminal"
+        }
+      ],
+      "show": {
+        "title": "claude --cloud",
+        "detail": "The task starts in a new cloud session, so your terminal is free.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --cloud \"Fix the flaky login test\"",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Creates a cloud session for the task."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "goal",
+          "equals": "Continue a cloud session locally"
+        }
+      ],
+      "show": {
+        "title": "Teleport",
+        "detail": "Bring the session, with its history and branch, into your terminal.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --teleport",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Lists your cloud sessions and opens the one you pick."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "goal",
+          "equals": "Use it through Amazon Bedrock"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Cloud sessions need a Claude plan; they aren't offered through third-party cloud providers.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Cloud sessions are not available with this provider."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose a goal."
+  },
+  "quiz": {
+    "question": "You start a cloud session and close your laptop. What happens?",
+    "options": [
+      "The session stops",
+      "It keeps running in the cloud",
+      "It moves to your phone"
+    ],
+    "answerIndex": 1,
+    "explanation": "Cloud sessions run on a managed machine, so they carry on while your computer is off."
+  },
+  "status": "draft"
+}

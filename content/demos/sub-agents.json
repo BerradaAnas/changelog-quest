@@ -1,0 +1,104 @@
+{
+  "featureId": "sub-agents",
+  "title": "When does a subagent take over?",
+  "intro": "This project has a subagent named test-runner, described as running the test suite and reporting failures. Pick what you ask.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "request",
+      "label": "Your request",
+      "options": [
+        "Run the tests and tell me what fails",
+        "@test-runner check the auth tests",
+        "Rename this variable"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "request",
+          "equals": "Run the tests and tell me what fails"
+        }
+      ],
+      "show": {
+        "title": "Delegated by description",
+        "detail": "The request matches the subagent's description, so Claude can hand the task to it. The subagent works in its own context and only its report comes back.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Delegates to test-runner."
+          },
+          {
+            "who": "test-runner",
+            "text": "Runs the suite with its own tools."
+          },
+          {
+            "who": "Claude",
+            "text": "Receives the summary of failures."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "request",
+          "equals": "@test-runner check the auth tests"
+        }
+      ],
+      "show": {
+        "title": "Delegated by name",
+        "detail": "Mentioning the subagent asks for it directly.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Hands the task to test-runner."
+          },
+          {
+            "who": "test-runner",
+            "text": "Runs the auth tests and reports back."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "request",
+          "equals": "Rename this variable"
+        }
+      ],
+      "show": {
+        "title": "Stays in the main conversation",
+        "detail": "Nothing about this task matches test-runner's description, so Claude does it itself.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Renames the variable directly."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose a request."
+  },
+  "configPreview": "---\nname: test-runner\ndescription: Runs the test suite and reports failures\ntools: Bash, Read\n---\nRun the project's tests and summarize each failure.",
+  "quiz": {
+    "question": "What comes back to your main conversation when a subagent finishes?",
+    "options": [
+      "Everything it read and ran",
+      "Only its result",
+      "Nothing"
+    ],
+    "answerIndex": 1,
+    "explanation": "A subagent works in its own context window, so only its result returns, keeping the main conversation small."
+  },
+  "status": "draft"
+}

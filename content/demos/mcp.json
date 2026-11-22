@@ -1,0 +1,111 @@
+{
+  "featureId": "mcp",
+  "title": "Add an MCP server",
+  "intro": "You're adding a remote issue-tracker server at https://mcp.example.com/mcp. Pick a scope and see who gets it.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "scope",
+      "label": "Scope",
+      "options": [
+        "local (default)",
+        "project",
+        "user"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "scope",
+          "equals": "local (default)"
+        }
+      ],
+      "show": {
+        "title": "Just you, in this project",
+        "detail": "Local is the default scope. The server is available only to you, and only in this project.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude mcp add --transport http tracker https://mcp.example.com/mcp",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Saved for you in this project only."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "scope",
+          "equals": "project"
+        }
+      ],
+      "show": {
+        "title": "Shared through .mcp.json",
+        "detail": "The server is written to .mcp.json at the project root, which you can commit. Teammates must approve a project server before it runs.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude mcp add --transport http --scope project tracker https://mcp.example.com/mcp",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Writes the server to .mcp.json."
+          },
+          {
+            "who": "Teammate",
+            "text": "Sees it as pending and approves it on first use."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "scope",
+          "equals": "user"
+        }
+      ],
+      "show": {
+        "title": "You, in every project",
+        "detail": "User scope makes the server available to you in all your projects.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude mcp add --transport http --scope user tracker https://mcp.example.com/mcp",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Available in every project you open."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose a scope for the server."
+  },
+  "configPreview": "{\n  \"mcpServers\": {\n    \"tracker\": { \"type\": \"http\", \"url\": \"https://mcp.example.com/mcp\" }\n  }\n}",
+  "quiz": {
+    "question": "You clone a repository whose .mcp.json lists a server. What happens the first time you run Claude Code?",
+    "options": [
+      "The server starts automatically",
+      "It waits until you approve it",
+      "It is ignored for good"
+    ],
+    "answerIndex": 1,
+    "explanation": "Servers from a project's .mcp.json stay pending until you approve them, so a repository can't connect tools on its own."
+  },
+  "status": "draft"
+}

@@ -1,0 +1,132 @@
+{
+  "featureId": "sandboxing",
+  "title": "What can a sandboxed command reach?",
+  "intro": "The sandbox is on in auto-allow mode, with registry.npmjs.org as the only allowed domain. Type a command Claude runs.",
+  "kind": "type",
+  "inputs": [
+    {
+      "id": "command",
+      "label": "Command",
+      "placeholder": "npm test",
+      "suggestions": [
+        "npm test",
+        "touch ~/notes.txt",
+        "curl https://example.com"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "^\\s*(curl|wget)\\b.*registry\\.npmjs\\.org"
+        }
+      ],
+      "show": {
+        "title": "Allowed",
+        "detail": "The domain is on network.allowedDomains, so the request goes through the sandbox's proxy.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "{{command}}",
+            "code": true
+          },
+          {
+            "who": "Sandbox",
+            "text": "registry.npmjs.org is allowed."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "^\\s*(curl|wget)\\b"
+        }
+      ],
+      "show": {
+        "title": "Network blocked",
+        "detail": "The domain isn't on network.allowedDomains, so the sandbox refuses the connection.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "{{command}}",
+            "code": true
+          },
+          {
+            "who": "Sandbox",
+            "text": "Domain not allowed: the connection fails."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "(^|\\s)(~|\\$HOME|/etc|/usr)"
+        }
+      ],
+      "show": {
+        "title": "Write blocked",
+        "detail": "Commands can write only inside the project, a temporary folder and added directories. The system refuses a write elsewhere, for example with Operation not permitted on macOS.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "{{command}}",
+            "code": true
+          },
+          {
+            "who": "Sandbox",
+            "text": "Write outside the allowed folders: Operation not permitted."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "\\S"
+        }
+      ],
+      "show": {
+        "title": "Runs without a prompt",
+        "detail": "The command stays inside the project folder, so in auto-allow mode it runs straight away. The sandbox would stop it if it tried to step outside.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "{{command}}",
+            "code": true
+          },
+          {
+            "who": "Sandbox",
+            "text": "Runs inside the limits: no prompt needed."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Type a command first",
+    "detail": "This demo scripts a few cases: downloads from allowed and other domains, writes outside the project, and commands that stay inside it."
+  },
+  "configPreview": "{\n  \"sandbox\": {\n    \"enabled\": true,\n    \"network\": { \"allowedDomains\": [\"registry.npmjs.org\"] }\n  }\n}",
+  "quiz": {
+    "question": "Which of these runs outside the sandbox?",
+    "options": [
+      "A shell command Claude runs",
+      "Claude's built-in Edit tool",
+      "A process started by a shell command"
+    ],
+    "answerIndex": 1,
+    "explanation": "The sandbox wraps shell commands and their child processes. Built-in file tools, hooks and local MCP servers run outside it, so permission rules still matter."
+  },
+  "status": "draft"
+}

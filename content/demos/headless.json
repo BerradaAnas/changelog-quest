@@ -1,0 +1,111 @@
+{
+  "featureId": "headless",
+  "title": "Pick an output format",
+  "intro": "A CI job runs Claude Code with -p. Pick the output format and see what the script receives.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "format",
+      "label": "--output-format",
+      "options": [
+        "text",
+        "json",
+        "stream-json"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "format",
+          "equals": "text"
+        }
+      ],
+      "show": {
+        "title": "Plain text",
+        "detail": "The default. Only Claude's final answer is printed, ready to show in a log.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "CI",
+            "text": "claude -p \"Summarize this branch's changes\"",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Prints the answer as text and exits with code 0."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "format",
+          "equals": "json"
+        }
+      ],
+      "show": {
+        "title": "One JSON object",
+        "detail": "The output is a single JSON object with the result, the session id and run details, so a script can read fields with a tool such as jq.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "CI",
+            "text": "claude -p \"Summarize this branch's changes\" --output-format json",
+            "code": true
+          },
+          {
+            "who": "CI",
+            "text": "jq -r '.result'",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Exits with code 0 on success."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "format",
+          "equals": "stream-json"
+        }
+      ],
+      "show": {
+        "title": "A stream of events",
+        "detail": "Each event is printed as its own JSON line while Claude works. Streaming needs --verbose as well.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "CI",
+            "text": "claude -p \"Summarize this branch's changes\" --output-format stream-json --verbose",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Prints one JSON event per line until the run ends."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose an output format."
+  },
+  "quiz": {
+    "question": "Which flag lets a headless run use some tools without asking?",
+    "options": [
+      "--allowedTools",
+      "--output-format",
+      "--continue"
+    ],
+    "answerIndex": 0,
+    "explanation": "--allowedTools pre-approves tools using permission rule syntax, such as \"Read,Edit,Bash(git diff *)\"."
+  },
+  "status": "draft"
+}

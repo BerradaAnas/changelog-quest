@@ -1,0 +1,126 @@
+{
+  "featureId": "output-styles",
+  "title": "Same task, different style",
+  "intro": "You ask Claude to add input validation to a signup form. Pick an output style and see how the reply changes.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "style",
+      "label": "Output style",
+      "options": [
+        "Default",
+        "Concise",
+        "Explanatory",
+        "Learning"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "style",
+          "equals": "Default"
+        }
+      ],
+      "show": {
+        "title": "Default",
+        "detail": "No style is selected: Claude does the work and explains it in its usual way.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Adds validation and describes the changes."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "style",
+          "equals": "Concise"
+        }
+      ],
+      "show": {
+        "title": "Concise",
+        "detail": "Claude leads with the result and skips narration about each step.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/output-style concise",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Validation added to the email and password fields. Tests pass."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "style",
+          "equals": "Explanatory"
+        }
+      ],
+      "show": {
+        "title": "Explanatory",
+        "detail": "Claude does the work and adds short insight notes about why the code is built the way it is.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/output-style explanatory",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Adds validation, then an Insight note on validating on both client and server."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "style",
+          "equals": "Learning"
+        }
+      ],
+      "show": {
+        "title": "Learning",
+        "detail": "Claude does part of the work and leaves small pieces marked TODO(human) for you to write.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/output-style learning",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Writes the form wiring and leaves the password rule as TODO(human)."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose a style."
+  },
+  "quiz": {
+    "question": "Where can you save your own output style for one project?",
+    "options": [
+      ".claude/output-styles",
+      ".claude/agents",
+      "CLAUDE.md"
+    ],
+    "answerIndex": 0,
+    "explanation": "Custom styles are Markdown files in .claude/output-styles for a project, or ~/.claude/output-styles for all your projects."
+  },
+  "status": "draft"
+}

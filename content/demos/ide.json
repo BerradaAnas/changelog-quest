@@ -1,0 +1,112 @@
+{
+  "featureId": "ide",
+  "title": "Set up Claude Code in your editor",
+  "intro": "Pick your editor and see how to get started.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "editor",
+      "label": "Editor",
+      "options": [
+        "VS Code or Cursor",
+        "A JetBrains IDE",
+        "claude in a separate terminal"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "editor",
+          "equals": "VS Code or Cursor"
+        }
+      ],
+      "show": {
+        "title": "Install the extension",
+        "detail": "The VS Code extension has its own chat panel and brings everything it needs.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Install Claude Code from the Extensions view."
+          },
+          {
+            "who": "You",
+            "text": "Open it from the Spark icon or with Cmd+Esc / Ctrl+Esc."
+          },
+          {
+            "who": "You",
+            "text": "Option+K / Alt+K inserts a reference to your selection."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "editor",
+          "equals": "A JetBrains IDE"
+        }
+      ],
+      "show": {
+        "title": "Install the CLI, then the plugin",
+        "detail": "The JetBrains plugin connects to the claude command, so install that first.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Install the claude command."
+          },
+          {
+            "who": "You",
+            "text": "Install the Claude Code plugin from the JetBrains Marketplace and restart."
+          },
+          {
+            "who": "You",
+            "text": "Run claude in the IDE's terminal; edits open in the IDE's diff view."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "editor",
+          "equals": "claude in a separate terminal"
+        }
+      ],
+      "show": {
+        "title": "Connect with /ide",
+        "detail": "Running in another terminal? Connect the session to your open IDE.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/ide",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Connects to the IDE: selections and diffs are shared."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose your editor."
+  },
+  "quiz": {
+    "question": "What do you need before installing the JetBrains plugin?",
+    "options": [
+      "Nothing else",
+      "The claude command installed",
+      "A VS Code install"
+    ],
+    "answerIndex": 1,
+    "explanation": "Unlike the VS Code extension, the JetBrains plugin doesn't include the CLI, so install claude first."
+  },
+  "status": "draft"
+}

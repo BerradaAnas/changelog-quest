@@ -1,0 +1,107 @@
+{
+  "featureId": "plan-mode",
+  "title": "What Claude may do while planning",
+  "intro": "Plan mode is on. Pick what Claude tries to do next and see whether it goes ahead.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "step",
+      "label": "Claude's next step",
+      "options": [
+        "Read src/auth.ts",
+        "Edit src/auth.ts",
+        "Show the plan and you approve it"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "step",
+          "equals": "Read src/auth.ts"
+        }
+      ],
+      "show": {
+        "title": "Allowed",
+        "detail": "Reading and exploring is what plan mode is for, so Claude can look through files to work out an approach.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Reads src/auth.ts to understand the login flow."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Plan mode: reading is allowed."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "step",
+          "equals": "Edit src/auth.ts"
+        }
+      ],
+      "show": {
+        "title": "Not yet",
+        "detail": "Edits to your source files stay blocked until you approve a plan. Claude has to describe the change first.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Wants to edit src/auth.ts."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Plan mode: source edits wait for an approved plan."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "step",
+          "equals": "Show the plan and you approve it"
+        }
+      ],
+      "show": {
+        "title": "Plan approved",
+        "detail": "Approving leaves plan mode. You choose how the work continues: with edits accepted automatically, or with each edit checked by you. You could also say no and keep planning.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Presents a step-by-step plan."
+          },
+          {
+            "who": "You",
+            "text": "Yes, manually approve edits."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Leaves plan mode and starts the work."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of Claude's next steps to see how plan mode handles it."
+  },
+  "quiz": {
+    "question": "How do you switch to plan mode during a session in the terminal?",
+    "options": [
+      "Press Shift+Tab until the status bar shows plan mode",
+      "Run /config plan",
+      "Restart with --print"
+    ],
+    "answerIndex": 0,
+    "explanation": "Shift+Tab cycles the permission modes. You can also type /plan, or start with claude --permission-mode plan."
+  },
+  "status": "draft"
+}

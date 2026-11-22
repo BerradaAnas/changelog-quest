@@ -25,8 +25,8 @@ Launch early, then decide on more work based on whether people use it (ADR 0013)
 ## 3. Feature catalog and demos (the core)
 
 - [x] Reach 15–25 features: 16 so far (`add-feature` skill). Add more where newcomers need them.
-- [ ] Review and approve the 3 draft demos: `hooks`, `skills`, `checkpointing`.
-- [ ] Write demos for the new features (`write-demo` skill).
+- [ ] Review and approve the 16 draft demos (one per feature; `pnpm dev:drafts` shows them).
+- [x] Write demos for the new features (`write-demo` skill).
 
 ## 4. Release summaries (last month only)
 
