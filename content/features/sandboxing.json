@@ -1,0 +1,42 @@
+{
+  "id": "sandboxing",
+  "name": "Sandboxing",
+  "area": "core",
+  "summary": "Run Claude's shell commands inside an operating-system sandbox that limits which files and websites they can reach.",
+  "what": "With the sandbox on, every shell command Claude runs, and anything it starts, is fenced in by the operating system. By default commands can write only to the project folder and a temporary folder, and can reach only the network domains you allow. Because the limits are enforced by the system rather than by matching command text, Claude can run commands freely inside them without asking each time.",
+  "impact": [
+    {
+      "title": "Fewer prompts, same safety",
+      "detail": "In auto-allow mode, sandboxed commands run without asking because they cannot step outside the limits."
+    },
+    {
+      "title": "Protection that can't be talked around",
+      "detail": "A command can't write outside its allowed folders or reach unknown sites, however it is phrased."
+    },
+    {
+      "title": "Organization-wide rules",
+      "detail": "Admins can require the sandbox in managed settings, and a repository can't loosen it."
+    }
+  ],
+  "howItWorks": [
+    "Run /sandbox to turn it on and pick a mode; it also lists any missing dependencies.",
+    "Or set sandbox.enabled to true in a settings file.",
+    "Allow extra folders with filesystem.allowWrite and websites with network.allowedDomains.",
+    "Works on macOS, Linux and WSL2; on Linux it needs bubblewrap and socat.",
+    "Claude's own file tools, hooks and local MCP servers run outside the sandbox, so keep permission rules for them."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/sandboxing"],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.0.24",
+      "type": "introduced",
+      "note": "A sandbox mode for Bash commands was released on Linux and macOS."
+    },
+    {
+      "version": "2.0.30",
+      "type": "updated",
+      "note": "The allowUnsandboxedCommands setting lets admins remove the unsandboxed escape hatch."
+    }
+  ]
+}

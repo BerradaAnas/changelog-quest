@@ -775,7 +775,9 @@
     },
     "2.1.325#876ab67e": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "ide"
+      ]
     },
     "2.1.325#af77fba2": {
       "kind": "added",
@@ -784,19 +786,22 @@
     "2.1.325#2351a628": {
       "kind": "added",
       "featureIds": [
+        "ide",
         "mcp"
       ]
     },
     "2.1.325#e8d10331": {
       "kind": "changed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "sandboxing"
       ]
     },
     "2.1.325#6b2048be": {
       "kind": "changed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "sandboxing"
       ]
     },
     "2.1.325#78367101": {
@@ -816,7 +821,9 @@
     },
     "2.1.325#cf0fa28d": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "sandboxing"
+      ]
     },
     "2.1.325#dee39201": {
       "kind": "changed",
@@ -909,7 +916,9 @@
     },
     "2.1.325#0b985061": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "web"
+      ]
     },
     "2.1.325#3ef49b44": {
       "kind": "changed",
@@ -922,6 +931,7 @@
     "2.1.325#34347da5": {
       "kind": "changed",
       "featureIds": [
+        "headless",
         "permissions"
       ]
     },
@@ -1199,6 +1209,7 @@
     "2.1.325#9c6c0827": {
       "kind": "fixed",
       "featureIds": [
+        "headless",
         "mcp"
       ]
     },
@@ -1334,15 +1345,21 @@
     },
     "2.1.325#7f1130c0": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "sandboxing"
+      ]
     },
     "2.1.325#2181edcb": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "sandboxing"
+      ]
     },
     "2.1.325#dedc06f6": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "sandboxing"
+      ]
     },
     "2.1.325#f2de51e0": {
       "kind": "fixed",
@@ -1370,28 +1387,39 @@
     },
     "2.1.325#05ac0cc0": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "ide"
+      ]
     },
     "2.1.325#4e5bb9d5": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "ide"
+      ]
     },
     "2.1.325#d5945355": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "ide"
+      ]
     },
     "2.1.325#3c9a6cc2": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "ide"
+      ]
     },
     "2.1.325#e462f57d": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "ide"
+      ]
     },
     "2.1.325#dede0172": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "web"
       ]
     },
     "2.1.325#1af79c6e": {

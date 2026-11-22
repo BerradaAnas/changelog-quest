@@ -1,0 +1,45 @@
+{
+  "id": "ide",
+  "name": "IDE integrations",
+  "area": "anywhere",
+  "summary": "Use Claude Code inside VS Code or a JetBrains IDE, with its changes shown as diffs in your editor.",
+  "what": "Claude Code has an extension for VS Code (and editors built on it, such as Cursor) and a plugin for JetBrains IDEs like IntelliJ IDEA, PyCharm and WebStorm. The VS Code extension gives you a chat panel next to your code; the JetBrains plugin connects the claude command in the terminal to the IDE. Either way, Claude sees what you have selected, can refer to files by line, and shows its edits as diffs you review in the editor.",
+  "impact": [
+    {
+      "title": "Stay in your editor",
+      "detail": "Ask, review and accept changes without switching to a separate terminal window."
+    },
+    {
+      "title": "Share context in one keystroke",
+      "detail": "Your current selection is shared automatically, and a shortcut inserts a reference such as @src/auth.ts#5-10."
+    },
+    {
+      "title": "Review changes as diffs",
+      "detail": "Proposed edits open in the IDE's own diff view, so you see exactly what changes before keeping it."
+    }
+  ],
+  "howItWorks": [
+    "VS Code: install the Claude Code extension from the Marketplace, then open it from the Spark icon, the Activity Bar or the Command Palette.",
+    "JetBrains: install the claude command first, then the Claude Code plugin from the JetBrains Marketplace, and restart the IDE.",
+    "Toggle Claude with Cmd+Esc on Mac or Ctrl+Esc on Windows and Linux.",
+    "Insert a file reference with Option+K or Alt+K in VS Code, or Cmd+Option+K or Alt+Ctrl+K in JetBrains.",
+    "Running claude in an external terminal? Type /ide to connect it to your open IDE."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/vs-code",
+    "https://code.claude.com/docs/en/jetbrains"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.17",
+      "type": "introduced",
+      "note": "First changelog mention of an IDE integration (the VS Code diff view); it shipped earlier without an entry."
+    },
+    {
+      "version": "2.0.0",
+      "type": "updated",
+      "note": "A native VS Code extension with its own chat panel was released."
+    }
+  ]
+}

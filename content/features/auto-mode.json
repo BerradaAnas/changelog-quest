@@ -1,0 +1,42 @@
+{
+  "id": "auto-mode",
+  "name": "Auto mode",
+  "area": "core",
+  "summary": "Let a safety check approve Claude's actions for you, so it can work through a task without constant prompts.",
+  "what": "Auto mode is a permission mode. Instead of asking you about each action, Claude Code sends it to a separate classifier model first. Reading files and editing inside your project go ahead; actions that go beyond what you asked for, touch unfamiliar systems or seem driven by untrusted content are blocked. Your own deny and ask rules still apply on top.",
+  "impact": [
+    {
+      "title": "Longer tasks without babysitting",
+      "detail": "Claude keeps going through routine steps instead of stopping for approval at each one."
+    },
+    {
+      "title": "Guardrails stay on",
+      "detail": "Risky actions are blocked, and after several blocks in a row Claude Code goes back to asking you."
+    },
+    {
+      "title": "Your rules still win",
+      "detail": "Deny rules block in every mode, and ask rules still force a prompt."
+    }
+  ],
+  "howItWorks": [
+    "Press Shift+Tab until the status bar shows auto mode, or start with claude --permission-mode auto.",
+    "To start in it every time, set permissions.defaultMode to auto in ~/.claude/settings.json (project files can't set it).",
+    "Read-only actions and edits in the working folder are approved; other actions are checked by the classifier first.",
+    "Blocked actions don't run, and you can review them later under /permissions.",
+    "It needs a recent model, and admins can turn it off with permissions.disableAutoMode."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/permission-modes"],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.86",
+      "type": "introduced",
+      "note": "First changelog mention of auto mode; it shipped earlier without an entry."
+    },
+    {
+      "version": "2.1.89",
+      "type": "updated",
+      "note": "Denied actions show a notification and can be retried from /permissions."
+    }
+  ]
+}
