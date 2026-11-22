@@ -24,8 +24,7 @@ Launch early, then decide on more work based on whether people use it (ADR 0013)
 
 ## 3. Feature catalog and demos (the core)
 
-- [ ] Grow the catalog from 17 features
-      to 15–25 (`add-feature` skill), starting with the features newcomers use most.
+- [x] Reach 15–25 features: 16 so far (`add-feature` skill). Add more where newcomers need them.
 - [ ] Review and approve the 3 draft demos: `hooks`, `skills`, `checkpointing`.
 - [ ] Write demos for the new features (`write-demo` skill).
 
