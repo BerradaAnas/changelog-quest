@@ -1,0 +1,42 @@
+{
+  "id": "mcp",
+  "name": "MCP servers",
+  "area": "extend",
+  "summary": "Connect Claude Code to outside tools, databases and services through the Model Context Protocol.",
+  "what": "MCP (Model Context Protocol) is an open standard for giving an AI assistant extra tools. An MCP server might expose your issue tracker, a database or a design tool. Once you add a server, Claude can call its tools directly instead of you copying data into the chat. Servers run either on your machine (started as a local command) or remotely over HTTP.",
+  "impact": [
+    {
+      "title": "Work with your real tools",
+      "detail": "Claude can read a ticket, query a database or check monitoring data itself, without copy and paste."
+    },
+    {
+      "title": "Share a setup with the team",
+      "detail": "Servers added at project scope are saved in a .mcp.json file you can commit to the repository."
+    },
+    {
+      "title": "Control what is connected",
+      "detail": "The /mcp command shows each server's status and lets you reconnect, sign in, enable or disable it."
+    }
+  ],
+  "howItWorks": [
+    "Add a remote server with claude mcp add --transport http <name> <url>, or a local one with claude mcp add <name> -- <command>.",
+    "Pick a scope: local (the default, just you in this project), project (saved to .mcp.json) or user (all your projects).",
+    "Servers from a project's .mcp.json wait for your approval before they run.",
+    "In a session, use /mcp to check status and to sign in to servers that need OAuth.",
+    "Only connect servers you trust: what a server returns can try to steer Claude."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/mcp"],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.21",
+      "type": "introduced",
+      "note": "Already part of Claude Code when the changelog began with this version."
+    },
+    {
+      "version": "0.2.32",
+      "type": "updated",
+      "note": "claude mcp add gained a step-by-step setup."
+    }
+  ]
+}

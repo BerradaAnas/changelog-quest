@@ -9,22 +9,22 @@ Launch early, then decide on more work based on whether people use it (ADR 0013)
 
 ## 1. Land the current branch
 
-- [ ] Open the pull request for `finish-phase-1` (commit `3134e0b`, pushed, not merged):
+- [x] Open the pull request for `finish-phase-1` (commit `3134e0b`, pushed, not merged):
       https://github.com/BerradaAnas/changelog-quest/compare/main...finish-phase-1?expand=1
-- [ ] Let CI (`pnpm check`) pass, review, merge into `main`.
+- [x] Let CI (`pnpm check`) pass, review, merge into `main`.
 
 ## 2. Account setup (owner only)
 
-- [ ] Create the ingest GitHub App (Contents and Pull requests: read and write, no webhook),
+- [x] Create the ingest GitHub App (Contents and Pull requests: read and write, no webhook),
       install it on this repository only.
-- [ ] Add the Actions variable `INGEST_APP_CLIENT_ID` and the secret `INGEST_APP_PRIVATE_KEY`.
-- [ ] Protect `main`: require a pull request and the `check` job.
-- [ ] Create the Cloudflare Pages project named `changelog-quest` (build `pnpm build`, output
+- [x] Add the Actions variable `INGEST_APP_CLIENT_ID` and the secret `INGEST_APP_PRIVATE_KEY`.
+- [x] Protect `main`: require a pull request and the `check` job.
+- [x] Create the Cloudflare Pages project named `changelog-quest` (build `pnpm build`, output
       `site/dist`) and check that `SITE_URL` matches its address.
 
 ## 3. Feature catalog and demos (the core)
 
-- [ ] Grow the catalog from 5 features (checkpointing, hooks, plugins, skills, sub-agents)
+- [ ] Grow the catalog from 10 features (checkpointing, hooks, mcp, memory, permissions, plan-mode, plugins, settings, skills, sub-agents)
       to 15–25 (`add-feature` skill), starting with the features newcomers use most.
 - [ ] Review and approve the 3 draft demos: `hooks`, `skills`, `checkpointing`.
 - [ ] Write demos for the new features (`write-demo` skill).

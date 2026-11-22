@@ -1,0 +1,50 @@
+{
+  "id": "permissions",
+  "name": "Permissions",
+  "area": "core",
+  "summary": "Decide which actions Claude Code may take on its own, which need your OK, and which are never allowed.",
+  "what": "Before Claude edits a file, runs a command or uses a tool, Claude Code checks your permission rules. Each rule names a tool, optionally narrowed down, such as Bash(npm run test *) or Read(./.env), and sits in one of three lists: allow, ask or deny. A permission mode sets the overall behaviour, from asking about everything to accepting file edits automatically.",
+  "impact": [
+    {
+      "title": "Fewer interruptions",
+      "detail": "Allow the commands you run all the time, such as tests and linters, and Claude stops asking about them."
+    },
+    {
+      "title": "Hard limits",
+      "detail": "A deny rule always wins, so secrets files or risky commands stay off limits whatever else is allowed."
+    },
+    {
+      "title": "The right pace for the task",
+      "detail": "Switch modes with Shift+Tab: review each edit, accept edits automatically, or only plan."
+    }
+  ],
+  "howItWorks": [
+    "When Claude asks, choosing \"don't ask again\" saves an allow rule for that project.",
+    "Use /permissions to see, add and remove rules, or edit the permissions block of a settings file.",
+    "Rules are checked in the order deny, then ask, then allow; the first match decides.",
+    "Pick a starting mode with --permission-mode or the defaultMode setting, and cycle modes in a session with Shift+Tab.",
+    "Bash rules match command text, so they are a convenience, not a security boundary; use deny rules and the sandbox for protection."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/permissions",
+    "https://code.claude.com/docs/en/permission-modes"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.21",
+      "type": "introduced",
+      "note": "Already part of Claude Code when the changelog began with this version."
+    },
+    {
+      "version": "1.0.7",
+      "type": "updated",
+      "note": "The /allowed-tools command was renamed /permissions."
+    },
+    {
+      "version": "1.0.72",
+      "type": "updated",
+      "note": "Ask rules: always confirm before chosen tools run."
+    }
+  ]
+}

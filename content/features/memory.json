@@ -1,0 +1,42 @@
+{
+  "id": "memory",
+  "name": "Memory (CLAUDE.md)",
+  "area": "core",
+  "summary": "Give Claude standing instructions about you and your project that it reads at the start of every session.",
+  "what": "CLAUDE.md is a plain Markdown file of notes for Claude: build commands, code style, project conventions. Claude Code loads it when a session starts, so you don't repeat yourself each time. Files can live in your home folder (for all projects), in the project (shared with the team) or in a personal CLAUDE.local.md. Claude can also keep its own notes, called auto memory, in a folder per repository.",
+  "impact": [
+    {
+      "title": "No more repeating yourself",
+      "detail": "Commands, naming rules and gotchas written once are known in every new session."
+    },
+    {
+      "title": "Shared team knowledge",
+      "detail": "A project CLAUDE.md committed to the repository gives everyone's sessions the same context."
+    },
+    {
+      "title": "Personal and project layers",
+      "detail": "Your own preferences in ~/.claude/CLAUDE.md sit alongside the project's file instead of replacing it."
+    }
+  ],
+  "howItWorks": [
+    "Run /init in a project to have Claude write a starter CLAUDE.md, then edit it.",
+    "Put instructions for all your projects in ~/.claude/CLAUDE.md and project ones in ./CLAUDE.md or ./.claude/CLAUDE.md.",
+    "At launch, Claude Code loads the files from the working folder and every folder above it and combines them; files in subfolders load when Claude works there.",
+    "Pull in other files with @path/to/file lines, and open the files for editing with /memory.",
+    "Keep each file short: Claude treats it as guidance, so use permission rules or hooks for anything that must always be enforced."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/memory"],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.21",
+      "type": "introduced",
+      "note": "Already part of Claude Code when the changelog began with this version."
+    },
+    {
+      "version": "0.2.107",
+      "type": "updated",
+      "note": "CLAUDE.md files can import other files with @path lines."
+    }
+  ]
+}

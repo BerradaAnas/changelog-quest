@@ -783,15 +783,21 @@
     },
     "2.1.325#2351a628": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#e8d10331": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#6b2048be": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#78367101": {
       "kind": "changed",
@@ -800,6 +806,7 @@
     "2.1.325#cdc125ab": {
       "kind": "changed",
       "featureIds": [
+        "permissions",
         "skills"
       ]
     },
@@ -868,7 +875,9 @@
     },
     "2.1.325#0660a037": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#7724c346": {
       "kind": "changed",
@@ -912,7 +921,9 @@
     },
     "2.1.325#34347da5": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#19cb3f31": {
       "kind": "changed",
@@ -958,7 +969,9 @@
     },
     "2.1.325#18b30806": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#957e3adc": {
       "kind": "changed",
@@ -1020,7 +1033,9 @@
     },
     "2.1.325#37cb67f8": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "plan-mode"
+      ]
     },
     "2.1.325#df893408": {
       "kind": "fixed",
@@ -1130,7 +1145,9 @@
     },
     "2.1.325#8b0a2265": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#7a721330": {
       "kind": "fixed",
@@ -1142,7 +1159,9 @@
     },
     "2.1.325#9ec06784": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "settings"
+      ]
     },
     "2.1.325#c494fa2d": {
       "kind": "fixed",
@@ -1161,35 +1180,51 @@
     },
     "2.1.325#51944439": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#1acf6dd0": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#aba01663": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#9c6c0827": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#4e8cd5df": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#a63cb8da": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#793cbec7": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#2f5fb40c": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#143f9bcc": {
       "kind": "fixed",
@@ -1249,31 +1284,45 @@
     },
     "2.1.325#5ccd85a0": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#da4b50f6": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#b38ccecf": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#316b0775": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#4576ac71": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "settings"
+      ]
     },
     "2.1.325#eb28bc99": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#19253a71": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "permissions"
+      ]
     },
     "2.1.325#f0ebd65f": {
       "kind": "fixed",
@@ -1341,7 +1390,9 @@
     },
     "2.1.325#dede0172": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mcp"
+      ]
     },
     "2.1.325#1af79c6e": {
       "kind": "fixed",
