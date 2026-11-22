@@ -1,0 +1,301 @@
+{
+  "version": "2.1.310",
+  "sourceHash": "8584c49e5165878460ce45d7c259b4ffcbebd1be7aeb0b773ebf7e0532639f1e",
+  "title": "Monitor tool on Bedrock, Vertex and Foundry, gateway retry fix",
+  "headline": "The Monitor tool and plugin monitors come to Bedrock, Vertex and Foundry, requests retry when a gateway rejects newer request fields, and cloud session admin pages improve.",
+  "lines": [
+    {
+      "kind": "added",
+      "text": "The Monitor tool and plugin monitors now work on Bedrock, Vertex and Foundry, and with telemetry or nonessential traffic turned off. Long foreground sleeps are blocked in those setups too.",
+      "covers": [
+        "2.1.310#7f152102"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Behind gateways and compatible servers that reject the effort-2025-11-24 beta value or system messages mid-conversation, requests no longer fail: Claude Code retries without them.",
+      "covers": [
+        "2.1.310#36158a6d"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A very large cleanupPeriodDays no longer makes background cleanup delete recent files such as pasted images.",
+      "covers": [
+        "2.1.310#e770869b"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "After a \"Prompt is too long\" error, compaction of conversations with dense text such as base64 or SVG now trims enough that the next request goes through.",
+      "covers": [
+        "2.1.310#effdd72e"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "File read permission prompts now show where a symbolic link points.",
+      "covers": [
+        "2.1.310#c00d8cc3"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A question's auto-continue timer no longer fires right as the external editor closes after a long edit.",
+      "covers": [
+        "2.1.310#10d40d27"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Windows: when Git Bash is missing and a PreToolUse or PermissionRequest hook's command is only quoted strings, such as a quoted path, the hook no longer lets the tool call through.",
+      "covers": [
+        "2.1.310#7781bcc0"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Auto mode's prompt before the first read outside the working directories now explains when blocking such reads will make shell commands ask for permission.",
+      "covers": [
+        "2.1.310#0e83f7f2"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Non-interactive sessions (-p and the Agent SDK) use less memory while compacting a very large transcript.",
+      "covers": [
+        "2.1.310#3e08c2c9"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "A mod's Image now draws its picture in tmux with allow-passthrough and focus-events on, in kitty and Ghostty, and in iTerm2 3.5 or later with fullscreen rendering, instead of showing only its alt text.",
+      "covers": [
+        "2.1.310#e6368020"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Linux: when Ubuntu's AppArmor limit on user namespaces stops bubblewrap from starting the sandbox, /sandbox and the startup warning name it and explain how to lift it.",
+      "covers": [
+        "2.1.310#191749f3"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "In a non-interactive session, an MCP tool call that times out while the server's question goes unanswered now tells Claude no answer came and not to try the call again.",
+      "covers": [
+        "2.1.310#ce81aac9"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: Enter on the plan review card's \"Send feedback and keep planning\" button sends your comments instead of approving the plan.",
+      "covers": [
+        "2.1.310#21b6cafb"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: \"Switch branch & continue\" on a cloud session opened from Session history's Web tab no longer ends in \"Something went wrong\".",
+      "covers": [
+        "2.1.310#56bf533e"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Cloud sessions: Enterprise custom roles gain permissions for cloud sessions and Remote Control, so Owners can grant each by role, and turning either on in admin settings now asks for confirmation and lists the roles that have it.",
+      "covers": [
+        "2.1.310#26bd4255",
+        "2.1.310#bea9f34f"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Cloud sessions: a Choose file button loads a cloud environment's setup script from a file.",
+      "covers": [
+        "2.1.310#dc1927a7"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Cloud sessions: failed saves and archives in the environment edit dialog, and failed routine API token actions, now show their error in the dialog instead of nowhere or only in a toast.",
+      "covers": [
+        "2.1.310#3c9b194c",
+        "2.1.310#3bf44360"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud sessions: the start checklist shows a setup script's output in a scrolling box, and the environment dialog opens network access, setup script and environment variables from separate rows.",
+      "covers": [
+        "2.1.310#984ddae0",
+        "2.1.310#8c505d32"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude Tag: ! commands such as !restart and !help work when written in bold, italic or strikethrough; admin channel and workspace pages survive a failed background refresh of bundles; and the spend limits page no longer says no channels match while names are loading.",
+      "covers": [
+        "2.1.310#66cbba01",
+        "2.1.310#1ca592be",
+        "2.1.310#57aa2fbd"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Code Review: the admin section keeps showing its repositories and switches after a failed refresh, retries its first load, and shows a single Try again banner if that still fails.",
+      "covers": [
+        "2.1.310#8479946a",
+        "2.1.310#645f1477"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.310#7f152102": {
+      "kind": "added",
+      "featureIds": [
+        "plugins"
+      ]
+    },
+    "2.1.310#36158a6d": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.310#e770869b": {
+      "kind": "fixed",
+      "featureIds": [
+        "settings"
+      ]
+    },
+    "2.1.310#effdd72e": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.310#c00d8cc3": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.310#10d40d27": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.310#7781bcc0": {
+      "kind": "fixed",
+      "featureIds": [
+        "hooks"
+      ]
+    },
+    "2.1.310#0e83f7f2": {
+      "kind": "changed",
+      "featureIds": [
+        "auto-mode"
+      ]
+    },
+    "2.1.310#3e08c2c9": {
+      "kind": "changed",
+      "featureIds": [
+        "headless"
+      ]
+    },
+    "2.1.310#e6368020": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.310#191749f3": {
+      "kind": "changed",
+      "featureIds": [
+        "sandboxing"
+      ]
+    },
+    "2.1.310#ce81aac9": {
+      "kind": "changed",
+      "featureIds": [
+        "mcp",
+        "headless"
+      ]
+    },
+    "2.1.310#21b6cafb": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide",
+        "plan-mode"
+      ]
+    },
+    "2.1.310#56bf533e": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide",
+        "web"
+      ]
+    },
+    "2.1.310#26bd4255": {
+      "kind": "added",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.310#bea9f34f": {
+      "kind": "added",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.310#dc1927a7": {
+      "kind": "added",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.310#3c9b194c": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.310#3bf44360": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.310#984ddae0": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.310#8c505d32": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.310#66cbba01": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.310#1ca592be": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.310#57aa2fbd": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.310#8479946a": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.310#645f1477": {
+      "kind": "fixed",
+      "featureIds": []
+    }
+  },
+  "status": "draft",
+  "model": "claude-opus-5-5",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-22T19:57:09.360Z"
+}
