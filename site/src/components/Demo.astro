@@ -22,6 +22,8 @@ const id = `demo-${demo.featureId}`;
   <p>{demo.intro}</p>
   <noscript><p class="pending-note">This example needs JavaScript. Everything else on the page works without it.</p></noscript>
 
+  <div class="demo-split">
+  <div class="demo-setup">
   <form data-demo-form>
     {
       demo.inputs.map((input) =>
@@ -64,7 +66,6 @@ const id = `demo-${demo.featureId}`;
     <button type="submit" class="cta">Run the example</button>
   </form>
 
-  <div class="outcome" data-demo-outcome aria-live="polite" hidden></div>
 
   {
     demo.configPreview && (
@@ -74,6 +75,14 @@ const id = `demo-${demo.featureId}`;
       </div>
     )
   }
+
+  </div>
+  <div class="demo-result" aria-label="Result">
+    <h3 class="result-label">Result</h3>
+    <div class="outcome" data-demo-outcome aria-live="polite" hidden></div>
+    <p class="result-empty">Make a choice and run the example. What Claude Code does appears here.</p>
+  </div>
+  </div>
 
   <form class="quiz" data-demo-quiz>
     <fieldset>
