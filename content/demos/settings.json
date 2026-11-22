@@ -1,0 +1,116 @@
+{
+  "featureId": "settings",
+  "title": "Which settings file wins?",
+  "intro": "Your user settings (~/.claude/settings.json) set a value. Pick another place that sets the same key to something else, and see which value Claude Code uses.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "other",
+      "label": "Also set in",
+      "options": [
+        "Shared project .claude/settings.json",
+        "Local .claude/settings.local.json",
+        "--settings on the command line",
+        "Managed settings from your organization"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "other",
+          "equals": "Shared project .claude/settings.json"
+        }
+      ],
+      "show": {
+        "title": "The project value wins",
+        "detail": "Project settings rank above user settings, so the team's value is used in this repository.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "User < shared project: the project value is used."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "other",
+          "equals": "Local .claude/settings.local.json"
+        }
+      ],
+      "show": {
+        "title": "Your local value wins",
+        "detail": "Local project settings rank above both the shared project file and your user file.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "User < shared project < local project: the local value is used."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "other",
+          "equals": "--settings on the command line"
+        }
+      ],
+      "show": {
+        "title": "The command line wins",
+        "detail": "Settings passed with --settings apply to that session and rank above every file except managed settings.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --settings ./ci-settings.json",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Command line beats local, project and user files."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "other",
+          "equals": "Managed settings from your organization"
+        }
+      ],
+      "show": {
+        "title": "Managed settings win",
+        "detail": "Managed settings are at the top of the order and can't be overridden by any other file or flag.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Managed settings rank highest: your value is ignored."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose where the second value is set."
+  },
+  "quiz": {
+    "question": "Your user file and the project file both have permissions.allow rules. What happens?",
+    "options": [
+      "Only the project rules apply",
+      "Only the user rules apply",
+      "The lists are combined"
+    ],
+    "answerIndex": 2,
+    "explanation": "List settings such as permission rules are merged across files; single values are taken from the highest-ranking file."
+  },
+  "status": "draft"
+}

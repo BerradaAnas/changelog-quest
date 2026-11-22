@@ -1,0 +1,131 @@
+{
+  "featureId": "memory",
+  "title": "Where does this instruction go?",
+  "intro": "You want Claude to remember something. Pick the instruction and see which file it belongs in.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "note",
+      "label": "Instruction",
+      "options": [
+        "I prefer short commit messages (all my projects)",
+        "Run tests with pnpm test (whole team)",
+        "My local database runs on port 5433 (just me, this project)",
+        "Never touch the migrations folder (must be enforced)"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "note",
+          "equals": "I prefer short commit messages (all my projects)"
+        }
+      ],
+      "show": {
+        "title": "~/.claude/CLAUDE.md",
+        "detail": "Your user file is loaded in every project, so personal preferences go there.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "~/.claude/CLAUDE.md",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Loads it at the start of every session, in any project."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "note",
+          "equals": "Run tests with pnpm test (whole team)"
+        }
+      ],
+      "show": {
+        "title": "./CLAUDE.md in the project",
+        "detail": "The project file is committed with the code, so everyone's sessions read the same commands and conventions.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "./CLAUDE.md",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Loads it for anyone working in this repository."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "note",
+          "equals": "My local database runs on port 5433 (just me, this project)"
+        }
+      ],
+      "show": {
+        "title": "./CLAUDE.local.md",
+        "detail": "A local file holds notes that are personal to you in this project. Add it to .gitignore so it isn't shared.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "./CLAUDE.local.md",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Loads it alongside the project file."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "note",
+          "equals": "Never touch the migrations folder (must be enforced)"
+        }
+      ],
+      "show": {
+        "title": "Use a rule, not memory",
+        "detail": "CLAUDE.md is guidance Claude reads, not a guarantee. For something that must never happen, add a deny permission rule or a hook.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "CLAUDE.md is context, not configuration."
+          },
+          {
+            "who": "You",
+            "text": "\"deny\": [\"Edit(./migrations/**)\"]",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose an instruction to see where it belongs."
+  },
+  "quiz": {
+    "question": "You start Claude Code in a subfolder of a project. Which CLAUDE.md files load at launch?",
+    "options": [
+      "Only the one in the current folder",
+      "The ones in the current folder and every folder above it",
+      "Only ~/.claude/CLAUDE.md"
+    ],
+    "answerIndex": 1,
+    "explanation": "Claude Code reads CLAUDE.md files from the working folder up through its parents and combines them. Files in subfolders below load when Claude works there."
+  },
+  "status": "draft"
+}

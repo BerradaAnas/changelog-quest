@@ -1,0 +1,124 @@
+{
+  "featureId": "auto-mode",
+  "title": "What does auto mode approve?",
+  "intro": "You asked Claude to fix a failing test, and auto mode is on. Pick Claude's next action.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "action",
+      "label": "Claude's next action",
+      "options": [
+        "Read the test file",
+        "Edit a file in the project",
+        "Force-push to main",
+        "A command your deny rule covers"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "Read the test file"
+        }
+      ],
+      "show": {
+        "title": "Approved",
+        "detail": "Read-only actions are approved without a prompt.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Reads the test file."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Read-only: approved."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "Edit a file in the project"
+        }
+      ],
+      "show": {
+        "title": "Approved",
+        "detail": "Edits inside the working folder are approved without a prompt.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Edits the file to fix the test."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Edit in the working folder: approved."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "Force-push to main"
+        }
+      ],
+      "show": {
+        "title": "Blocked by the classifier",
+        "detail": "Pushing goes beyond what you asked for. The classifier blocks actions like this, and the action doesn't run.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "git push --force origin main",
+            "code": true
+          },
+          {
+            "who": "Classifier",
+            "text": "Goes beyond the request: blocked."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "action",
+          "equals": "A command your deny rule covers"
+        }
+      ],
+      "show": {
+        "title": "Blocked by your rule",
+        "detail": "Deny rules apply in every mode, before auto mode's own check.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Deny rule matches: refused."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose an action."
+  },
+  "quiz": {
+    "question": "In auto mode, does an ask rule still prompt you?",
+    "options": [
+      "Yes, ask rules still force a prompt",
+      "No, auto mode skips all prompts",
+      "Only in plan mode"
+    ],
+    "answerIndex": 0,
+    "explanation": "Auto mode replaces routine prompts with a classifier, but your explicit ask and deny rules still apply."
+  },
+  "status": "draft"
+}

@@ -1,0 +1,110 @@
+{
+  "featureId": "plugins",
+  "title": "Use a plugin",
+  "intro": "A marketplace offers a plugin named code-tools, which contains a review skill. Pick what you want to do.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "step",
+      "label": "Step",
+      "options": [
+        "Install it",
+        "Run its review skill",
+        "Turn it off for now"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "step",
+          "equals": "Install it"
+        }
+      ],
+      "show": {
+        "title": "Install from /plugin",
+        "detail": "Installing loads everything in the plugin: its skills, subagents, hooks and MCP servers.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/plugin",
+            "code": true
+          },
+          {
+            "who": "You",
+            "text": "Open the Discover tab and install code-tools."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Loads the plugin's parts."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "step",
+          "equals": "Run its review skill"
+        }
+      ],
+      "show": {
+        "title": "Use the plugin's name",
+        "detail": "A plugin's skills run under the plugin's name, so they don't clash with your own.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/code-tools:review",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Runs the review skill from code-tools."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "step",
+          "equals": "Turn it off for now"
+        }
+      ],
+      "show": {
+        "title": "Disable it",
+        "detail": "Disabling stops the plugin without removing it, so you can turn it back on later.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude plugin disable code-tools",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "The plugin's parts are no longer loaded."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose a step."
+  },
+  "quiz": {
+    "question": "How do you run the skill review from the plugin code-tools?",
+    "options": [
+      "/review",
+      "/code-tools:review",
+      "@code-tools review"
+    ],
+    "answerIndex": 1,
+    "explanation": "Plugin skills are named plugin-name:skill-name."
+  },
+  "status": "draft"
+}

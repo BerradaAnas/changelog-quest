@@ -1,0 +1,120 @@
+{
+  "featureId": "permissions",
+  "title": "Which rule decides?",
+  "intro": "This project allows test commands, denies git push and asks about everything else. Type a command Claude wants to run and see which rule applies.",
+  "kind": "type",
+  "inputs": [
+    {
+      "id": "command",
+      "label": "Command Claude wants to run",
+      "placeholder": "npm run test",
+      "suggestions": [
+        "npm run test -- auth",
+        "git push origin main",
+        "rm -rf dist"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "^\\s*git\\s+push(\\s|$)"
+        }
+      ],
+      "show": {
+        "title": "Denied",
+        "detail": "The command matches the deny rule Bash(git push *). Deny rules are checked first and always win, so Claude can't run it in any mode.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Bash: {{command}}",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Checks deny rules: Bash(git push *) matches."
+          },
+          {
+            "who": "Claude Code",
+            "text": "The command is refused and Claude is told why."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "^\\s*npm\\s+run\\s+test(\\s|$)"
+        }
+      ],
+      "show": {
+        "title": "Allowed without asking",
+        "detail": "No deny or ask rule matches, and the allow rule Bash(npm run test *) does, so the command runs straight away.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Bash: {{command}}",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "No deny or ask rule matches."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Allow rule Bash(npm run test *) matches: runs without a prompt."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "command",
+          "matches": "\\S"
+        }
+      ],
+      "show": {
+        "title": "Claude Code asks you",
+        "detail": "No rule matches this command, so you get a prompt. Choosing \"don't ask again\" would save an allow rule for this project.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Bash: {{command}}",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "No deny, ask or allow rule matches."
+          },
+          {
+            "who": "You",
+            "text": "Approve once, approve and don't ask again, or refuse."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Type a command first",
+    "detail": "This demo scripts only three cases: git push is denied, npm run test is allowed, and anything else prompts you."
+  },
+  "configPreview": "{\n  \"permissions\": {\n    \"allow\": [\"Bash(npm run test *)\"],\n    \"deny\": [\"Bash(git push *)\"]\n  }\n}",
+  "quiz": {
+    "question": "A command matches both an allow rule and a deny rule. What happens?",
+    "options": [
+      "It runs, because allow rules are more specific",
+      "It is refused, because deny rules are checked first",
+      "Claude Code asks you"
+    ],
+    "answerIndex": 1,
+    "explanation": "Rules are checked in the order deny, ask, allow, and the first match decides, so a deny rule always wins."
+  },
+  "status": "draft"
+}
