@@ -34,7 +34,7 @@
     },
     {
       "kind": "added",
-      "text": "VS Code: prompt suggestions appear wherever the terminal shows them. Tab accepts the suggested next prompt, and promptSuggestionEnabled: false in settings.json turns them off.",
+      "text": "VS Code now offers prompt suggestions in the same places as the terminal: press Tab to use the suggested next prompt, or set promptSuggestionEnabled to false in settings.json to hide them.",
       "covers": [
         "2.1.325#876ab67e"
       ]
@@ -98,14 +98,14 @@
     },
     {
       "kind": "changed",
-      "text": "Plugin MCP bundles (.mcpb, .dxt) now unpack under the plugins directory instead of .mcpb-cache in the plugin's folder, so read-only plugin folders load. A bundle fetched by URL downloads once more.",
+      "text": "Plugin MCP bundles (.mcpb, .dxt) are now unpacked inside the plugins directory rather than a .mcpb-cache folder next to the plugin, so plugins in read-only folders load; bundles fetched from a URL are downloaded one more time.",
       "covers": [
         "2.1.325#d6f16077"
       ]
     },
     {
       "kind": "changed",
-      "text": "Plugins from a remote marketplace that managed settings declare, enable and list in prependPlugins or appendPlugins now count as the organization's. pluginDigests is deprecated and ignored.",
+      "text": "Plugins from a remote marketplace that managed settings declare, enable and place in prependPlugins or appendPlugins are now treated as your organization's; the pluginDigests setting is deprecated and has no effect.",
       "covers": [
         "2.1.325#ad4924a3"
       ]
@@ -378,7 +378,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Focus view no longer hides the reply to your prompt when a scheduled task replied after it, and the prompt no longer sometimes goes missing from a background subagent's view when fullscreen is off.",
+      "text": "In focus view, your prompt's reply stays visible even when a scheduled task answers afterwards, and with fullscreen off, a background subagent's view no longer sometimes loses your prompt.",
       "covers": [
         "2.1.325#ae1225c7",
         "2.1.325#f71ba6d0"

@@ -27,7 +27,7 @@
     },
     {
       "kind": "added",
-      "text": "Claude Desktop's Code tab shows a notice while your organization's remote managed settings haven't loaded for the session, and another once they have.",
+      "text": "While your organization's remote managed settings are still loading for a session, the desktop Code tab now says so, and confirms when they're in place.",
       "covers": [
         "2.1.317#fe0058da"
       ]
@@ -85,7 +85,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A project's effortLevel setting applies to sessions an app starts ahead of time and then opens in the project, such as new ones in the desktop app's Code tab.",
+      "text": "Sessions that an app prepares in advance and then opens in a project, like new desktop Code tab sessions, now follow that project's effortLevel.",
       "covers": [
         "2.1.317#6a076721"
       ]
@@ -230,7 +230,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Requests no longer fail with \"unable to get local issuer certificate\" behind some TLS-inspecting proxies after a root certificate renewal.",
+      "text": "Behind certain TLS-inspecting proxies, requests work again after a root certificate is renewed instead of failing with a local issuer certificate error.",
       "covers": [
         "2.1.317#0927b187"
       ]
@@ -244,21 +244,21 @@
     },
     {
       "kind": "fixed",
-      "text": "DISABLE_PROMPT_CACHING_OPUS and DISABLE_PROMPT_CACHING_SONNET now cover [1m], other-region and undated spellings of the default model.",
+      "text": "The DISABLE_PROMPT_CACHING_OPUS and DISABLE_PROMPT_CACHING_SONNET variables now also apply when the default model is written with [1m], another region or no date.",
       "covers": [
         "2.1.317#266e0612"
       ]
     },
     {
       "kind": "fixed",
-      "text": "/artifacts and the Artifact tool's shared list show shared artifacts even when you own 200 or more.",
+      "text": "Owning 200 or more artifacts no longer hides the ones shared with you in /artifacts and the Artifact tool's shared list.",
       "covers": [
         "2.1.317#a7260af1"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Claude no longer treats Grep and Glob results as complete when the search hit its time limit.",
+      "text": "When a Grep or Glob search runs out of time, Claude now knows the results are incomplete.",
       "covers": [
         "2.1.317#218eadb5"
       ]
@@ -303,7 +303,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Child processes of a stopped shell command are no longer sometimes sent SIGTERM twice, which made some programs skip cleanup.",
+      "text": "Stopping a shell command no longer occasionally sends SIGTERM twice to its child processes, so programs get to finish their cleanup.",
       "covers": [
         "2.1.317#12a102fc"
       ]
@@ -326,7 +326,7 @@
     },
     {
       "kind": "changed",
-      "text": "/design-sync says up front when your design system has moved to Claude and stops before building instead of failing at upload.",
+      "text": "If your design system has moved to Claude, /design-sync now tells you before it builds anything rather than failing during the upload.",
       "covers": [
         "2.1.317#0c3e50da"
       ]
@@ -349,14 +349,14 @@
     },
     {
       "kind": "changed",
-      "text": "SendMessage reaches a running background agent sooner: its running command moves to the background without being stopped.",
+      "text": "Messages sent with SendMessage now reach a busy background agent sooner, because its current command is moved to the background rather than stopped.",
       "covers": [
         "2.1.317#08b6029e"
       ]
     },
     {
       "kind": "changed",
-      "text": "Subagents and teammates on a different model than the main conversation use that model's saved effort level or its default, not the session's.",
+      "text": "A subagent or teammate running on a different model from the main conversation now uses the effort level saved for that model, or its default, rather than the session's.",
       "covers": [
         "2.1.317#d2a8b231"
       ]
@@ -424,7 +424,7 @@
     },
     {
       "kind": "added",
-      "text": "Cloud sessions: a link card lets you open or decline a link an MCP server asks you to visit, instead of the request going unseen.",
+      "text": "Cloud sessions: when an MCP server wants you to visit a link, a card now appears so you can open or decline it; before, such requests went unnoticed.",
       "covers": [
         "2.1.317#326e7034"
       ]

@@ -192,7 +192,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Code Mode in auto mode keeps earlier thinking and the prompt cache when a mod adds a note after a script loads a skill.",
+      "text": "In auto mode, Code Mode now preserves earlier thinking and the prompt cache when a mod adds a note after a script has loaded a skill.",
       "covers": [
         "2.1.330#f17745fe"
       ]
@@ -258,7 +258,7 @@
     },
     {
       "kind": "fixed",
-      "text": "/mcp now lists plugin servers under \"Plugin MCPs\", --mcp-config and built-in servers under \"Other MCPs\", and a server's page names its plugin.",
+      "text": "/mcp now groups servers by origin: plugin servers under \"Plugin MCPs\" (each page names its plugin), and --mcp-config and built-in servers under \"Other MCPs\".",
       "covers": [
         "2.1.330#45edc182"
       ]
@@ -363,13 +363,6 @@
     },
     {
       "kind": "fixed",
-      "text": "The Project instructions picker in /config shows all four choices in a 24-row fullscreen window.",
-      "covers": [
-        "2.1.330#877c6e6b"
-      ]
-    },
-    {
-      "kind": "fixed",
       "text": "In plan mode under opusplan or haiku, a subagent's own subagents and forks no longer run on the plan-mode model.",
       "covers": [
         "2.1.330#fb7fe3f0"
@@ -469,16 +462,9 @@
     },
     {
       "kind": "fixed",
-      "text": "The notice for a skipped scheduled task with no organization now says to start Claude Code with --resume, since /resume in a running session won't run it.",
+      "text": "For a skipped scheduled task without an organization, the notice now tells you to restart Claude Code with --resume, because running /resume inside a session won't trigger it.",
       "covers": [
         "2.1.330#d917e052"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "claude plugin validate no longer warns wrongly that a mod's AbovePrompt or AbovePromptList hook never runs in VS Code.",
-      "covers": [
-        "2.1.330#1772bd76"
       ]
     },
     {
@@ -497,7 +483,7 @@
     },
     {
       "kind": "changed",
-      "text": "The claude.ai sign-in link from /login, claude auth login and claude setup-token is much shorter.",
+      "text": "/login, claude auth login and claude setup-token now print a far shorter claude.ai sign-in link.",
       "covers": [
         "2.1.330#e1e9924f"
       ]
@@ -512,7 +498,7 @@
     },
     {
       "kind": "changed",
-      "text": "/config search ranks settings that start with what you type first; \"effort\" finds Model and \"dark\" or \"light\" finds Theme.",
+      "text": "Searching /config now puts settings whose names begin with your text at the top, and matches related words: \"effort\" brings up Model, \"dark\" or \"light\" brings up Theme.",
       "covers": [
         "2.1.330#93848aae"
       ]
@@ -548,7 +534,7 @@
     },
     {
       "kind": "changed",
-      "text": "Self-hosted runner sessions on Amazon Bedrock or Google Cloud's Agent Platform say when they start on another default model because the first was refused.",
+      "text": "When your account refuses the first default model, self-hosted runner sessions on Bedrock or Google Cloud's Agent Platform now say they started on a different one.",
       "covers": [
         "2.1.330#bbf377a8"
       ]
@@ -592,7 +578,7 @@
     },
     {
       "kind": "changed",
-      "text": "Unrecognized model names containing \"sonnet\" or \"haiku\" now get the shorter system prompt; CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0 gives every model the full one.",
+      "text": "Model names Claude Code doesn't recognize get the shorter system prompt even if they contain \"sonnet\" or \"haiku\"; set CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0 to give every model the full prompt.",
       "covers": [
         "2.1.330#a196357e"
       ]
@@ -634,7 +620,7 @@
     },
     {
       "kind": "changed",
-      "text": "Prompt hooks accept model aliases like haiku or sonnet in their model field.",
+      "text": "The model field of a prompt hook can now be a short alias such as haiku or sonnet.",
       "covers": [
         "2.1.330#c7ff9319"
       ]
@@ -1154,9 +1140,8 @@
     },
     "2.1.330#877c6e6b": {
       "kind": "fixed",
-      "featureIds": [
-        "fullscreen"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.330#fb7fe3f0": {
       "kind": "fixed",
@@ -1301,11 +1286,8 @@
     },
     "2.1.330#1772bd76": {
       "kind": "fixed",
-      "featureIds": [
-        "plugins",
-        "hooks",
-        "mods"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.330#efb0c517": {
       "kind": "fixed",

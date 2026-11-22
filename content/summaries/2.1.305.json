@@ -34,7 +34,7 @@
     },
     {
       "kind": "changed",
-      "text": "The /artifacts delete prompt now takes 1 or Enter to keep, 2 to delete and Esc to cancel. y and n no longer answer it.",
+      "text": "Deleting from /artifacts now asks with numbered choices: 1 or Enter keeps it, 2 deletes it, Esc cancels; y and n do nothing there.",
       "covers": [
         "2.1.305#f9e4a0cb"
       ]
@@ -83,7 +83,7 @@
     },
     {
       "kind": "fixed",
-      "text": "/effort and /autocompact settings now apply when the model name differs from a modelOverrides entry only by letter case or a [1m] tag.",
+      "text": "/effort and /autocompact values now apply even when the model name matches a modelOverrides entry only up to letter case or a [1m] suffix.",
       "covers": [
         "2.1.305#03b90d8a"
       ]
@@ -118,7 +118,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Cloud sessions and teammates now let Claude know when a compaction had to drop the oldest messages from its summary to fit.",
+      "text": "If compaction had to drop the oldest messages to fit its summary, cloud sessions and teammates now tell Claude.",
       "covers": [
         "2.1.305#dc61fa2f"
       ]
@@ -153,7 +153,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Startup warnings no longer appear as raw text above the logo. They go to the debug log, and permission rules that restrict nothing show as warning rows below the banner.",
+      "text": "The logo area is clean at startup again: warnings are written to the debug log, and permission rules with no effect are flagged in rows below the banner.",
       "covers": [
         "2.1.305#71d75a5c"
       ]
@@ -197,7 +197,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Cloud sessions: the Cloud environments admin page no longer refuses to save an existing environment with a wrong \"installs packages\" error.",
+      "text": "Cloud sessions: admins can save existing environments on the Cloud environments page again without a false \"installs packages\" error.",
       "covers": [
         "2.1.305#5e16314d"
       ]

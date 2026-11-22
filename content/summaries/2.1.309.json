@@ -80,7 +80,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Ctrl+O shows messages from other agents and sessions that are still waiting to be delivered, in full below the transcript and marked as waiting.",
+      "text": "Messages from other agents and sessions that haven't been delivered yet now appear in full at the bottom of the Ctrl+O transcript, labeled as waiting.",
       "covers": [
         "2.1.309#334f6a81"
       ]
@@ -109,14 +109,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The claude remote-control status line no longer shows HEAD as the branch for a folder outside any git repository.",
-      "covers": [
-        "2.1.309#61befddf"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "Split-pane agent teammates now inherit the tool deny and --tools rules from the leader's command line.",
+      "text": "Teammates in split panes now get the same tool deny rules and --tools limits that were set on the lead's command line.",
       "covers": [
         "2.1.309#284902aa"
       ]
@@ -130,7 +123,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The /rewind list no longer says \"No code changes\" for a turn that changed checkpointed files through /code-review --fix, a subagent or a shell command.",
+      "text": "In the /rewind list, turns whose checkpointed file edits came from /code-review --fix, a subagent or a shell command are no longer marked \"No code changes\".",
       "covers": [
         "2.1.309#d307c035"
       ]
@@ -184,7 +177,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Plugins and skills synced from claude.ai are no longer removed, sometimes mid-session, after a disk read error.",
+      "text": "A disk read error no longer causes plugins and skills synced from claude.ai to be deleted, even in the middle of a session.",
       "covers": [
         "2.1.309#aa4388ca"
       ]
@@ -213,14 +206,14 @@
     },
     {
       "kind": "fixed",
-      "text": "Claude no longer pings unrelated GitHub users by writing role names or placeholders as @-mentions in pull requests, issues and comments.",
+      "text": "When Claude writes pull requests, issues or comments, role names and placeholders are no longer written as @-mentions that would notify unrelated GitHub users.",
       "covers": [
         "2.1.309#6db987fe"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Linux: sandbox write denies stay in place when a background command outlives the session.",
+      "text": "On Linux, the sandbox keeps blocking writes even if a background command keeps running after the session ends.",
       "covers": [
         "2.1.309#be16e341"
       ]
@@ -327,7 +320,7 @@
     },
     {
       "kind": "changed",
-      "text": "/claude-api builds Managed Agents subagent teams on multiagent_20261001 with dynamic workflows on by default, instead of coordinator.",
+      "text": "When /claude-api builds a team of Managed Agents subagents, it now uses multiagent_20261001 with dynamic workflows enabled rather than coordinator.",
       "covers": [
         "2.1.309#763fae49"
       ]
@@ -349,7 +342,7 @@
     },
     {
       "kind": "fixed",
-      "text": "VS Code: long slash-command messages such as /goal fold behind Show more, long messages also fold after the panel gets narrower, and a mod's \"From the … plugin\" label no longer covers the slash command and @-mention menus.",
+      "text": "VS Code: long slash-command messages such as /goal fold behind Show more, long messages also fold after the panel gets narrower, and a mod's \"From the \u2026 plugin\" label no longer covers the slash command and @-mention menus.",
       "covers": [
         "2.1.309#6339e888",
         "2.1.309#635b67b3",
@@ -527,10 +520,8 @@
     },
     "2.1.309#61befddf": {
       "kind": "fixed",
-      "featureIds": [
-        "status-line",
-        "remote-control"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.309#284902aa": {
       "kind": "fixed",

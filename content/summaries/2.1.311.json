@@ -28,7 +28,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Interrupting Claude takes effect at once even while an MCP server hasn't answered a resource read or a skill is still downloading.",
+      "text": "You can now interrupt Claude right away even if an MCP resource read is unanswered or a skill is still downloading, instead of waiting for a timeout.",
       "covers": [
         "2.1.311#47105921"
       ]
@@ -49,14 +49,14 @@
     },
     {
       "kind": "fixed",
-      "text": "Subagents can use MCP tools from servers that finish connecting after the subagent started.",
+      "text": "Subagents can now call tools from MCP servers that only finished connecting after the subagent began.",
       "covers": [
         "2.1.311#e97cfcc0"
       ]
     },
     {
       "kind": "fixed",
-      "text": "claude -p and SDK sessions save transcript messages in order and drop messages that were taken back.",
+      "text": "Transcripts from claude -p and SDK sessions now keep messages in the right order and leave out ones that were withdrawn.",
       "covers": [
         "2.1.311#8ccdd525"
       ]
@@ -127,7 +127,7 @@
     },
     {
       "kind": "fixed",
-      "text": "/effort warns about a prompt cache miss in plan mode when the plan model differs from the session model.",
+      "text": "In plan mode, /effort now warns that the prompt cache will miss when the planning model isn't the session's model.",
       "covers": [
         "2.1.311#039e6def"
       ]
@@ -138,13 +138,6 @@
       "covers": [
         "2.1.311#23c36936",
         "2.1.311#9a0b0468"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "The Write tool's preview no longer skips rows or miscounts hidden lines when a line is wider than the terminal.",
-      "covers": [
-        "2.1.311#830e6c4e"
       ]
     },
     {
@@ -192,7 +185,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A finished /code-review, or any skill that runs in a subagent, doesn't run again when a cloud or background session restarts.",
+      "text": "A /code-review that already finished, like any skill running in a subagent, no longer starts over when a cloud or background session restarts.",
       "covers": [
         "2.1.311#a8f81a8a"
       ]
@@ -259,7 +252,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Linux: sandboxed Bash no longer fails with bwrap: Can't create file when a --plugin-dir folder is also an added directory and permissions.blockReadsOutsideWorkingDirectories is on.",
+      "text": "On Linux, sandboxed Bash commands work again when a --plugin-dir folder is also an added directory and permissions.blockReadsOutsideWorkingDirectories is on (they used to fail with a bwrap file error).",
       "covers": [
         "2.1.311#4fb37908"
       ]
@@ -281,7 +274,7 @@
     },
     {
       "kind": "changed",
-      "text": "/teleport and claude --teleport warn when a compacted cloud session loads from its last compaction, so the summarized messages aren't in the local copy.",
+      "text": "Teleporting a compacted cloud session now warns that the local copy starts at the last compaction, without the messages that were summarized.",
       "covers": [
         "2.1.311#5ffd3320"
       ]
@@ -369,21 +362,7 @@
     },
     {
       "kind": "changed",
-      "text": "Startup warnings about permission rules in settings files appear once per user until the rule changes.",
-      "covers": [
-        "2.1.311#538145a8"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "/code-review tells Claude to state the effort level first and to use max only when asked.",
-      "covers": [
-        "2.1.311#0f9d9c33"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "DISABLE_COMPACT in settings files or a mod's $.env.set can only switch compaction off, never back on.",
+      "text": "Settings files and a mod's $.env.set can use DISABLE_COMPACT only to turn compaction off; they can no longer turn it back on.",
       "covers": [
         "2.1.311#d817bea1"
       ]
@@ -411,7 +390,7 @@
     },
     {
       "kind": "changed",
-      "text": "claude purge states that it deletes data only on this computer, nothing stored by Anthropic.",
+      "text": "claude purge now makes clear that it only removes data from this machine and leaves anything Anthropic stores untouched.",
       "covers": [
         "2.1.311#5b6983fd"
       ]
@@ -647,7 +626,8 @@
     },
     "2.1.311#830e6c4e": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.311#887238dd": {
       "kind": "fixed",
@@ -878,17 +858,13 @@
     },
     "2.1.311#538145a8": {
       "kind": "changed",
-      "featureIds": [
-        "permissions",
-        "settings"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.311#0f9d9c33": {
       "kind": "changed",
-      "featureIds": [
-        "models",
-        "code-review"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.311#d817bea1": {
       "kind": "changed",

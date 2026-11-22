@@ -6,7 +6,7 @@
   "lines": [
     {
       "kind": "added",
-      "text": "/claude-api api-version updates Claude API code to API version 2026-10-21.",
+      "text": "New /claude-api api-version command: it migrates your Claude API code to the 2026-10-21 API version.",
       "covers": [
         "2.1.307#a996ba99"
       ]
@@ -42,7 +42,7 @@
     },
     {
       "kind": "fixed",
-      "text": "HTTP MCP tool calls are no longer sent twice when the connection drops mid-call. Only read-only or idempotent tools are retried now.",
+      "text": "If the connection drops during an HTTP MCP tool call, Claude Code no longer repeats the call; it only retries tools that are read-only or safe to run twice.",
       "covers": [
         "2.1.307#ab86be5c"
       ]
@@ -64,7 +64,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A conversation cleared with /clear no longer sometimes returns when a cloud or self-hosted runner session restarts.",
+      "text": "After a cloud or self-hosted runner session restarts, a conversation you emptied with /clear stays empty.",
       "covers": [
         "2.1.307#714773ef"
       ]
@@ -128,7 +128,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Artifact tool reads no longer fail with a connection reset when the server had closed a reused connection.",
+      "text": "The Artifact tool now recovers when the server has closed a connection it tried to reuse, instead of failing with a connection reset.",
       "covers": [
         "2.1.307#1dce07cf"
       ]
@@ -164,7 +164,7 @@
     },
     {
       "kind": "changed",
-      "text": "Cloud and self-hosted runner sessions: a web search refused with a 403 that gives a reason now shows that reason, not a generic \"Authentication error\".",
+      "text": "In cloud and self-hosted runner sessions, a web search rejected with a 403 now shows the reason the server gave rather than a plain \"Authentication error\".",
       "covers": [
         "2.1.307#16d32085"
       ]
@@ -186,7 +186,7 @@
     },
     {
       "kind": "changed",
-      "text": "The axScreenReader setting and CLAUDE_AX_SCREEN_READER in a settings env block now only count from user, managed or --settings settings (since 2.1.305).",
+      "text": "Since 2.1.305, axScreenReader and CLAUDE_AX_SCREEN_READER in a settings env block only take effect from user, managed or --settings files.",
       "covers": [
         "2.1.307#be2c29d0"
       ]
@@ -216,7 +216,7 @@
     },
     {
       "kind": "fixed",
-      "text": "VS Code: dictation works behind a TLS-inspecting proxy when NODE_EXTRA_CA_CERTS is set only in ~/.claude/settings.json, and it also follows CLAUDE_CODE_CERT_STORE.",
+      "text": "VS Code: dictation now works behind a TLS-inspecting proxy whose certificate is configured only through NODE_EXTRA_CA_CERTS in ~/.claude/settings.json, and it respects CLAUDE_CODE_CERT_STORE.",
       "covers": [
         "2.1.307#eb01b02e"
       ]
@@ -231,14 +231,14 @@
     },
     {
       "kind": "changed",
-      "text": "VS Code: the \"still open somewhere else\" notice also covers a Claude process left over from an extension restart, which usually exits by itself within about 10 minutes.",
+      "text": "VS Code: the \"still open somewhere else\" message now also appears for a Claude process left behind by an extension restart; such a process normally quits on its own within about 10 minutes.",
       "covers": [
         "2.1.307#a8d080fb"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Cloud sessions: the repository picker shows \"Searching…\" until results arrive instead of \"No repositories match\", and the \"Waiting for a runner\" status on self-hosted environments is no longer cut off; with on-demand runners it counts up from your last message and shows failed attempts.",
+      "text": "Cloud sessions: the repository picker shows \"Searching\u2026\" until results arrive instead of \"No repositories match\", and the \"Waiting for a runner\" status on self-hosted environments is no longer cut off; with on-demand runners it counts up from your last message and shows failed attempts.",
       "covers": [
         "2.1.307#ede35520",
         "2.1.307#86ff0929"
@@ -246,7 +246,7 @@
     },
     {
       "kind": "added",
-      "text": "Code Review: @claude review stop (or off, or pause) ends an @claude review always subscription on a pull request without starting a review.",
+      "text": "Code Review: comment @claude review stop, off or pause on a pull request to cancel an @claude review always subscription without triggering a review.",
       "covers": [
         "2.1.307#b2c0bd6e"
       ]
