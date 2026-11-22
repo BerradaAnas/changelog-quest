@@ -15,6 +15,17 @@
   --ok: #21704a;
   --warn: #9a4a00;
   --on-accent: #ffffff;
+  --bad: #b42318;
+  --ok-bg: #e3f3ea;
+  --bad-bg: #fdeceb;
+  --info-bg: #e8edfc;
+  --console-bg: #121a30;
+  --console-text: #e2e7f5;
+  --console-dim: #a3aecb;
+  --console-accent: #a9bbff;
+  --area-core: #2747c7;
+  --area-extend: #7339c9;
+  --area-anywhere: #0b6f78;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --serif: var(--sans);
   --sans:
@@ -39,6 +50,17 @@
     --ok: #7fd6a3;
     --warn: #f3b27a;
     --on-accent: #121a3d;
+    --bad: #ff9a90;
+    --ok-bg: #173528;
+    --bad-bg: #3e1f22;
+    --info-bg: #1f2a4c;
+    --console-bg: #0c1120;
+    --console-text: #e2e7f5;
+    --console-dim: #a3aecb;
+    --console-accent: #a9bbff;
+    --area-core: #9cb0ff;
+    --area-extend: #c7a6ff;
+    --area-anywhere: #6fd0d9;
   }
 }
 :root[data-theme="dark"] {
@@ -58,6 +80,17 @@
   --ok: #7fd6a3;
   --warn: #f3b27a;
   --on-accent: #121a3d;
+  --bad: #ff9a90;
+  --ok-bg: #173528;
+  --bad-bg: #3e1f22;
+  --info-bg: #1f2a4c;
+  --console-bg: #0c1120;
+  --console-text: #e2e7f5;
+  --console-dim: #a3aecb;
+  --console-accent: #a9bbff;
+  --area-core: #9cb0ff;
+  --area-extend: #c7a6ff;
+  --area-anywhere: #6fd0d9;
 }
 :root[data-theme="light"] {
   color-scheme: light;
@@ -833,10 +866,6 @@ mark {
   background: var(--subtle);
   border: 1px solid var(--border);
 }
-.demo-result .result-label {
-  margin: 0;
-  font-size: 16px;
-}
 /* The result column stays hidden until the first run, then pops in beside the setup. */
 .demo-split:not(:has(.outcome:not([hidden]))) {
   grid-template-columns: minmax(0, 1fr);
@@ -871,4 +900,239 @@ mark {
 }
 .demo-empty h2 {
   margin-top: 0;
+}
+
+/* ---- Interface polish (ADR 0014) ---- */
+
+/* Header: stays in reach while reading long pages. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+}
+.brand strong::before {
+  content: "›";
+  margin-right: 6px;
+  color: var(--accent);
+}
+.site-header nav a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Feature areas carry a colour: core, extend, anywhere. */
+[data-area="core"] {
+  --area: var(--area-core);
+}
+[data-area="extend"] {
+  --area: var(--area-extend);
+}
+[data-area="anywhere"] {
+  --area: var(--area-anywhere);
+}
+.area > h2::before,
+.area > h3::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 3px;
+  background: var(--area);
+}
+.feature-card {
+  border-top: 3px solid var(--area, var(--border));
+}
+.feature-card:hover {
+  border-color: var(--area, var(--border-strong));
+}
+.feature-card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.feature-card > a:focus-visible {
+  outline: none;
+}
+.feature > .hero h1 {
+  letter-spacing: -0.01em;
+}
+.feature > .hero .kicker::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 3px;
+  background: var(--area);
+}
+
+/* Buttons */
+.cta:hover {
+  filter: brightness(1.08);
+}
+.soft:hover {
+  border-color: var(--accent);
+}
+.cta:active,
+.soft:active {
+  transform: translateY(1px);
+}
+
+/* Choices are tiles, the picked one is highlighted. */
+.demo fieldset {
+  gap: 8px;
+}
+.choice {
+  padding: 8px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.choice:hover {
+  border-color: var(--accent);
+}
+.choice:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--info-bg);
+}
+.choice:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* The demo: the closed bar invites, the open panel works. */
+.demo > summary {
+  border-left: 4px solid var(--area, var(--accent));
+}
+.demo-toggle::after {
+  background: var(--accent);
+  border-color: transparent;
+  color: var(--on-accent);
+}
+.demo[open] .demo-toggle::after {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--accent-text);
+}
+.demo .pill:hover {
+  background: var(--info-bg);
+}
+
+/* Result panel: coloured by what happened, trace shown as a session log. */
+.demo-result {
+  padding: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-top: 4px solid var(--accent);
+}
+.demo-result:has(.badge.success) {
+  border-top-color: var(--ok);
+}
+.demo-result:has(.badge.blocked) {
+  border-top-color: var(--bad);
+}
+.demo-result .outcome {
+  padding: 18px;
+  border-top: 0;
+  gap: 10px;
+}
+.demo-result .outcome h3 {
+  font-size: 20px;
+}
+.badge.success {
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+.badge.blocked {
+  background: var(--bad-bg);
+  color: var(--bad);
+}
+.badge.info {
+  background: var(--info-bg);
+  color: var(--accent-text);
+}
+.trace {
+  list-style: none;
+  align-self: stretch;
+  margin: 6px 0 0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--console-bg);
+  color: var(--console-text);
+  font-size: 15px;
+}
+.trace li {
+  display: grid;
+  grid-template-columns: 7.5em minmax(0, 1fr);
+  gap: 10px;
+}
+.trace .who {
+  margin: 0;
+  color: var(--console-accent);
+}
+.trace code {
+  padding: 0;
+  background: transparent;
+  color: var(--console-text);
+}
+.config pre {
+  background: var(--console-bg);
+  color: var(--console-text);
+}
+
+/* Quiz */
+.quiz {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--subtle);
+}
+.quiz-result .right,
+.quiz-result .wrong {
+  font-weight: 700;
+}
+.quiz-result .wrong {
+  color: var(--bad);
+}
+
+/* Release cards */
+.card {
+  border-left: 4px solid transparent;
+}
+.card[open] {
+  border-left-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta:active,
+  .soft:active {
+    transform: none;
+  }
+}
+@media (max-width: 640px) {
+  .trace li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+/* Home: two clear ways in. */
+.hero p.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.hero-actions .soft {
+  color: var(--text);
 }

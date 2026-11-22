@@ -9,7 +9,7 @@ interface Props {
 const { feature, introducedIn, hasDemo } = Astro.props;
 ---
 
-<li class="feature-card">
+<li class="feature-card" data-area={feature.area}>
   <a href={`/features/${feature.id}/`}>{feature.name}</a>
   <p>{feature.summary}</p>
   <p class="meta">

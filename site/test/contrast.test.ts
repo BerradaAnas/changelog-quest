@@ -41,6 +41,15 @@ const PAIRS: [text: string, background: string][] = [
   ["warn", "surface"],
   ["warn", "chip"],
   ["on-accent", "accent"],
+  ["ok", "ok-bg"],
+  ["bad", "bad-bg"],
+  ["bad", "surface"],
+  ["bad", "subtle"],
+  ["accent-text", "info-bg"],
+  ["text", "info-bg"],
+  ["console-text", "console-bg"],
+  ["console-dim", "console-bg"],
+  ["console-accent", "console-bg"],
 ];
 
 it("keeps the two copies of the dark palette identical", () => {
