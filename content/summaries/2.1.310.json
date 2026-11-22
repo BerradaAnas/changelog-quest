@@ -6,7 +6,7 @@
   "lines": [
     {
       "kind": "added",
-      "text": "The Monitor tool and plugin monitors now work on Bedrock, Vertex and Foundry, and with telemetry or nonessential traffic turned off. Long foreground sleeps are blocked in those setups too.",
+      "text": "Bedrock, Vertex and Foundry users, and anyone with telemetry or nonessential traffic turned off, can now use the Monitor tool and plugin monitors; long foreground sleeps are blocked there as elsewhere.",
       "covers": [
         "2.1.310#7f152102"
       ]
@@ -34,7 +34,7 @@
     },
     {
       "kind": "fixed",
-      "text": "File read permission prompts now show where a symbolic link points.",
+      "text": "Permission prompts for reading a file now reveal the real target of a symbolic link.",
       "covers": [
         "2.1.310#c00d8cc3"
       ]
@@ -55,7 +55,7 @@
     },
     {
       "kind": "changed",
-      "text": "Auto mode's prompt before the first read outside the working directories now explains when blocking such reads will make shell commands ask for permission.",
+      "text": "Before its first read outside the working directories, auto mode now explains when blocking such reads would make shell commands prompt for permission.",
       "covers": [
         "2.1.310#0e83f7f2"
       ]
@@ -112,7 +112,7 @@
     },
     {
       "kind": "added",
-      "text": "Cloud sessions: a Choose file button loads a cloud environment's setup script from a file.",
+      "text": "Cloud sessions: a cloud environment's setup script can now be loaded from a file with a Choose file button.",
       "covers": [
         "2.1.310#dc1927a7"
       ]

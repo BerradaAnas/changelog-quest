@@ -14,7 +14,7 @@
     },
     {
       "kind": "added",
-      "text": "CLAUDE_CODE_DISABLE_LOOPED_CROSS_CERT_DROP keeps system cross-certificates that certify each other in a loop, for servers whose private CA depends on one.",
+      "text": "For servers whose private CA relies on cross-certificates that certify each other in a loop, setting CLAUDE_CODE_DISABLE_LOOPED_CROSS_CERT_DROP keeps those certificates.",
       "covers": [
         "2.1.316#6cfeb1ae"
       ]
@@ -52,14 +52,14 @@
     },
     {
       "kind": "fixed",
-      "text": "PowerShell hooks now block on exit code 2 even when the command starts with a type cast, param, using or an attribute.",
+      "text": "A PowerShell hook that exits with code 2 now blocks the action even when its command opens with a type cast, param, using or an attribute.",
       "covers": [
         "2.1.316#9495b836"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Some network requests no longer hang when a compressed response arrives cut off or corrupted.",
+      "text": "A compressed response that arrives truncated or damaged no longer leaves some network requests hanging.",
       "covers": [
         "2.1.316#8582cb15"
       ]
@@ -81,7 +81,7 @@
     },
     {
       "kind": "fixed",
-      "text": "--restricted sessions no longer upload files from outside the working directories when a Read allow rule covers them.",
+      "text": "Security: sessions started with --restricted no longer upload files outside the working directories just because a Read allow rule matches them.",
       "covers": [
         "2.1.316#0a64cf49"
       ]
@@ -112,14 +112,14 @@
     },
     {
       "kind": "fixed",
-      "text": "Plugin MCP headersHelper scripts get the correct CLAUDE_PLUGIN_ROOT and server URL when a credential-named environment variable holds a switch value such as 1.",
+      "text": "headersHelper scripts of plugin MCP servers now receive an intact CLAUDE_PLUGIN_ROOT and server URL, even when an environment variable with a credential-like name is set to a value like 1.",
       "covers": [
         "2.1.316#cb12ec74"
       ]
     },
     {
       "kind": "fixed",
-      "text": "The SDK register_repo_root request loads the CLAUDE.md of a folder outside the working directory when CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1.",
+      "text": "With CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1, the SDK's register_repo_root request now loads CLAUDE.md from a folder outside the working directory.",
       "covers": [
         "2.1.316#9be60e41"
       ]
@@ -140,14 +140,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The \"hold space to speak\" hint no longer uses all three showings in one session or shows an empty key when push-to-talk is unbound.",
-      "covers": [
-        "2.1.316#86a02bed"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "Grep and Glob return even when the search process is killed at the timeout but doesn't exit, as happened on Windows.",
+      "text": "On Windows, Grep and Glob now return after a timeout even when the killed search process fails to exit.",
       "covers": [
         "2.1.316#604a4408"
       ]
@@ -212,7 +205,7 @@
     },
     {
       "kind": "changed",
-      "text": "An autoMode.allow list without \"$defaults\" no longer drops the built-in rule for scheduled-task prompts.",
+      "text": "Auto mode keeps its built-in rule for scheduled-task prompts even if your autoMode.allow list leaves out \"$defaults\".",
       "covers": [
         "2.1.316#96b9a94a"
       ]
@@ -233,7 +226,7 @@
     },
     {
       "kind": "changed",
-      "text": "VS Code: ultrathink runs its turn at xhigh effort and shows in rainbow colours in the chat box, like the terminal.",
+      "text": "VS Code: typing ultrathink now runs that turn at xhigh effort and colors the word like a rainbow in the chat box, matching the terminal.",
       "covers": [
         "2.1.316#66069ff9"
       ]
@@ -249,7 +242,7 @@
     },
     {
       "kind": "added",
-      "text": "Cloud sessions: a form card lets you fill in or decline a form an MCP server asks for, instead of it being cancelled unseen, and a \"Catching up…\" line shows while a session you return to syncs its messages.",
+      "text": "Cloud sessions: a form card lets you fill in or decline a form an MCP server asks for, instead of it being cancelled unseen, and a \"Catching up\u2026\" line shows while a session you return to syncs its messages.",
       "covers": [
         "2.1.316#c3674da2",
         "2.1.316#7a3d7694"
@@ -448,7 +441,8 @@
     },
     "2.1.316#86a02bed": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.316#604a4408": {
       "kind": "fixed",

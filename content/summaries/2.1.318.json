@@ -95,7 +95,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Idle compaction no longer replaces a conversation with a reply that isn't a summary.",
+      "text": "Idle compaction no longer swaps the conversation for a reply that isn't actually a summary.",
       "covers": [
         "2.1.318#8f3b6e79"
       ]
@@ -119,7 +119,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A deleted session transcript is no longer re-created with its last prompt when an idle non-interactive session exits.",
+      "text": "When an idle non-interactive session exits, it no longer brings back a transcript you deleted, along with its last prompt.",
       "covers": [
         "2.1.318#6d177625"
       ]
@@ -194,23 +194,9 @@
     },
     {
       "kind": "fixed",
-      "text": "No duplicate notification when Claude omits the status field of a PushNotification call.",
-      "covers": [
-        "2.1.318#6d46312e"
-      ]
-    },
-    {
-      "kind": "fixed",
       "text": "With more than 20 images in a request, the too-large image error now shows the API's actual limit instead of always 2000px.",
       "covers": [
         "2.1.318#07620e4c"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "The runtime shown in background shell details keeps updating while the dialog is open.",
-      "covers": [
-        "2.1.318#aec23700"
       ]
     },
     {
@@ -255,7 +241,7 @@
     },
     {
       "kind": "changed",
-      "text": "\"Ask your admin for more usage\" in the usage limit menu sends the request in one step.",
+      "text": "In the usage limit menu, \"Ask your admin for more usage\" now sends the request with a single step.",
       "covers": [
         "2.1.318#d336b14c"
       ]
@@ -265,13 +251,6 @@
       "text": "Remote sessions reconnect faster after a pause or sleep.",
       "covers": [
         "2.1.318#da5610a4"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "You should know toasts say \"try again\" instead of \"press 2\", which only worked in the terminal.",
-      "covers": [
-        "2.1.318#4fa7822f"
       ]
     },
     {
@@ -300,7 +279,7 @@
     },
     {
       "kind": "changed",
-      "text": "What a mod attaches at prompt.submit stays in your turn rather than being sent as a system message.",
+      "text": "Content a mod adds at prompt.submit now becomes part of your own turn instead of a separate system message.",
       "covers": [
         "2.1.318#d7e12a18"
       ]
@@ -314,7 +293,7 @@
     },
     {
       "kind": "changed",
-      "text": "/permissions rule details, built-in rules and delete confirmations use the standard dialog, where Ctrl+C twice goes back or cancels instead of quitting.",
+      "text": "/permissions rule details, built-in rules and delete confirmations now open in the standard dialog, so pressing Ctrl+C twice backs out or cancels rather than closing Claude Code.",
       "covers": [
         "2.1.318#faa2aba4"
       ]
@@ -351,7 +330,7 @@
     },
     {
       "kind": "changed",
-      "text": "Self-hosted runners: ok session=… log lines print at every level on stdout with reason=… after jti=…, and nack session=… lines end with reason=… after retryable=…. Scripts matching retryable=true: or retryable=false: need updating.",
+      "text": "Self-hosted runners: ok session=\u2026 log lines print at every level on stdout with reason=\u2026 after jti=\u2026, and nack session=\u2026 lines end with reason=\u2026 after retryable=\u2026. Scripts matching retryable=true: or retryable=false: need updating.",
       "covers": [
         "2.1.318#4534dc6d"
       ]
@@ -419,7 +398,7 @@
     },
     {
       "kind": "changed",
-      "text": "Code Review analytics retries once after a server or network failure, then shows a Try again banner instead of empty cards.",
+      "text": "Code Review: if the analytics page hits a server or network error, it retries once and then offers Try again instead of showing blank cards.",
       "covers": [
         "2.1.318#df3455d0"
       ]
@@ -650,7 +629,8 @@
     },
     "2.1.318#6d46312e": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.318#07620e4c": {
       "kind": "fixed",
@@ -658,7 +638,8 @@
     },
     "2.1.318#aec23700": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.318#49f997f6": {
       "kind": "fixed",
@@ -716,7 +697,8 @@
     },
     "2.1.318#4fa7822f": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.318#0572218d": {
       "kind": "changed",

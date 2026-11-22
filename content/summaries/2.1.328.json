@@ -6,7 +6,7 @@
   "lines": [
     {
       "kind": "added",
-      "text": "Auto mode now works for Claude Opus 4.6 and Sonnet 4.6 on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and the Claude apps gateway, and interactive sessions with no permission mode set start in it.",
+      "text": "Claude Opus 4.6 and Sonnet 4.6 can now use auto mode on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and the Claude apps gateway; interactive sessions without a chosen permission mode begin in auto mode.",
       "covers": [
         "2.1.328#17edde41"
       ]
@@ -36,14 +36,14 @@
     },
     {
       "kind": "added",
-      "text": "/status and claude doctor warn when an OpenTelemetry exporter has no endpoint, so its data would probably be lost.",
+      "text": "If an OpenTelemetry exporter is set up without an endpoint, /status and claude doctor now warn that its data will probably go nowhere.",
       "covers": [
         "2.1.328#4587fa12"
       ]
     },
     {
       "kind": "added",
-      "text": "A host can set CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME to stop claude -p --resume and --continue from running a tool call a hook deferred.",
+      "text": "Hosts can set CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME so that claude -p --resume or --continue won't execute a tool call a hook had deferred.",
       "covers": [
         "2.1.328#b3de077f"
       ]
@@ -126,7 +126,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A resumed cloud session no longer loses its compaction summary or recent messages when a message was saved late.",
+      "text": "A late-saved message no longer makes a resumed cloud session lose its compaction summary or latest messages.",
       "covers": [
         "2.1.328#deb078d6"
       ]
@@ -154,14 +154,14 @@
     },
     {
       "kind": "fixed",
-      "text": "CLAUDE_STREAM_IDLE_TIMEOUT_MS now extends the 5-minute connection limit on gateways, custom base URLs and cloud providers.",
+      "text": "On gateways, custom base URLs and cloud providers, raising CLAUDE_STREAM_IDLE_TIMEOUT_MS now lengthens the 5-minute connection limit as expected.",
       "covers": [
         "2.1.328#30039b12"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Some Claude Desktop sessions on third-party providers no longer end for good with \"Prompt is too long\" after large tool results; the largest are left out.",
+      "text": "Large tool results no longer permanently break some Claude Desktop sessions on third-party providers with \"Prompt is too long\"; the biggest results are dropped instead.",
       "covers": [
         "2.1.328#f25b8194"
       ]
@@ -385,7 +385,7 @@
     },
     {
       "kind": "fixed",
-      "text": "On Linux, the Bash sandbox no longer renames .git/HEAD after each command when the branch name isn't valid UTF-8.",
+      "text": "When the branch name isn't valid UTF-8, the Linux Bash sandbox stops renaming .git/HEAD after every command.",
       "covers": [
         "2.1.328#bcd5ee6a"
       ]
@@ -485,7 +485,7 @@
     },
     {
       "kind": "changed",
-      "text": "Starting several in-process teammates at once rarely fails with \"Lock file is already being held\" now.",
+      "text": "Launching several in-process teammates together now almost never fails with \"Lock file is already being held\".",
       "covers": [
         "2.1.328#d7356950"
       ]
@@ -522,7 +522,7 @@
     },
     {
       "kind": "changed",
-      "text": "deniedMcpServers entries of the form \"claude.ai <name>\" also apply in cloud and self-hosted runner sessions.",
+      "text": "A deniedMcpServers entry such as \"claude.ai <name>\" now blocks that connector in cloud and self-hosted runner sessions as well.",
       "covers": [
         "2.1.328#1da1d92d"
       ]

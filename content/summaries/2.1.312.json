@@ -135,14 +135,14 @@
     },
     {
       "kind": "changed",
-      "text": "Cloud sessions started from the CLI take their names and branch names from the server.",
+      "text": "When you start a cloud session from the terminal, the server now chooses its title and git branch name.",
       "covers": [
         "2.1.312#a1026f16"
       ]
     },
     {
       "kind": "changed",
-      "text": "Prompt and agent hooks now run at most 24 at once per session, subagents included, plus up to 12 that have waited past their event's timeout. A timeout under 1 second counts as 1 second.",
+      "text": "Each session now runs at most 24 prompt and agent hooks at once (subagents included), plus up to 12 more that have outlasted their event's timeout; timeouts below one second are rounded up to one.",
       "covers": [
         "2.1.312#eca145fd"
       ]
@@ -202,7 +202,7 @@
     },
     {
       "kind": "changed",
-      "text": "Claude Tag: the retry notice in Slack names the model in use or says rate limits were hit, instead of a generic API error.",
+      "text": "Claude Tag: when Slack shows a retry notice, it now names the model being used or says rate limits were reached, rather than a generic API error.",
       "covers": [
         "2.1.312#fa409274"
       ]

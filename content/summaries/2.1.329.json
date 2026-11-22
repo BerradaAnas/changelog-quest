@@ -48,7 +48,7 @@
     },
     {
       "kind": "fixed",
-      "text": "~/.claude.json is no longer sometimes reset to defaults when a network stall or file lock made it unreadable during a save.",
+      "text": "A save that coincides with a network stall or file lock no longer occasionally wipes ~/.claude.json back to its defaults.",
       "covers": [
         "2.1.329#fa174c52"
       ]
@@ -240,13 +240,6 @@
     },
     {
       "kind": "fixed",
-      "text": "Pressing Esc twice to clear a mistyped code no longer ends the sign-in in /install-github-app.",
-      "covers": [
-        "2.1.329#4acc65ca"
-      ]
-    },
-    {
-      "kind": "fixed",
       "text": "Remote Control sessions keep the effort level you picked after a restart (not yet for sessions starting in Ultracode).",
       "covers": [
         "2.1.329#6f2e5804"
@@ -268,7 +261,7 @@
     },
     {
       "kind": "fixed",
-      "text": "New skills, commands or agents folders are picked up when --add-dir names the working folder or Claude Code starts in the home folder.",
+      "text": "Newly created skills, commands or agents folders are now found when --add-dir points at the working folder, or when you start Claude Code from your home folder.",
       "covers": [
         "2.1.329#cc68d184"
       ]
@@ -283,7 +276,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The Agent tool's effort parameter now applies to named teammates in agent teams.",
+      "text": "In agent teams, the effort value passed through the Agent tool is now respected for named teammates.",
       "covers": [
         "2.1.329#8ff8f681"
       ]
@@ -304,7 +297,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Cloud sessions no longer tell Claude to run a network proxy check after a failed request, which auto mode then blocked.",
+      "text": "After a failed request in a cloud session, Claude is no longer prompted to run a proxy check that auto mode would block anyway.",
       "covers": [
         "2.1.329#6c7e7915"
       ]
@@ -318,7 +311,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Claude is told when a background task was stopped while a cloud session restarted.",
+      "text": "If a background task is stopped during a cloud session restart, Claude now finds out.",
       "covers": [
         "2.1.329#7d79b5b9"
       ]
@@ -364,14 +357,14 @@
     },
     {
       "kind": "fixed",
-      "text": "Self-hosted runner setup works on Git LFS repositories cloned through Anthropic-managed git; sessions start on pointer files and git lfs pull fetches the content.",
+      "text": "Self-hosted runners can now set up Git LFS repositories cloned via Anthropic-managed git: the session opens with pointer files, and git lfs pull downloads the real content.",
       "covers": [
         "2.1.329#c4bfa6fc"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Self-hosted sessions can start from git remotes that use an SSH host alias, GitHub SSH certificates or a GHE.com SSH user; an unresolved alias error suggests two git commands.",
+      "text": "Self-hosted sessions now start from remotes using an SSH host alias, GitHub SSH certificates or a GHE.com SSH user, and an alias that can't be resolved comes with two git commands to fix it.",
       "covers": [
         "2.1.329#bd45eccc"
       ]
@@ -406,13 +399,6 @@
       "text": "Read and @-mentions no longer show an extra line for files ending in a newline.",
       "covers": [
         "2.1.329#87b6a4f0"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "/status names the model opusplan and haiku use in plan mode.",
-      "covers": [
-        "2.1.329#e35c4262"
       ]
     },
     {
@@ -477,7 +463,7 @@
     },
     {
       "kind": "changed",
-      "text": "Cloud sessions retry plugins that failed to download at startup.",
+      "text": "If plugins fail to download when a cloud session starts, it now tries again.",
       "covers": [
         "2.1.329#259e9775"
       ]
@@ -508,7 +494,7 @@
     },
     {
       "kind": "changed",
-      "text": "Auto mode runs git status less often, so most requests wait less in large repositories; a git command that discards changes may be held until the tree is checked.",
+      "text": "To make most requests faster in big repositories, auto mode checks git status less often; as a result, a git command that throws away changes may wait until the working tree has been checked.",
       "covers": [
         "2.1.329#1630dcae"
       ]
@@ -560,14 +546,14 @@
     },
     {
       "kind": "changed",
-      "text": "The /tasks header and footer show one background count covering shells, monitors, MCP calls, agents, workflows and scheduled tasks.",
+      "text": "/tasks and the footer now show a single background count that includes shells, monitors, MCP calls, agents, workflows and scheduled tasks.",
       "covers": [
         "2.1.329#7bbdccb0"
       ]
     },
     {
       "kind": "changed",
-      "text": "Stop and SubagentStop hooks list a Monitor's script as monitor rather than shell in background_tasks.",
+      "text": "In the background_tasks list given to Stop and SubagentStop hooks, a Monitor's script is now labeled monitor instead of shell.",
       "covers": [
         "2.1.329#d669bc51"
       ]
@@ -972,9 +958,8 @@
     },
     "2.1.329#4acc65ca": {
       "kind": "fixed",
-      "featureIds": [
-        "github-actions"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.329#6f2e5804": {
       "kind": "fixed",
@@ -1168,10 +1153,8 @@
     },
     "2.1.329#e35c4262": {
       "kind": "fixed",
-      "featureIds": [
-        "plan-mode",
-        "models"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.329#1022d2f5": {
       "kind": "fixed",
