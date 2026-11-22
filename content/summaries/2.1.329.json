@@ -1349,8 +1349,9 @@
       ]
     }
   },
-  "status": "draft",
+  "status": "approved",
   "model": "claude-opus-5-5",
   "promptVersion": "draft-summary-v1",
-  "generatedAt": "2026-11-22T21:05:23.246Z"
+  "generatedAt": "2026-11-22T21:05:23.246Z",
+  "approvedAt": "2026-11-22T21:13:53.000Z"
 }
