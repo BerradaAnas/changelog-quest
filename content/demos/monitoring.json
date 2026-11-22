@@ -1,0 +1,114 @@
+{
+  "featureId": "monitoring",
+  "title": "Turn on monitoring",
+  "intro": "Pick a setting and see what it does.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Setting",
+      "options": [
+        "CLAUDE_CODE_ENABLE_TELEMETRY=1",
+        "OTEL_METRICS_EXPORTER=otlp",
+        "Turn it on from the repository's .claude settings",
+        "OTEL_LOG_USER_PROMPTS=1"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "CLAUDE_CODE_ENABLE_TELEMETRY=1"
+        }
+      ],
+      "show": {
+        "title": "Export on",
+        "detail": "OpenTelemetry export starts; choose exporters next.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "export CLAUDE_CODE_ENABLE_TELEMETRY=1",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "OTEL_METRICS_EXPORTER=otlp"
+        }
+      ],
+      "show": {
+        "title": "Metrics to your collector",
+        "detail": "Usage and cost metrics go to the endpoint in OTEL_EXPORTER_OTLP_ENDPOINT.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "export OTEL_METRICS_EXPORTER=otlp",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Turn it on from the repository's .claude settings"
+        }
+      ],
+      "show": {
+        "title": "Not allowed",
+        "detail": "A repository's settings can't turn telemetry on or pick its destination; admins use managed settings.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Ignored in project settings."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "OTEL_LOG_USER_PROMPTS=1"
+        }
+      ],
+      "show": {
+        "title": "Prompts included",
+        "detail": "Prompt text is only logged if you opt in like this.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "export OTEL_LOG_USER_PROMPTS=1",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Is telemetry export on by default?",
+    "options": [
+      "Yes",
+      "No, it's opt-in",
+      "Only for Enterprise"
+    ],
+    "answerIndex": 1,
+    "explanation": "Nothing is exported until you enable it."
+  },
+  "status": "draft"
+}

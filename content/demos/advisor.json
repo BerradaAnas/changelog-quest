@@ -1,0 +1,119 @@
+{
+  "featureId": "advisor",
+  "title": "When does the advisor step in?",
+  "intro": "The advisor is set to Opus. Pick a moment in the session.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Moment",
+      "options": [
+        "Before choosing how to restructure a module",
+        "The same test keeps failing",
+        "Every single tool call",
+        "You ask: get the advisor's view"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Before choosing how to restructure a module"
+        }
+      ],
+      "show": {
+        "title": "Claude may consult it",
+        "detail": "Deciding on an approach is one of the key points where the main model can ask the advisor for guidance.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Asks the advisor which approach is safer."
+          },
+          {
+            "who": "Advisor",
+            "text": "Reviews the conversation and recommends one."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "The same test keeps failing"
+        }
+      ],
+      "show": {
+        "title": "Claude may consult it",
+        "detail": "Repeated errors are another moment the main model can get a second opinion.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Shares the failure with the advisor."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Every single tool call"
+        }
+      ],
+      "show": {
+        "title": "No",
+        "detail": "The advisor is consulted only at key moments, which is why it costs less than running the strong model all the time.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Ordinary steps don't call the advisor."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "You ask: get the advisor's view"
+        }
+      ],
+      "show": {
+        "title": "Yes, on request",
+        "detail": "You can ask for a consultation in your prompt.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Ask the advisor before you continue."
+          },
+          {
+            "who": "Claude",
+            "text": "Consults the advisor."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Which model can be the advisor?",
+    "options": [
+      "Any smaller model",
+      "One at least as capable as the main model",
+      "Only Haiku"
+    ],
+    "answerIndex": 1,
+    "explanation": "The advisor must rank at or above the main model."
+  },
+  "status": "draft"
+}

@@ -1,0 +1,122 @@
+{
+  "featureId": "code-review",
+  "title": "Pick the right review",
+  "intro": "Pick what you want reviewed and how.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "You want",
+      "options": [
+        "Check my branch before pushing",
+        "Review and apply the fixes",
+        "A deep, verified review of a big change",
+        "Automatic reviews on every GitHub PR"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Check my branch before pushing"
+        }
+      ],
+      "show": {
+        "title": "/code-review",
+        "detail": "It reviews your branch's changes for correctness bugs in your session, and counts toward your plan.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/code-review",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Reports findings by severity."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Review and apply the fixes"
+        }
+      ],
+      "show": {
+        "title": "/code-review --fix",
+        "detail": "Findings are applied to your working tree after the review.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/code-review --fix",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A deep, verified review of a big change"
+        }
+      ],
+      "show": {
+        "title": "Ultrareview in the cloud",
+        "detail": "Several agents review in the cloud and reproduce each finding. Pro, Max and Ultra get 3 free runs, then usage credits.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/code-review ultra",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Runs in the cloud; track it with /tasks."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Automatic reviews on every GitHub PR"
+        }
+      ],
+      "show": {
+        "title": "Code Review for teams",
+        "detail": "On Team and Enterprise plans, an owner turns on Code Review, and Claude comments on pull requests. It never approves or blocks them.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Comment @claude review on a PR."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Does automatic GitHub Code Review block merging?",
+    "options": [
+      "Yes, until fixed",
+      "No, it only comments",
+      "Only for high severity"
+    ],
+    "answerIndex": 1,
+    "explanation": "Findings arrive as comments and a check run; reviews never approve or block a PR."
+  },
+  "status": "draft"
+}

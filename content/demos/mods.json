@@ -1,0 +1,112 @@
+{
+  "featureId": "mods",
+  "title": "What could a mod do?",
+  "intro": "Pick an idea and see whether a mod can do it.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Idea",
+      "options": [
+        "Draw a context-usage chart above the prompt",
+        "Hold risky shell commands for confirmation",
+        "Draw in claude -p output",
+        "Run safely isolated from your files"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Draw a context-usage chart above the prompt"
+        }
+      ],
+      "show": {
+        "title": "Yes",
+        "detail": "Mods can draw panes and a band above the prompt.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Mod",
+            "text": "Renders a chart band."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Hold risky shell commands for confirmation"
+        }
+      ],
+      "show": {
+        "title": "Yes",
+        "detail": "Mods can watch and answer tool calls.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Mod",
+            "text": "Sees rm -rf, asks you first."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Draw in claude -p output"
+        }
+      ],
+      "show": {
+        "title": "No",
+        "detail": "Drawing doesn't work in claude -p.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "No interface in -p mode."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Run safely isolated from your files"
+        }
+      ],
+      "show": {
+        "title": "No, it's not sandboxed",
+        "detail": "Mods run with your permissions, so install only ones you trust. Check them with claude plugin validate.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude plugin validate ./some-mod",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How do you start Claude Code without any mods?",
+    "options": [
+      "--no-plugins",
+      "--safe-mode",
+      "/mods off"
+    ],
+    "answerIndex": 1,
+    "explanation": "--safe-mode starts without mods."
+  },
+  "status": "draft"
+}

@@ -1,0 +1,91 @@
+{
+  "featureId": "desktop",
+  "title": "Terminal or desktop?",
+  "intro": "Pick what you want.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "You want",
+      "options": [
+        "Review diffs with line comments",
+        "Several sessions side by side",
+        "Use it on Linux"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Review diffs with line comments"
+        }
+      ],
+      "show": {
+        "title": "Desktop app",
+        "detail": "The Code tab shows changes in a diff view where you can comment on lines.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Open the diff view."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Several sessions side by side"
+        }
+      ],
+      "show": {
+        "title": "Desktop app",
+        "detail": "Each session has its own folder and changes, and can run in parallel.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Cmd+N for a new session."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Use it on Linux"
+        }
+      ],
+      "show": {
+        "title": "Beta",
+        "detail": "Desktop on Linux is in beta; macOS and Windows are fully supported.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Install the Linux beta."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Where do desktop sessions run?",
+    "options": [
+      "Only in the cloud",
+      "Locally, over SSH or in the cloud",
+      "Only locally"
+    ],
+    "answerIndex": 1,
+    "explanation": "You pick the environment for each session."
+  },
+  "status": "draft"
+}

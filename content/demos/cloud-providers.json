@@ -1,0 +1,98 @@
+{
+  "featureId": "cloud-providers",
+  "title": "Connect through your company's setup",
+  "intro": "Pick how your company provides Claude.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Provider",
+      "options": [
+        "Amazon Bedrock",
+        "An internal LLM gateway",
+        "Bedrock, and you want Remote Control"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Amazon Bedrock"
+        }
+      ],
+      "show": {
+        "title": "Set the Bedrock variables",
+        "detail": "Claude Code uses your AWS account, IAM and billing.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "export CLAUDE_CODE_USE_BEDROCK=1",
+            "code": true
+          },
+          {
+            "who": "You",
+            "text": "claude",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "An internal LLM gateway"
+        }
+      ],
+      "show": {
+        "title": "Point at the gateway",
+        "detail": "Set the base URL and the gateway's credential; usage and budgets are tracked there.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "export ANTHROPIC_BASE_URL=https://llm.example.internal",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Bedrock, and you want Remote Control"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Remote Control, web sessions and some other features need a Claude plan login.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "This feature needs a claude.ai account."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How do you check which provider is in use?",
+    "options": [
+      "/status",
+      "/model",
+      "/doctor --provider"
+    ],
+    "answerIndex": 0,
+    "explanation": "/status shows the provider and base URL."
+  },
+  "status": "draft"
+}

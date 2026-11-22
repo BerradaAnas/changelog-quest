@@ -1,0 +1,100 @@
+{
+  "featureId": "github-actions",
+  "title": "Ask @claude on GitHub",
+  "intro": "The Claude GitHub Action is set up. Pick what you do.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "You",
+      "options": [
+        "Comment \"@claude fix this bug\" on an issue",
+        "Set it up quickly",
+        "Comment without mentioning @claude"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Comment \"@claude fix this bug\" on an issue"
+        }
+      ],
+      "show": {
+        "title": "A fix arrives",
+        "detail": "The workflow runs Claude Code, which implements the change and can open a pull request.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "@claude fix this bug"
+          },
+          {
+            "who": "Action",
+            "text": "Runs Claude Code."
+          },
+          {
+            "who": "Claude",
+            "text": "Opens a pull request."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Set it up quickly"
+        }
+      ],
+      "show": {
+        "title": "Use /install-github-app",
+        "detail": "Run it in Claude Code to install the app and add the workflow and secret.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/install-github-app",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Comment without mentioning @claude"
+        }
+      ],
+      "show": {
+        "title": "Nothing happens",
+        "detail": "The trigger phrase, @claude by default, starts the workflow.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Action",
+            "text": "No trigger phrase found."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "What can the action use instead of an API key?",
+    "options": [
+      "A password",
+      "A subscription token from claude setup-token",
+      "Nothing"
+    ],
+    "answerIndex": 1,
+    "explanation": "Subscription plans can use CLAUDE_CODE_OAUTH_TOKEN, made with claude setup-token."
+  },
+  "status": "draft"
+}

@@ -1,0 +1,135 @@
+{
+  "featureId": "sessions",
+  "title": "Get back to earlier work",
+  "intro": "You closed the terminal yesterday in the middle of a task. Pick how you start Claude Code today.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "You run",
+      "options": [
+        "claude --continue",
+        "claude --resume",
+        "/branch inside a session",
+        "claude"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "claude --continue"
+        }
+      ],
+      "show": {
+        "title": "The last session reopens",
+        "detail": "Claude Code reopens the most recent conversation in this folder, with its full history.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --continue",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Loads the latest session for this project."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "claude --resume"
+        }
+      ],
+      "show": {
+        "title": "You pick from a list",
+        "detail": "A searchable list of this folder's sessions opens; choose the one you want to continue.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --resume",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Shows the session picker."
+          },
+          {
+            "who": "You",
+            "text": "Pick yesterday's task."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/branch inside a session"
+        }
+      ],
+      "show": {
+        "title": "A copy to experiment in",
+        "detail": "The conversation is forked into a new session, so you can try another approach while the original stays as it was.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/branch try-other-fix",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Creates a new session from this point."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "claude"
+        }
+      ],
+      "show": {
+        "title": "A fresh session",
+        "detail": "Plain claude starts a new conversation. The old one is still saved and can be resumed later.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Starts an empty session."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Where are sessions saved?",
+    "options": [
+      "On Anthropic's servers only",
+      "Locally, tied to the project folder",
+      "Nowhere; they vanish on exit"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sessions are stored on your machine per project, which is why --continue picks up the latest one in the current folder."
+  },
+  "status": "draft"
+}

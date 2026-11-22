@@ -1,0 +1,100 @@
+{
+  "featureId": "deep-links",
+  "title": "Build a deep link",
+  "intro": "Type a link and see what happens when someone clicks it.",
+  "kind": "type",
+  "inputs": [
+    {
+      "id": "url",
+      "label": "Link",
+      "placeholder": "claude-cli://open?q=fix%20the%20build&repo=acme/web",
+      "suggestions": [
+        "claude-cli://open?q=fix%20the%20build&repo=acme/web",
+        "claude-cli://open?q=check%20logs&cwd=/srv/app",
+        "https://example.com"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "url",
+          "matches": "^claude-cli://open\\?.*\\bcwd="
+        }
+      ],
+      "show": {
+        "title": "Opens in that folder",
+        "detail": "A new terminal opens Claude Code in the folder, with the prompt typed in. Nothing runs until Enter. cwd wins over repo.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Click the link."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Opens with the prompt ready; flags it as coming from outside."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "url",
+          "matches": "^claude-cli://open\\?.*\\brepo="
+        }
+      ],
+      "show": {
+        "title": "Opens in your clone",
+        "detail": "Claude Code finds a clone of that repository where you've already run claude, and fills in the prompt.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Click the link."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Opens in your local acme/web clone."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "url",
+          "matches": "^claude-cli://"
+        }
+      ],
+      "show": {
+        "title": "Opens with the prompt",
+        "detail": "Without repo or cwd, it opens with the prompt ready to send.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Opens a new session."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Not a deep link",
+    "detail": "This demo only scripts claude-cli://open links, with or without repo and cwd."
+  },
+  "quiz": {
+    "question": "Does clicking a deep link run the prompt?",
+    "options": [
+      "Yes, immediately",
+      "No, you press Enter to send it",
+      "Only in CI"
+    ],
+    "answerIndex": 1,
+    "explanation": "The prompt is filled in, but nothing runs until you press Enter."
+  },
+  "status": "draft"
+}

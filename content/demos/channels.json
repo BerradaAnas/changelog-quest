@@ -1,0 +1,116 @@
+{
+  "featureId": "channels",
+  "title": "Message Claude from your phone",
+  "intro": "Telegram is installed as a channel. Pick a step.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Step",
+      "options": [
+        "Start with --channels",
+        "A stranger messages the bot",
+        "You message it with the session closed",
+        "You message it while it's open"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Start with --channels"
+        }
+      ],
+      "show": {
+        "title": "Channel connected",
+        "detail": "The session listens for messages from the channel while it's open.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --channels plugin:telegram@claude-plugins-official",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A stranger messages the bot"
+        }
+      ],
+      "show": {
+        "title": "Ignored",
+        "detail": "Pairing and an allowlist decide who may send messages.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Channel",
+            "text": "Sender isn't on the allowlist."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "You message it with the session closed"
+        }
+      ],
+      "show": {
+        "title": "Nothing happens",
+        "detail": "Events only arrive while the session is open.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Channel",
+            "text": "No running session to deliver to."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "You message it while it's open"
+        }
+      ],
+      "show": {
+        "title": "Claude answers in the chat",
+        "detail": "Your message reaches the session and the reply goes back through the channel.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Is the build green?"
+          },
+          {
+            "who": "Claude",
+            "text": "Replies in Telegram."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "What is a channel, technically?",
+    "options": [
+      "A Slack integration",
+      "An MCP server, installed as a plugin, that pushes events",
+      "A hook"
+    ],
+    "answerIndex": 1,
+    "explanation": "Channels are MCP servers that push events into a session."
+  },
+  "status": "draft"
+}
