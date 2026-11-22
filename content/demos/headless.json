@@ -107,5 +107,5 @@
     "answerIndex": 0,
     "explanation": "--allowedTools pre-approves tools using permission rule syntax, such as \"Read,Edit,Bash(git diff *)\"."
   },
-  "status": "draft"
+  "status": "approved"
 }

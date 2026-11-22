@@ -108,5 +108,5 @@
     "answerIndex": 1,
     "explanation": "Unlike the VS Code extension, the JetBrains plugin doesn't include the CLI, so install claude first."
   },
-  "status": "draft"
+  "status": "approved"
 }

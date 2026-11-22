@@ -102,5 +102,5 @@
     "answerIndex": 2,
     "explanation": "Exit code 2 is the blocking error. Exit code 0 means success, and any other code is a non-blocking error: the action normally goes ahead."
   },
-  "status": "draft"
+  "status": "approved"
 }

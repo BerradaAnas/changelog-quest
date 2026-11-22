@@ -103,5 +103,5 @@
     "answerIndex": 0,
     "explanation": "Shift+Tab cycles the permission modes. You can also type /plan, or start with claude --permission-mode plan."
   },
-  "status": "draft"
+  "status": "approved"
 }

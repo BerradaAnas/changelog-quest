@@ -107,5 +107,5 @@
     "answerIndex": 1,
     "explanation": "Servers from a project's .mcp.json stay pending until you approve them, so a repository can't connect tools on its own."
   },
-  "status": "draft"
+  "status": "approved"
 }
