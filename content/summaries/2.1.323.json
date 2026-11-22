@@ -13,7 +13,7 @@
     },
     {
       "kind": "added",
-      "text": "plugin.json can declare engines[\"claude-code\"]: plugins outside that Claude Code version range aren't installed, updated or loaded, and install and update pick the newest version that fits.",
+      "text": "Plugins can state which Claude Code versions they support with engines[\"claude-code\"] in plugin.json; a plugin outside that range is skipped on install, update and load, and installs choose the newest matching version.",
       "covers": [
         "2.1.323#5d15f7d4"
       ]
@@ -225,7 +225,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Bash commands writing a file with cat > file <<EOF are no longer shown as \"Read 1 file\".",
+      "text": "A Bash heredoc that writes a file (cat > file <<EOF) is now labelled as a write in the transcript instead of \"Read 1 file\".",
       "covers": [
         "2.1.323#755aaf86"
       ]
@@ -303,7 +303,7 @@
     },
     {
       "kind": "fixed",
-      "text": "HTTP hooks no longer fail with HTTP 500 on Linux when CLAUDE_CODE_SUBPROCESS_ENV_SCRUB is set and the sandbox is off.",
+      "text": "On Linux, with CLAUDE_CODE_SUBPROCESS_ENV_SCRUB set and the sandbox off, HTTP hooks work again instead of returning HTTP 500.",
       "covers": [
         "2.1.323#3777a619"
       ]
@@ -335,13 +335,6 @@
     },
     {
       "kind": "fixed",
-      "text": "Documents created through the Claude Docs connector open in your browser when you work in a terminal.",
-      "covers": [
-        "2.1.323#a59ffa96"
-      ]
-    },
-    {
-      "kind": "fixed",
       "text": "A mod's hot reload no longer ignores a file created right after a failed reload.",
       "covers": [
         "2.1.323#8523f037"
@@ -358,7 +351,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Stopped or rejected calls: a stopped MCP call or fullscreen shell command says no result was recorded and shows its input instead of \"Called\" or \"Ran\", and a call rejected with a reason shows \"Not run · rejected\".",
+      "text": "Stopped or rejected calls: a stopped MCP call or fullscreen shell command says no result was recorded and shows its input instead of \"Called\" or \"Ran\", and a call rejected with a reason shows \"Not run \u00b7 rejected\".",
       "covers": [
         "2.1.323#1c93c9d7",
         "2.1.323#636c15cc"
@@ -424,7 +417,7 @@
     },
     {
       "kind": "fixed",
-      "text": ".claude/settings.local.json is ignored globally even when the folder became a git repository later or on a new machine.",
+      "text": "Claude Code keeps .claude/settings.local.json out of git even if the folder only later became a repository or you moved to a new machine.",
       "covers": [
         "2.1.323#03ac1ce6"
       ]
@@ -445,7 +438,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A broken emoji in a tool call's parameter name is no longer resent with later requests, which strict JSON parsers reject.",
+      "text": "Later requests no longer carry a damaged emoji from a tool call's parameter name, which made strict JSON parsers fail.",
       "covers": [
         "2.1.323#01385a23"
       ]
@@ -513,20 +506,6 @@
     },
     {
       "kind": "fixed",
-      "text": "/btw answers and recaps no longer include earlier replies from the conversation.",
-      "covers": [
-        "2.1.323#cdd5cbad"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "Claude gives the right reason when a new message interrupts a file it was sending you.",
-      "covers": [
-        "2.1.323#82ff18a1"
-      ]
-    },
-    {
-      "kind": "fixed",
       "text": "CLAUDE_CODE_RESUME_INTERRUPTED_TURN no longer re-runs a turn stopped by a hook's continue: false.",
       "covers": [
         "2.1.323#bebb1409"
@@ -544,14 +523,14 @@
     },
     {
       "kind": "fixed",
-      "text": "The changed-files list of remote sessions includes files added with git add -N before the first commit.",
+      "text": "Remote sessions now list files staged with git add -N before the first commit among the changed files.",
       "covers": [
         "2.1.323#bbd32d34"
       ]
     },
     {
       "kind": "fixed",
-      "text": "claude doctor and /status no longer say a linked managed settings file is read when it couldn't be.",
+      "text": "If a linked managed settings file can't be read, claude doctor and /status now say so rather than claiming it was loaded.",
       "covers": [
         "2.1.323#eabbb649"
       ]
@@ -561,13 +540,6 @@
       "text": "On network paths and hung folders, the /rewind list no longer marks every tracked file as changed, loads labels quickly, and still shows labels when a file read never returns.",
       "covers": [
         "2.1.323#3a507760"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "--debug and --debug-file no longer replace a file named latest in the log folder.",
-      "covers": [
-        "2.1.323#57fef044"
       ]
     },
     {
@@ -623,21 +595,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The Option-key hint no longer appears while typing ø or π inside words on Danish, Norwegian, Faroese and Greek layouts.",
-      "covers": [
-        "2.1.323#15782ea4"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "A Claude Desktop session no longer stays busy after another of your sessions sends it the same message twice or many at once.",
-      "covers": [
-        "2.1.323#8ed96902"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "PreCompact, PostCompact and post-compaction SessionStart hooks receive agent_id and agent_type when a subagent compacts.",
+      "text": "When a subagent compacts, the PreCompact, PostCompact and follow-up SessionStart hooks now get agent_id and agent_type in their input.",
       "covers": [
         "2.1.323#713df085"
       ]
@@ -696,7 +654,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The Agent SDK's managedSettings now honour the Remote Control, agent view, Workflows and Artifact off switches.",
+      "text": "Apps built on the Agent SDK can now switch off Remote Control, agent view, Workflows and Artifacts through managedSettings, as intended.",
       "covers": [
         "2.1.323#72e93b98"
       ]
@@ -738,7 +696,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Background sessions respect a DISABLE_ERROR_REPORTING set only in your shell even when the service started without it.",
+      "text": "A DISABLE_ERROR_REPORTING value exported only in your shell now also applies to background sessions started by a service that lacked it.",
       "covers": [
         "2.1.323#8f86dec6"
       ]
@@ -842,14 +800,7 @@
     },
     {
       "kind": "changed",
-      "text": "cleanupPeriodDays cleanup counts folders it can't read as errors.",
-      "covers": [
-        "2.1.323#f1fceaf3"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "The Claude apps gateway's /v1/models states max_input_tokens for models whose context window is certain on every upstream.",
+      "text": "For models with a known context window on every provider behind it, the Claude apps gateway's /v1/models response now includes max_input_tokens.",
       "covers": [
         "2.1.323#d5a62306"
       ]
@@ -892,7 +843,7 @@
     },
     {
       "kind": "changed",
-      "text": "Organization settings and policy requests no longer use a proxy set only by ALL_PROXY; set HTTPS_PROXY if needed.",
+      "text": "Requests for organization settings and policies stop using a proxy defined only in ALL_PROXY; put it in HTTPS_PROXY if your network requires one.",
       "covers": [
         "2.1.323#209130a4"
       ]
@@ -907,7 +858,7 @@
     },
     {
       "kind": "changed",
-      "text": "Claude Code's own ripgrep and most internal git commands run without most sign-in tokens and API keys, so credential helpers or hooks under them can't find those.",
+      "text": "Sign-in tokens and API keys are now mostly withheld from Claude Code's own ripgrep and internal git commands, so credential helpers and hooks run by them can no longer see them.",
       "covers": [
         "2.1.323#e8703c4f"
       ]
@@ -935,7 +886,7 @@
     },
     {
       "kind": "changed",
-      "text": "Artifact updates ask first, even under an allow rule, when people outside your organization can see it or Claude can't tell who can.",
+      "text": "If people outside your organization can view an artifact, or Claude can't verify who can, updating it now asks for approval even when an allow rule exists.",
       "covers": [
         "2.1.323#34920393"
       ]
@@ -958,7 +909,7 @@
     },
     {
       "kind": "changed",
-      "text": "Start-up stops when a --settings file isn't valid JSON and has a sandbox key, even one turning the sandbox off.",
+      "text": "A --settings file with invalid JSON that mentions sandbox now stops Claude Code at startup, even if it was meant to turn the sandbox off.",
       "covers": [
         "2.1.323#7973eb8a"
       ]
@@ -969,13 +920,6 @@
       "covers": [
         "2.1.323#f3ed137a",
         "2.1.323#f87c7c2c"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "The GitLab merge request badge shows only for the repository a sandboxed session opened in.",
-      "covers": [
-        "2.1.323#60a6d430"
       ]
     },
     {
@@ -1018,14 +962,14 @@
     },
     {
       "kind": "changed",
-      "text": "claude.ai chats and Cowork tasks check a plugin file for secret keys before sending it and ask first if one may be there.",
+      "text": "Before claude.ai chats and Cowork tasks send a plugin file, they scan it for secret keys and ask you if one might be inside.",
       "covers": [
         "2.1.323#3e9780e8"
       ]
     },
     {
       "kind": "changed",
-      "text": "claude rm and the agents view say a session is removed from the list, not deleted; the conversation stays and claude --resume lists it.",
+      "text": "claude rm and the agents view now make clear that a removed session only leaves the list: the conversation is kept and claude --resume still shows it.",
       "covers": [
         "2.1.323#cb813df7"
       ]
@@ -1039,28 +983,28 @@
     },
     {
       "kind": "changed",
-      "text": "A managed policyHelper no longer takes environment variables from user or --settings files; set them in managed env or the launching shell.",
+      "text": "A managed policyHelper no longer picks up environment variables from user settings or --settings; define them in the managed env block or the shell that launches Claude Code.",
       "covers": [
         "2.1.323#7201b2af"
       ]
     },
     {
       "kind": "changed",
-      "text": "A /skill or @file typed between two picked files in claude.ai or the desktop app, or after a picked file and a link, no longer takes effect.",
+      "text": "In claude.ai and the desktop app, typing /skill or @file between two picked files, or after a picked file and a link, now has no effect.",
       "covers": [
         "2.1.323#aaf5e2cc"
       ]
     },
     {
       "kind": "changed",
-      "text": "Split-pane teammates check that requests come from their lead: a teammate outliving its lead has its asks refused, and plan approvals must be re-sent after /clear or /resume.",
+      "text": "Teammates in split panes accept requests only from their own lead: once the lead is gone their requests are refused, and plan approvals need resending after /clear or /resume.",
       "covers": [
         "2.1.323#b0eecd98"
       ]
     },
     {
       "kind": "changed",
-      "text": "Worktree creation refuses checkouts whose .git folders are links or hold hard links, such as git-new-workdir layouts and cp -al copies; use a plain clone.",
+      "text": "Creating a worktree now fails for checkouts whose .git folder is a link or contains hard links, as with git-new-workdir or cp -al; start from a normal clone instead.",
       "covers": [
         "2.1.323#318fd8de"
       ]
@@ -1074,14 +1018,14 @@
     },
     {
       "kind": "changed",
-      "text": "Browser tool calls (Claude in Chrome, the desktop browser pane) refuse some escaped or JSON-text inputs and tell Claude how to respell them.",
+      "text": "When Claude in Chrome or the desktop browser pane receives certain escaped or JSON-encoded inputs, the call is refused and Claude is shown how to write them instead.",
       "covers": [
         "2.1.323#5cac4f99"
       ]
     },
     {
       "kind": "changed",
-      "text": "Workflows: a prompt an app marks as not typed no longer reaches their agents as your request, and in the desktop Code tab they pause at a usage limit and continue after the reset.",
+      "text": "Workflow agents no longer treat a prompt that an app flagged as not typed by you as your request, and in the desktop Code tab a workflow that hits a usage limit waits and resumes after the reset.",
       "covers": [
         "2.1.323#2bc7a004",
         "2.1.323#d9bf4012"
@@ -1089,14 +1033,14 @@
     },
     {
       "kind": "changed",
-      "text": "Computer use on macOS refuses key chords holding Space with Control or Option, and more system shortcuts that need your grant.",
+      "text": "On macOS, computer use now refuses key combinations that hold Space together with Control or Option, plus more system shortcuts you'd have to grant.",
       "covers": [
         "2.1.323#77dc332a"
       ]
     },
     {
       "kind": "changed",
-      "text": "First-run setup in Terminal.app names the \"Use Option as Meta key\" setting, what Option stops typing and how to undo it before you agree.",
+      "text": "In Terminal.app, first-run setup explains the \"Use Option as Meta key\" setting before you accept: which characters Option will no longer type and how to reverse it.",
       "covers": [
         "2.1.323#c8b5d601"
       ]
@@ -1131,14 +1075,14 @@
     },
     {
       "kind": "changed",
-      "text": "macOS: inside the Bash sandbox, lsof and similar tools may show less about processes the command didn't start.",
+      "text": "On macOS, lsof and similar tools run inside the Bash sandbox may reveal less about processes the command itself didn't start.",
       "covers": [
         "2.1.323#16aa4b45"
       ]
     },
     {
       "kind": "changed",
-      "text": "In cloud scheduled tasks, a PostToolUse hook from your own settings can't replace the plan in ExitPlanMode's result.",
+      "text": "In cloud scheduled tasks, PostToolUse hooks from your own settings can no longer swap out the plan returned by ExitPlanMode.",
       "covers": [
         "2.1.323#3a6a053f"
       ]
@@ -1193,7 +1137,7 @@
     },
     {
       "kind": "fixed",
-      "text": "VS Code: the \"extensions want to relaunch the terminal\" warning no longer returns after each reload, the sign-in screen shows \"Signing in…\" after a pasted code, and dictation stops when you switch sessions.",
+      "text": "VS Code: the \"extensions want to relaunch the terminal\" warning no longer returns after each reload, the sign-in screen shows \"Signing in\u2026\" after a pasted code, and dictation stops when you switch sessions.",
       "covers": [
         "2.1.323#1b9097e5",
         "2.1.323#6211e2af",
@@ -1258,7 +1202,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Claude Code on the web: removing a repository from a scheduled task no longer moves its GitHub trigger to another repository; Save waits for your pick.",
+      "text": "Claude Code on the web: taking a repository off a scheduled task no longer quietly moves its GitHub trigger elsewhere; Save stays disabled until you choose one.",
       "covers": [
         "2.1.323#3ce5e872"
       ]
@@ -1273,7 +1217,7 @@
     },
     {
       "kind": "added",
-      "text": "Remote Control: a Try again button on the error when the computer running your session is signed out.",
+      "text": "Remote Control: if the computer running your session is signed out of Claude Code, the error now offers a Try again button.",
       "covers": [
         "2.1.323#ded98963"
       ]
@@ -1769,7 +1713,8 @@
     },
     "2.1.323#a59ffa96": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#8523f037": {
       "kind": "fixed",
@@ -2003,11 +1948,13 @@
     },
     "2.1.323#cdd5cbad": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#82ff18a1": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#bebb1409": {
       "kind": "fixed",
@@ -2061,7 +2008,8 @@
     },
     "2.1.323#57fef044": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#b9b385d5": {
       "kind": "fixed",
@@ -2115,13 +2063,13 @@
     },
     "2.1.323#15782ea4": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#8ed96902": {
       "kind": "fixed",
-      "featureIds": [
-        "desktop"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#713df085": {
       "kind": "fixed",
@@ -2453,7 +2401,8 @@
     },
     "2.1.323#f1fceaf3": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#d5a62306": {
       "kind": "changed",
@@ -2593,7 +2542,8 @@
     },
     "2.1.323#60a6d430": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.323#937383b5": {
       "kind": "changed",

@@ -13,14 +13,14 @@
     },
     {
       "kind": "added",
-      "text": "claude remote-control --settings <file> applies a settings file to every session it starts; after the file changes, no new sessions start until you restart claude remote-control.",
+      "text": "You can now pass --settings <file> to claude remote-control to give every session it launches the same settings; edit that file and new sessions are held back until you restart claude remote-control.",
       "covers": [
         "2.1.321#fd584a4f"
       ]
     },
     {
       "kind": "fixed",
-      "text": "MCP OAuth requests no longer send secrets such as refresh tokens to another host when a server redirects them.",
+      "text": "Security: when an MCP server redirects an OAuth request to another host, secrets like refresh tokens are no longer sent along.",
       "covers": [
         "2.1.321#112a6b31"
       ]
@@ -43,23 +43,9 @@
     },
     {
       "kind": "fixed",
-      "text": "The \"Draws from usage credits\" note no longer shows after switching to Fable on Enterprise seats whose plan includes it.",
-      "covers": [
-        "2.1.321#4a0cbc9a"
-      ]
-    },
-    {
-      "kind": "fixed",
       "text": "When the first model was blocked before replying, the fallback model no longer sometimes declines or mentions a stopped response.",
       "covers": [
         "2.1.321#4496ddb6"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "claude mcp login stops printing a SEP-2352 issuer warning each time you sign in again to a server Claude Code registered with.",
-      "covers": [
-        "2.1.321#b558b8c3"
       ]
     },
     {
@@ -72,7 +58,7 @@
     },
     {
       "kind": "fixed",
-      "text": "/config shows the right default permission mode when new sessions start in auto mode, and Space on \"Auto (default)\" saves Don't Ask instead of Plan.",
+      "text": "When new sessions default to auto mode, /config now displays that correctly, and pressing Space on \"Auto (default)\" stores Don't Ask rather than Plan.",
       "covers": [
         "2.1.321#a62428ee"
       ]
@@ -94,7 +80,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Context usage estimates no longer overcount tool definitions when exact token counts aren't available.",
+      "text": "Without exact token counts, the context usage estimate no longer inflates the space taken by tool definitions.",
       "covers": [
         "2.1.321#285f310a"
       ]
@@ -126,7 +112,7 @@
     },
     {
       "kind": "fixed",
-      "text": "claude -p no longer tells Claude background commands get 30 minutes when they're stopped after 10.",
+      "text": "claude -p now tells Claude the real 10-minute limit for background commands instead of saying 30 minutes.",
       "covers": [
         "2.1.321#2de9d0eb"
       ]
@@ -140,7 +126,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Claude in Chrome and computer use server processes exit with their parent even behind a proxy that stalls connections.",
+      "text": "Behind a proxy that stalls connections, the Claude in Chrome and computer use helper processes now shut down when Claude Code exits.",
       "covers": [
         "2.1.321#a0d6975f"
       ]
@@ -152,13 +138,6 @@
         "2.1.321#3632a4b2",
         "2.1.321#461798b4",
         "2.1.321#e73afc36"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "A rare crash on permission prompts and background tasks is fixed.",
-      "covers": [
-        "2.1.321#784937c7"
       ]
     },
     {
@@ -234,7 +213,7 @@
     },
     {
       "kind": "fixed",
-      "text": "claude agents respects --permission-mode, --dangerously-skip-permissions, --model, --effort and --agent typed before agents when another flag such as --verbose is present.",
+      "text": "Flags placed before the agents subcommand (--permission-mode, --dangerously-skip-permissions, --model, --effort, --agent) now take effect even alongside others like --verbose.",
       "covers": [
         "2.1.321#dc95176b"
       ]
@@ -286,7 +265,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The Claude apps gateway starts when a desktop setting has a field newer than the gateway, such as a managed MCP server's oauth.omitResource; it warns and serves it.",
+      "text": "If a desktop setting contains a field the Claude apps gateway doesn't know yet, such as a managed MCP server's oauth.omitResource, the gateway now starts with a warning and serves it instead of refusing to run.",
       "covers": [
         "2.1.321#45d68cde"
       ]
@@ -317,13 +296,6 @@
       "text": "After a restart, remote sessions reply again when a UserPromptSubmit hook would have blocked a replayed permission answer; those hooks skip the replay.",
       "covers": [
         "2.1.321#91fc5698"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "claude remote-control no longer takes a y typed without Enter at its first-run question when terminal input ended.",
-      "covers": [
-        "2.1.321#944f6716"
       ]
     },
     {
@@ -363,7 +335,7 @@
     },
     {
       "kind": "fixed",
-      "text": "NotebookEdit no longer reports success to hooks and telemetry when the edit failed, for example after the notebook changed during the permission prompt.",
+      "text": "A failed NotebookEdit, for example one where the notebook changed while you were approving, is now reported as failed to hooks and telemetry.",
       "covers": [
         "2.1.321#cdf14c76"
       ]
@@ -427,37 +399,30 @@
     },
     {
       "kind": "changed",
-      "text": "In headless sessions, the desktop app and VS Code, auto mode answers reports from background subagents that wait together in one model call, as in the terminal.",
+      "text": "Background subagents that finish waiting at the same time now get their reports answered in a single model call in headless, desktop and VS Code sessions, matching the terminal.",
       "covers": [
         "2.1.321#54c73f41"
       ]
     },
     {
       "kind": "changed",
-      "text": "The agent view row of a claude --bg --worktree session that couldn't set up its worktree shows the error from the start, not an internal tag or the last 200 characters.",
+      "text": "In agent view, a claude --bg --worktree session whose worktree setup failed now shows the start of the actual error message.",
       "covers": [
         "2.1.321#b98c49d6"
       ]
     },
     {
       "kind": "changed",
-      "text": "For artifacts in another organization, /login is offered only if it's one of yours, and Claude says where a copy may be after an account move.",
+      "text": "Artifact messages are clearer for artifacts in another organization: /login is suggested only for organizations you belong to, and after an account move Claude points to where a copy may be.",
       "covers": [
         "2.1.321#0d4a906c"
       ]
     },
     {
       "kind": "changed",
-      "text": "When images don't all fit in one request, Claude is told whether it already saw a dropped image, and repeat reads of an unchanged image are limited.",
+      "text": "When a request can't hold every image, Claude learns whether a left-out image was already seen, and rereading an image that hasn't changed is limited.",
       "covers": [
         "2.1.321#bbe7cc5a"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "claude remote-control's messages for an unanswered first-run question each say what to do next.",
-      "covers": [
-        "2.1.321#2d415027"
       ]
     },
     {
@@ -466,13 +431,6 @@
       "covers": [
         "2.1.321#f9a075a0",
         "2.1.321#b49f5ddf"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "The bundled dataviz skill suggests a list of meters, one row per item, for several ratios with their own limits.",
-      "covers": [
-        "2.1.321#136870bf"
       ]
     },
     {
@@ -499,7 +457,7 @@
     },
     {
       "kind": "changed",
-      "text": ".claude/skills folders inside ~/.claude/plugins no longer load when Claude works on files there.",
+      "text": "Skill folders (.claude/skills) inside ~/.claude/plugins are no longer picked up just because Claude is working on files in that directory.",
       "covers": [
         "2.1.321#d70d3558"
       ]
@@ -513,7 +471,7 @@
     },
     {
       "kind": "changed",
-      "text": "Windows: when finding programs it starts itself, such as git, Claude Code skips relative and UNC PATH entries and links to network shares, and picks up PATH changes from settings.",
+      "text": "On Windows, when Claude Code looks up programs like git, it now ignores relative and UNC entries in PATH and links to network shares, and it notices PATH changes made in settings.",
       "covers": [
         "2.1.321#58ccbeb6"
       ]
@@ -549,7 +507,7 @@
     },
     {
       "kind": "changed",
-      "text": "Claude in Chrome tools supplied by an app running Claude Code, such as the desktop Code tab, follow your organization's Claude in Chrome policy.",
+      "text": "Your organization's Claude in Chrome policy now also covers the browser tools that host apps, such as the desktop Code tab, give to Claude Code.",
       "covers": [
         "2.1.321#b4612a55"
       ]
@@ -564,7 +522,7 @@
     },
     {
       "kind": "changed",
-      "text": "Headless sessions reload mods in .claude/skills when their files change; CLAUDE_CODE_PLUGIN_DIR_WATCH=0 turns this off.",
+      "text": "Headless sessions now pick up edits to mods in .claude/skills automatically; set CLAUDE_CODE_PLUGIN_DIR_WATCH=0 to stop that.",
       "covers": [
         "2.1.321#d59d18c9"
       ]
@@ -578,14 +536,14 @@
     },
     {
       "kind": "changed",
-      "text": "In Cowork cloud sessions, a PostToolUse hook can no longer replace the AskUserQuestion answer or the ExitPlanMode plan; Claude reads the originals.",
+      "text": "In Cowork cloud sessions, PostToolUse hooks can't rewrite your answer to AskUserQuestion or the plan from ExitPlanMode anymore; Claude sees what you actually gave.",
       "covers": [
         "2.1.321#3c574b70"
       ]
     },
     {
       "kind": "changed",
-      "text": "cp and mv called by path, such as /bin/cp, get the same path checks as plain cp and mv.",
+      "text": "Path checks for cp and mv now also apply when they're called with a full path like /bin/cp.",
       "covers": [
         "2.1.321#51d29e3a"
       ]
@@ -595,13 +553,6 @@
       "text": "To save context, background command notifications and TaskStop results show Claude only the start and end of a command longer than 1,000 characters.",
       "covers": [
         "2.1.321#ea6f2fda"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "Artifact design guidance treats Inter and Space Grotesk as good default typefaces.",
-      "covers": [
-        "2.1.321#1b14a8ab"
       ]
     },
     {
@@ -620,7 +571,7 @@
     },
     {
       "kind": "added",
-      "text": "VS Code: a warning above the prompt box appears when both an auth token and an API key are set, like the terminal's startup warning.",
+      "text": "VS Code now warns above the prompt box when an auth token and an API key are both configured, as the terminal does at startup.",
       "covers": [
         "2.1.321#f0ce3f37"
       ]
@@ -680,7 +631,8 @@
     },
     "2.1.321#4a0cbc9a": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.321#4496ddb6": {
       "kind": "fixed",
@@ -690,9 +642,8 @@
     },
     "2.1.321#b558b8c3": {
       "kind": "fixed",
-      "featureIds": [
-        "mcp"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.321#ef423561": {
       "kind": "fixed",
@@ -830,7 +781,8 @@
     },
     "2.1.321#784937c7": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.321#6704fb9b": {
       "kind": "fixed",
@@ -1023,9 +975,8 @@
     },
     "2.1.321#944f6716": {
       "kind": "fixed",
-      "featureIds": [
-        "remote-control"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.321#80619ff6": {
       "kind": "fixed",
@@ -1172,9 +1123,8 @@
     },
     "2.1.321#2d415027": {
       "kind": "changed",
-      "featureIds": [
-        "remote-control"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.321#f9a075a0": {
       "kind": "changed",
@@ -1186,9 +1136,8 @@
     },
     "2.1.321#136870bf": {
       "kind": "changed",
-      "featureIds": [
-        "skills"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.321#d63d2992": {
       "kind": "changed",
@@ -1317,9 +1266,8 @@
     },
     "2.1.321#1b14a8ab": {
       "kind": "changed",
-      "featureIds": [
-        "artifacts"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.321#f42951fa": {
       "kind": "changed",

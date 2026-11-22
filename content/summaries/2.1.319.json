@@ -22,21 +22,21 @@
     },
     {
       "kind": "added",
-      "text": "permissions.denyInsteadOfPrompting denies a tool call that would wait on a permission prompt and lets the turn carry on, in terminal sessions, subagents and teammates.",
+      "text": "New setting permissions.denyInsteadOfPrompting: instead of stopping to ask, a tool call that needs permission is refused and the turn keeps going, in the terminal, subagents and teammates.",
       "covers": [
         "2.1.319#1bb9815a"
       ]
     },
     {
       "kind": "added",
-      "text": "/claude-api latency-optimize finds where your Claude API code keeps people waiting and tries faster settings against your eval.",
+      "text": "New /claude-api latency-optimize command: it looks for slow spots in your Claude API code and tests faster settings against your eval.",
       "covers": [
         "2.1.319#9b7f89e4"
       ]
     },
     {
       "kind": "added",
-      "text": "CLAUDE_CODE_DISABLE_FEATURE_FLAGS stops feature-flag fetching without turning off telemetry; every flag then uses its built-in default.",
+      "text": "Set CLAUDE_CODE_DISABLE_FEATURE_FLAGS to skip downloading feature flags while keeping telemetry on; all flags fall back to their defaults.",
       "covers": [
         "2.1.319#a12e4ed4"
       ]
@@ -84,7 +84,7 @@
     },
     {
       "kind": "added",
-      "text": "/loop confirmations in cloud sessions note that the timer stops with its container and offer a loop that survives.",
+      "text": "In cloud sessions, confirming a /loop now warns that its timer ends when the container does, and offers a loop that keeps running.",
       "covers": [
         "2.1.319#0c066667"
       ]
@@ -115,14 +115,14 @@
     },
     {
       "kind": "fixed",
-      "text": "A request failing with 401 no longer refreshes your login on every retry and causes 401s in your other sessions.",
+      "text": "A request that keeps getting 401 errors no longer refreshes your login on each retry, which used to break your other sessions with 401s too.",
       "covers": [
         "2.1.319#40b8fdf6"
       ]
     },
     {
       "kind": "fixed",
-      "text": "/context no longer sends its full visual grid to Claude on every later turn; Claude reads only the table.",
+      "text": "After /context, later turns no longer resend the whole visual grid to Claude; only the table is kept.",
       "covers": [
         "2.1.319#94d17627"
       ]
@@ -146,7 +146,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Claude-drafted feedback, surveys and /feedback stop appearing once the server refuses feedback for your organization, and Claude no longer drafts feedback on third-party gateways where it can't be sent.",
+      "text": "Once the server refuses feedback for your organization, Claude-drafted feedback, surveys and /feedback stop showing, and Claude no longer drafts feedback through third-party gateways that can't deliver it.",
       "covers": [
         "2.1.319#7ee364a6",
         "2.1.319#cc0b97b7"
@@ -168,7 +168,7 @@
     },
     {
       "kind": "fixed",
-      "text": "claude -p --resume with a prompt keeps a deferred tool call whose MCP server is missing: the run exits 1 and refuses later input.",
+      "text": "If claude -p --resume with a prompt finds a deferred tool call whose MCP server is gone, it now keeps the call, exits with code 1 and won't accept more input.",
       "covers": [
         "2.1.319#4437b0ea"
       ]
@@ -237,7 +237,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Monitor's WebSocket watch no longer fails with \"could not resolve\" behind a proxy when CLAUDE_CODE_PROXY_RESOLVES_HOSTS is set and the machine has no DNS.",
+      "text": "Behind a proxy with CLAUDE_CODE_PROXY_RESOLVES_HOSTS set on a machine without its own DNS, Monitor can now open WebSocket watches instead of failing to resolve the host.",
       "covers": [
         "2.1.319#75791a6e"
       ]
@@ -254,13 +254,6 @@
     },
     {
       "kind": "fixed",
-      "text": "Cmd+click opens links in Ghostty over tmux in sessions opened from the agents view.",
-      "covers": [
-        "2.1.319#b4daff08"
-      ]
-    },
-    {
-      "kind": "fixed",
       "text": "A mod's hot reload in .claude/skills notices a file deleted right after it appeared, and its return, and no longer turns off when you send three messages instead of answering its question in a cloud session.",
       "covers": [
         "2.1.319#09480951",
@@ -273,13 +266,6 @@
       "covers": [
         "2.1.319#6c93e1d5",
         "2.1.319#4f880519"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "The /claude-api skill no longer says Console web settings don't apply to Managed Agents sessions, and its credential and permission examples are tighter.",
-      "covers": [
-        "2.1.319#81ad59a4"
       ]
     },
     {
@@ -322,7 +308,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A terminal with an expired Claude apps gateway sign-in stops sending telemetry and managed-settings requests that the gateway refuses as invalid_token.",
+      "text": "After a Claude apps gateway sign-in expires, the terminal stops sending telemetry and managed-settings requests that the gateway would reject as invalid_token.",
       "covers": [
         "2.1.319#eed95cac"
       ]
@@ -339,7 +325,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Claude in Chrome no longer reports the extension as disconnected when the connection drops mid-action; Claude checks the page before repeating an action that may have run.",
+      "text": "If the Chrome connection drops in the middle of an action, Claude in Chrome no longer claims the extension is disconnected, and Claude looks at the page before retrying something that may have already happened.",
       "covers": [
         "2.1.319#aff8a46d"
       ]
@@ -395,16 +381,9 @@
     },
     {
       "kind": "fixed",
-      "text": "Idle background sessions started through a shell-exported LLM gateway stay on that gateway after an update.",
+      "text": "After an update, idle background sessions that started through an LLM gateway exported in your shell keep using that gateway.",
       "covers": [
         "2.1.319#9f176262"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "Help links in /status and the auto mode billing notice open the full address when they wrap.",
-      "covers": [
-        "2.1.319#fe6375a4"
       ]
     },
     {
@@ -468,13 +447,6 @@
     },
     {
       "kind": "changed",
-      "text": "Faint grey secondary text, such as hints, details in /stats, /model and /sandbox, and rejected-action messages, has more contrast.",
-      "covers": [
-        "2.1.319#f120aef2"
-      ]
-    },
-    {
-      "kind": "changed",
       "text": "Artifact database errors are clearer when an update targets a missing document or the service pauses repeated refused writes.",
       "covers": [
         "2.1.319#a8ce0a67"
@@ -482,7 +454,7 @@
     },
     {
       "kind": "changed",
-      "text": "Claude apps gateway: failed upstream warnings name the upstream, and the spend limit error reads like \"spend limit reached · resets Dec 1\", followed by admin.blocked_message if set.",
+      "text": "Claude apps gateway: failed upstream warnings name the upstream, and the spend limit error reads like \"spend limit reached \u00b7 resets Dec 1\", followed by admin.blocked_message if set.",
       "covers": [
         "2.1.319#4c346048",
         "2.1.319#23708e9c"
@@ -504,21 +476,14 @@
     },
     {
       "kind": "changed",
-      "text": "In cloud sessions, /usage links to Settings → Usage on claude.ai when plan limits can't be shown.",
+      "text": "In cloud sessions, /usage links to Settings \u2192 Usage on claude.ai when plan limits can't be shown.",
       "covers": [
         "2.1.319#fc90782f"
       ]
     },
     {
       "kind": "changed",
-      "text": "VS Code: removing a plugin marketplace checks which of its plugins are installed at that moment.",
-      "covers": [
-        "2.1.319#d80d6f8d"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "MCP tasks work in the terminal without feature-flag fetching (Bedrock, Vertex, Foundry, LLM gateways, DISABLE_TELEMETRY); CLAUDE_CODE_DISABLE_MCP_TASKS=1 turns them off.",
+      "text": "MCP tasks now work in the terminal even when feature flags can't be fetched, such as on Bedrock, Vertex, Foundry, LLM gateways or with DISABLE_TELEMETRY; CLAUDE_CODE_DISABLE_MCP_TASKS=1 disables them.",
       "covers": [
         "2.1.319#3154cffd"
       ]
@@ -532,7 +497,7 @@
     },
     {
       "kind": "changed",
-      "text": "Monitor's WebSocket watch follows Bash rules: a deny refuses it, and under an ask rule an allow on Monitor, bypass mode or auto mode no longer skips the prompt.",
+      "text": "Monitor's WebSocket watch is now governed by your Bash rules: a deny blocks it, and when an ask rule applies, a Monitor allow rule, bypass mode or auto mode won't skip the prompt.",
       "covers": [
         "2.1.319#73a2ba8f"
       ]
@@ -561,21 +526,21 @@
     },
     {
       "kind": "changed",
-      "text": "With the Bash sandbox on, skills in .claude/skills folders below the start folder load only if you start Claude Code there or /cd there.",
+      "text": "With the Bash sandbox on, skills from .claude/skills folders deeper than your starting folder load only when you start Claude Code in that folder or /cd into it.",
       "covers": [
         "2.1.319#b70e3d7d"
       ]
     },
     {
       "kind": "changed",
-      "text": "Self-paced /loop ends when a turn finishes without rescheduling, rather than setting a fallback wakeup; CLAUDE_CODE_LOOP_KEEPALIVE=1 restores the old behaviour.",
+      "text": "A self-paced /loop now stops when a turn ends without scheduling the next run, instead of setting a backup wakeup; CLAUDE_CODE_LOOP_KEEPALIVE=1 brings back the old behavior.",
       "covers": [
         "2.1.319#6b26000f"
       ]
     },
     {
       "kind": "changed",
-      "text": "PostToolUse hooks run, with up to 10 seconds, on tool calls that finish after a new message interrupts the turn.",
+      "text": "Tool calls that complete after a new message interrupts the turn now still trigger PostToolUse hooks, which get up to 10 seconds.",
       "covers": [
         "2.1.319#65dc1eb2"
       ]
@@ -589,14 +554,14 @@
     },
     {
       "kind": "changed",
-      "text": "Cloud sessions drop session-scoped allow rules on a move to a new worker when their deny and ask rules can't all be kept, so you may be asked again.",
+      "text": "When a cloud session moves to a new worker and can't carry all its deny and ask rules, its session-only allow rules are dropped, so you may be asked again.",
       "covers": [
         "2.1.319#baeba4ae"
       ]
     },
     {
       "kind": "changed",
-      "text": "Automatic certificate repair behind a TLS-inspecting proxy no longer runs when ALL_PROXY is the only proxy variable; set HTTPS_PROXY to the proxy's http:// URL.",
+      "text": "Behind a TLS-inspecting proxy, the automatic certificate fix is skipped if only ALL_PROXY is set; point HTTPS_PROXY at the proxy's http:// address instead.",
       "covers": [
         "2.1.319#77c0ba9e"
       ]
@@ -624,7 +589,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Gateway: Claude Desktop no longer offers a web search tool that always fails when every upstream is Amazon Bedrock.",
+      "text": "Gateway: when every upstream is Amazon Bedrock, Claude Desktop no longer offers a web search tool that can never work.",
       "covers": [
         "2.1.319#5e05cfbe"
       ]
@@ -681,7 +646,7 @@
     },
     {
       "kind": "changed",
-      "text": "Cloud sessions: the stalled-setup warning on self-hosted environments links to the organization default or an environment with a live runner, and names it.",
+      "text": "Cloud sessions: on self-hosted environments, the warning about a stalled setup now names and links your organization's default or an environment that has a live runner.",
       "covers": [
         "2.1.319#61dbf25d"
       ]
@@ -1045,7 +1010,8 @@
     },
     "2.1.319#b4daff08": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.319#09480951": {
       "kind": "fixed",
@@ -1075,9 +1041,8 @@
     },
     "2.1.319#81ad59a4": {
       "kind": "fixed",
-      "featureIds": [
-        "skills"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.319#712545fa": {
       "kind": "fixed",
@@ -1269,7 +1234,8 @@
     },
     "2.1.319#fe6375a4": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.319#5e9596c6": {
       "kind": "fixed",
@@ -1335,9 +1301,8 @@
     },
     "2.1.319#f120aef2": {
       "kind": "changed",
-      "featureIds": [
-        "models"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.319#a8ce0a67": {
       "kind": "changed",
@@ -1378,10 +1343,8 @@
     },
     "2.1.319#d80d6f8d": {
       "kind": "changed",
-      "featureIds": [
-        "ide",
-        "plugins"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.319#3154cffd": {
       "kind": "changed",
