@@ -20,7 +20,7 @@ const groups = featuresByArea(features.map((f) => featureView(f, ctx)));
       <p class="blurb">{g.blurb}</p>
       <ul class="feature-grid">
         {g.features.map((v) => (
-          <FeatureCard feature={v.feature} introducedIn={v.introducedIn} hasDemo={Boolean(v.demo)} />
+          <FeatureCard feature={v.feature} introducedIn={v.introducedIn} demo={v.demo?.status} />
         ))}
       </ul>
     </section>

@@ -4,9 +4,10 @@ import type { Feature } from "@cq/schemas";
 interface Props {
   feature: Feature;
   introducedIn: string;
-  hasDemo: boolean;
+  /** Status of the feature's demo when it is shown, undefined when there is none. */
+  demo?: "draft" | "approved";
 }
-const { feature, introducedIn, hasDemo } = Astro.props;
+const { feature, introducedIn, demo } = Astro.props;
 ---
 
 <li class="feature-card" data-area={feature.area}>
@@ -15,7 +16,9 @@ const { feature, introducedIn, hasDemo } = Astro.props;
   <p class="meta">
     <span>Since {introducedIn}</span>
     {feature.status !== "active" && <span class="tag">{feature.status}</span>}
-    {hasDemo && <span class="tag">Hands-on example</span>}
+    {demo === "approved" && <span class="tag has-demo">Hands-on example</span>}
+    {demo === "draft" && <span class="tag has-demo draft">Hands-on example (draft)</span>}
+    {!demo && <span class="tag no-demo">No example yet</span>}
     <span class="tag done" data-progress-for={feature.id} hidden></span>
   </p>
 </li>
