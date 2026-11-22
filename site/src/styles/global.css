@@ -1183,3 +1183,63 @@ mark {
   color: var(--muted);
   font-size: 0.95rem;
 }
+
+/* Update history: collapsed until opened, like the demos. */
+.history-box {
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+}
+.history-box > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 14px;
+}
+.history-box > summary::-webkit-details-marker,
+.history-lines > summary::-webkit-details-marker {
+  display: none;
+}
+.history-box > summary:hover {
+  background: var(--subtle);
+}
+.history-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.history-head h2 {
+  margin: 0;
+}
+.history-count {
+  color: var(--muted);
+  font-size: 15px;
+}
+.history-box[open] .chev {
+  transform: rotate(180deg);
+}
+.history-box > .history {
+  margin: 4px 22px 22px;
+}
+.history-lines {
+  margin-top: 4px;
+}
+.history-lines > summary {
+  list-style: none;
+  cursor: pointer;
+  width: fit-content;
+  color: var(--accent-text);
+  font-size: 15px;
+  font-weight: 700;
+}
+.history-lines > summary::before {
+  content: "+ ";
+}
+.history-lines[open] > summary::before {
+  content: "− ";
+}
