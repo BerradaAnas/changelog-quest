@@ -5,9 +5,8 @@ import VersionBlock from "./VersionBlock.astro";
 
 interface Props {
   card: WeekCard;
-  open: boolean;
 }
-const { card, open } = Astro.props;
+const { card } = Astro.props;
 const [first] = card.entries;
 if (!first) throw new Error(`empty week ${card.week}`);
 const digest = card.entries.length > 1;
@@ -32,7 +31,7 @@ const headline = digest
   : (first.summary?.headline ?? `${plural(changes, "change")} in this release.`);
 ---
 
-<details class="card" id={digest ? `week-${card.week}` : `v${first.version}`} open={open}>
+<details class="card" id={digest ? `week-${card.week}` : `v${first.version}`}>
   <summary>
     <span class="day">{day}</span>
     <span class="head">

@@ -47,11 +47,11 @@ const stats = timelineStats(months);
       <a href="/search/">Search</a>
     </div>
     {
-      months.map((m, i) => (
+      months.map((m) => (
         <section class="month" aria-labelledby={`m-${m.month}`}>
           <h3 id={`m-${m.month}`}>{monthLabel(m.month)}</h3>
-          {m.cards.map((card, j) => (
-            <WeekCard card={card} open={i === 0 && j === 0} />
+          {m.cards.map((card) => (
+            <WeekCard card={card} />
           ))}
         </section>
       ))
