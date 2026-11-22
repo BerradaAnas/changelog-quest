@@ -48,6 +48,9 @@ importers:
       '@fontsource/atkinson-hyperlegible-next':
         specifier: 5.3.0
         version: 5.3.0
+      '@fontsource/source-serif-4':
+        specifier: ^5.3.1
+        version: 5.3.1
       astro:
         specifier: 7.3.8
         version: 7.3.8(@types/node@24.19.2)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
@@ -536,6 +539,9 @@ packages:
 
   '@fontsource/atkinson-hyperlegible-next@5.3.0':
     resolution: {integrity: sha512-8p1tHVoPDo6oYwSO3sMw5snGwFwSf3TmeSF9Gcj792GXdsg6oqvhoItbj6Hj/XZIk0Xs+Cwu6pkLBAl3Q5HrwA==}
+
+  '@fontsource/source-serif-4@5.3.1':
+    resolution: {integrity: sha512-cWcTCXjYYrgF9A67fThVir1VSc0lPEYmwQ6jA4pPt01s2MSCi/maINUcZoCzaqnU8fyUReDO97eGcBUkHgOeug==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -2476,6 +2482,8 @@ snapshots:
   '@exodus/bytes@1.16.0': {}
 
   '@fontsource/atkinson-hyperlegible-next@5.3.0': {}
+
+  '@fontsource/source-serif-4@5.3.1': {}
 
   '@img/colour@1.1.0':
     optional: true
