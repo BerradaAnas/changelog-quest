@@ -1,61 +1,63 @@
 :root {
   color-scheme: light dark;
-  --bg: #f7f8fa;
+  --bg: #f8f9fb;
   --surface: #ffffff;
-  --subtle: #f0f2f5;
-  --chip: #e8ebf0;
-  --text: #14171c;
-  --text2: #2d333b;
-  --muted: #555e6b;
-  --faint: #5f6773;
-  --border: rgb(20 23 28 / 0.12);
-  --border-strong: rgb(20 23 28 / 0.24);
-  --accent: #0f766e;
-  --accent-text: #0b5f58;
-  --ok: #276b43;
-  --warn: #9a4a0c;
+  --subtle: #f0f2f7;
+  --chip: #e4e8f1;
+  --text: #161b26;
+  --text2: #2b3242;
+  --muted: #4a5366;
+  --faint: #566074;
+  --border: rgb(22 27 38 / 0.12);
+  --border-strong: rgb(22 27 38 / 0.24);
+  --accent: #2747c7;
+  --accent-text: #2140b8;
+  --ok: #21704a;
+  --warn: #9a4a00;
   --on-accent: #ffffff;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: var(--sans);
+  --sans:
+    "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 /* Dark palette: by system preference unless the visitor chose light, or by choice. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #111418;
-    --surface: #181c21;
-    --subtle: #14181c;
-    --chip: #252b33;
-    --text: #eef1f4;
-    --text2: #d3d8de;
-    --muted: #a9b1bb;
-    --faint: #8f98a3;
-    --border: rgb(238 241 244 / 0.12);
-    --border-strong: rgb(238 241 244 / 0.24);
-    --accent: #5eead4;
-    --accent-text: #7ff0de;
-    --ok: #6fcf97;
-    --warn: #f0b072;
-    --on-accent: #06211e;
+    --bg: #151a25;
+    --surface: #1d2331;
+    --subtle: #191e2b;
+    --chip: #2a3244;
+    --text: #eef1f7;
+    --text2: #d6dbe6;
+    --muted: #b4bccc;
+    --faint: #a3acbe;
+    --border: rgb(238 241 247 / 0.12);
+    --border-strong: rgb(238 241 247 / 0.24);
+    --accent: #9cb0ff;
+    --accent-text: #adbfff;
+    --ok: #7fd6a3;
+    --warn: #f3b27a;
+    --on-accent: #121a3d;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #111418;
-  --surface: #181c21;
-  --subtle: #14181c;
-  --chip: #252b33;
-  --text: #eef1f4;
-  --text2: #d3d8de;
-  --muted: #a9b1bb;
-  --faint: #8f98a3;
-  --border: rgb(238 241 244 / 0.12);
-  --border-strong: rgb(238 241 244 / 0.24);
-  --accent: #5eead4;
-  --accent-text: #7ff0de;
-  --ok: #6fcf97;
-  --warn: #f0b072;
-  --on-accent: #06211e;
+  --bg: #151a25;
+  --surface: #1d2331;
+  --subtle: #191e2b;
+  --chip: #2a3244;
+  --text: #eef1f7;
+  --text2: #d6dbe6;
+  --muted: #b4bccc;
+  --faint: #a3acbe;
+  --border: rgb(238 241 247 / 0.12);
+  --border-strong: rgb(238 241 247 / 0.24);
+  --accent: #9cb0ff;
+  --accent-text: #adbfff;
+  --ok: #7fd6a3;
+  --warn: #f3b27a;
+  --on-accent: #121a3d;
 }
 :root[data-theme="light"] {
   color-scheme: light;
@@ -68,7 +70,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 16px / 1.6 var(--sans);
+  font: 17px / 1.65 var(--sans);
 }
 a {
   color: var(--accent-text);
@@ -114,10 +116,10 @@ a:hover {
   text-decoration: none;
 }
 .brand strong {
-  font: 500 20px / 1 var(--serif);
+  font: 700 20px / 1 var(--serif);
 }
 .brand span {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--faint);
 }
 .site-header nav,
@@ -126,7 +128,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 20px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .site-header nav a {
   color: var(--muted);
@@ -169,7 +171,7 @@ a:hover {
 }
 .hero h1 {
   margin: 0 0 16px;
-  font: 400 clamp(34px, 6vw, 48px) / 1.15 var(--serif);
+  font: 700 clamp(34px, 6vw, 48px) / 1.15 var(--serif);
 }
 .hero p {
   margin: 0;
@@ -178,7 +180,7 @@ a:hover {
 }
 .hero p.stats {
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--faint);
 }
 
@@ -190,8 +192,8 @@ a:hover {
 }
 .month h3 {
   margin: 0;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--faint);
 }
 
@@ -217,7 +219,7 @@ a:hover {
 }
 .card .day {
   flex: 0 0 112px;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--faint);
   padding-top: 2px;
 }
@@ -229,18 +231,18 @@ a:hover {
   gap: 4px;
 }
 .kicker {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--faint);
 }
 .card .title {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
 }
 .card .title.pending {
   color: var(--muted);
 }
 .card .headline {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 .chev {
@@ -270,12 +272,12 @@ a:hover {
 }
 .version-title {
   margin: 0;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
 }
 .version .headline {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 .pending-note {
@@ -284,11 +286,11 @@ a:hover {
   border-radius: 10px;
   background: var(--subtle);
   color: var(--text2);
-  font-size: 15px;
+  font-size: 16px;
 }
 .kind-title {
   margin: 0 0 6px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
 }
 .kind ul {
@@ -307,11 +309,11 @@ a:hover {
   gap: 12px;
   padding-top: 12px;
   border-top: 1px dashed var(--border);
-  font-size: 14px;
+  font-size: 15px;
 }
 .covered {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 .covered::before {
   content: "✓ ";
@@ -322,7 +324,7 @@ a:hover {
 .site-footer {
   border-top: 1px solid var(--border);
   padding-block: 24px 40px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--faint);
 }
 .site-footer .wrap {
@@ -349,23 +351,23 @@ a:hover {
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .block-head h2,
 .feature h2,
 .demo h2 {
   margin: 0;
-  font: 500 24px / 1.25 var(--serif);
+  font: 700 24px / 1.25 var(--serif);
 }
 .area h2,
 .area h3 {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
 }
 .area .blurb {
   margin: 2px 0 12px;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--faint);
 }
 .feature-grid {
@@ -390,8 +392,8 @@ a:hover {
   border-color: var(--border-strong);
 }
 .feature-card > a {
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--text);
   text-decoration: none;
 }
@@ -404,7 +406,7 @@ a:hover {
 }
 .feature-card p {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 .feature-card .meta {
@@ -414,7 +416,7 @@ a:hover {
   gap: 8px;
   margin-top: auto;
   padding-top: 6px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--faint);
 }
 .tag {
@@ -423,8 +425,8 @@ a:hover {
   border-radius: 999px;
   background: var(--chip);
   color: var(--text2);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
 }
 .tag.done {
   color: var(--ok);
@@ -435,7 +437,7 @@ a:hover {
   align-items: center;
   gap: 8px;
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
 }
 .pill {
@@ -448,7 +450,7 @@ a:hover {
   background: var(--surface);
   color: var(--text2);
   font: inherit;
-  font-size: 14px;
+  font-size: 15px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -457,7 +459,7 @@ a:hover {
 }
 .draft-note {
   margin: 0;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--warn);
 }
@@ -465,7 +467,7 @@ a:hover {
 /* Feature and release pages */
 .hero .kicker {
   margin-bottom: 12px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .feature,
 .release {
@@ -506,7 +508,7 @@ a:hover {
   border: 1px solid var(--border);
 }
 .impact span {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 .steps,
@@ -539,7 +541,7 @@ a:hover {
   margin: 4px 0 0;
   padding-left: 18px;
   color: var(--text2);
-  font-size: 15px;
+  font-size: 16px;
 }
 .card-static {
   padding: 22px;
@@ -551,19 +553,59 @@ a:hover {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
-/* Demos */
+/* Demos: collapsed until the visitor opens them. */
 .demo {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   max-width: 760px;
-  padding: 22px;
+  padding: 0;
   border-radius: 14px;
   background: var(--surface);
   border: 1px solid var(--border-strong);
+}
+.demo > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 14px;
+}
+.demo > summary::-webkit-details-marker {
+  display: none;
+}
+.demo > summary:hover {
+  background: var(--subtle);
+}
+.demo-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.demo-head h2 {
+  margin: 0;
+}
+.demo-toggle::after {
+  content: "Open";
+  flex: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-text);
+}
+.demo[open] .demo-toggle::after {
+  content: "Close";
+}
+.demo-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px 22px 22px;
 }
 .demo p {
   margin: 0;
@@ -589,7 +631,7 @@ a:hover {
 .search label {
   padding: 0;
   margin-bottom: 6px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
 }
 .choice {
@@ -620,7 +662,7 @@ a:hover {
   border: 1px solid var(--border-strong);
   background: var(--bg);
   color: var(--text);
-  font: 15px var(--mono);
+  font: 16px var(--mono);
 }
 .cta,
 .soft {
@@ -628,7 +670,7 @@ a:hover {
   padding: 0 20px;
   border-radius: 10px;
   font: inherit;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
 }
 .cta {
@@ -656,14 +698,14 @@ a:hover {
 .outcome h3,
 .config h3 {
   margin: 0;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
 }
 .badge {
   padding: 2px 10px;
   border-radius: 999px;
   background: var(--chip);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
 }
 .badge.success {
@@ -675,7 +717,7 @@ a:hover {
 .trace {
   margin: 4px 0 0;
   padding-left: 22px;
-  font-size: 15px;
+  font-size: 16px;
 }
 .trace li + li {
   margin-top: 6px;
@@ -687,7 +729,7 @@ a:hover {
 code,
 pre {
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 15px;
 }
 .trace code {
   padding: 1px 6px;
@@ -731,11 +773,11 @@ pre {
   border: 1px solid var(--border);
 }
 .results a {
-  font-weight: 500;
+  font-weight: 700;
 }
 .results p {
   margin: 4px 0 0;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 mark {
@@ -765,4 +807,10 @@ mark {
   .card .body {
     padding: 4px 16px 18px;
   }
+}
+.demo-empty {
+  padding: 22px;
+}
+.demo-empty h2 {
+  margin-top: 0;
 }

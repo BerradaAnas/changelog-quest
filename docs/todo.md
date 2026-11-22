@@ -51,7 +51,7 @@ release of 100–300 items takes hours to draft and review.
 
 ## 6. Open decisions (`conception.md` section 10)
 
-- [ ] Sign off on a palette of our own, distinct from Anthropic's.
+- [x] Sign off on a palette and font of our own (ADR 0014).
 - [ ] Choose a custom domain (optional; `changelog-quest.pages.dev` works until then).
 - [ ] Optional: tell Anthropic about the project.
 

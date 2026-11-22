@@ -289,5 +289,4 @@ The site moved before summaries so the data model is exercised end to end early.
 ## 10. Open decisions
 
 - Custom domain. Until one is chosen the site uses its `pages.dev` address (ADR 0011).
-- Visual identity: the mock-up no longer names Anthropic's fonts, but its palette is still close to Anthropic's; the real site needs its own to support the "not affiliated" disclaimer.
 - Optional: tell Anthropic about the project. Not required, since nothing of theirs is copied (ADR 0008).
