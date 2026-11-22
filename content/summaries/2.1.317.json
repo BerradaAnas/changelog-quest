@@ -1,0 +1,895 @@
+{
+  "version": "2.1.317",
+  "sourceHash": "97dfdb212c8bee8b12582087f608cc92d2a6ea819f5dfec5f80b1fb9d5582672",
+  "title": "Email leak check, gateway cost report, many reliability fixes",
+  "headline": "Claude Code now asks before a tool call sends your account email over the network, the Claude apps gateway gets a cost report, and many headless, telemetry and agent team bugs are fixed.",
+  "lines": [
+    {
+      "kind": "added",
+      "text": "/schedule warns when a new cloud scheduled task gets connectors you didn't ask for and explains how to remove them.",
+      "covers": [
+        "2.1.317#20a81a04"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "A web or shell tool call that would send your account email address over the network now needs your approval.",
+      "covers": [
+        "2.1.317#484eb495"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Agent SDK hook callbacks accept onFailure: \"block\", so a failing callback blocks the action instead of letting it through.",
+      "covers": [
+        "2.1.317#e0c0a98f"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Claude Desktop's Code tab shows a notice while your organization's remote managed settings haven't loaded for the session, and another once they have.",
+      "covers": [
+        "2.1.317#fe0058da"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "When auto mode's check gives no answer for a subagent's tool call, a notice now appears in the main view.",
+      "covers": [
+        "2.1.317#f44c3e64"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "OTel metrics, events and spans carry anthropic.plan, anthropic.seat_type, anthropic.provider and anthropic.custom_base_url.",
+      "covers": [
+        "2.1.317#18ffd088"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Claude apps gateway: GET /v1/organizations/analytics/cost reports past spend over a date range in total, per developer, per day or per IdP group, using a daily record of each developer's IdP groups kept for admin.identity_retention_days.",
+      "covers": [
+        "2.1.317#e1871561",
+        "2.1.317#0e4bb555"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "On self-hosted runners, CLAUDE_CODE_DISABLE_NESTED_SESSION_ID=1 makes claude -p inside a session reuse that session's ID and transcript, as before.",
+      "covers": [
+        "2.1.317#c977fd0b"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "In some Claude desktop sessions, project and local MCP servers no longer disconnect after the first turn.",
+      "covers": [
+        "2.1.317#1526c398"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Auto mode no longer fails every turn when an LLM gateway used as the base URL answers 403 or 422 to its server-side safety check (403 with an apiKeyHelper behaves as before), and in cloud sessions it no longer pauses for approval when the Artifact tool uploads, writes to a database or saves through the outputs folder.",
+      "covers": [
+        "2.1.317#be47a8c4",
+        "2.1.317#df49d29a"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "claude auth status waits for a slow token refresh to be saved before exiting, so the next run stays signed in.",
+      "covers": [
+        "2.1.317#a3f0eb93"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A project's effortLevel setting applies to sessions an app starts ahead of time and then opens in the project, such as new ones in the desktop app's Code tab.",
+      "covers": [
+        "2.1.317#6a076721"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "claude --from-pr finds a linked session older than the first page in projects with many sessions.",
+      "covers": [
+        "2.1.317#1315e1a3"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "On claude.ai and the mobile apps, the second of two simultaneous permission prompts shows its file path or command, and Remote Control and SDK hosts no longer offer \"don't ask again\" for a mod's tool calls.",
+      "covers": [
+        "2.1.317#f42547cc",
+        "2.1.317#137d8d2c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Session titles in cloud and SDK sessions survive a new message or Stop arriving while the title is being generated.",
+      "covers": [
+        "2.1.317#18b2c422"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Self-paced /loop wakeups get scheduled even when Claude leaves a field out of its request.",
+      "covers": [
+        "2.1.317#5caecd47"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Skills synced from claude.ai that can't be written to disk are no longer lost or downloaded again every ten minutes.",
+      "covers": [
+        "2.1.317#e28ad577"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/schedule includes the next run time and link in its results after creating or updating a cloud scheduled task, and stored tasks can still be listed and deleted after scheduled tasks are turned off.",
+      "covers": [
+        "2.1.317#f8622d3c",
+        "2.1.317#f2099ced"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "In screen reader mode, a running subagent's elapsed time and token count are no longer read out on every change.",
+      "covers": [
+        "2.1.317#2eda74ff"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A region or network block (HTTP 403) is explained as such instead of shown as a sign-in failure, in the terminal and in VS Code, where the sign-in screen no longer opens for it.",
+      "covers": [
+        "2.1.317#f5991859",
+        "2.1.317#c629fe08"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "In cloud sessions, a working claude.ai connector is no longer reported as needing authorization or failed when a synced plugin includes the same server.",
+      "covers": [
+        "2.1.317#88f89cc3"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "claude -p no longer exits 0 when a full disk or quota lost transcript or ~/.claude.json writes: it prints an error and exits 1 in text and json output. Full NFS exports may still go unnoticed.",
+      "covers": [
+        "2.1.317#ced4b90d"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Settings files edited in the first second or so after launch take effect without another change, and old transcripts are cleaned up on machines where some runs skip cleanup, such as runs with --setting-sources.",
+      "covers": [
+        "2.1.317#a65ad9af",
+        "2.1.317#8bb1ec5a"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Agent teams: a teammate's late message no longer re-creates a deleted team inbox, a re-created teammate isn't removed by an earlier shutdown approval, teammates in tmux or iTerm2 panes no longer start in auto mode when the lead is in manual mode, and Ctrl+C to clear the prompt no longer stops all background agents.",
+      "covers": [
+        "2.1.317#e9e62af7",
+        "2.1.317#7909f3e0",
+        "2.1.317#30c75ab6",
+        "2.1.317#b00341f3"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/team-onboarding: Claude no longer deletes your most recently updated guide when you don't say which, or claims a delete worked when the server refused it.",
+      "covers": [
+        "2.1.317#c15bb235",
+        "2.1.317#b12fd622"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "The Claude apps gateway passes through Amazon Bedrock's \"Input is too long.\" error so sessions compact instead of failing every turn, and a developer's own spend limit is no longer shown as fully used after their group's pooled budget ran out.",
+      "covers": [
+        "2.1.317#5800da24",
+        "2.1.317#7d97b725"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Self-hosted runner sessions restarted while a plan awaits approval keep their recent turns and conversation, an MCP server switched off stays off after a move to a new machine, and Claude sees the interrupted tool call even when the turn is older than CLAUDE_CODE_RESUME_INTERRUPTED_TURN_MAX_AGE_MS.",
+      "covers": [
+        "2.1.317#b460c2bf",
+        "2.1.317#51eb289f",
+        "2.1.317#ed3836d3"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Compaction: no \"Prompt is too long\" after automatic compaction when a very large CLAUDE.md changed since last sent, and very long conversations keep their earlier summary when compaction must shorten its own request.",
+      "covers": [
+        "2.1.317#45a94ae6",
+        "2.1.317#2a80c374"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Headless sessions with many plugins that register commands start faster and use less memory.",
+      "covers": [
+        "2.1.317#3de93f76"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "When a stdio MCP server's env config sets AWS_BEARER_TOKEN_BEDROCK to empty, the variable is now unset so the server can use the machine's AWS credentials.",
+      "covers": [
+        "2.1.317#b9a9b63a"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Requests no longer fail with \"unable to get local issuer certificate\" behind some TLS-inspecting proxies after a root certificate renewal.",
+      "covers": [
+        "2.1.317#0927b187"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A PDF's own metadata can no longer make Read and @-mentions count too few pages.",
+      "covers": [
+        "2.1.317#85a9a2a5"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "DISABLE_PROMPT_CACHING_OPUS and DISABLE_PROMPT_CACHING_SONNET now cover [1m], other-region and undated spellings of the default model.",
+      "covers": [
+        "2.1.317#266e0612"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/artifacts and the Artifact tool's shared list show shared artifacts even when you own 200 or more.",
+      "covers": [
+        "2.1.317#a7260af1"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude no longer treats Grep and Glob results as complete when the search hit its time limit.",
+      "covers": [
+        "2.1.317#218eadb5"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "OpenTelemetry exports through proxies: https exports started during another export are sent, a proxy that blocks http exports with 403 no longer gets flooded with attempts, and exports to a proxy that never answers time out after 10 seconds (OTEL_EXPORTER_OTLP_TIMEOUT allows up to 30).",
+      "covers": [
+        "2.1.317#e2a53aed",
+        "2.1.317#57c4046c",
+        "2.1.317#11fb7fe6"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Resumed sessions no longer re-announce a file change Claude already knew about, and Claude uses a built-in tool again after an earlier call failed because it was switched off.",
+      "covers": [
+        "2.1.317#0e04e3bc",
+        "2.1.317#2c420eb1"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/remote-control says Remote Control is turned off by the disableRemoteControl setting instead of \"Unknown command\".",
+      "covers": [
+        "2.1.317#23db05ca"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A background session no longer sometimes loses a just-made permission mode change when it's upgraded or retired.",
+      "covers": [
+        "2.1.317#5d7e0d50"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/feedback no longer shows \"Enter to confirm\" while a report is sending.",
+      "covers": [
+        "2.1.317#c9266e26"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Child processes of a stopped shell command are no longer sometimes sent SIGTERM twice, which made some programs skip cleanup.",
+      "covers": [
+        "2.1.317#12a102fc"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "claude -p run inside a cloud or self-hosted runner session no longer shares that session's ID, which wrote into its transcript and could resume the wrong conversation, and no longer sends that session a title of its own.",
+      "covers": [
+        "2.1.317#1a566b02",
+        "2.1.317#3dd7c840"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Clearer errors: on Microsoft Foundry, unloadable Azure credentials prompt you to check or refresh them (reported as cloud_credential_error), and an unreachable required Claude apps gateway points to the network and says when its TLS certificate can't be verified.",
+      "covers": [
+        "2.1.317#03e3d9ee",
+        "2.1.317#42404917"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "/design-sync says up front when your design system has moved to Claude and stops before building instead of failing at upload.",
+      "covers": [
+        "2.1.317#0c3e50da"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "The \"Resume this session with\" hint at exit repeats your launch flags, such as --chrome --debug, before --resume.",
+      "covers": [
+        "2.1.317#2ae55aee"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Self-hosted runners recover better: after a 5xx other than 501 or 529, runners and sessions open new connections instead of reusing the failed one, and after an unanswered heartbeat a session opens new connections instead of trying each idle one.",
+      "covers": [
+        "2.1.317#4d00b175",
+        "2.1.317#f08ddf5b",
+        "2.1.317#0da0272b"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "SendMessage reaches a running background agent sooner: its running command moves to the background without being stopped.",
+      "covers": [
+        "2.1.317#08b6029e"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Subagents and teammates on a different model than the main conversation use that model's saved effort level or its default, not the session's.",
+      "covers": [
+        "2.1.317#d2a8b231"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Plugin monitors no longer trigger the \"Background work is running\" prompt on exit.",
+      "covers": [
+        "2.1.317#d37c0ee3"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Once a mod you built works, the plugin-authoring skill offers one time to help you share it.",
+      "covers": [
+        "2.1.317#df6782a4"
+      ]
+    },
+    {
+      "kind": "removed",
+      "text": "The Read tool no longer replies \"file unchanged since your last Read\": reading an unchanged file returns its content again.",
+      "covers": [
+        "2.1.317#423bab43"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Windows: tool calls are no longer all refused on volumes where the native path lookup fails, and temporary paths such as the session scratchpad no longer grow with the project path outside Claude Desktop, which pushed clones past the 260-character limit.",
+      "covers": [
+        "2.1.317#c6d15c95",
+        "2.1.317#ef8e65c2"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Remote Control: unnamed forks keep the \"(fork)\" ending on long names, and in claude remote-control sessions a fork of \"Name (fork)\" becomes \"Name (fork 2)\".",
+      "covers": [
+        "2.1.317#05dabaef"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Remote Control: after restarting claude remote-control, a message sent to an idle session within a minute of the previous one gets answered.",
+      "covers": [
+        "2.1.317#0fd2a60a"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: forked conversations keep all parallel tool calls and the last messages a compaction kept, and a message is no longer lost when Claude is slow to start; the extension tries once more before showing an error.",
+      "covers": [
+        "2.1.317#98842d0e",
+        "2.1.317#e739fa4f"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: the Account panel capitalises the plan name correctly, file links in a Claude tab open in another editor group, panel elements grow with chat.fontSize, and ultrathink raises effort and shows its rainbow with telemetry off.",
+      "covers": [
+        "2.1.317#d335f92c",
+        "2.1.317#4d983e7e",
+        "2.1.317#3ede05fc",
+        "2.1.317#96ad1347"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Cloud sessions: a link card lets you open or decline a link an MCP server asks you to visit, instead of the request going unseen.",
+      "covers": [
+        "2.1.317#326e7034"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud sessions: the organization environment dialog uses the shorter layout of the personal ones, with sections opening from rows and a check before closing with unsaved input.",
+      "covers": [
+        "2.1.317#aa3bece0"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Cloud sessions: adding a network secret for a host that has one is refused with a pointer to the existing secret instead of replacing it, and new scheduled tasks start on the organization's default environment.",
+      "covers": [
+        "2.1.317#ecd0efbf",
+        "2.1.317#e6e5a910"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Claude Tag: newly pasted artifact links in Slack show a simpler card with an Open button that opens the artifact in Claude.",
+      "covers": [
+        "2.1.317#92faa548"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.317#20a81a04": {
+      "kind": "added",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.317#484eb495": {
+      "kind": "added",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.317#e0c0a98f": {
+      "kind": "added",
+      "featureIds": [
+        "hooks"
+      ]
+    },
+    "2.1.317#fe0058da": {
+      "kind": "added",
+      "featureIds": [
+        "settings"
+      ]
+    },
+    "2.1.317#f44c3e64": {
+      "kind": "added",
+      "featureIds": [
+        "auto-mode",
+        "sub-agents"
+      ]
+    },
+    "2.1.317#18ffd088": {
+      "kind": "added",
+      "featureIds": []
+    },
+    "2.1.317#e1871561": {
+      "kind": "added",
+      "featureIds": []
+    },
+    "2.1.317#0e4bb555": {
+      "kind": "added",
+      "featureIds": []
+    },
+    "2.1.317#c977fd0b": {
+      "kind": "added",
+      "featureIds": [
+        "headless"
+      ]
+    },
+    "2.1.317#1526c398": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.317#be47a8c4": {
+      "kind": "fixed",
+      "featureIds": [
+        "auto-mode"
+      ]
+    },
+    "2.1.317#df49d29a": {
+      "kind": "fixed",
+      "featureIds": [
+        "auto-mode"
+      ]
+    },
+    "2.1.317#a3f0eb93": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#6a076721": {
+      "kind": "fixed",
+      "featureIds": [
+        "settings"
+      ]
+    },
+    "2.1.317#1315e1a3": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#f42547cc": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.317#137d8d2c": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.317#18b2c422": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#5caecd47": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#e28ad577": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.317#f8622d3c": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#f2099ced": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#2eda74ff": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#f5991859": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#c629fe08": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#88f89cc3": {
+      "kind": "fixed",
+      "featureIds": [
+        "web",
+        "mcp"
+      ]
+    },
+    "2.1.317#ced4b90d": {
+      "kind": "fixed",
+      "featureIds": [
+        "headless"
+      ]
+    },
+    "2.1.317#a65ad9af": {
+      "kind": "fixed",
+      "featureIds": [
+        "settings"
+      ]
+    },
+    "2.1.317#8bb1ec5a": {
+      "kind": "fixed",
+      "featureIds": [
+        "settings"
+      ]
+    },
+    "2.1.317#e9e62af7": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#7909f3e0": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#30c75ab6": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#b00341f3": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#c15bb235": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#b12fd622": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#5800da24": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#7d97b725": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#b460c2bf": {
+      "kind": "fixed",
+      "featureIds": [
+        "plan-mode"
+      ]
+    },
+    "2.1.317#51eb289f": {
+      "kind": "fixed",
+      "featureIds": [
+        "plan-mode"
+      ]
+    },
+    "2.1.317#ed3836d3": {
+      "kind": "fixed",
+      "featureIds": [
+        "plan-mode"
+      ]
+    },
+    "2.1.317#45a94ae6": {
+      "kind": "fixed",
+      "featureIds": [
+        "memory"
+      ]
+    },
+    "2.1.317#2a80c374": {
+      "kind": "fixed",
+      "featureIds": [
+        "memory"
+      ]
+    },
+    "2.1.317#3de93f76": {
+      "kind": "fixed",
+      "featureIds": [
+        "headless",
+        "plugins"
+      ]
+    },
+    "2.1.317#b9a9b63a": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.317#0927b187": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#85a9a2a5": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#266e0612": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#a7260af1": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#218eadb5": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#e2a53aed": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#57c4046c": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#11fb7fe6": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#0e04e3bc": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#2c420eb1": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#23db05ca": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#5d7e0d50": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.317#c9266e26": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#12a102fc": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#1a566b02": {
+      "kind": "fixed",
+      "featureIds": [
+        "headless"
+      ]
+    },
+    "2.1.317#3dd7c840": {
+      "kind": "fixed",
+      "featureIds": [
+        "headless"
+      ]
+    },
+    "2.1.317#03e3d9ee": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#42404917": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#0c3e50da": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#2ae55aee": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#4d00b175": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#f08ddf5b": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#0da0272b": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#08b6029e": {
+      "kind": "changed",
+      "featureIds": [
+        "sub-agents"
+      ]
+    },
+    "2.1.317#d2a8b231": {
+      "kind": "changed",
+      "featureIds": [
+        "sub-agents"
+      ]
+    },
+    "2.1.317#d37c0ee3": {
+      "kind": "changed",
+      "featureIds": [
+        "plugins"
+      ]
+    },
+    "2.1.317#df6782a4": {
+      "kind": "changed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.317#423bab43": {
+      "kind": "removed",
+      "featureIds": []
+    },
+    "2.1.317#c6d15c95": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#ef8e65c2": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#05dabaef": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.317#0fd2a60a": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.317#98842d0e": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.317#e739fa4f": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.317#d335f92c": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.317#4d983e7e": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.317#3ede05fc": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.317#96ad1347": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.317#326e7034": {
+      "kind": "added",
+      "featureIds": [
+        "web",
+        "mcp"
+      ]
+    },
+    "2.1.317#aa3bece0": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.317#ecd0efbf": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.317#e6e5a910": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.317#92faa548": {
+      "kind": "changed",
+      "featureIds": []
+    }
+  },
+  "status": "draft",
+  "model": "claude-opus-5-5",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-22T20:01:31.537Z"
+}
