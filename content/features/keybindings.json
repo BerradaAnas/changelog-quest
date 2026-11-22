@@ -1,0 +1,38 @@
+{
+  "id": "keybindings",
+  "name": "Keyboard shortcuts",
+  "area": "core",
+  "summary": "Remap Claude Code's keyboard shortcuts to suit the way you work.",
+  "what": "Shortcuts live in a keybindings file that maps keys to actions in different parts of the interface. You can change, remove or chain keys, and changes apply without a restart.",
+  "impact": [
+    {
+      "title": "Your keys, your way",
+      "detail": "Move any action to a key you prefer."
+    },
+    {
+      "title": "Applies live",
+      "detail": "Edits take effect without restarting."
+    },
+    {
+      "title": "Chords",
+      "detail": "Combine several keys in a row for one action."
+    }
+  ],
+  "howItWorks": [
+    "Run /keybindings to create or open ~/.claude/keybindings.json.",
+    "Add bindings per context, using action names such as chat:externalEditor.",
+    "Set a key to null to unbind it.",
+    "A few keys, like Ctrl+C and Ctrl+D, are reserved."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/keybindings"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.18",
+      "type": "introduced",
+      "note": "Added customizable keyboard shortcuts with /keybindings."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "agent-teams",
+  "name": "Agent teams",
+  "area": "extend",
+  "summary": "Several Claude Code sessions work together as a team, with a lead, a shared task list and direct messages.",
+  "what": "In an agent team, a lead session coordinates teammates. Each teammate has its own context, picks tasks from a shared list and can message the others. It is experimental, off by default, and uses many more tokens.",
+  "impact": [
+    {
+      "title": "Many angles at once",
+      "detail": "Teammates can cover security, performance and tests in parallel."
+    },
+    {
+      "title": "Ideas tested against each other",
+      "detail": "Teammates can challenge each other's findings."
+    },
+    {
+      "title": "Visible coordination",
+      "detail": "A shared task list shows who does what."
+    }
+  ],
+  "howItWorks": [
+    "Set CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in your settings env block or shell.",
+    "Ask Claude in plain words to create a team.",
+    "Set teammateMode to tmux or iterm2 to see teammates in split panes.",
+    "Press Ctrl+T for the task list.",
+    "One team per session; interactive sessions only."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/agent-teams"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.32",
+      "type": "introduced",
+      "note": "Added agent teams as a research preview."
+    }
+  ]
+}

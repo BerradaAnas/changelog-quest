@@ -1,0 +1,38 @@
+{
+  "id": "accessibility",
+  "name": "Screen reader mode",
+  "area": "core",
+  "summary": "A plain, linear text view of Claude Code built for screen readers.",
+  "what": "Screen reader mode replaces the visual terminal interface with labeled text that VoiceOver, NVDA and similar tools read well. There are also options for magnifiers, reduced motion and colorblind-friendly themes.",
+  "impact": [
+    {
+      "title": "Readable menus",
+      "detail": "Menus become numbered lists."
+    },
+    {
+      "title": "Clear diffs",
+      "detail": "Changes are read as plain text."
+    },
+    {
+      "title": "Audible cues",
+      "detail": "A bell tells you when Claude needs you."
+    }
+  ],
+  "howItWorks": [
+    "Start with claude --ax-screen-reader, or set CLAUDE_AX_SCREEN_READER=1.",
+    "Or set axScreenReader to true in your user settings.",
+    "Set prefersReducedMotion to calm animations.",
+    "Pick the dark-daltonized or light-daltonized theme for colorblind-friendly colors."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/accessibility"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.208",
+      "type": "introduced",
+      "note": "Added screen reader mode."
+    }
+  ]
+}

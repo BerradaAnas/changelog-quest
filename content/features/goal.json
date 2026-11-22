@@ -1,0 +1,39 @@
+{
+  "id": "goal",
+  "name": "Goals",
+  "area": "core",
+  "summary": "Give Claude a finish line and it keeps working, turn after turn, until it gets there.",
+  "what": "With /goal you describe a condition, such as all tests passing. After every turn a separate model checks the conversation and decides whether the goal is met or impossible. Until then, Claude keeps going.",
+  "impact": [
+    {
+      "title": "Less babysitting",
+      "detail": "Multi-step work continues without a new prompt each turn."
+    },
+    {
+      "title": "An independent judge",
+      "detail": "A fresh evaluator, not the working model, decides when it's done."
+    },
+    {
+      "title": "Works in scripts too",
+      "detail": "Use it with claude -p and in the desktop app."
+    }
+  ],
+  "howItWorks": [
+    "Run /goal <condition>; run /goal alone to see its status.",
+    "Write a condition the conversation can prove, and add a turn limit if you like.",
+    "Run /goal clear to stop.",
+    "The checks use extra tokens on top of the main work.",
+    "Not available when hooks are turned off for the workspace."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/goal"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.139",
+      "type": "introduced",
+      "note": "Added the /goal command."
+    }
+  ]
+}

@@ -641,7 +641,8 @@
     "2.1.321#fd584a4f": {
       "kind": "added",
       "featureIds": [
-        "settings"
+        "settings",
+        "remote-control"
       ]
     },
     "2.1.321#112a6b31": {
@@ -683,7 +684,9 @@
     },
     "2.1.321#4496ddb6": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "models"
+      ]
     },
     "2.1.321#b558b8c3": {
       "kind": "fixed",
@@ -715,13 +718,15 @@
     "2.1.321#1d164917": {
       "kind": "fixed",
       "featureIds": [
-        "plugins"
+        "plugins",
+        "worktrees"
       ]
     },
     "2.1.321#c104791d": {
       "kind": "fixed",
       "featureIds": [
-        "plugins"
+        "plugins",
+        "worktrees"
       ]
     },
     "2.1.321#285f310a": {
@@ -730,39 +735,60 @@
     },
     "2.1.321#2db32617": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context",
+        "desktop",
+        "remote-control"
+      ]
     },
     "2.1.321#4229646c": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context",
+        "desktop",
+        "remote-control"
+      ]
     },
     "2.1.321#619da2ff": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context",
+        "desktop",
+        "remote-control"
+      ]
     },
     "2.1.321#13a551b7": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context",
+        "desktop",
+        "remote-control"
+      ]
     },
     "2.1.321#ff71803d": {
       "kind": "fixed",
       "featureIds": [
         "auto-mode",
-        "sub-agents"
+        "sub-agents",
+        "context"
       ]
     },
     "2.1.321#d5ccb3ea": {
       "kind": "fixed",
       "featureIds": [
         "skills",
-        "sub-agents"
+        "sub-agents",
+        "worktrees",
+        "agent-sdk"
       ]
     },
     "2.1.321#58f042f3": {
       "kind": "fixed",
       "featureIds": [
         "skills",
-        "sub-agents"
+        "sub-agents",
+        "worktrees",
+        "agent-sdk"
       ]
     },
     "2.1.321#2de9d0eb": {
@@ -779,7 +805,10 @@
     },
     "2.1.321#a0d6975f": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "computer-use",
+        "chrome"
+      ]
     },
     "2.1.321#3632a4b2": {
       "kind": "fixed",
@@ -805,30 +834,44 @@
     },
     "2.1.321#6704fb9b": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "desktop"
+      ]
     },
     "2.1.321#7b68aaa2": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "desktop",
+        "cloud-providers",
+        "monitoring"
       ]
     },
     "2.1.321#ef73452f": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "desktop",
+        "cloud-providers",
+        "monitoring"
       ]
     },
     "2.1.321#45b67bf0": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "desktop",
+        "cloud-providers",
+        "monitoring"
       ]
     },
     "2.1.321#02250c36": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "desktop",
+        "cloud-providers",
+        "monitoring"
       ]
     },
     "2.1.321#7892237a": {
@@ -837,15 +880,24 @@
     },
     "2.1.321#0c3f12cf": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "accessibility",
+        "agent-view"
+      ]
     },
     "2.1.321#01b4eb81": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "accessibility",
+        "agent-view"
+      ]
     },
     "2.1.321#a0392f0f": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "accessibility",
+        "agent-view"
+      ]
     },
     "2.1.321#ae6adda1": {
       "kind": "fixed",
@@ -857,15 +909,21 @@
     },
     "2.1.321#1fa77967": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk"
+      ]
     },
     "2.1.321#06f4a501": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk"
+      ]
     },
     "2.1.321#a2f12727": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fast-mode"
+      ]
     },
     "2.1.321#63e6a966": {
       "kind": "fixed",
@@ -887,7 +945,9 @@
     },
     "2.1.321#dc95176b": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "agent-view"
+      ]
     },
     "2.1.321#6300ac2b": {
       "kind": "fixed",
@@ -935,7 +995,9 @@
     },
     "2.1.321#45d68cde": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.321#e307e632": {
       "kind": "fixed",
@@ -949,7 +1011,9 @@
     },
     "2.1.321#164f99b0": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "agent-view"
+      ]
     },
     "2.1.321#91fc5698": {
       "kind": "fixed",
@@ -959,11 +1023,15 @@
     },
     "2.1.321#944f6716": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "remote-control"
+      ]
     },
     "2.1.321#80619ff6": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.321#5b3f862e": {
       "kind": "fixed",
@@ -1000,45 +1068,60 @@
     },
     "2.1.321#94df8ec6": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.321#55bd4d6e": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "workflows"
       ]
     },
     "2.1.321#9bf6d3d8": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "workflows"
       ]
     },
     "2.1.321#18062c47": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "workflows"
       ]
     },
     "2.1.321#72d0748b": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "models"
+      ]
     },
     "2.1.321#54de619d": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.321#c09b0915": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.321#19bfb3b5": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.321#810a64c6": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.321#c5283419": {
       "kind": "changed",
@@ -1058,22 +1141,30 @@
     },
     "2.1.321#06abc504": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "remote-control"
+      ]
     },
     "2.1.321#54c73f41": {
       "kind": "changed",
       "featureIds": [
         "auto-mode",
-        "sub-agents"
+        "sub-agents",
+        "desktop"
       ]
     },
     "2.1.321#b98c49d6": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "worktrees",
+        "agent-view"
+      ]
     },
     "2.1.321#0d4a906c": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.321#bbe7cc5a": {
       "kind": "changed",
@@ -1081,7 +1172,9 @@
     },
     "2.1.321#2d415027": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "remote-control"
+      ]
     },
     "2.1.321#f9a075a0": {
       "kind": "changed",
@@ -1100,22 +1193,29 @@
     "2.1.321#d63d2992": {
       "kind": "changed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "mods"
       ]
     },
     "2.1.321#2a7ec4fd": {
       "kind": "changed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "mods"
       ]
     },
     "2.1.321#d14efa64": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "models"
+      ]
     },
     "2.1.321#e491f0f9": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "models",
+        "fast-mode"
+      ]
     },
     "2.1.321#d70d3558": {
       "kind": "changed",
@@ -1126,7 +1226,9 @@
     },
     "2.1.321#da874719": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.321#58ccbeb6": {
       "kind": "changed",
@@ -1135,17 +1237,21 @@
     "2.1.321#4624355a": {
       "kind": "changed",
       "featureIds": [
-        "hooks"
+        "hooks",
+        "monitoring"
       ]
     },
     "2.1.321#bf76b182": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "desktop"
+      ]
     },
     "2.1.321#5141c7bb": {
       "kind": "changed",
       "featureIds": [
-        "headless"
+        "headless",
+        "agent-sdk"
       ]
     },
     "2.1.321#6e46f0c4": {
@@ -1162,24 +1268,30 @@
     },
     "2.1.321#b4612a55": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "chrome",
+        "desktop"
+      ]
     },
     "2.1.321#b186a18e": {
       "kind": "changed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "cloud-providers"
       ]
     },
     "2.1.321#f79664c0": {
       "kind": "changed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "cloud-providers"
       ]
     },
     "2.1.321#d59d18c9": {
       "kind": "changed",
       "featureIds": [
-        "headless"
+        "headless",
+        "mods"
       ]
     },
     "2.1.321#384267b0": {
@@ -1205,7 +1317,9 @@
     },
     "2.1.321#1b14a8ab": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.321#f42951fa": {
       "kind": "changed",
@@ -1213,7 +1327,9 @@
     },
     "2.1.321#f0efa481": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "remote-control"
+      ]
     },
     "2.1.321#f0ce3f37": {
       "kind": "added",

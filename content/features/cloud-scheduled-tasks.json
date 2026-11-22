@@ -1,0 +1,39 @@
+{
+  "id": "cloud-scheduled-tasks",
+  "name": "Cloud scheduled tasks",
+  "area": "anywhere",
+  "summary": "Save a task that runs in the cloud on a schedule, from an API call or on GitHub events, even with your laptop closed.",
+  "what": "A cloud scheduled task (formerly called a routine) is a saved setup of prompt, repositories and connectors that runs as a cloud session. It can fire on a schedule, when an API endpoint is called, or on GitHub events. It is a research preview.",
+  "impact": [
+    {
+      "title": "Runs without you",
+      "detail": "Daily reviews or checks happen while your computer is off."
+    },
+    {
+      "title": "Triggered by events",
+      "detail": "Start work from an alert, an API call or a pull request."
+    },
+    {
+      "title": "Uses your tools",
+      "detail": "Connectors like Slack or Linear work during runs."
+    }
+  ],
+  "howItWorks": [
+    "Create one at claude.ai/code/routines, in the desktop app, or with /schedule.",
+    "Describe it in plain words, such as /schedule daily PR review at 9am.",
+    "Manage them with /schedule list, update and run.",
+    "Custom schedules run at most hourly.",
+    "Needs a Pro, Max, Ultra, Team or Enterprise plan."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/routines"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.139",
+      "type": "introduced",
+      "note": "First changelog mention of /schedule."
+    }
+  ]
+}

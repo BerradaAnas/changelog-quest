@@ -1,0 +1,39 @@
+{
+  "id": "slack",
+  "name": "Claude in Slack",
+  "area": "anywhere",
+  "summary": "Mention Claude in a Slack channel with a coding task and get a cloud session and a pull request.",
+  "what": "When you @mention Claude in Slack with a coding request, it starts a Claude Code cloud session, posts progress in the thread and links the session and pull request. Team and Enterprise organizations use Claude Tag, the newer Slack integration.",
+  "impact": [
+    {
+      "title": "Work from the conversation",
+      "detail": "Turn a bug report in a channel into a fix."
+    },
+    {
+      "title": "Progress in the thread",
+      "detail": "Everyone sees updates where the request was made."
+    },
+    {
+      "title": "Ends in a pull request",
+      "detail": "Changes arrive ready for review."
+    }
+  ],
+  "howItWorks": [
+    "An admin installs the Claude app from the Slack App Marketplace.",
+    "Each person connects their Claude account in the app's home tab.",
+    "Connect GitHub and a repository at claude.ai/code.",
+    "Invite the bot to a channel and mention it with your task."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/slack",
+    "https://code.claude.com/docs/en/claude-tag"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.268",
+      "type": "introduced",
+      "note": "First changelog mention of Claude in Slack sessions."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "chrome",
+  "name": "Claude in Chrome",
+  "area": "core",
+  "summary": "Let Claude use your real browser to test pages, read console errors and fill in forms.",
+  "what": "Connected to the Claude in Chrome extension, Claude Code can open pages, read the page structure and console, click, type and pull out data, including on sites where you're already signed in. Claude asks before acting on a site unless your settings allow it.",
+  "impact": [
+    {
+      "title": "Debug the front end",
+      "detail": "Read console errors and fix the code behind them."
+    },
+    {
+      "title": "Check the UI",
+      "detail": "Compare a page with the design."
+    },
+    {
+      "title": "Use signed-in apps",
+      "detail": "Work in web apps without setting up an API connector."
+    }
+  ],
+  "howItWorks": [
+    "Install the Claude in Chrome extension in Chrome, Edge or another Chromium browser.",
+    "Start with claude --chrome, or run /chrome to connect and manage it.",
+    "Choose the default option in /chrome to enable it every time.",
+    "Needs a direct Anthropic plan and a /login sign-in, not an API key."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/chrome"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.0.72",
+      "type": "introduced",
+      "note": "Added Claude in Chrome (beta), working with the Chrome extension."
+    }
+  ]
+}

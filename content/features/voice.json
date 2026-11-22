@@ -1,0 +1,38 @@
+{
+  "id": "voice",
+  "name": "Voice dictation",
+  "area": "core",
+  "summary": "Speak your prompt instead of typing it.",
+  "what": "Voice dictation turns speech into text in the prompt as you talk, and you can mix it with typing. It understands coding terms, and transcription doesn't count toward your usage limits.",
+  "impact": [
+    {
+      "title": "Faster long prompts",
+      "detail": "Explain a problem out loud instead of typing it."
+    },
+    {
+      "title": "Mix voice and keys",
+      "detail": "Dictate, then fix a word by typing."
+    },
+    {
+      "title": "No usage cost",
+      "detail": "Transcription isn't counted against your plan."
+    }
+  ],
+  "howItWorks": [
+    "Run /voice to turn it on; choose hold or tap with /voice hold or /voice tap.",
+    "Hold or tap Space (rebindable) to record.",
+    "Needs a claude.ai login and a local microphone.",
+    "Not available with API keys or third-party cloud providers."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/voice-dictation"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.69",
+      "type": "introduced",
+      "note": "First changelog mention of /voice."
+    }
+  ]
+}

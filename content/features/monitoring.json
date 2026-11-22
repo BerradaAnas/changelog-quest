@@ -1,0 +1,39 @@
+{
+  "id": "monitoring",
+  "name": "Monitoring (OpenTelemetry)",
+  "area": "anywhere",
+  "summary": "Send Claude Code usage, cost and activity data to your own monitoring tools.",
+  "what": "Claude Code can export OpenTelemetry metrics and events, and optionally traces, so teams can watch token use, cost, tool activity and permission decisions in their own dashboards or security tools. Export is off until you turn it on.",
+  "impact": [
+    {
+      "title": "See usage and cost",
+      "detail": "Break down tokens and spend by team, user and model."
+    },
+    {
+      "title": "Audit trail",
+      "detail": "Tie tool calls and permission decisions to a user."
+    },
+    {
+      "title": "Use your stack",
+      "detail": "Send data to any OpenTelemetry-compatible backend."
+    }
+  ],
+  "howItWorks": [
+    "Set CLAUDE_CODE_ENABLE_TELEMETRY=1.",
+    "Choose exporters with OTEL_METRICS_EXPORTER and OTEL_LOGS_EXPORTER.",
+    "Point them at your collector with OTEL_EXPORTER_OTLP_ENDPOINT.",
+    "Admins put these in managed settings; a repository's settings can't turn it on.",
+    "Prompt and tool content are only logged if you opt in."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/monitoring-usage"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.28",
+      "type": "introduced",
+      "note": "First changelog mention of OpenTelemetry, with new logging attributes."
+    }
+  ]
+}

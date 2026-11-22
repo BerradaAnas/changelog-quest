@@ -1,0 +1,40 @@
+{
+  "id": "remote-control",
+  "name": "Remote Control and mobile",
+  "area": "anywhere",
+  "summary": "Keep a session that runs on your computer going from your phone or a browser.",
+  "what": "Remote Control lets you follow and steer a Claude Code session that runs on your own machine from claude.ai/code, the Claude mobile app or the desktop app. The code and files stay on your computer. The mobile app can also start and watch cloud sessions and send push notifications.",
+  "impact": [
+    {
+      "title": "Step away from the desk",
+      "detail": "Answer Claude's questions from your phone."
+    },
+    {
+      "title": "Your setup stays local",
+      "detail": "Files, MCP servers and settings remain on your machine."
+    },
+    {
+      "title": "Stays in sync",
+      "detail": "The conversation matches across terminal, browser and phone."
+    }
+  ],
+  "howItWorks": [
+    "Run /remote-control in a session, or start with claude --remote-control.",
+    "Or run claude remote-control to serve new sessions from this machine.",
+    "Run /mobile to get a QR code for the Claude app.",
+    "Needs a claude.ai login; your computer must stay on.",
+    "Team and Enterprise owners must enable it."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/remote-control",
+    "https://code.claude.com/docs/en/mobile"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.51",
+      "type": "introduced",
+      "note": "First changelog mention of the claude remote-control command."
+    }
+  ]
+}

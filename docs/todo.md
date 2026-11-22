@@ -24,7 +24,8 @@ Launch early, then decide on more work based on whether people use it (ADR 0013)
 
 ## 3. Feature catalog and demos (the core)
 
-- [x] Reach 15–25 features: 16 so far (`add-feature` skill). Add more where newcomers need them.
+- [x] Reach 15–25 features: 50 now, covering the whole product (`add-feature` skill).
+- [ ] Write demos for the 34 newer features (`write-demo` skill).
 - [x] Review and approve the 16 demos.
 - [x] Write demos for the new features (`write-demo` skill).
 

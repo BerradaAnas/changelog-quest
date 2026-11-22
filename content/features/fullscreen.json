@@ -1,0 +1,38 @@
+{
+  "id": "fullscreen",
+  "name": "Fullscreen mode",
+  "area": "core",
+  "summary": "A flicker-free full-window view with mouse support and steady memory use.",
+  "what": "Fullscreen mode takes over the terminal window, the way vim does. The screen stops flickering, memory stays flat in long conversations, and you can click and select with the mouse. It is a research preview.",
+  "impact": [
+    {
+      "title": "No flicker",
+      "detail": "Smooth redraws even in long sessions."
+    },
+    {
+      "title": "Steady memory",
+      "detail": "Long conversations don't keep growing memory use."
+    },
+    {
+      "title": "Mouse support",
+      "detail": "Click to expand, scroll and select text."
+    }
+  ],
+  "howItWorks": [
+    "Run /tui fullscreen to switch, and /tui default to go back.",
+    "Or set CLAUDE_CODE_NO_FLICKER=1 or the tui setting.",
+    "Press Ctrl+O for the transcript, then / to search it.",
+    "Adjust scrolling with /scroll-speed."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/fullscreen"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.89",
+      "type": "introduced",
+      "note": "Added CLAUDE_CODE_NO_FLICKER=1 to opt into flicker-free full-window rendering."
+    }
+  ]
+}

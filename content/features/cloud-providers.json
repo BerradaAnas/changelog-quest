@@ -1,0 +1,45 @@
+{
+  "id": "cloud-providers",
+  "name": "Cloud providers and gateways",
+  "area": "anywhere",
+  "summary": "Run Claude Code through Amazon Bedrock, Google Cloud, Microsoft Foundry or your company's gateway.",
+  "what": "Besides a Claude plan or an Anthropic API key, Claude Code can use Claude models through your cloud account, with that cloud's access controls and billing. Companies can also route all requests through an LLM gateway to keep keys on the server, track usage and enforce budgets.",
+  "impact": [
+    {
+      "title": "Use your cloud account",
+      "detail": "Pay through AWS, Google Cloud or Azure and use their IAM."
+    },
+    {
+      "title": "Central control",
+      "detail": "A gateway tracks usage and enforces limits in one place."
+    },
+    {
+      "title": "Fits company policy",
+      "detail": "Admins can restrict which providers are allowed."
+    }
+  ],
+  "howItWorks": [
+    "Run claude and choose the third-party platform option for a setup wizard.",
+    "Or set the provider's environment variables, such as CLAUDE_CODE_USE_BEDROCK=1.",
+    "For a gateway, set ANTHROPIC_BASE_URL and the gateway's credential.",
+    "Run /status to see which provider and address are in use.",
+    "Some features, like web sessions and Remote Control, need a Claude plan instead."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/third-party-integrations",
+    "https://code.claude.com/docs/en/llm-gateway"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.21",
+      "type": "introduced",
+      "note": "Available before the first version in the changelog; this is the oldest listed release."
+    },
+    {
+      "version": "2.0.45",
+      "type": "updated",
+      "note": "Added support for Microsoft Foundry."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "worktrees",
+  "name": "Worktrees",
+  "area": "core",
+  "summary": "Give each session its own copy of the files and branch, so parallel sessions don't overwrite each other.",
+  "what": "A git worktree is a second working folder for the same repository, on its own branch. Claude Code can start a session inside one, so you can have one session building a feature while another fixes a bug, without their edits colliding. Subagents can also run in their own worktree.",
+  "impact": [
+    {
+      "title": "Parallel work without conflicts",
+      "detail": "Each session edits its own files and branch."
+    },
+    {
+      "title": "Start from a pull request",
+      "detail": "Open a worktree straight from a PR number or URL."
+    },
+    {
+      "title": "Tidy by default",
+      "detail": "A worktree with no changes is removed when you exit."
+    }
+  ],
+  "howItWorks": [
+    "Run claude --worktree <name> (or -w) to start in .claude/worktrees/<name> on a new branch.",
+    "Pass a PR number or URL instead of a name to branch from that pull request.",
+    "List extra files to copy, such as .env, in a .worktreeinclude file.",
+    "Set isolation: worktree in a subagent's settings to give it its own worktree.",
+    "Needs a git repository, or WorktreeCreate and WorktreeRemove hooks for other version control."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/worktrees"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.49",
+      "type": "introduced",
+      "note": "Added the --worktree (-w) flag to start in an isolated git worktree."
+    }
+  ]
+}

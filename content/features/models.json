@@ -1,0 +1,44 @@
+{
+  "id": "models",
+  "name": "Models and effort",
+  "area": "core",
+  "summary": "Choose which Claude model runs your session and how hard it thinks.",
+  "what": "You can switch models at any time, use short aliases that always point to the newest version, and set an effort level that trades speed and cost for depth. Administrators can limit which models people may use.",
+  "impact": [
+    {
+      "title": "Right model for the job",
+      "detail": "Use a fast model for simple edits and a stronger one for hard problems."
+    },
+    {
+      "title": "No version numbers to remember",
+      "detail": "Aliases like opus, sonnet and haiku follow the latest release."
+    },
+    {
+      "title": "Control cost",
+      "detail": "Lower effort answers faster and uses fewer tokens."
+    }
+  ],
+  "howItWorks": [
+    "Run /model to open the picker, or /model <alias> to switch directly.",
+    "Start with claude --model <alias>, or set model in your settings.",
+    "Set effort with /effort low, medium, high, xhigh or max.",
+    "The opusplan alias uses Opus while planning and Sonnet while working.",
+    "Admins can restrict choices with availableModels in managed settings."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/model-config"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.21",
+      "type": "introduced",
+      "note": "Available before the first version in the changelog; this is the oldest listed release."
+    },
+    {
+      "version": "1.0.77",
+      "type": "updated",
+      "note": "Added the option in /model to run Opus only in plan mode."
+    }
+  ]
+}

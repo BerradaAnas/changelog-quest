@@ -616,7 +616,8 @@
       "kind": "added",
       "featureIds": [
         "auto-mode",
-        "permissions"
+        "permissions",
+        "cloud-providers"
       ]
     },
     "2.1.328#3922ca17": {
@@ -656,13 +657,16 @@
     },
     "2.1.328#4587fa12": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "monitoring"
+      ]
     },
     "2.1.328#b3de077f": {
       "kind": "added",
       "featureIds": [
         "hooks",
-        "headless"
+        "headless",
+        "sessions"
       ]
     },
     "2.1.328#fbbffc77": {
@@ -674,26 +678,35 @@
     },
     "2.1.328#c0baf201": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "models",
+        "cloud-providers"
+      ]
     },
     "2.1.328#3517b9fd": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#8c562f90": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#e6fcf6de": {
       "kind": "added",
       "featureIds": [
-        "hooks"
+        "hooks",
+        "self-hosted-environments"
       ]
     },
     "2.1.328#923ecc33": {
       "kind": "added",
       "featureIds": [
-        "hooks"
+        "hooks",
+        "self-hosted-environments"
       ]
     },
     "2.1.328#289178b7": {
@@ -710,7 +723,9 @@
     },
     "2.1.328#82e685c1": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context"
+      ]
     },
     "2.1.328#0d168b3d": {
       "kind": "fixed",
@@ -743,7 +758,8 @@
     "2.1.328#deb078d6": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "context"
       ]
     },
     "2.1.328#befb3fcf": {
@@ -759,120 +775,160 @@
     "2.1.328#d409ffdc": {
       "kind": "fixed",
       "featureIds": [
-        "auto-mode"
+        "auto-mode",
+        "desktop",
+        "cloud-providers"
       ]
     },
     "2.1.328#30039b12": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.328#f25b8194": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "desktop",
+        "cloud-providers"
+      ]
     },
     "2.1.328#c005163c": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "cloud-providers"
       ]
     },
     "2.1.328#6ae3f01d": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "cloud-providers"
       ]
     },
     "2.1.328#e3967658": {
       "kind": "fixed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "cloud-providers"
       ]
     },
     "2.1.328#ecd4b959": {
       "kind": "fixed",
       "featureIds": [
         "auto-mode",
-        "permissions"
+        "permissions",
+        "sessions",
+        "code-mode"
       ]
     },
     "2.1.328#1381d50b": {
       "kind": "fixed",
       "featureIds": [
         "auto-mode",
-        "permissions"
+        "permissions",
+        "sessions",
+        "code-mode"
       ]
     },
     "2.1.328#cefc1762": {
       "kind": "fixed",
       "featureIds": [
         "auto-mode",
-        "permissions"
+        "permissions",
+        "sessions",
+        "code-mode"
       ]
     },
     "2.1.328#d064f908": {
       "kind": "fixed",
       "featureIds": [
         "skills",
-        "hooks"
+        "hooks",
+        "code-mode"
       ]
     },
     "2.1.328#517efc75": {
       "kind": "fixed",
       "featureIds": [
         "skills",
-        "hooks"
+        "hooks",
+        "code-mode"
       ]
     },
     "2.1.328#bf8e394f": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#ef5e92be": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#099074f5": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#3575d881": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#ef4b8cb2": {
       "kind": "fixed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "models",
+        "code-mode",
+        "workflows"
       ]
     },
     "2.1.328#cc067606": {
       "kind": "fixed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "models",
+        "code-mode",
+        "workflows"
       ]
     },
     "2.1.328#71643e5d": {
       "kind": "fixed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "models",
+        "code-mode",
+        "workflows"
       ]
     },
     "2.1.328#5bcf4d47": {
       "kind": "fixed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "models",
+        "code-mode",
+        "workflows"
       ]
     },
     "2.1.328#4f8e0896": {
       "kind": "fixed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "remote-control"
       ]
     },
     "2.1.328#bcb0ebd2": {
       "kind": "fixed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "remote-control"
       ]
     },
     "2.1.328#c602d870": {
@@ -902,46 +958,59 @@
     "2.1.328#70f47048": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "remote-control"
       ]
     },
     "2.1.328#902b32b4": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "workflows",
+        "remote-control"
       ]
     },
     "2.1.328#3822dd44": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "workflows",
+        "remote-control"
       ]
     },
     "2.1.328#d415f376": {
       "kind": "fixed",
       "featureIds": [
         "headless",
-        "sub-agents"
+        "sub-agents",
+        "agent-sdk"
       ]
     },
     "2.1.328#5162ed78": {
       "kind": "fixed",
       "featureIds": [
         "headless",
-        "sub-agents"
+        "sub-agents",
+        "agent-sdk"
       ]
     },
     "2.1.328#54035838": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.328#96f88646": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.328#410c6c79": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.328#76dd5b50": {
       "kind": "fixed",
@@ -953,45 +1022,56 @@
     },
     "2.1.328#52fef384": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.328#8f466818": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.328#275acb9d": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.328#87c98fcd": {
       "kind": "fixed",
       "featureIds": [
-        "settings"
+        "settings",
+        "fullscreen"
       ]
     },
     "2.1.328#94b24a1e": {
       "kind": "fixed",
       "featureIds": [
-        "settings"
+        "settings",
+        "fullscreen"
       ]
     },
     "2.1.328#7266cf96": {
       "kind": "fixed",
       "featureIds": [
-        "settings"
+        "settings",
+        "fullscreen"
       ]
     },
     "2.1.328#15c3801f": {
       "kind": "fixed",
       "featureIds": [
-        "settings"
+        "settings",
+        "fullscreen"
       ]
     },
     "2.1.328#c903272c": {
       "kind": "fixed",
       "featureIds": [
         "hooks",
-        "skills"
+        "skills",
+        "goal"
       ]
     },
     "2.1.328#2b7a5c4c": {
@@ -1020,11 +1100,19 @@
     },
     "2.1.328#28b260a3": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review",
+        "workflows",
+        "github-actions"
+      ]
     },
     "2.1.328#c425d445": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review",
+        "workflows",
+        "github-actions"
+      ]
     },
     "2.1.328#76c869ba": {
       "kind": "fixed",
@@ -1058,40 +1146,53 @@
     },
     "2.1.328#ba301ffa": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.328#798c5085": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.328#d18da0d5": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.328#daf97403": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.328#2f1c9240": {
       "kind": "fixed",
       "featureIds": [
-        "plugins"
+        "plugins",
+        "mods"
       ]
     },
     "2.1.328#d75df597": {
       "kind": "fixed",
       "featureIds": [
-        "plugins"
+        "plugins",
+        "mods"
       ]
     },
     "2.1.328#bbb537a8": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "monitoring"
+      ]
     },
     "2.1.328#767762ae": {
       "kind": "fixed",
       "featureIds": [
-        "hooks"
+        "hooks",
+        "context"
       ]
     },
     "2.1.328#c22b69ea": {
@@ -1110,27 +1211,39 @@
     },
     "2.1.328#78457643": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#6bb46d1e": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#ff228393": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#da832269": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#c750554f": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#55f90522": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#8df1fbbf": {
       "kind": "fixed",
@@ -1152,15 +1265,21 @@
     },
     "2.1.328#da6952e9": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#8d581e59": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#90db38b8": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#7e39c1cd": {
       "kind": "fixed",
@@ -1178,106 +1297,142 @@
       "kind": "changed",
       "featureIds": [
         "plugins",
-        "headless"
+        "headless",
+        "agent-sdk"
       ]
     },
     "2.1.328#f2c42e2d": {
       "kind": "changed",
       "featureIds": [
         "plugins",
-        "headless"
+        "headless",
+        "agent-sdk"
       ]
     },
     "2.1.328#b3c78564": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk"
+      ]
     },
     "2.1.328#9e0d3c84": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk"
+      ]
     },
     "2.1.328#dbbae4ae": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk"
+      ]
     },
     "2.1.328#08eb9d20": {
       "kind": "changed",
       "featureIds": [
         "mcp",
-        "auto-mode"
+        "auto-mode",
+        "code-mode"
       ]
     },
     "2.1.328#6482fe49": {
       "kind": "changed",
       "featureIds": [
         "mcp",
-        "auto-mode"
+        "auto-mode",
+        "code-mode"
       ]
     },
     "2.1.328#40c8b162": {
       "kind": "changed",
       "featureIds": [
         "mcp",
-        "auto-mode"
+        "auto-mode",
+        "code-mode"
       ]
     },
     "2.1.328#d1b36c1d": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#dca4e900": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#e3688f09": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#3e83f8e9": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#925aa965": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-mode"
+      ]
     },
     "2.1.328#d7356950": {
       "kind": "changed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "agent-teams"
       ]
     },
     "2.1.328#59bbdb78": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "computer-use",
+        "remote-control"
+      ]
     },
     "2.1.328#c84e857f": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "computer-use",
+        "remote-control"
+      ]
     },
     "2.1.328#eca29c48": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#20b4dc0b": {
       "kind": "changed",
       "featureIds": [
-        "hooks"
+        "hooks",
+        "code-mode"
       ]
     },
     "2.1.328#46ce2db3": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     },
     "2.1.328#5a1f4a40": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     },
     "2.1.328#1da1d92d": {
       "kind": "changed",
       "featureIds": [
         "mcp",
-        "settings"
+        "settings",
+        "self-hosted-environments"
       ]
     },
     "2.1.328#f1cf61a1": {
@@ -1315,21 +1470,29 @@
     "2.1.328#5fc116a6": {
       "kind": "changed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "chrome"
       ]
     },
     "2.1.328#a8f90b6d": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk",
+        "cloud-providers"
+      ]
     },
     "2.1.328#8249da19": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk",
+        "cloud-providers"
+      ]
     },
     "2.1.328#df50f242": {
       "kind": "changed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "fast-mode"
       ]
     },
     "2.1.328#d5273bc7": {
@@ -1340,23 +1503,33 @@
     },
     "2.1.328#9150cffd": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "cross-session-messaging"
+      ]
     },
     "2.1.328#c973b1d8": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#e05dec30": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#1204fc71": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#881caccf": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#97a81c4b": {
       "kind": "fixed",

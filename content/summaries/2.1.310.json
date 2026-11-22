@@ -155,12 +155,15 @@
     "2.1.310#7f152102": {
       "kind": "added",
       "featureIds": [
-        "plugins"
+        "plugins",
+        "cloud-providers"
       ]
     },
     "2.1.310#36158a6d": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.310#e770869b": {
       "kind": "fixed",
@@ -170,7 +173,9 @@
     },
     "2.1.310#effdd72e": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context"
+      ]
     },
     "2.1.310#c00d8cc3": {
       "kind": "fixed",
@@ -197,12 +202,17 @@
     "2.1.310#3e08c2c9": {
       "kind": "changed",
       "featureIds": [
-        "headless"
+        "headless",
+        "context",
+        "agent-sdk"
       ]
     },
     "2.1.310#e6368020": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen",
+        "mods"
+      ]
     },
     "2.1.310#191749f3": {
       "kind": "changed",
@@ -234,13 +244,15 @@
     "2.1.310#26bd4255": {
       "kind": "added",
       "featureIds": [
-        "web"
+        "web",
+        "remote-control"
       ]
     },
     "2.1.310#bea9f34f": {
       "kind": "added",
       "featureIds": [
-        "web"
+        "web",
+        "remote-control"
       ]
     },
     "2.1.310#dc1927a7": {
@@ -252,13 +264,15 @@
     "2.1.310#3c9b194c": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks"
       ]
     },
     "2.1.310#3bf44360": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks"
       ]
     },
     "2.1.310#984ddae0": {
@@ -287,11 +301,15 @@
     },
     "2.1.310#8479946a": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     },
     "2.1.310#645f1477": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     }
   },
   "status": "approved",

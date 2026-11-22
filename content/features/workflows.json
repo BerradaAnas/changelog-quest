@@ -1,0 +1,39 @@
+{
+  "id": "workflows",
+  "name": "Dynamic workflows",
+  "area": "extend",
+  "summary": "Claude writes a script that runs many subagents in the background for big jobs like audits or migrations.",
+  "what": "For large tasks, Claude can write a workflow: a JavaScript script that starts and coordinates many subagents. It runs in the background, so the conversation only gets the final answer. Saved workflows can be run again as a slash command.",
+  "impact": [
+    {
+      "title": "Bigger jobs",
+      "detail": "Spread work over tens or hundreds of agents."
+    },
+    {
+      "title": "Clean context",
+      "detail": "Intermediate results stay out of the conversation."
+    },
+    {
+      "title": "Checked results",
+      "detail": "Agents can cross-check each other before reporting."
+    }
+  ],
+  "howItWorks": [
+    "Ask Claude to create a workflow, or use the ultracode keyword or /effort ultracode.",
+    "Try the bundled /deep-research <question>.",
+    "Watch progress with /workflows.",
+    "Runs use far more tokens; by default up to 16 agents run at once.",
+    "Turn it off with disableWorkflows."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/workflows"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.154",
+      "type": "introduced",
+      "note": "Introduced dynamic workflows."
+    }
+  ]
+}

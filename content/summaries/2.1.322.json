@@ -15,7 +15,10 @@
   "classifications": {
     "2.1.322#e0958449": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "fast-mode",
+        "cloud-providers"
+      ]
     }
   },
   "status": "approved",

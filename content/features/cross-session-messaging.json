@@ -1,0 +1,38 @@
+{
+  "id": "cross-session-messaging",
+  "name": "Cross-session messaging",
+  "area": "extend",
+  "summary": "Your Claude Code sessions can send each other messages.",
+  "what": "One session can find your other sessions and send them a text message, for example to pass on a finding or ask to be told when another session goes idle. It works on the same machine everywhere, and across machines when you're signed in to claude.ai with Remote Control.",
+  "impact": [
+    {
+      "title": "Hand off work",
+      "detail": "Tell the session working on an area about a breaking change."
+    },
+    {
+      "title": "Coordinate worktrees",
+      "detail": "Keep parallel sessions in step."
+    },
+    {
+      "title": "Get notified",
+      "detail": "Ask to hear when another session finishes."
+    }
+  ],
+  "howItWorks": [
+    "It's on automatically when the requirements are met.",
+    "Run /list-agents to see sessions you can reach.",
+    "Mention a session with @name in your prompt.",
+    "Control incoming messages with crossSessionInbound: accept, hold or refuse."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/cross-session-messaging"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.162",
+      "type": "introduced",
+      "note": "First changelog mention of cross-session messaging."
+    }
+  ]
+}

@@ -313,19 +313,27 @@
     },
     "2.1.316#c70bf090": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.316#412694ab": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.316#26766edd": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.316#9d58a136": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "fast-mode"
+      ]
     },
     "2.1.316#0d388a05": {
       "kind": "fixed",
@@ -351,15 +359,21 @@
     },
     "2.1.316#3769bf93": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.316#6709d540": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.316#e7869d01": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.316#0a64cf49": {
       "kind": "fixed",
@@ -380,25 +394,29 @@
     "2.1.316#ad0fba13": {
       "kind": "fixed",
       "featureIds": [
-        "auto-mode"
+        "auto-mode",
+        "cloud-providers"
       ]
     },
     "2.1.316#6681bc12": {
       "kind": "fixed",
       "featureIds": [
-        "auto-mode"
+        "auto-mode",
+        "cloud-providers"
       ]
     },
     "2.1.316#34a463ca": {
       "kind": "fixed",
       "featureIds": [
-        "auto-mode"
+        "auto-mode",
+        "cloud-providers"
       ]
     },
     "2.1.316#c78dfe10": {
       "kind": "fixed",
       "featureIds": [
-        "auto-mode"
+        "auto-mode",
+        "cloud-providers"
       ]
     },
     "2.1.316#cb12ec74": {
@@ -411,16 +429,22 @@
     "2.1.316#9be60e41": {
       "kind": "fixed",
       "featureIds": [
-        "memory"
+        "memory",
+        "agent-sdk"
       ]
     },
     "2.1.316#b8bed7a6": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.316#0be082b7": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "models",
+        "context"
+      ]
     },
     "2.1.316#86a02bed": {
       "kind": "fixed",
@@ -433,7 +457,8 @@
     "2.1.316#c96c2789": {
       "kind": "fixed",
       "featureIds": [
-        "plan-mode"
+        "plan-mode",
+        "sessions"
       ]
     },
     "2.1.316#984b6297": {
@@ -446,11 +471,15 @@
     },
     "2.1.316#1579789e": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.316#bc84e99b": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.316#901d249d": {
       "kind": "fixed",
@@ -459,7 +488,10 @@
     "2.1.316#1a9da945": {
       "kind": "changed",
       "featureIds": [
-        "web"
+        "web",
+        "code-review",
+        "desktop",
+        "remote-control"
       ]
     },
     "2.1.316#0b51e31c": {
@@ -468,7 +500,9 @@
     },
     "2.1.316#c3b951e9": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     },
     "2.1.316#38c101b5": {
       "kind": "changed",
@@ -489,7 +523,8 @@
     "2.1.316#2e31ed35": {
       "kind": "added",
       "featureIds": [
-        "ide"
+        "ide",
+        "cloud-providers"
       ]
     },
     "2.1.316#66069ff9": {
@@ -550,15 +585,21 @@
     },
     "2.1.316#36f9de41": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "slack"
+      ]
     },
     "2.1.316#a81ea5d3": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "slack"
+      ]
     },
     "2.1.316#eca1081c": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "slack"
+      ]
     },
     "2.1.316#faefc80c": {
       "kind": "changed",
@@ -566,7 +607,9 @@
     },
     "2.1.316#368a4d4a": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     }
   },
   "status": "approved",

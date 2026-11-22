@@ -1,0 +1,38 @@
+{
+  "id": "status-line",
+  "name": "Status line",
+  "area": "core",
+  "summary": "Show your own live info, like context use, cost or git branch, at the bottom of Claude Code.",
+  "what": "The status line is a bar under the prompt filled by a small script you choose. Claude Code passes it details about the session, and whatever the script prints is shown. It runs on your machine and uses no tokens.",
+  "impact": [
+    {
+      "title": "Information at a glance",
+      "detail": "See context use, cost, model or git status without asking."
+    },
+    {
+      "title": "Tell sessions apart",
+      "detail": "Show the folder or session name when several are open."
+    },
+    {
+      "title": "Free to run",
+      "detail": "The script runs locally and costs no API usage."
+    }
+  ],
+  "howItWorks": [
+    "Run /statusline and describe what you want; Claude writes the script and the setting.",
+    "Or set statusLine in your settings to a command that reads session JSON on stdin.",
+    "The script's printed output becomes the bar.",
+    "Remove it with /statusline delete."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/statusline"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.71",
+      "type": "introduced",
+      "note": "Added a customizable status line, set up with /statusline."
+    }
+  ]
+}
