@@ -1393,3 +1393,11 @@ mark {
     display: none;
   }
 }
+
+/* Feature pages: a clear way back to the home page, at the top and the bottom. */
+.feature .back-home {
+  margin: 0 0 20px;
+}
+.feature > .back-home {
+  margin: 0;
+}

@@ -2,7 +2,6 @@
 import { SUMMARY_CUTOFF } from "@cq/schemas";
 import FeatureGroups from "../components/FeatureGroups.astro";
 import WeekCard from "../components/WeekCard.astro";
-import WithSidebar from "../components/WithSidebar.astro";
 import Base from "../layouts/Base.astro";
 import { features, includeDrafts, releases, summaries } from "../lib/content";
 import { monthLabel, shortDate } from "../lib/format";
@@ -12,11 +11,10 @@ const months = buildTimeline(releases, summaries, includeDrafts, SUMMARY_CUTOFF)
 const stats = timelineStats(months);
 ---
 
-<Base wide
+<Base
   title="Changelog Quest: every Claude Code update"
   description="Every Claude Code release, grouped by week, summarized in plain words, and linked to the official changelog."
 >
-  <WithSidebar>
   <section class="hero">
     <h1>Every Claude Code update, in plain words.</h1>
     <p>
@@ -64,5 +62,4 @@ const stats = timelineStats(months);
       <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">official changelog</a>.
     </p>
   </section>
-  </WithSidebar>
 </Base>
