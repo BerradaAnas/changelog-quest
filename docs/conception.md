@@ -277,7 +277,7 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 | 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                     | Done                                                                |
 | 3    | npm date lookup and backfill of release records for all past versions                      | Done                                                                |
 | 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links        | Done                                                                |
-| 5    | Summary drafting in Claude Code sessions (ADR 0010); releases since the cut-off (ADR 0013) | All 17 drafted; 2 approved, 15 awaiting review                      |
+| 5    | Summary drafting in Claude Code sessions (ADR 0010); releases since the cut-off (ADR 0013) | All 17 approved                                                     |
 | 6    | Daily GitHub Action updating the ingest PR                                                 | Written; needs the GitHub App (`docs/operations.md`)                |
 | 7    | Feature catalog (15 to 25 features) and demos, first priority before launch (ADR 0013)     | 16 features, 16 approved demos                                      |
 | 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks   | Done                                                                |
