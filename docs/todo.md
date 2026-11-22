@@ -1,7 +1,7 @@
 # Remaining work for phase 1
 
-Status on 2026-11-20. Code for build plan steps 0–9 is written (see `conception.md` section 9);
-what is left is accounts, reviews, content and the launch. How-tos are in `operations.md`.
+Status on 2026-11-22: phase 1 is launched at https://changelog-quest.pages.dev (see
+`conception.md` section 9). What is left is upkeep and sharing. How-tos are in `operations.md`.
 
 **Scope for launch:** feature pages and demos are the core of the site. Release summaries
 cover only the last month; older releases are left off the timeline (ADR 0015).
@@ -25,7 +25,7 @@ Launch early, then decide on more work based on whether people use it (ADR 0013)
 ## 3. Feature catalog and demos (the core)
 
 - [x] Reach 15–25 features: 50 now, covering the whole product (`add-feature` skill).
-- [ ] Write demos for the 34 newer features (`write-demo` skill).
+- [x] Write demos for the 34 newer features (`write-demo` skill).
 - [x] Review and approve the 16 demos.
 - [x] Write demos for the new features (`write-demo` skill).
 
@@ -58,7 +58,7 @@ release of 100–300 items takes hours to draft and review.
 
 ## 7. Launch (build plan step 10)
 
-- [ ] Run `pnpm check` and `pnpm source verify`.
-- [ ] Deploy to Cloudflare Pages and check the security headers on the live site.
-- [ ] Mark phase 1 as launched in `conception.md` section 9.
+- [x] Run `pnpm check` and `pnpm source verify`.
+- [x] Deploy to Cloudflare Pages and check the security headers on the live site.
+- [x] Mark phase 1 as launched in `conception.md` section 9.
 - [ ] Share it, then watch whether people use it before planning more work.
