@@ -1,0 +1,97 @@
+{
+  "featureId": "cross-session-messaging",
+  "title": "Talk to another session",
+  "intro": "Two of your sessions are working in different worktrees. Pick an action.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Action",
+      "options": [
+        "List reachable sessions",
+        "Tell the API session about a breaking change",
+        "Block incoming messages"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "List reachable sessions"
+        }
+      ],
+      "show": {
+        "title": "See who's there",
+        "detail": "Shows the sessions this one can message.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/list-agents",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Tell the API session about a breaking change"
+        }
+      ],
+      "show": {
+        "title": "Message sent",
+        "detail": "Mention it by name and Claude sends the message.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Tell @api-session the auth header changed."
+          },
+          {
+            "who": "Claude",
+            "text": "Sends the message."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Block incoming messages"
+        }
+      ],
+      "show": {
+        "title": "Refuse them",
+        "detail": "Set crossSessionInbound to refuse, or hold to review first.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "You",
+            "text": "\"crossSessionInbound\": \"refuse\"",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "What's needed to message a session on another computer?",
+    "options": [
+      "Nothing extra",
+      "A claude.ai sign-in with Remote Control",
+      "An SSH key"
+    ],
+    "answerIndex": 1,
+    "explanation": "Same-machine messaging works everywhere; reaching other machines needs claude.ai and Remote Control."
+  },
+  "status": "draft"
+}

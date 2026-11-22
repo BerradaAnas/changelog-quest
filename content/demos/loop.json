@@ -1,0 +1,107 @@
+{
+  "featureId": "loop",
+  "title": "Schedule a repeat",
+  "intro": "Type a /loop command and see how Claude Code reads it.",
+  "kind": "type",
+  "inputs": [
+    {
+      "id": "cmd",
+      "label": "Command",
+      "placeholder": "/loop 5m check the deploy",
+      "suggestions": [
+        "/loop 5m check the deploy",
+        "/loop check the CI run",
+        "/loop 30s ping"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "cmd",
+          "matches": "^\\s*/loop\\s+\\d+s\\b"
+        }
+      ],
+      "show": {
+        "title": "Too frequent",
+        "detail": "The shortest interval is one minute.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "You",
+            "text": "{{cmd}}",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Intervals below 1 minute aren't allowed."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "cmd",
+          "matches": "^\\s*/loop\\s+\\d+[mhd]\\s+\\S"
+        }
+      ],
+      "show": {
+        "title": "Runs on a fixed interval",
+        "detail": "The prompt reruns at that interval while the session stays open and idle. Recurring tasks expire after a while on their own.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "{{cmd}}",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Scheduled. Runs again at each interval while the session is open."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "cmd",
+          "matches": "^\\s*/loop\\s+\\S"
+        }
+      ],
+      "show": {
+        "title": "Claude sets the pace",
+        "detail": "Without an interval, Claude picks each delay itself, between one minute and an hour. Press Esc to stop it.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "{{cmd}}",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Self-paced loop started."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Try a /loop command",
+    "detail": "This demo only scripts /loop with an interval like 5m, without one, or with seconds."
+  },
+  "quiz": {
+    "question": "Your laptop is closed. Does a /loop task still run?",
+    "options": [
+      "Yes, in the cloud",
+      "No, it needs Claude Code open",
+      "Only once"
+    ],
+    "answerIndex": 1,
+    "explanation": "Loops run inside your session. For work that must run while you're away, use cloud scheduled tasks."
+  },
+  "status": "draft"
+}

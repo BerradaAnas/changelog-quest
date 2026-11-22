@@ -1,0 +1,106 @@
+{
+  "featureId": "code-mode",
+  "title": "One script instead of many calls",
+  "intro": "Code Mode is on. Pick a task and see how Claude handles it.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Task",
+      "options": [
+        "Rename a function in 40 files",
+        "Find which test files import a module",
+        "Use it inside VS Code"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Rename a function in 40 files"
+        }
+      ],
+      "show": {
+        "title": "One script does it",
+        "detail": "Claude writes JavaScript that searches, reads and edits the files in one step, and only the result comes back to the conversation.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Writes a script that loops over the matches."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Code: 40 files edited",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Reports the summary."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Find which test files import a module"
+        }
+      ],
+      "show": {
+        "title": "Filtered before Claude reads it",
+        "detail": "The script can filter search output so only the relevant list reaches Claude's context.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Code: grep, then filter",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Sees only the short list."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Use it inside VS Code"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Code Mode works in the interactive terminal only, not in VS Code, the desktop app or cloud sessions.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Code Mode is terminal-only."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How do you turn Code Mode on?",
+    "options": [
+      "/code-mode on",
+      "Set CLAUDE_CODE_EXPERIMENTAL_CODE_MODE=1",
+      "It's always on"
+    ],
+    "answerIndex": 1,
+    "explanation": "It's an experimental opt-in enabled with that environment variable, in your shell or settings env block."
+  },
+  "configPreview": "{\n  \"env\": {\n    \"CLAUDE_CODE_EXPERIMENTAL_CODE_MODE\": \"1\"\n  }\n}",
+  "status": "draft"
+}

@@ -1,0 +1,97 @@
+{
+  "featureId": "cloud-scheduled-tasks",
+  "title": "Run it every morning",
+  "intro": "You want a PR review every weekday at 9am. Pick how.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Option",
+      "options": [
+        "/schedule daily PR review at 9am",
+        "/loop 24h review PRs",
+        "A schedule every 5 minutes"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/schedule daily PR review at 9am"
+        }
+      ],
+      "show": {
+        "title": "Cloud scheduled task",
+        "detail": "It runs as a cloud session on schedule, even with your laptop off.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/schedule daily PR review at 9am",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Saved; runs in the cloud."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/loop 24h review PRs"
+        }
+      ],
+      "show": {
+        "title": "Only while open",
+        "detail": "A loop runs inside your session, so it stops when Claude Code closes.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/loop 24h review PRs",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A schedule every 5 minutes"
+        }
+      ],
+      "show": {
+        "title": "Too frequent",
+        "detail": "Custom schedules can't run more than once an hour.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Minimum interval is hourly."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "What else can start a cloud scheduled task, besides a schedule?",
+    "options": [
+      "Only a schedule",
+      "An API call or a GitHub event",
+      "A Slack emoji"
+    ],
+    "answerIndex": 1,
+    "explanation": "Tasks can fire on a schedule, from an API call, or on GitHub events."
+  },
+  "status": "draft"
+}

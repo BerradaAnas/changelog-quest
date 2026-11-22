@@ -1,0 +1,112 @@
+{
+  "featureId": "agent-view",
+  "title": "Juggle several sessions",
+  "intro": "You have four background sessions. Pick what you do in agent view.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Action",
+      "options": [
+        "Open agent view",
+        "Peek at one",
+        "Attach to the one waiting for you",
+        "Shut down the computer"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Open agent view"
+        }
+      ],
+      "show": {
+        "title": "Everything in one list",
+        "detail": "Sessions are grouped as working, needs input or done.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude agents",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Peek at one"
+        }
+      ],
+      "show": {
+        "title": "Quick look",
+        "detail": "Press Space to see its latest state without attaching.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Space"
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Attach to the one waiting for you"
+        }
+      ],
+      "show": {
+        "title": "Full conversation",
+        "detail": "Press Enter to open it and answer.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Enter"
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Shut down the computer"
+        }
+      ],
+      "show": {
+        "title": "Sessions stop",
+        "detail": "Background sessions run on your machine.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Sessions end with the machine."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How do you send the current session to the background?",
+    "options": [
+      "Ctrl+Z",
+      "The left arrow or /background",
+      "/exit"
+    ],
+    "answerIndex": 1,
+    "explanation": "Press ← or run /background."
+  },
+  "status": "draft"
+}

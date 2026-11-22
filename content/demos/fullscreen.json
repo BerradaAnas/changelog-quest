@@ -1,0 +1,115 @@
+{
+  "featureId": "fullscreen",
+  "title": "Classic or fullscreen?",
+  "intro": "Pick your problem and see whether fullscreen mode helps.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Problem",
+      "options": [
+        "The screen flickers while Claude replies",
+        "Memory grows in very long sessions",
+        "I use a screen reader",
+        "I want to go back"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "The screen flickers while Claude replies"
+        }
+      ],
+      "show": {
+        "title": "Fullscreen fixes it",
+        "detail": "It draws on the terminal's alternate screen, like vim, so redraws are smooth.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/tui fullscreen",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Memory grows in very long sessions"
+        }
+      ],
+      "show": {
+        "title": "Fullscreen helps",
+        "detail": "Memory stays flat in long conversations.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/tui fullscreen",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "I use a screen reader"
+        }
+      ],
+      "show": {
+        "title": "Stay classic",
+        "detail": "Screen reader mode uses the classic renderer.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --ax-screen-reader",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "I want to go back"
+        }
+      ],
+      "show": {
+        "title": "Switch back",
+        "detail": "The classic renderer returns.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/tui default",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "In fullscreen, how do you search the transcript?",
+    "options": [
+      "Ctrl+F",
+      "Ctrl+O then /",
+      "/search"
+    ],
+    "answerIndex": 1,
+    "explanation": "Ctrl+O opens the transcript view, and / searches it."
+  },
+  "status": "draft"
+}

@@ -1,0 +1,96 @@
+{
+  "featureId": "self-hosted-environments",
+  "title": "Where should the session run?",
+  "intro": "Your team needs cloud sessions that reach an internal database. Pick an option.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Option",
+      "options": [
+        "Anthropic's cloud machines",
+        "A self-hosted environment",
+        "Your plan is Pro"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Anthropic's cloud machines"
+        }
+      ],
+      "show": {
+        "title": "Can't reach it",
+        "detail": "Internal services aren't exposed to the public internet.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Session",
+            "text": "Connection to db.internal refused."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A self-hosted environment"
+        }
+      ],
+      "show": {
+        "title": "Works",
+        "detail": "Runners in your network take the session, so it can reach internal services; code stays on your machines.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Admin",
+            "text": "claude self-hosted-runner ...",
+            "code": true
+          },
+          {
+            "who": "You",
+            "text": "Pick the environment in the session picker."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Your plan is Pro"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Self-hosted environments are a public beta for Team and Enterprise.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Needs a Team or Enterprise plan."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Which way do runners connect?",
+    "options": [
+      "Anthropic connects in to them",
+      "They only make outbound HTTPS calls",
+      "Over SSH"
+    ],
+    "answerIndex": 1,
+    "explanation": "Runners poll Anthropic for work over outbound HTTPS."
+  },
+  "status": "draft"
+}

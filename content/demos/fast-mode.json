@@ -1,0 +1,117 @@
+{
+  "featureId": "fast-mode",
+  "title": "Is fast mode right here?",
+  "intro": "Pick your situation and see whether fast mode helps.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Situation",
+      "options": [
+        "Live debugging with Opus on the Anthropic API",
+        "Working with Haiku",
+        "Using Amazon Bedrock",
+        "Want cheaper answers"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Live debugging with Opus on the Anthropic API"
+        }
+      ],
+      "show": {
+        "title": "Turn it on",
+        "detail": "Fast mode gives the same model quality with much quicker replies, which suits rapid back-and-forth. It costs more per token.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/fast",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "↯ fast mode is on."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Working with Haiku"
+        }
+      ],
+      "show": {
+        "title": "Not supported",
+        "detail": "Fast mode is offered for certain Opus and Fable models, not Sonnet or Haiku.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Fast mode isn't available for this model."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Using Amazon Bedrock"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Fast mode isn't offered on Bedrock or Microsoft Foundry.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Fast mode isn't available on this provider."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Want cheaper answers"
+        }
+      ],
+      "show": {
+        "title": "Use lower effort instead",
+        "detail": "Fast mode trades a higher price for speed. To save cost, lower the effort level or pick a smaller model.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/effort low",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "What changes when fast mode is on?",
+    "options": [
+      "The model gets smaller",
+      "Replies come faster at a higher price, same model",
+      "Thinking is turned off"
+    ],
+    "answerIndex": 1,
+    "explanation": "It's the same model served with a speed-focused setup, billed at a higher rate."
+  },
+  "status": "draft"
+}

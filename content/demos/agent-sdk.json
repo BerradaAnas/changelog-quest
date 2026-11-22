@@ -1,0 +1,98 @@
+{
+  "featureId": "agent-sdk",
+  "title": "SDK or claude -p?",
+  "intro": "Pick what you're building.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Building",
+      "options": [
+        "A Python service with its own agent",
+        "A quick shell script",
+        "A Go program"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A Python service with its own agent"
+        }
+      ],
+      "show": {
+        "title": "Agent SDK",
+        "detail": "The Python SDK gives your app Claude Code's loop, tools, permissions and hooks.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "pip install claude-agent-sdk",
+            "code": true
+          },
+          {
+            "who": "Your app",
+            "text": "Calls the SDK with a prompt and options."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A quick shell script"
+        }
+      ],
+      "show": {
+        "title": "claude -p",
+        "detail": "Headless mode is simpler for scripts.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude -p \"summarize the diff\" --output-format json",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A Go program"
+        }
+      ],
+      "show": {
+        "title": "Call the CLI",
+        "detail": "For other languages, run claude -p as a subprocess and read JSON output.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude -p ... --output-format json",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How do you give an SDK agent your own function as a tool?",
+    "options": [
+      "Edit Claude Code's source",
+      "Define a custom in-process MCP tool",
+      "You can't"
+    ],
+    "answerIndex": 1,
+    "explanation": "Custom tools are defined as in-process MCP tools that call your code."
+  },
+  "status": "draft"
+}

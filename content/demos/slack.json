@@ -1,0 +1,95 @@
+{
+  "featureId": "slack",
+  "title": "Hand off a bug from Slack",
+  "intro": "Someone reported a bug in a channel. Pick a step.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Step",
+      "options": [
+        "Mention @Claude with the task in the channel",
+        "Send it as a direct message",
+        "Repository on GitLab"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Mention @Claude with the task in the channel"
+        }
+      ],
+      "show": {
+        "title": "Cloud session starts",
+        "detail": "Claude starts a Claude Code cloud session, posts progress in the thread and links the PR when it's done.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "@Claude fix the login redirect"
+          },
+          {
+            "who": "Claude",
+            "text": "Posts progress in the thread."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Send it as a direct message"
+        }
+      ],
+      "show": {
+        "title": "Not supported",
+        "detail": "It works in channels, not DMs.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Mention me in a channel instead."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Repository on GitLab"
+        }
+      ],
+      "show": {
+        "title": "Not supported",
+        "detail": "Repositories must be on GitHub.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Connect a GitHub repository."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "What must each person do before using it?",
+    "options": [
+      "Nothing",
+      "Connect their Claude account and GitHub",
+      "Install Claude Code"
+    ],
+    "answerIndex": 1,
+    "explanation": "Each person connects their Claude account, and GitHub with a repository at claude.ai/code."
+  },
+  "status": "draft"
+}

@@ -1,0 +1,122 @@
+{
+  "featureId": "models",
+  "title": "Pick the right model setting",
+  "intro": "Pick what you want and see the command that does it.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "You want",
+      "options": [
+        "Switch to Opus for a hard bug",
+        "Think harder on this task",
+        "Plan with Opus, code with Sonnet",
+        "Use a model your admin didn't allow"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Switch to Opus for a hard bug"
+        }
+      ],
+      "show": {
+        "title": "Use /model opus",
+        "detail": "The alias points to the newest Opus, so you don't need the exact version name.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/model opus",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Switches the session to the latest Opus."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Think harder on this task"
+        }
+      ],
+      "show": {
+        "title": "Raise the effort",
+        "detail": "A higher effort level spends more time and tokens on reasoning for better results on tough problems.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/effort high",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Uses high effort from the next reply."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Plan with Opus, code with Sonnet"
+        }
+      ],
+      "show": {
+        "title": "Use the opusplan alias",
+        "detail": "opusplan runs Opus while in plan mode and Sonnet for the work afterwards.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/model opusplan",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Use a model your admin didn't allow"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "When availableModels is set in managed settings, models outside that list can't be chosen.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "The model isn't in your organization's allowed list."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Why use an alias like sonnet instead of a full model ID?",
+    "options": [
+      "Aliases are cheaper",
+      "Aliases follow the newest version automatically",
+      "Full IDs don't work"
+    ],
+    "answerIndex": 1,
+    "explanation": "Aliases resolve to the latest version of that model family for your provider."
+  },
+  "status": "draft"
+}

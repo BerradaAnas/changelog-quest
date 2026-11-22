@@ -1,0 +1,96 @@
+{
+  "featureId": "remote-control",
+  "title": "Answer Claude from your phone",
+  "intro": "A long task is running in your terminal and you need to leave. Pick a step.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Step",
+      "options": [
+        "Run /remote-control",
+        "Shut down the computer",
+        "Use it with an API key"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Run /remote-control"
+        }
+      ],
+      "show": {
+        "title": "Session reachable remotely",
+        "detail": "The same session can be followed from claude.ai/code or the Claude app; it keeps running on your computer.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/remote-control",
+            "code": true
+          },
+          {
+            "who": "You",
+            "text": "Open it on your phone."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Shut down the computer"
+        }
+      ],
+      "show": {
+        "title": "It stops",
+        "detail": "The computer must stay on, since the session runs there.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "The session can't run while the computer is off."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Use it with an API key"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Remote Control needs a claude.ai login.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Sign in with claude.ai."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Where do your files stay with Remote Control?",
+    "options": [
+      "They're uploaded",
+      "On your computer",
+      "In the mobile app"
+    ],
+    "answerIndex": 1,
+    "explanation": "Execution and files stay local; only the conversation syncs."
+  },
+  "status": "draft"
+}

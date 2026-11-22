@@ -1,0 +1,102 @@
+{
+  "featureId": "keybindings",
+  "title": "Change a shortcut",
+  "intro": "Pick what you want to do with a key.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "You want to",
+      "options": [
+        "Open the external editor with Ctrl+E",
+        "Turn off a key you keep hitting",
+        "Rebind Ctrl+C"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Open the external editor with Ctrl+E"
+        }
+      ],
+      "show": {
+        "title": "Bind it",
+        "detail": "Add a binding in the right context that maps the key to the action name.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/keybindings",
+            "code": true
+          },
+          {
+            "who": "You",
+            "text": "\"ctrl+e\": \"chat:externalEditor\"",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Applies without a restart."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Turn off a key you keep hitting"
+        }
+      ],
+      "show": {
+        "title": "Set it to null",
+        "detail": "A key set to null is unbound.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "\"ctrl+s\": null",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Rebind Ctrl+C"
+        }
+      ],
+      "show": {
+        "title": "Reserved",
+        "detail": "A few keys such as Ctrl+C and Ctrl+D are reserved and can't be remapped.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "This key is reserved."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Do keybinding changes need a restart?",
+    "options": [
+      "Yes",
+      "No, they apply live",
+      "Only on Windows"
+    ],
+    "answerIndex": 1,
+    "explanation": "Edits to keybindings.json take effect right away; bad entries show in the debug log."
+  },
+  "status": "draft"
+}

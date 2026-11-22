@@ -1,0 +1,93 @@
+{
+  "featureId": "accessibility",
+  "title": "Turn on screen reader mode",
+  "intro": "Pick how you want to enable it.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Method",
+      "options": [
+        "claude --ax-screen-reader",
+        "\"axScreenReader\": true in user settings",
+        "\"axScreenReader\": true in project settings"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "claude --ax-screen-reader"
+        }
+      ],
+      "show": {
+        "title": "On for this session",
+        "detail": "Claude Code shows plain, labeled text that screen readers follow well.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --ax-screen-reader",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "\"axScreenReader\": true in user settings"
+        }
+      ],
+      "show": {
+        "title": "On every time",
+        "detail": "Your user settings turn it on for all sessions.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "~/.claude/settings.json",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "\"axScreenReader\": true in project settings"
+        }
+      ],
+      "show": {
+        "title": "Ignored",
+        "detail": "Project settings can't turn screen reader mode on; it's a personal choice.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "This setting only counts in user settings."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "What do menus look like in screen reader mode?",
+    "options": [
+      "Hidden",
+      "Numbered lists",
+      "Images"
+    ],
+    "answerIndex": 1,
+    "explanation": "Menus become numbered lists you can answer by number."
+  },
+  "status": "draft"
+}

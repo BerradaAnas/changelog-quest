@@ -1,0 +1,100 @@
+{
+  "featureId": "chrome",
+  "title": "Fix a front-end bug with Chrome",
+  "intro": "Pick what Claude does with the browser.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Step",
+      "options": [
+        "Open the page and read console errors",
+        "Act on a site you haven't allowed",
+        "Use it signed in with an API key"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Open the page and read console errors"
+        }
+      ],
+      "show": {
+        "title": "Finds the error",
+        "detail": "Claude reads the console in your real browser and traces the error to the code.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --chrome",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Opens localhost:3000."
+          },
+          {
+            "who": "Claude",
+            "text": "Reads a TypeError from the console."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Act on a site you haven't allowed"
+        }
+      ],
+      "show": {
+        "title": "Asks first",
+        "detail": "Claude Code asks before acting on a site unless your permission mode or a rule already decides.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Allow Claude to act on this site?"
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Use it signed in with an API key"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Claude in Chrome needs a direct Anthropic plan and /login.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Sign in with /login to use Chrome."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How do you check the Chrome connection?",
+    "options": [
+      "/chrome",
+      "/browser",
+      "/mcp chrome"
+    ],
+    "answerIndex": 0,
+    "explanation": "/chrome shows the status and lets you reconnect or change permissions."
+  },
+  "status": "draft"
+}

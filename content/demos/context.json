@@ -1,0 +1,118 @@
+{
+  "featureId": "context",
+  "title": "Running out of context",
+  "intro": "Your session is long and the context is nearly full. Pick an action.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Action",
+      "options": [
+        "/context",
+        "/compact keep the API decisions",
+        "Do nothing",
+        "/clear"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/context"
+        }
+      ],
+      "show": {
+        "title": "See what's using space",
+        "detail": "A breakdown shows how much goes to memory files, tools, MCP servers and messages.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/context",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/compact keep the API decisions"
+        }
+      ],
+      "show": {
+        "title": "Summarize, keep the key points",
+        "detail": "Older turns are replaced by a summary that focuses on what you asked to keep.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/compact keep the API decisions",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Conversation compacted."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Do nothing"
+        }
+      ],
+      "show": {
+        "title": "Automatic compaction",
+        "detail": "Near the limit, Claude Code compacts on its own so the session can continue.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Auto-compacting..."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/clear"
+        }
+      ],
+      "show": {
+        "title": "Start over",
+        "detail": "The context is emptied; the old session can still be resumed.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/clear",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How can you keep big file reads out of the main conversation?",
+    "options": [
+      "Use a subagent",
+      "Use fast mode",
+      "Turn off memory"
+    ],
+    "answerIndex": 0,
+    "explanation": "Subagents work in their own context and return only a summary."
+  },
+  "status": "draft"
+}

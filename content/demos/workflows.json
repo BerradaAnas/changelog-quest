@@ -1,0 +1,101 @@
+{
+  "featureId": "workflows",
+  "title": "When to use a workflow",
+  "intro": "Pick a job.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Job",
+      "options": [
+        "Audit 300 files for a deprecated API",
+        "Research a question from several sources",
+        "Fix one typo"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Audit 300 files for a deprecated API"
+        }
+      ],
+      "show": {
+        "title": "Workflow",
+        "detail": "Claude writes a script that spreads the files over many subagents; only the final report reaches the conversation.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "ultracode: audit every file for the old API."
+          },
+          {
+            "who": "Claude",
+            "text": "Writes and starts a workflow."
+          },
+          {
+            "who": "Claude Code",
+            "text": "/workflows",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Research a question from several sources"
+        }
+      ],
+      "show": {
+        "title": "Bundled workflow",
+        "detail": "/deep-research runs a ready-made workflow.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/deep-research how do others cache builds?",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Fix one typo"
+        }
+      ],
+      "show": {
+        "title": "No workflow needed",
+        "detail": "Workflows use far more tokens; a normal turn is enough.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Edits the file."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Where do a workflow's intermediate results go?",
+    "options": [
+      "Into the conversation",
+      "They stay in the background run",
+      "Nowhere"
+    ],
+    "answerIndex": 1,
+    "explanation": "The script runs in the background, keeping the conversation's context clean."
+  },
+  "status": "draft"
+}

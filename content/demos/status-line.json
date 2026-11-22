@@ -1,0 +1,99 @@
+{
+  "featureId": "status-line",
+  "title": "Build a status line",
+  "intro": "Pick what you want to see under the prompt.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Show",
+      "options": [
+        "Context used and git branch",
+        "Output of my own script",
+        "Nothing anymore"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Context used and git branch"
+        }
+      ],
+      "show": {
+        "title": "Ask /statusline",
+        "detail": "Describe it in plain words and Claude writes the script and adds it to your settings.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/statusline show context % and git branch",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Writes a script in ~/.claude/ and sets statusLine."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Output of my own script"
+        }
+      ],
+      "show": {
+        "title": "Point statusLine at it",
+        "detail": "Your script gets session details as JSON on stdin and whatever it prints is shown.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "\"statusLine\": {\"type\": \"command\", \"command\": \"~/bin/line.sh\"}",
+            "code": true
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Nothing anymore"
+        }
+      ],
+      "show": {
+        "title": "Remove it",
+        "detail": "The bar goes away.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/statusline delete",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Does the status line cost tokens?",
+    "options": [
+      "Yes, every refresh",
+      "No, it runs locally",
+      "Only with Opus"
+    ],
+    "answerIndex": 1,
+    "explanation": "It's a local script; no API calls are involved."
+  },
+  "configPreview": "{\n  \"statusLine\": {\n    \"type\": \"command\",\n    \"command\": \"~/.claude/statusline.sh\"\n  }\n}",
+  "status": "draft"
+}

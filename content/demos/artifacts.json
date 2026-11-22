@@ -1,0 +1,95 @@
+{
+  "featureId": "artifacts",
+  "title": "Share what Claude made",
+  "intro": "Claude just built a dashboard page. Pick what happens next.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Step",
+      "options": [
+        "Ask Claude to publish it",
+        "Share with your organization",
+        "Publish while using Bedrock"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Ask Claude to publish it"
+        }
+      ],
+      "show": {
+        "title": "Private page",
+        "detail": "It's published at a claude.ai address that starts private, visible only to you.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Publish this as a page."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Published privately."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Share with your organization"
+        }
+      ],
+      "show": {
+        "title": "You decide",
+        "detail": "You can share it with your organization or publicly when you choose.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Change sharing on the page."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Publish while using Bedrock"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Artifacts need a claude.ai login; they aren't available through Bedrock, Google Cloud or Foundry.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Artifacts need a claude.ai account."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Who can see a newly published artifact?",
+    "options": [
+      "Everyone",
+      "Only you, until you share it",
+      "Your whole organization"
+    ],
+    "answerIndex": 1,
+    "explanation": "Artifacts start private."
+  },
+  "status": "draft"
+}

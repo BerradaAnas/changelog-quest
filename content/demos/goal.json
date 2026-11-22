@@ -1,0 +1,121 @@
+{
+  "featureId": "goal",
+  "title": "Write a goal Claude can finish",
+  "intro": "Pick a goal and see how the evaluator handles it.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Goal",
+      "options": [
+        "/goal all tests in tests/auth pass",
+        "/goal make the code better",
+        "/goal fix the bug or stop after 20 turns",
+        "/goal clear"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/goal all tests in tests/auth pass"
+        }
+      ],
+      "show": {
+        "title": "Good goal",
+        "detail": "The evaluator can see test output in the conversation and decide when it's met, so Claude keeps working until then.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/goal all tests in tests/auth pass",
+            "code": true
+          },
+          {
+            "who": "Claude",
+            "text": "Fixes and reruns tests over several turns."
+          },
+          {
+            "who": "Evaluator",
+            "text": "Sees a passing run: goal met."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/goal make the code better"
+        }
+      ],
+      "show": {
+        "title": "Too vague",
+        "detail": "The evaluator can only judge from the transcript. A goal with no clear finish line is hard to prove met.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Evaluator",
+            "text": "No clear way to tell when this is done."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/goal fix the bug or stop after 20 turns"
+        }
+      ],
+      "show": {
+        "title": "Good, with a limit",
+        "detail": "Adding a turn limit keeps a long goal from running on.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "Evaluator",
+            "text": "Stops when fixed, or after 20 turns."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "/goal clear"
+        }
+      ],
+      "show": {
+        "title": "Goal removed",
+        "detail": "Claude stops working toward the goal.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/goal clear",
+            "code": true
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Who decides that a goal is met?",
+    "options": [
+      "The model doing the work",
+      "A separate evaluator model",
+      "You, every turn"
+    ],
+    "answerIndex": 1,
+    "explanation": "A fresh evaluator checks after each turn, so the working model doesn't grade itself."
+  },
+  "status": "draft"
+}

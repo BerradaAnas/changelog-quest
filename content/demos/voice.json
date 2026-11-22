@@ -1,0 +1,100 @@
+{
+  "featureId": "voice",
+  "title": "Can you dictate here?",
+  "intro": "Pick your setup and see whether voice dictation works.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Setup",
+      "options": [
+        "Terminal on my laptop, signed in with claude.ai",
+        "Signed in with an API key",
+        "A cloud or SSH session"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Terminal on my laptop, signed in with claude.ai"
+        }
+      ],
+      "show": {
+        "title": "Yes",
+        "detail": "Run /voice, then hold or tap Space to talk. Transcription doesn't count toward usage.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "/voice",
+            "code": true
+          },
+          {
+            "who": "You",
+            "text": "Hold Space and speak."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Your words appear in the prompt."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Signed in with an API key"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Voice needs a claude.ai login.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Voice dictation needs a claude.ai account."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "A cloud or SSH session"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "It needs a microphone on the machine running Claude Code.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "No local microphone."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Which key records by default?",
+    "options": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "answerIndex": 1,
+    "explanation": "Space is the default push-to-talk key, and you can rebind it."
+  },
+  "status": "draft"
+}

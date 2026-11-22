@@ -1,0 +1,95 @@
+{
+  "featureId": "agent-teams",
+  "title": "Team or subagents?",
+  "intro": "Agent teams are enabled. Pick a task.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Task",
+      "options": [
+        "Review a PR for security, speed and tests at once",
+        "Look up one function",
+        "Use a team with claude -p"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Review a PR for security, speed and tests at once"
+        }
+      ],
+      "show": {
+        "title": "A team fits",
+        "detail": "Teammates each take an angle in parallel and can challenge each other's findings.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "Create a team to review this PR."
+          },
+          {
+            "who": "Lead",
+            "text": "Starts three teammates with a shared task list."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Look up one function"
+        }
+      ],
+      "show": {
+        "title": "A team is overkill",
+        "detail": "Teams use many more tokens; one session or a subagent is enough.",
+        "outcome": "info",
+        "trace": [
+          {
+            "who": "Claude",
+            "text": "Just reads the file."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "Use a team with claude -p"
+        }
+      ],
+      "show": {
+        "title": "Not available",
+        "detail": "Agent teams need an interactive session.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "Claude Code",
+            "text": "Teams aren't available in -p mode."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "How do you enable agent teams?",
+    "options": [
+      "/teams on",
+      "Set CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1",
+      "They're on by default"
+    ],
+    "answerIndex": 1,
+    "explanation": "It's experimental and off until you set that variable."
+  },
+  "status": "draft"
+}

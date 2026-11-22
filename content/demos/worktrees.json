@@ -1,0 +1,110 @@
+{
+  "featureId": "worktrees",
+  "title": "Two tasks, one repository",
+  "intro": "You're building a feature in one session and want a second session to fix a bug at the same time. Pick how you start the second one.",
+  "kind": "choose",
+  "inputs": [
+    {
+      "id": "c",
+      "label": "Second session",
+      "options": [
+        "claude in the same folder",
+        "claude --worktree bugfix",
+        "claude --worktree \"#1234\""
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "claude in the same folder"
+        }
+      ],
+      "show": {
+        "title": "Edits can collide",
+        "detail": "Both sessions share the same files and branch, so one may overwrite or confuse the other's changes.",
+        "outcome": "blocked",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Works in the same checkout as the first session."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "claude --worktree bugfix"
+        }
+      ],
+      "show": {
+        "title": "Isolated copy",
+        "detail": "Claude Code creates .claude/worktrees/bugfix on its own branch. The two sessions can't touch each other's files.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --worktree bugfix",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Creates the worktree on branch worktree-bugfix."
+          },
+          {
+            "who": "Claude Code",
+            "text": "Session starts inside it."
+          }
+        ]
+      }
+    },
+    {
+      "when": [
+        {
+          "input": "c",
+          "equals": "claude --worktree \"#1234\""
+        }
+      ],
+      "show": {
+        "title": "Start from a pull request",
+        "detail": "The worktree is branched from pull request 1234, ready to review or continue it.",
+        "outcome": "success",
+        "trace": [
+          {
+            "who": "You",
+            "text": "claude --worktree \"#1234\"",
+            "code": true
+          },
+          {
+            "who": "Claude Code",
+            "text": "Fetches the PR branch into a new worktree."
+          }
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "title": "Pick an option",
+    "detail": "Choose one of the options to see what happens."
+  },
+  "quiz": {
+    "question": "Your app needs a .env file that git ignores. How does it get into a new worktree?",
+    "options": [
+      "It's copied automatically always",
+      "List it in a .worktreeinclude file",
+      "It can't be used in worktrees"
+    ],
+    "answerIndex": 1,
+    "explanation": "Files listed in .worktreeinclude (gitignore syntax) are copied into new worktrees."
+  },
+  "status": "draft"
+}
