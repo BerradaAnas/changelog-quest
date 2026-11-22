@@ -120,5 +120,5 @@
     "answerIndex": 0,
     "explanation": "Auto mode replaces routine prompts with a classifier, but your explicit ask and deny rules still apply."
   },
-  "status": "draft"
+  "status": "approved"
 }

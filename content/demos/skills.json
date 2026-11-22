@@ -113,5 +113,5 @@
     "answerIndex": 1,
     "explanation": "disable-model-invocation: true stops Claude from invoking the skill on its own, while you can still run it with its slash command."
   },
-  "status": "draft"
+  "status": "approved"
 }

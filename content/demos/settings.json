@@ -112,5 +112,5 @@
     "answerIndex": 2,
     "explanation": "List settings such as permission rules are merged across files; single values are taken from the highest-ranking file."
   },
-  "status": "draft"
+  "status": "approved"
 }

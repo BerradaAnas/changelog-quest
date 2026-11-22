@@ -127,5 +127,5 @@
     "answerIndex": 1,
     "explanation": "Claude Code reads CLAUDE.md files from the working folder up through its parents and combines them. Files in subfolders below load when Claude works there."
   },
-  "status": "draft"
+  "status": "approved"
 }

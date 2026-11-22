@@ -279,7 +279,7 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 | 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links        | Done                                                                |
 | 5    | Summary drafting in Claude Code sessions (ADR 0010); releases since the cut-off (ADR 0013) | Tooling done; 2 of 17 drafted                                       |
 | 6    | Daily GitHub Action updating the ingest PR                                                 | Written; needs the GitHub App (`docs/operations.md`)                |
-| 7    | Feature catalog (15 to 25 features) and demos, first priority before launch (ADR 0013)     | 16 features, 16 draft demos                                         |
+| 7    | Feature catalog (15 to 25 features) and demos, first priority before launch (ADR 0013)     | 16 features, 16 approved demos                                      |
 | 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks   | Done                                                                |
 | 9    | Hosting, security headers, custom domain                                                   | Cloudflare Pages chosen (ADR 0011), headers ready; not deployed yet |
 | 10   | Public launch of phase 1                                                                   |                                                                     |

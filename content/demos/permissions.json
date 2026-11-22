@@ -116,5 +116,5 @@
     "answerIndex": 1,
     "explanation": "Rules are checked in the order deny, ask, allow, and the first match decides, so a deny rule always wins."
   },
-  "status": "draft"
+  "status": "approved"
 }

@@ -100,5 +100,5 @@
     "answerIndex": 1,
     "explanation": "A subagent works in its own context window, so only its result returns, keeping the main conversation small."
   },
-  "status": "draft"
+  "status": "approved"
 }

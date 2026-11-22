@@ -128,5 +128,5 @@
     "answerIndex": 1,
     "explanation": "The sandbox wraps shell commands and their child processes. Built-in file tools, hooks and local MCP servers run outside it, so permission rules still matter."
   },
-  "status": "draft"
+  "status": "approved"
 }

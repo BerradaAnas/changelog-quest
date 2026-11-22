@@ -122,5 +122,5 @@
     "answerIndex": 0,
     "explanation": "Custom styles are Markdown files in .claude/output-styles for a project, or ~/.claude/output-styles for all your projects."
   },
-  "status": "draft"
+  "status": "approved"
 }
