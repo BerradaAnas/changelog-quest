@@ -24,9 +24,9 @@
         }
       ],
       "show": {
-        "title": "Too frequent",
-        "detail": "The shortest interval is one minute.",
-        "outcome": "blocked",
+        "title": "Rounded up to a minute",
+        "detail": "Seconds are accepted but rounded up to the nearest minute, because one minute is the shortest interval.",
+        "outcome": "info",
         "trace": [
           {
             "who": "You",
@@ -35,7 +35,7 @@
           },
           {
             "who": "Claude Code",
-            "text": "Intervals below 1 minute aren't allowed."
+            "text": "Runs every minute while the session is open and idle."
           }
         ]
       }
