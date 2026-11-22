@@ -6,7 +6,7 @@ export const config = {
   changelogPath: "CHANGELOG.md",
   npmPackage: "@anthropic-ai/claude-code",
   /** Version of the drafting instructions (`draft-summary` skill); recorded in every summary. */
-  summaryPromptVersion: "draft-summary-v2",
+  summaryPromptVersion: "draft-summary-v3",
   /**
    * Releases get summaries newest first. One review PR holds at most this many releases and
    * about this many change items, whichever comes first (ADRs 0008, 0010).

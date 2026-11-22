@@ -47,6 +47,10 @@ Summaries are drafted here, in a session, and land as `draft` for a person to re
      settings, flags, environment variables), written as plain text without Markdown.
    - `featureIds` only for features that exist in `content/features/` and that the item really
      changes. Leave it out otherwise.
+   - Every `added` line either has `featureIds` or `"noFeature": true` (ADR 0017). Use
+     `noFeature` for small additions that belong to no feature page (a new variable, hint or
+     metric). If an addition is a feature in its own right with no page yet, leave both out
+     and list it in your report as a possible new feature for the user.
 4. Run `pnpm summaries write <draft.json> --model <id of the model you are running as>`. If it
    rejects the draft, fix the draft and run it again. Don't edit the generated file to get
    around an error. An existing draft is only overwritten with `--replace`: use it for your
@@ -56,5 +60,7 @@ Summaries are drafted here, in a session, and land as `draft` for a person to re
    side, or count it as `minor` if it is cosmetic, and write the draft again with `--replace`.
 6. After the batch, run `pnpm validate` and report the versions drafted and any warnings.
    Leave every summary as `draft`: approving is the reviewer's job (`review-summary` skill).
+   List any possible new features (additions with no feature and no `noFeature`) and offer to
+   add them with the `add-feature` skill.
 
 Never edit `content/releases/`.

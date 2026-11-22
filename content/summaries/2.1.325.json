@@ -763,15 +763,19 @@
     },
     "2.1.325#086c25c1": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.325#f41324a5": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.325#7bfd61e1": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "sandboxing"
+      ]
     },
     "2.1.325#876ab67e": {
       "kind": "added",
@@ -781,7 +785,9 @@
     },
     "2.1.325#af77fba2": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "ide"
+      ]
     },
     "2.1.325#2351a628": {
       "kind": "added",

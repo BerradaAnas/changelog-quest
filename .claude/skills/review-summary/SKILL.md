@@ -26,7 +26,9 @@ model, is responsible for its accuracy.
    narrow platform fix. Anything about new or removed commands, settings, permissions,
    security, data loss, crashes or hangs needs a line instead.
 5. For each classification, check `kind`, and that `featureIds` lists only features the item
-   really changes. Feature links drive feature history pages.
+   really changes. Feature links drive feature history pages. Each "links no feature" warning
+   is a possible new feature: link an existing feature, add the page (`add-feature` skill),
+   or set `"noFeature": true` if it is a small addition that belongs to no page (ADR 0017).
 6. Check `title` (80 chars max) and `headline` (one plain sentence, 200 chars max): no hype,
    no claims beyond the items.
 7. To approve: set `"status": "approved"` and `"approvedAt"` to the current UTC time

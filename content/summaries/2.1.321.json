@@ -587,7 +587,9 @@
   "classifications": {
     "2.1.321#e69711a3": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "models"
+      ]
     },
     "2.1.321#fd584a4f": {
       "kind": "added",

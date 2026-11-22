@@ -242,7 +242,7 @@
     },
     {
       "kind": "added",
-      "text": "Cloud sessions: a form card lets you fill in or decline a form an MCP server asks for, instead of it being cancelled unseen, and a \"Catching up\u2026\" line shows while a session you return to syncs its messages.",
+      "text": "Cloud sessions: a form card lets you fill in or decline a form an MCP server asks for, instead of it being cancelled unseen, and a \"Catching up…\" line shows while a session you return to syncs its messages.",
       "covers": [
         "2.1.316#c3674da2",
         "2.1.316#7a3d7694"
@@ -302,7 +302,8 @@
     },
     "2.1.316#6cfeb1ae": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [],
+      "noFeature": true
     },
     "2.1.316#c70bf090": {
       "kind": "added",

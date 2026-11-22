@@ -711,11 +711,15 @@
     },
     "2.1.328#289178b7": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#21ec388d": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.328#d88a8b11": {
       "kind": "fixed",

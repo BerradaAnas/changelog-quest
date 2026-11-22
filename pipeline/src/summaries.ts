@@ -83,6 +83,8 @@ export const SummaryDraft = z.strictObject({
         text: z.string().min(1),
         covers: z.array(z.string().min(1)).min(1),
         featureIds: z.array(Slug).optional(),
+        /** Added items reviewed as belonging to no feature (ADR 0017). */
+        noFeature: z.literal(true).optional(),
       }),
     )
     .min(1),
@@ -122,6 +124,7 @@ export function buildSummary(release: Release, draft: SummaryDraft, meta: DraftM
     for (const id of lines[n]?.covers ?? []) {
       const c = classifications[id] ?? { kind: line.kind, featureIds: [] };
       for (const f of line.featureIds ?? []) if (!c.featureIds.includes(f)) c.featureIds.push(f);
+      if (line.noFeature) c.noFeature = true;
       classifications[id] = c;
     }
   });
@@ -211,6 +214,16 @@ async function write(
     `${JSON.stringify(summary, null, 2)}\n`,
   );
   console.log(`${summary.version}: draft written, ${summary.lines.length} lines`);
+  // Possible new features (ADR 0017): additions that link no feature and aren't marked.
+  const unlinked = Object.entries(summary.classifications).filter(
+    ([, c]) => c.kind === "added" && c.featureIds.length === 0 && !c.noFeature,
+  );
+  if (unlinked.length > 0) {
+    console.log(
+      `  ${unlinked.length} added item(s) link no feature; for each, link a feature, add one (add-feature skill), or mark the line noFeature:`,
+    );
+    for (const [id] of unlinked) console.log(`    ${id}`);
+  }
 }
 
 async function main() {
