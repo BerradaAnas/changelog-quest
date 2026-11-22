@@ -1,5 +1,6 @@
 ---
 import VersionBlock from "../../components/VersionBlock.astro";
+import WithSidebar from "../../components/WithSidebar.astro";
 import Base from "../../layouts/Base.astro";
 import { includeDrafts, releases, summaries } from "../../lib/content";
 import { plural, releaseDate } from "../../lib/format";
@@ -21,7 +22,8 @@ const description =
   summary?.headline ?? `Claude Code ${entry.version}: ${changes}. Summary coming.`;
 ---
 
-<Base title={`Claude Code ${entry.version}${summary ? `: ${summary.title}` : ""} | Changelog Quest`} description={description}>
+<Base wide title={`Claude Code ${entry.version}${summary ? `: ${summary.title}` : ""} | Changelog Quest`} description={description}>
+  <WithSidebar>
   <article class="release" data-pagefind-body={summary && !summary.draft ? "" : undefined}>
     <header class="hero">
       <p class="kicker">
@@ -39,4 +41,5 @@ const description =
       {newer ? <a href={`/releases/${newer}/`}>{newer} →</a> : <span />}
     </nav>
   </article>
+  </WithSidebar>
 </Base>

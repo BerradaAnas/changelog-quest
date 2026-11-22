@@ -1,6 +1,6 @@
 ---
-import DocNav from "../../components/DocNav.astro";
 import FeatureGroups from "../../components/FeatureGroups.astro";
+import WithSidebar from "../../components/WithSidebar.astro";
 import Base from "../../layouts/Base.astro";
 import { features } from "../../lib/content";
 import { plural } from "../../lib/format";
@@ -11,17 +11,7 @@ import { plural } from "../../lib/format";
   description="Plain-language pages for Claude Code features: what each one does, why it matters, how it works, and how it changed over time."
   wide
 >
-  <div class="doc-layout doc-layout-index">
-  <nav class="doc-nav" aria-label="All features">
-    <details class="doc-nav-mobile">
-      <summary>Browse all features</summary>
-      <DocNav />
-    </details>
-    <div class="doc-nav-desktop">
-      <DocNav />
-    </div>
-  </nav>
-  <div>
+  <WithSidebar>
   <section class="hero">
     <h1>Features, explained simply.</h1>
     <p>
@@ -33,6 +23,5 @@ import { plural } from "../../lib/format";
   <section class="block">
     <FeatureGroups level={2} />
   </section>
-  </div>
-  </div>
+  </WithSidebar>
 </Base>

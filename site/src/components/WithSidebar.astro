@@ -1,0 +1,18 @@
+---
+import DocNav from "./DocNav.astro";
+---
+
+<div class="doc-layout doc-layout-index">
+  <nav class="doc-nav" aria-label="All features">
+    <details class="doc-nav-mobile">
+      <summary>Browse all features</summary>
+      <DocNav />
+    </details>
+    <div class="doc-nav-desktop">
+      <DocNav />
+    </div>
+  </nav>
+  <div class="doc-main">
+    <slot />
+  </div>
+</div>
