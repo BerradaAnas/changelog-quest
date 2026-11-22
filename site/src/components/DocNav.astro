@@ -4,7 +4,7 @@ import { featuresBySection } from "../lib/sections";
 
 interface Props {
   /** The feature whose page this is; marked as the current page. */
-  current: string;
+  current?: string;
 }
 const { current } = Astro.props;
 const sections = featuresBySection(features.map((feature) => ({ feature })));
