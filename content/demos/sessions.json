@@ -131,5 +131,5 @@
     "answerIndex": 1,
     "explanation": "Sessions are stored on your machine per project, which is why --continue picks up the latest one in the current folder."
   },
-  "status": "draft"
+  "status": "approved"
 }

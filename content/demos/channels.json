@@ -112,5 +112,5 @@
     "answerIndex": 1,
     "explanation": "Channels are MCP servers that push events into a session."
   },
-  "status": "draft"
+  "status": "approved"
 }

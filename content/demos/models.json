@@ -118,5 +118,5 @@
     "answerIndex": 1,
     "explanation": "Aliases resolve to the latest version of that model family for your provider."
   },
-  "status": "draft"
+  "status": "approved"
 }

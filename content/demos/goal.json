@@ -117,5 +117,5 @@
     "answerIndex": 1,
     "explanation": "A fresh evaluator checks after each turn, so the working model doesn't grade itself."
   },
-  "status": "draft"
+  "status": "approved"
 }

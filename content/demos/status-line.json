@@ -95,5 +95,5 @@
     "explanation": "It's a local script; no API calls are involved."
   },
   "configPreview": "{\n  \"statusLine\": {\n    \"type\": \"command\",\n    \"command\": \"~/.claude/statusline.sh\"\n  }\n}",
-  "status": "draft"
+  "status": "approved"
 }
