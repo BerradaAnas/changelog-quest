@@ -9,8 +9,10 @@ import { SITE_NAME } from "../lib/content";
 interface Props {
   title: string;
   description: string;
+  /** Wider main column, for pages with side navigation. */
+  wide?: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, wide = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
 const current = (prefix: string) => (path.startsWith(prefix) ? "page" : undefined);
@@ -45,7 +47,7 @@ const current = (prefix: string) => (path.startsWith(prefix) ? "page" : undefine
         </nav>
       </div>
     </header>
-    <main id="main" class="wrap">
+    <main id="main" class:list={["wrap", { wide }]}>
       <slot />
     </main>
     <footer class="site-footer">

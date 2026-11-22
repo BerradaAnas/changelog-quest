@@ -943,7 +943,7 @@ mark {
   height: 10px;
   margin-right: 8px;
   border-radius: 3px;
-  background: var(--area);
+  background: var(--area, var(--accent));
 }
 .feature-card {
   border-top: 3px solid var(--area, var(--border));
@@ -968,7 +968,7 @@ mark {
   height: 10px;
   margin-right: 8px;
   border-radius: 3px;
-  background: var(--area);
+  background: var(--area, var(--accent));
 }
 
 /* Buttons */
@@ -1248,4 +1248,110 @@ mark {
   margin: 0;
   color: var(--muted);
   font-size: 15px;
+}
+
+/* Feature pages: docs-style layout with a sidebar, the article and an "On this page" list. */
+.wrap.wide {
+  max-width: 1320px;
+}
+.doc-layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 190px;
+  gap: 40px;
+  align-items: start;
+}
+.doc-nav,
+.doc-toc {
+  position: sticky;
+  top: 84px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 24px 0;
+  font-size: 15px;
+}
+.doc-nav-mobile {
+  display: none;
+}
+.doc-nav-list,
+.doc-nav-list ul,
+.doc-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.doc-nav-list > li + li {
+  margin-top: 18px;
+}
+.doc-nav-section,
+.doc-toc-title {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.doc-nav-list a,
+.doc-toc a {
+  display: block;
+  padding: 4px 10px;
+  border-left: 2px solid var(--border);
+  color: var(--text2);
+  text-decoration: none;
+}
+.doc-nav-list a:hover,
+.doc-toc a:hover {
+  color: var(--text);
+  border-left-color: var(--border-strong);
+}
+.doc-nav-list a[aria-current="page"] {
+  color: var(--accent-text);
+  font-weight: 700;
+  border-left-color: var(--accent);
+}
+.anchor {
+  scroll-margin-top: 90px;
+}
+.feature > .pager {
+  max-width: 760px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 1180px) {
+  .doc-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+  .doc-toc {
+    display: none;
+  }
+}
+@media (max-width: 860px) {
+  .doc-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .doc-nav {
+    position: static;
+    max-height: none;
+    padding: 16px 0 0;
+  }
+  .doc-nav-desktop {
+    display: none;
+  }
+  .doc-nav-mobile {
+    display: block;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+  }
+  .doc-nav-mobile > summary {
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .doc-nav-mobile[open] > summary {
+    margin-bottom: 12px;
+  }
 }

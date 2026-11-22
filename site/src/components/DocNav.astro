@@ -1,0 +1,33 @@
+---
+import { features } from "../lib/content";
+import { featuresBySection } from "../lib/sections";
+
+interface Props {
+  /** The feature whose page this is; marked as the current page. */
+  current: string;
+}
+const { current } = Astro.props;
+const sections = featuresBySection(features.map((feature) => ({ feature })));
+---
+
+<ul class="doc-nav-list">
+  {
+    sections.map((s) => (
+      <li>
+        <span class="doc-nav-section">{s.label}</span>
+        <ul>
+          {s.features.map(({ feature }) => (
+            <li>
+              <a
+                href={`/features/${feature.id}/`}
+                aria-current={feature.id === current ? "page" : undefined}
+              >
+                {feature.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ul>
