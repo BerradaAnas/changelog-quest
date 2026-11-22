@@ -12,7 +12,7 @@ The experience must be **simple, fast, easy and accessible**: clean pages, plain
 
 | Phase | Covers                                           | Status                        |
 | ----- | ------------------------------------------------ | ----------------------------- |
-| 1     | Claude Code changelog, Claude Code features      | In progress                   |
+| 1     | Claude Code changelog, Claude Code features      | Launched 2026-11-22           |
 | 2     | Claude Developer Platform changelog and features | Later, once phase 1 is stable |
 
 ## 3. Sources
@@ -278,12 +278,12 @@ Sources: [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-
 | 2    | Changelog parser: `CHANGELOG.md` -> `Release` JSON, with fixture tests                     | Done                                                                |
 | 3    | npm date lookup and backfill of release records for all past versions                      | Done                                                                |
 | 4    | Minimal Astro site: timeline of release cards with weekly grouping and GitHub links        | Done                                                                |
-| 5    | Summary drafting in Claude Code sessions (ADR 0010); releases since the cut-off (ADR 0013) | All 17 approved                                                     |
-| 6    | Daily GitHub Action updating the ingest PR                                                 | Written; needs the GitHub App (`docs/operations.md`)                |
-| 7    | Feature catalog (15 to 25 features) and demos, first priority before launch (ADR 0013)     | 50 features (16 with approved demos)                                |
+| 5    | Summary drafting in Claude Code sessions (ADR 0010); releases since the cut-off (ADR 0013) | 22 approved, kept current from the daily ingest                     |
+| 6    | Daily GitHub Action updating the ingest PR                                                 | Done; first run 2026-11-22                                          |
+| 7    | Feature catalog (15 to 25 features) and demos, first priority before launch (ADR 0013)     | 50 features, 50 approved demos                                      |
 | 8    | Full site: home, feature pages, demos, RSS feed, search (Pagefind), accessibility checks   | Done                                                                |
-| 9    | Hosting, security headers, custom domain                                                   | Cloudflare Pages chosen (ADR 0011), headers ready; not deployed yet |
-| 10   | Public launch of phase 1                                                                   |                                                                     |
+| 9    | Hosting, security headers, custom domain                                                   | Done on changelog-quest.pages.dev; custom domain optional           |
+| 10   | Public launch of phase 1                                                                   | Launched 2026-11-22                                                 |
 
 The site moved before summaries so the data model is exercised end to end early.
 
