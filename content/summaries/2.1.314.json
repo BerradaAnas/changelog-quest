@@ -6,7 +6,7 @@
   "lines": [
     {
       "kind": "added",
-      "text": "permissions.blockWritesOutsideWorkingDirectories makes Write, Edit and NotebookEdit refuse paths outside the working directories in every permission mode.",
+      "text": "New setting permissions.blockWritesOutsideWorkingDirectories: in any permission mode, Write, Edit and NotebookEdit refuse to touch files outside your working directories.",
       "covers": [
         "2.1.314#133a0143"
       ]
@@ -21,7 +21,7 @@
     },
     {
       "kind": "added",
-      "text": "Idle compaction comes to VS Code and Claude Desktop's Code tab: a conversation over 200K tokens left idle is summarized, and the summary is used on your next message if the prompt cache expired.",
+      "text": "VS Code and the desktop Code tab now compact idle conversations over 200K tokens in the background; if the prompt cache has expired by your next message, that summary is used.",
       "covers": [
         "2.1.314#cb32d82b"
       ]
@@ -120,7 +120,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A PreCompact hook with huge output no longer makes compaction fail or repeat: each hook's output is cut at 10,000 characters.",
+      "text": "Compaction no longer fails or loops because of a PreCompact hook that prints a lot: each hook's output is trimmed to 10,000 characters.",
       "covers": [
         "2.1.314#a964e7d9"
       ]
@@ -134,7 +134,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Markdown in replies: tables stop jumping between layouts on half-typed rows and long ones no longer fall back to raw pipes, blank lines at the top of a code block opening a quote are kept, and no stray blank line appears above some ⎿ rows in the transcript view.",
+      "text": "Markdown in replies: tables stop jumping between layouts on half-typed rows and long ones no longer fall back to raw pipes, blank lines at the top of a code block opening a quote are kept, and no stray blank line appears above some \u23bf rows in the transcript view.",
       "covers": [
         "2.1.314#fad989a3",
         "2.1.314#a450e747",
@@ -183,28 +183,28 @@
     },
     {
       "kind": "fixed",
-      "text": "Shell and MCP calls blocked by auto mode, a deny rule or a PreToolUse hook, or that otherwise didn't run, no longer read as if they ran in a collapsed tool group.",
+      "text": "In collapsed tool groups, shell and MCP calls that were blocked (by auto mode, a deny rule or a PreToolUse hook) or never ran no longer look like they ran.",
       "covers": [
         "2.1.314#f1567bd9"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Sandbox protections apply to a worktree entered with claude -p --resume or --continue.",
+      "text": "A worktree reached through claude -p --resume or --continue is now covered by the sandbox's protections.",
       "covers": [
         "2.1.314#45a3636e"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Hooks that match Bash now run on shell commands started by the Monitor tool; they can block or ask, but not approve or rewrite them.",
+      "text": "Shell commands launched by the Monitor tool now go through hooks that match Bash; those hooks may block or ask, but can't approve or rewrite the command.",
       "covers": [
         "2.1.314#773776fb"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Auto mode no longer reports a call as blocked, or lists it in /permissions, when its safety check gave no verdict.",
+      "text": "When auto mode's safety check returns no verdict, the call is no longer shown as blocked or added to /permissions.",
       "covers": [
         "2.1.314#250859da"
       ]
@@ -323,16 +323,9 @@
     },
     {
       "kind": "changed",
-      "text": "Ctrl+R prompt history search now matches text inside collapsed [Pasted text] pills.",
+      "text": "Ctrl+R history search now also finds text hidden inside collapsed [Pasted text] pills.",
       "covers": [
         "2.1.314#8417a007"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "The /design-sync upload prompt lists the folder, the project and the files to upload or delete.",
-      "covers": [
-        "2.1.314#163b70f9"
       ]
     },
     {
@@ -357,13 +350,6 @@
       "covers": [
         "2.1.314#2243106d",
         "2.1.314#c8b46a76"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "/config in agent view explains how to stop agent view opening by default.",
-      "covers": [
-        "2.1.314#571db884"
       ]
     },
     {
@@ -406,21 +392,21 @@
     },
     {
       "kind": "changed",
-      "text": "Claude's file tools ask before editing the local copy of your organization's server-managed settings, as for your own settings files.",
+      "text": "Editing the local copy of your organization's server-managed settings with Claude's file tools now requires approval, just like your own settings files.",
       "covers": [
         "2.1.314#838398da"
       ]
     },
     {
       "kind": "changed",
-      "text": "/ultrareview checks workspace trust before running git, like claude ultrareview.",
+      "text": "/ultrareview now confirms the workspace is trusted before calling git, matching claude ultrareview.",
       "covers": [
         "2.1.314#215c50f6"
       ]
     },
     {
       "kind": "changed",
-      "text": "The Bash tool's shell clears any inherited which alias or function and stops passing exported which and unsetenv functions to commands, so which is the system command or zsh builtin.",
+      "text": "A which alias or function you defined in your shell no longer leaks into the Bash tool, and commands no longer receive exported which or unsetenv functions; which now resolves to the real system command or the zsh builtin.",
       "covers": [
         "2.1.314#24fba4c0"
       ]
@@ -434,7 +420,7 @@
     },
     {
       "kind": "changed",
-      "text": "Hook if conditions such as Monitor(tail *) match the Monitor tool's shell commands the way Bash(tail *) matches Bash.",
+      "text": "Hook if conditions like Monitor(tail *) now match shell commands run by the Monitor tool, the same way Bash(tail *) matches Bash commands.",
       "covers": [
         "2.1.314#7d9af817"
       ]
@@ -448,7 +434,7 @@
     },
     {
       "kind": "changed",
-      "text": "Idle compaction also runs for subscribers with telemetry off, and on Bedrock, Vertex, Foundry and LLM gateways once the one-hour prompt cache is on.",
+      "text": "Subscribers with telemetry disabled now get idle compaction too, and so do Bedrock, Vertex, Foundry and LLM gateway users who turn on the one-hour prompt cache.",
       "covers": [
         "2.1.314#e97a8edb"
       ]
@@ -462,7 +448,7 @@
     },
     {
       "kind": "changed",
-      "text": "macOS: git grep in most commands Claude runs uses the C locale, avoiding a reported memory leak in the system regex library on files that aren't valid UTF-8.",
+      "text": "On macOS, most git grep calls made by Claude now use the C locale to sidestep a reported memory leak in the system regex library with non-UTF-8 files.",
       "covers": [
         "2.1.314#a309e35d"
       ]
@@ -479,7 +465,7 @@
     },
     {
       "kind": "fixed",
-      "text": "VS Code: missed one-time saved scheduled tasks are no longer deleted without asking when the extension opens without a chat.",
+      "text": "VS Code: opening the extension without a chat no longer silently deletes one-time scheduled tasks that were missed.",
       "covers": [
         "2.1.314#f434844b"
       ]
@@ -970,7 +956,8 @@
     },
     "2.1.314#163b70f9": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.314#d57616fa": {
       "kind": "changed",
@@ -1009,9 +996,8 @@
     },
     "2.1.314#571db884": {
       "kind": "changed",
-      "featureIds": [
-        "agent-view"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.314#bfe7d3bd": {
       "kind": "changed",

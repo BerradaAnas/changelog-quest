@@ -34,7 +34,7 @@
     },
     {
       "kind": "added",
-      "text": "/plugin and claude plugin list note when a malformed plugin.json field such as author or homepage is ignored.",
+      "text": "If plugin.json has a malformed field like author or homepage, /plugin and claude plugin list now say it was ignored.",
       "covers": [
         "2.1.326#fd0c9988"
       ]
@@ -50,7 +50,7 @@
     },
     {
       "kind": "added",
-      "text": "OTEL_RESOURCE_INCLUDE_HOST adds host.name and host.id to OpenTelemetry resource attributes; it's off by default.",
+      "text": "Set OTEL_RESOURCE_INCLUDE_HOST to add the machine's host.name and host.id to OpenTelemetry resource attributes; it's off unless you turn it on.",
       "covers": [
         "2.1.326#e6234e91"
       ]
@@ -87,7 +87,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Rules added in /permissions or at a tool prompt, and /add-dir folders, no longer look saved when the settings file couldn't be written; the terminal warns and names it.",
+      "text": "When the settings file can't be written, rules you add in /permissions or at a tool prompt, and folders from /add-dir, no longer appear saved: the terminal names the file and warns you.",
       "covers": [
         "2.1.326#5e0f4f59"
       ]
@@ -110,7 +110,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The subagent model from managed settings now applies in Claude Desktop's Code tab, overriding yours as in the terminal, unless those settings also choose a provider or gateway.",
+      "text": "In Claude Desktop's Code tab, a subagent model set by managed settings now wins over your own choice, as it does in the terminal, unless those settings also pick a provider or gateway.",
       "covers": [
         "2.1.326#6bfcd046"
       ]
@@ -144,13 +144,6 @@
       "text": "Managed PreToolUse hooks that refuse a direct tool call now leave an OpenTelemetry tool_decision event and a permission_denials entry.",
       "covers": [
         "2.1.326#7bcf6bf5"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "Letters typed over /sandbox or a delete question in /permissions no longer move the selection.",
-      "covers": [
-        "2.1.326#a26a2975"
       ]
     },
     {
@@ -207,7 +200,7 @@
     },
     {
       "kind": "fixed",
-      "text": "/plan <description> uses the description even when plan mode is already on.",
+      "text": "Typing /plan with a description while already in plan mode now uses that description.",
       "covers": [
         "2.1.326#6a73882f"
       ]
@@ -237,7 +230,7 @@
     },
     {
       "kind": "fixed",
-      "text": "grep in the Bash tool no longer silently skips some text files.",
+      "text": "The grep command inside the Bash tool now searches every text file instead of quietly passing over some.",
       "covers": [
         "2.1.326#4e0f8960"
       ]
@@ -258,7 +251,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The automatic session recap is no longer sent after a reply billed to usage credits; /recap still works.",
+      "text": "Replies billed to usage credits no longer trigger the automatic session recap; you can still run /recap yourself.",
       "covers": [
         "2.1.326#93c0ce8f"
       ]
@@ -291,7 +284,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Sign-in screens show a pasted code, display \"Finishing sign-in…\" after submitting, and Esc goes back while waiting for the browser.",
+      "text": "Sign-in screens show a pasted code, display \"Finishing sign-in\u2026\" after submitting, and Esc goes back while waiting for the browser.",
       "covers": [
         "2.1.326#8e917511",
         "2.1.326#b6a18c60",
@@ -327,7 +320,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Mods can use Bash, Read and other tools through $.tool.call and $.tool.check in Code Mode.",
+      "text": "In Code Mode, mods can now reach Bash, Read and the other tools via $.tool.call and $.tool.check.",
       "covers": [
         "2.1.326#d1f93e1d"
       ]
@@ -496,7 +489,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Retries after server errors show a spinner and \"retrying…\" instead of a frozen reply or \"Retrying in 0s\", and the countdown keeps moving.",
+      "text": "Retries after server errors show a spinner and \"retrying\u2026\" instead of a frozen reply or \"Retrying in 0s\", and the countdown keeps moving.",
       "covers": [
         "2.1.326#147767a3",
         "2.1.326#337a9112"
@@ -588,7 +581,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Collapsed tool lines show the real state of calls awaiting permission, failed, blocked or stopped, and failed turns and skill or agent calls no longer show \"done\" or \"Initializing…\".",
+      "text": "Collapsed tool lines show the real state of calls awaiting permission, failed, blocked or stopped, and failed turns and skill or agent calls no longer show \"done\" or \"Initializing\u2026\".",
       "covers": [
         "2.1.326#7528ade4",
         "2.1.326#32f0b0de",
@@ -845,7 +838,7 @@
     },
     {
       "kind": "changed",
-      "text": "Remote Control now streams replies from claude remote-control, Claude Desktop and VS Code sessions to your phone or browser as they're written.",
+      "text": "With Remote Control, your phone or browser now shows replies from claude remote-control, Claude Desktop and VS Code sessions word by word as they arrive.",
       "covers": [
         "2.1.326#53b6bfef"
       ]
@@ -911,7 +904,7 @@
     },
     {
       "kind": "changed",
-      "text": "/update-config uses about 13,000 tokens of context instead of 93,000, and rejected edits quote only the changed settings.",
+      "text": "/update-config now takes about 13,000 tokens of context rather than 93,000, and when an edit is rejected it shows only the settings that changed.",
       "covers": [
         "2.1.326#316fc49f"
       ]
@@ -973,7 +966,7 @@
     },
     {
       "kind": "changed",
-      "text": "Dialogs get consistent key hints, text fields, ✘ ⚠ ✔ markers and spacing, and deeper /hooks and /permissions screens say Esc goes back.",
+      "text": "Dialogs get consistent key hints, text fields, \u2718 \u26a0 \u2714 markers and spacing, and deeper /hooks and /permissions screens say Esc goes back.",
       "covers": [
         "2.1.326#b66b639b",
         "2.1.326#4131fac9",
@@ -993,20 +986,13 @@
     },
     {
       "kind": "changed",
-      "text": "Small UI changes: a \"↓ to resume subagent\" hint after Ctrl+C, hidden-line counts on long prompts, new sliders for /autocompact and /scroll-speed, on/off labels, and a clearer \"Queued\" hint.",
+      "text": "Small UI changes: a \"\u2193 to resume subagent\" hint after Ctrl+C, hidden-line counts on long prompts, new sliders for /autocompact and /scroll-speed, on/off labels, and a clearer \"Queued\" hint.",
       "covers": [
         "2.1.326#1144b974",
         "2.1.326#84f9e575",
         "2.1.326#1b5fedd5",
         "2.1.326#7942a8a8",
         "2.1.326#0a9aad73"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "Terminal setup lists every change before making it.",
-      "covers": [
-        "2.1.326#f7a53ea8"
       ]
     },
     {
@@ -1021,7 +1007,7 @@
     },
     {
       "kind": "changed",
-      "text": "A managed-mcp.json added mid-session may apply at the next check; restart sessions for it to apply fully.",
+      "text": "A managed-mcp.json that appears during a session may be picked up at the next check; restart open sessions to apply it completely.",
       "covers": [
         "2.1.326#ab62e38a"
       ]
@@ -1037,7 +1023,7 @@
     },
     {
       "kind": "changed",
-      "text": "A hook's \"decision\": \"block\" now holds in more cases, so a hook that always prints it may start blocking calls.",
+      "text": "Hooks that return \"decision\": \"block\" are now obeyed in more situations, so a hook that always outputs it may begin blocking calls.",
       "covers": [
         "2.1.326#e6292955"
       ]
@@ -1080,7 +1066,7 @@
     },
     {
       "kind": "changed",
-      "text": "Some tool calls in bypass permissions mode now ask, or are denied where nobody can be asked.",
+      "text": "Bypass permissions mode now asks before some tool calls, and refuses them when nobody is there to answer.",
       "covers": [
         "2.1.326#dd623f81"
       ]
@@ -1136,7 +1122,7 @@
     },
     {
       "kind": "changed",
-      "text": "Enabled plugins previously refused for a malformed plugin.json display field now load with their hooks and MCP servers; administrators should review the plugins they deploy.",
+      "text": "Plugins that were blocked only because of a malformed display field in plugin.json now load, hooks and MCP servers included; admins should review what they deploy.",
       "covers": [
         "2.1.326#ceeef99a"
       ]
@@ -1160,7 +1146,7 @@
     },
     {
       "kind": "changed",
-      "text": "Automatic compaction in plan mode uses the model answering you, such as Opus with opusplan, which can cost more.",
+      "text": "In plan mode, automatic compaction runs on the model you're talking to (Opus under opusplan, for example), which may raise the cost.",
       "covers": [
         "2.1.326#9a3b1f27"
       ]
@@ -1214,7 +1200,7 @@
     },
     {
       "kind": "changed",
-      "text": "The /claude-api skill builds agents on Managed Agents by default unless you want to host the loop yourself.",
+      "text": "The /claude-api skill now defaults to building agents on Managed Agents, unless you'd rather run the agent loop yourself.",
       "covers": [
         "2.1.326#86a861d8"
       ]
@@ -1475,10 +1461,8 @@
     },
     "2.1.326#a26a2975": {
       "kind": "fixed",
-      "featureIds": [
-        "sandboxing",
-        "permissions"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.326#7fdbe51c": {
       "kind": "fixed",
@@ -3068,7 +3052,8 @@
     },
     "2.1.326#f7a53ea8": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.326#0747d25e": {
       "kind": "changed",

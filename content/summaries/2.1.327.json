@@ -13,7 +13,7 @@
     },
     {
       "kind": "added",
-      "text": "claude mcp add-json <name> - reads the server's JSON from stdin, keeping tokens off the command line; it isn't available inside a Claude Code session.",
+      "text": "To keep tokens out of your shell history, claude mcp add-json <name> - takes the server's JSON from standard input; it can't be used from inside a Claude Code session.",
       "covers": [
         "2.1.327#71424baa"
       ]
@@ -27,7 +27,7 @@
     },
     {
       "kind": "added",
-      "text": "/status now lists problems such as broken agent, skill, command or output style files, keybinding errors, an unavailable sandbox, ignored permission settings and hook matchers that never match.",
+      "text": "/status now gathers configuration problems in one list: broken agent, skill, command and output style files, keybinding errors, a sandbox that can't run, ignored permission settings, and hook matchers that never fire.",
       "covers": [
         "2.1.327#54360819"
       ]
@@ -49,7 +49,7 @@
     },
     {
       "kind": "added",
-      "text": "/tui classic is the new name for the non-fullscreen renderer; /tui default still works.",
+      "text": "The classic, non-fullscreen renderer can now be chosen with /tui classic; /tui default keeps working.",
       "covers": [
         "2.1.327#7be2d5f7"
       ]
@@ -100,14 +100,14 @@
     },
     {
       "kind": "fixed",
-      "text": "--disallowedTools rules with parentheses in their content now work.",
+      "text": "--disallowedTools rules whose content includes parentheses are now applied correctly.",
       "covers": [
         "2.1.327#831444a2"
       ]
     },
     {
       "kind": "fixed",
-      "text": "Auto mode respects wildcard PowerShell allow rules that name a script with .\\ such as PowerShell(.\\scripts\\build.ps1 *).",
+      "text": "Wildcard PowerShell allow rules naming a script with .\\, like PowerShell(.\\scripts\\build.ps1 *), are now honored by auto mode.",
       "covers": [
         "2.1.327#10531212"
       ]
@@ -199,7 +199,7 @@
     },
     {
       "kind": "fixed",
-      "text": "Cloud sessions no longer break when a program leaves thousands of connections open to the network proxy.",
+      "text": "A program holding thousands of open connections to the session's network proxy no longer brings down cloud sessions.",
       "covers": [
         "2.1.327#d391a146"
       ]
@@ -254,7 +254,7 @@
     },
     {
       "kind": "fixed",
-      "text": "The Bash tool's changed-files diff now names files that are binary, too big or too many to show.",
+      "text": "When files are binary, too large or too numerous to show, the Bash tool's changed-files diff now lists their names.",
       "covers": [
         "2.1.327#974f948b"
       ]
@@ -410,13 +410,6 @@
       "text": "The / menu shows one row for skills sharing a name, instead of several that all ran the first.",
       "covers": [
         "2.1.327#19b2ff91"
-      ]
-    },
-    {
-      "kind": "fixed",
-      "text": "/teleport now says when the chosen session failed to resume.",
-      "covers": [
-        "2.1.327#1d560c02"
       ]
     },
     {
@@ -594,7 +587,7 @@
     },
     {
       "kind": "changed",
-      "text": "Arrow keys on most permission prompts stop at No instead of wrapping, and a number past the last answer moves to No.",
+      "text": "On most permission prompts the arrow keys now stop at No rather than wrapping to the top, and typing a number beyond the last choice selects No.",
       "covers": [
         "2.1.327#cb8c107c"
       ]
@@ -625,7 +618,7 @@
     },
     {
       "kind": "changed",
-      "text": "/sandbox and most /config value lists are unnumbered outside screen reader mode; use the arrows and Enter.",
+      "text": "Outside screen reader mode, /sandbox and most /config value pickers drop their numbers; move with the arrow keys and press Enter.",
       "covers": [
         "2.1.327#90a1df0f"
       ]
@@ -655,7 +648,7 @@
     },
     {
       "kind": "changed",
-      "text": "Claude in Chrome refuses to upload some credential files; attach those yourself.",
+      "text": "Claude in Chrome won't upload certain credential files for you; attach those to the page by hand.",
       "covers": [
         "2.1.327#b21ce36c"
       ]
@@ -672,23 +665,16 @@
     },
     {
       "kind": "changed",
-      "text": "claude plugin eval keeps its deny rules over a plugin's permission hook and flags calls the hook let through.",
+      "text": "During claude plugin eval, the eval's deny rules take priority over a plugin's permission hook, and calls the hook allowed are flagged.",
       "covers": [
         "2.1.327#4dbd9b44"
       ]
     },
     {
       "kind": "changed",
-      "text": "MCP server logs record only the mode, action and field names of elicitation requests and hook answers, not their contents.",
+      "text": "For elicitation requests and hook answers, MCP server logs now keep only the mode, action and field names rather than the full contents.",
       "covers": [
         "2.1.327#fdc91dcc"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "Most prompts briefly ignore answers other than Esc after resuming with fg.",
-      "covers": [
-        "2.1.327#1e2580fd"
       ]
     },
     {
@@ -723,28 +709,21 @@
     },
     {
       "kind": "changed",
-      "text": "Non-interactive -p mode runs fewer git commands before the first request.",
+      "text": "claude -p now runs fewer git commands before it sends the first request.",
       "covers": [
         "2.1.327#ef3ac748"
       ]
     },
     {
       "kind": "changed",
-      "text": "First-run setup skips terminal setup in remote VS Code, Cursor and Devin Desktop sessions, where it can't change settings.",
+      "text": "In remote VS Code, Cursor and Devin Desktop sessions, first-run setup skips terminal configuration, which it can't change there anyway.",
       "covers": [
         "2.1.327#2bfe895d"
       ]
     },
     {
       "kind": "changed",
-      "text": "Fullscreen text selection leaves out the leading glyph of system, thinking and inbound message lines.",
-      "covers": [
-        "2.1.327#82a7c01a"
-      ]
-    },
-    {
-      "kind": "changed",
-      "text": "Anthropic-hosted cloud sessions ignore more of a repository's flag and plugin delivery settings; its CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC acts at most like DISABLE_TELEMETRY.",
+      "text": "Cloud sessions hosted by Anthropic now disregard more of a repository's flag and plugin delivery settings, and a repository's CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC is treated no more strongly than DISABLE_TELEMETRY.",
       "covers": [
         "2.1.327#4cea7534"
       ]
@@ -783,7 +762,7 @@
     },
     {
       "kind": "changed",
-      "text": "A VS Code chat edit's diff stays open and keeps asking when a terminal session in the same window sends a prompt.",
+      "text": "VS Code: if a terminal session in the same window sends a prompt, the chat's pending edit diff now stays open and still waits for your approval.",
       "covers": [
         "2.1.327#0969bb3f"
       ]
@@ -1364,9 +1343,8 @@
     },
     "2.1.327#1d560c02": {
       "kind": "fixed",
-      "featureIds": [
-        "web"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.327#2b6fec38": {
       "kind": "fixed",
@@ -1743,7 +1721,8 @@
     },
     "2.1.327#1e2580fd": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [],
+      "minor": true
     },
     "2.1.327#2f48c09b": {
       "kind": "changed",
@@ -1800,9 +1779,8 @@
     },
     "2.1.327#82a7c01a": {
       "kind": "changed",
-      "featureIds": [
-        "fullscreen"
-      ]
+      "featureIds": [],
+      "minor": true
     },
     "2.1.327#4cea7534": {
       "kind": "changed",
