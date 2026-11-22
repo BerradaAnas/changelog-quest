@@ -227,11 +227,15 @@
   "classifications": {
     "2.1.312#dd91f149": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.312#fe7941fd": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen"
+      ]
     },
     "2.1.312#b1f2ba22": {
       "kind": "fixed",
@@ -268,11 +272,17 @@
     },
     "2.1.312#709fd417": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "models",
+        "monitoring"
+      ]
     },
     "2.1.312#588b55e1": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "models",
+        "monitoring"
+      ]
     },
     "2.1.312#25c1b0fa": {
       "kind": "fixed",
@@ -280,11 +290,15 @@
     },
     "2.1.312#22e3cc37": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "agent-view"
+      ]
     },
     "2.1.312#433f9243": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "agent-view"
+      ]
     },
     "2.1.312#c23827f4": {
       "kind": "fixed",
@@ -308,7 +322,9 @@
     },
     "2.1.312#a5469757": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.312#06815e0e": {
       "kind": "changed",
@@ -337,19 +353,22 @@
     "2.1.312#81d37501": {
       "kind": "changed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "context"
       ]
     },
     "2.1.312#2bd95f63": {
       "kind": "changed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "monitoring"
       ]
     },
     "2.1.312#135945e1": {
       "kind": "changed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "monitoring"
       ]
     },
     "2.1.312#77c2087f": {
@@ -361,13 +380,17 @@
     "2.1.312#1a02cbc7": {
       "kind": "added",
       "featureIds": [
-        "web"
+        "web",
+        "models",
+        "cloud-scheduled-tasks"
       ]
     },
     "2.1.312#96f399b8": {
       "kind": "added",
       "featureIds": [
-        "web"
+        "web",
+        "models",
+        "cloud-scheduled-tasks"
       ]
     },
     "2.1.312#b49a6a9c": {
@@ -379,28 +402,35 @@
     "2.1.312#d729eb0b": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks"
       ]
     },
     "2.1.312#a28d1b7c": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks"
       ]
     },
     "2.1.312#5593fac1": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks"
       ]
     },
     "2.1.312#d720694d": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "remote-control"
+      ]
     },
     "2.1.312#fa409274": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "slack"
+      ]
     },
     "2.1.312#219bc43c": {
       "kind": "fixed",
@@ -416,7 +446,9 @@
     },
     "2.1.312#7fa84ea7": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     }
   },
   "status": "approved",

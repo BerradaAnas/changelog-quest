@@ -1,0 +1,39 @@
+{
+  "id": "code-mode",
+  "name": "Code Mode",
+  "area": "core",
+  "summary": "Claude writes small JavaScript programs that make many tool calls in one step.",
+  "what": "In Code Mode, instead of calling tools one at a time, Claude writes a short script that runs several tool calls, such as searches, reads and edits, and returns only the result. It is experimental and off by default.",
+  "impact": [
+    {
+      "title": "Fewer round trips",
+      "detail": "Repetitive changes across many files finish in fewer steps."
+    },
+    {
+      "title": "Less noise in context",
+      "detail": "Search output can be filtered before Claude reads it."
+    },
+    {
+      "title": "Parallel commands",
+      "detail": "Independent commands can run at the same time."
+    }
+  ],
+  "howItWorks": [
+    "Start Claude Code with CLAUDE_CODE_EXPERIMENTAL_CODE_MODE=1, or set it in the env block of your settings.",
+    "Code steps show as Code rows; press Ctrl+O to expand them and Esc to stop one.",
+    "Add an ask rule for REPL if you want to approve each script.",
+    "Interactive terminal only, on recent Opus, Sonnet, Haiku and Fable models.",
+    "Not available through gateways or third-party cloud providers."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/code-mode"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.323",
+      "type": "introduced",
+      "note": "Code Mode arrived as an experimental opt-in."
+    }
+  ]
+}

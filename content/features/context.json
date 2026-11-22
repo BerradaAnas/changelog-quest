@@ -1,0 +1,44 @@
+{
+  "id": "context",
+  "name": "Context and compaction",
+  "area": "core",
+  "summary": "See what fills Claude's working memory and shrink it when it gets full.",
+  "what": "Everything in a conversation, from instructions to file reads, takes space in Claude's context window. Claude Code shows what uses that space and compacts older parts into a summary when it runs low, so long sessions can keep going.",
+  "impact": [
+    {
+      "title": "Know what's using space",
+      "detail": "A breakdown shows memory files, tools and messages."
+    },
+    {
+      "title": "Longer sessions",
+      "detail": "Compaction summarizes old turns so work can continue."
+    },
+    {
+      "title": "Steer the summary",
+      "detail": "Tell compaction what to keep."
+    }
+  ],
+  "howItWorks": [
+    "Run /context for a live breakdown of context use.",
+    "Run /compact, optionally with what to focus on, to summarize now.",
+    "Compaction also happens automatically near the limit; /autocompact tunes when.",
+    "Run /clear to start fresh.",
+    "Subagents keep large reads out of the main conversation."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/context-window"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.21",
+      "type": "introduced",
+      "note": "Available before the first version in the changelog; this is the oldest listed release."
+    },
+    {
+      "version": "1.0.86",
+      "type": "updated",
+      "note": "Added /context to inspect what fills the context window."
+    }
+  ]
+}

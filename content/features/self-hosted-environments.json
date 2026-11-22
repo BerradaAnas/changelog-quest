@@ -1,0 +1,38 @@
+{
+  "id": "self-hosted-environments",
+  "name": "Self-hosted environments",
+  "area": "anywhere",
+  "summary": "Run Claude Code cloud sessions on your organization's own machines.",
+  "what": "Self-hosted environments let web, mobile and desktop sessions run on runners inside your network instead of Anthropic's machines. Runners only make outbound connections, so sessions can reach internal services while code and build output stay on your infrastructure. It is in public beta for Team and Enterprise.",
+  "impact": [
+    {
+      "title": "Reach internal systems",
+      "detail": "Sessions can use private services and databases."
+    },
+    {
+      "title": "Your tools baked in",
+      "detail": "Put custom tooling in the runner image."
+    },
+    {
+      "title": "Data stays home",
+      "detail": "Checkouts and artifacts remain on your machines."
+    }
+  ],
+  "howItWorks": [
+    "An owner enables self-hosted environments in the cloud environments admin page.",
+    "Admins create an environment and start runners with claude self-hosted-runner.",
+    "People pick the environment in the session picker or with claude --cloud.",
+    "Runners take flags such as --capacity for how many sessions they run."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/self-hosted-environments"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.224",
+      "type": "introduced",
+      "note": "Added self-hosted environments with claude self-hosted-runner."
+    }
+  ]
+}

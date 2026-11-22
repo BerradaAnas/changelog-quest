@@ -265,7 +265,8 @@
         "permissions",
         "auto-mode",
         "hooks",
-        "sandboxing"
+        "sandboxing",
+        "monitoring"
       ]
     },
     "2.1.307#8c583f16": {
@@ -274,7 +275,9 @@
     },
     "2.1.307#a53815fd": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.307#cf705d31": {
       "kind": "fixed",
@@ -299,28 +302,43 @@
     "2.1.307#c2168af9": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "agent-sdk"
       ]
     },
     "2.1.307#d5de431b": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context"
+      ]
     },
     "2.1.307#fc9a13f5": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context"
+      ]
     },
     "2.1.307#714773ef": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.307#57f5ab55": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "desktop",
+        "cloud-providers",
+        "monitoring"
+      ]
     },
     "2.1.307#0eff47f0": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "desktop",
+        "cloud-providers",
+        "monitoring"
+      ]
     },
     "2.1.307#cdc7ddcf": {
       "kind": "fixed",
@@ -343,11 +361,15 @@
     },
     "2.1.307#102d1904": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "agent-sdk"
+      ]
     },
     "2.1.307#2a69351c": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "desktop"
+      ]
     },
     "2.1.307#feafc523": {
       "kind": "fixed",
@@ -356,20 +378,27 @@
     "2.1.307#4593e1e8": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "desktop"
       ]
     },
     "2.1.307#1dce07cf": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.307#4447b3bd": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.307#a683b6e2": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.307#dd3387fc": {
       "kind": "changed",
@@ -387,23 +416,31 @@
     },
     "2.1.307#16d32085": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.307#e98f8332": {
       "kind": "changed",
       "featureIds": [
-        "web"
+        "web",
+        "desktop",
+        "remote-control"
       ]
     },
     "2.1.307#b36c352f": {
       "kind": "changed",
       "featureIds": [
-        "web"
+        "web",
+        "desktop",
+        "remote-control"
       ]
     },
     "2.1.307#e8a64cec": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "computer-use"
+      ]
     },
     "2.1.307#be2c29d0": {
       "kind": "changed",
@@ -413,16 +450,21 @@
     },
     "2.1.307#5d964ec0": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.307#cd8194f4": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.307#97f12934": {
       "kind": "added",
       "featureIds": [
-        "ide"
+        "ide",
+        "voice"
       ]
     },
     "2.1.307#52b5f123": {
@@ -440,19 +482,22 @@
     "2.1.307#eb01b02e": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "voice"
       ]
     },
     "2.1.307#579faff9": {
       "kind": "changed",
       "featureIds": [
-        "ide"
+        "ide",
+        "voice"
       ]
     },
     "2.1.307#49eee8ef": {
       "kind": "changed",
       "featureIds": [
-        "ide"
+        "ide",
+        "voice"
       ]
     },
     "2.1.307#a8d080fb": {
@@ -464,18 +509,22 @@
     "2.1.307#ede35520": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "self-hosted-environments"
       ]
     },
     "2.1.307#86ff0929": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "self-hosted-environments"
       ]
     },
     "2.1.307#b2c0bd6e": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     }
   },
   "status": "approved",

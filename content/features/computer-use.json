@@ -1,0 +1,39 @@
+{
+  "id": "computer-use",
+  "name": "Computer use",
+  "area": "core",
+  "summary": "Let Claude open apps, look at the screen and click and type on your Mac.",
+  "what": "Computer use lets Claude drive graphical apps from the terminal, for example to launch a native app it just built, click through it and take screenshots. You approve each app per session. It is a research preview.",
+  "impact": [
+    {
+      "title": "Test real apps",
+      "detail": "Claude can try native and Electron apps like a user would."
+    },
+    {
+      "title": "Reach GUI-only tools",
+      "detail": "Work with tools that have no command line or API."
+    },
+    {
+      "title": "Reproduce layout bugs",
+      "detail": "Resize windows and check the result."
+    }
+  ],
+  "howItWorks": [
+    "Run /mcp and enable the built-in computer-use server for the project.",
+    "Grant macOS Accessibility and Screen Recording on first use.",
+    "Approve each app Claude asks to use.",
+    "Press Esc or Ctrl+C to stop.",
+    "macOS only in the terminal, on Pro, Max or Ultra plans."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/computer-use"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.243",
+      "type": "introduced",
+      "note": "First changelog mention of computer use on macOS."
+    }
+  ]
+}

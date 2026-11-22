@@ -1,0 +1,46 @@
+{
+  "id": "code-review",
+  "name": "Code review",
+  "area": "core",
+  "summary": "Have Claude look for bugs in your changes, on your machine, in the cloud or on GitHub pull requests.",
+  "what": "/code-review checks a branch, pull request, path or commit range for correctness bugs in your own session and can apply the fixes. Ultrareview runs a deeper review in the cloud with several agents that verify each finding. Team and Enterprise organizations can also have Claude review GitHub pull requests automatically.",
+  "impact": [
+    {
+      "title": "Catch bugs before merge",
+      "detail": "Findings point at real problems in the diff."
+    },
+    {
+      "title": "Fewer false alarms",
+      "detail": "Ultrareview and GitHub reviews verify findings before reporting them."
+    },
+    {
+      "title": "Fix in one step",
+      "detail": "--fix applies the findings to your files."
+    }
+  ],
+  "howItWorks": [
+    "Run /code-review, optionally with a target such as a branch range or PR number.",
+    "Add --fix to apply findings, or --comment to post them on the pull request.",
+    "Run /code-review ultra for the cloud review; Pro, Max and Ultra get 3 free runs, then usage credits.",
+    "On Team and Enterprise, an owner can turn on automatic GitHub reviews; comment @claude review to ask for one.",
+    "Tune what gets flagged with CLAUDE.md, or REVIEW.md for GitHub reviews."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/code-review-local",
+    "https://code.claude.com/docs/en/ultrareview",
+    "https://code.claude.com/docs/en/code-review"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.111",
+      "type": "introduced",
+      "note": "Added /ultrareview, a multi-agent code review that runs in the cloud."
+    },
+    {
+      "version": "2.1.147",
+      "type": "updated",
+      "note": "/simplify was renamed /code-review and now reports correctness bugs."
+    }
+  ]
+}

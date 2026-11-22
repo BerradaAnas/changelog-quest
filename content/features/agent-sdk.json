@@ -1,0 +1,43 @@
+{
+  "id": "agent-sdk",
+  "name": "Agent SDK",
+  "area": "anywhere",
+  "summary": "Build your own agents in Python or TypeScript on the same engine that runs Claude Code.",
+  "what": "The Claude Agent SDK is a library that gives your application Claude Code's agent loop, built-in tools, permissions, sessions and hooks. You run it in your own process and shape it with options, custom tools and MCP servers.",
+  "impact": [
+    {
+      "title": "Proven agent loop",
+      "detail": "Reuse the tools and context handling of Claude Code."
+    },
+    {
+      "title": "Fully programmable",
+      "detail": "Hooks, permissions and subagents are available in code."
+    },
+    {
+      "title": "Resumable",
+      "detail": "Sessions can be continued or forked."
+    }
+  ],
+  "howItWorks": [
+    "Install the SDK for Python or TypeScript and set an API key.",
+    "Call it with a prompt and options such as model, tools and permissions.",
+    "Add custom tools as in-process MCP tools.",
+    "From other languages, run claude -p with --output-format json instead."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/agent-sdk/overview"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.23",
+      "type": "introduced",
+      "note": "Released the TypeScript SDK."
+    },
+    {
+      "version": "2.0.0",
+      "type": "updated",
+      "note": "The Claude Code SDK was renamed the Claude Agent SDK."
+    }
+  ]
+}

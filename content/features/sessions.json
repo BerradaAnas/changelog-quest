@@ -1,0 +1,39 @@
+{
+  "id": "sessions",
+  "name": "Sessions",
+  "area": "core",
+  "summary": "Every conversation is saved, so you can resume it, branch it or switch between tasks.",
+  "what": "Claude Code stores each conversation as a session tied to the project folder you ran it in. You can come back to the last one, pick an older one from a list, give sessions names, or branch a conversation to try a different approach while keeping the original.",
+  "impact": [
+    {
+      "title": "Pick up where you left off",
+      "detail": "Continue yesterday's work, even after closing the terminal or clearing the screen."
+    },
+    {
+      "title": "Try ideas safely",
+      "detail": "Branch a conversation to explore another approach without losing the first one."
+    },
+    {
+      "title": "Find parallel work",
+      "detail": "Named sessions make it easy to tell several tasks apart."
+    }
+  ],
+  "howItWorks": [
+    "Run claude --continue to reopen the most recent session in this folder.",
+    "Run claude --resume, or /resume inside a session, to pick from a searchable list.",
+    "Use /rename or claude -n <name> to name a session.",
+    "Use /branch to fork the current conversation into a new session.",
+    "Old sessions are cleaned up after 30 days by default (cleanupPeriodDays)."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/sessions"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.93",
+      "type": "introduced",
+      "note": "First changelog mention: claude --continue and claude --resume."
+    }
+  ]
+}

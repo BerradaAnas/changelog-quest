@@ -1,0 +1,38 @@
+{
+  "id": "deep-links",
+  "name": "Deep links",
+  "area": "anywhere",
+  "summary": "Links that open Claude Code in the right folder with a prompt ready to send.",
+  "what": "A claude-cli:// link opens a new terminal running Claude Code in a chosen repository or folder, with a prompt already typed. Nothing runs until you press Enter, and prompts from outside are flagged.",
+  "impact": [
+    {
+      "title": "One click from docs",
+      "detail": "Put links in runbooks, READMEs and alerts."
+    },
+    {
+      "title": "Right place, right prompt",
+      "detail": "Opens in the correct repository automatically."
+    },
+    {
+      "title": "Safe by default",
+      "detail": "You review the prompt before it runs."
+    }
+  ],
+  "howItWorks": [
+    "Build a link like claude-cli://open?q=<prompt>&repo=owner/name, or use cwd for a path.",
+    "Encode line breaks as %0A; prompts are capped at 5,000 characters.",
+    "repo only finds clones where you've already run claude.",
+    "Turn link handling off with disableDeepLinkRegistration."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/deep-links"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.83",
+      "type": "introduced",
+      "note": "First changelog mention of claude-cli:// deep links."
+    }
+  ]
+}

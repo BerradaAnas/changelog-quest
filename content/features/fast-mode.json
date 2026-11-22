@@ -1,0 +1,39 @@
+{
+  "id": "fast-mode",
+  "name": "Fast mode",
+  "area": "core",
+  "summary": "Get much quicker answers from the same model, at a higher price per token.",
+  "what": "Fast mode runs supported models with an API setup tuned for speed, up to about 2.5 times faster. The answers are as good as usual; you pay more per token. It suits quick back-and-forth such as live debugging.",
+  "impact": [
+    {
+      "title": "Faster iteration",
+      "detail": "Shorter waits while you try, test and adjust."
+    },
+    {
+      "title": "Same quality",
+      "detail": "Unlike lowering effort, the model itself doesn't change."
+    },
+    {
+      "title": "Easy to toggle",
+      "detail": "Switch it on for a burst of work and off again."
+    }
+  ],
+  "howItWorks": [
+    "Run /fast to turn it on or off; a ↯ icon shows when it's active.",
+    "Or set fastMode to true in your user settings.",
+    "Works on the Anthropic API with supported Opus and Fable models, not Sonnet or Haiku.",
+    "Not available on Amazon Bedrock or Microsoft Foundry.",
+    "On subscription plans it is billed from usage credits, outside plan limits."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/fast-mode"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.36",
+      "type": "introduced",
+      "note": "Fast mode became available, starting with Opus 4.6."
+    }
+  ]
+}

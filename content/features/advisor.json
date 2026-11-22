@@ -1,0 +1,39 @@
+{
+  "id": "advisor",
+  "name": "Advisor",
+  "area": "core",
+  "summary": "Let your main model ask a stronger model for advice at key moments.",
+  "what": "With the advisor on, the model doing the work can consult a second, usually stronger model before choosing an approach, after repeated errors or before calling a task done. The advisor sees the whole conversation. It is experimental.",
+  "impact": [
+    {
+      "title": "Better decisions for less",
+      "detail": "A cheaper main model gets strong guidance only where it matters."
+    },
+    {
+      "title": "Cheaper than always using the big model",
+      "detail": "The stronger model is called only now and then."
+    },
+    {
+      "title": "No cache penalty",
+      "detail": "Turning it on or off doesn't reset the prompt cache."
+    }
+  ],
+  "howItWorks": [
+    "Run /advisor and pick a model, such as /advisor opus; /advisor off turns it off.",
+    "Or start with claude --advisor <model>, or set advisorModel in settings.",
+    "Claude decides when to consult it; you can also ask for a consultation.",
+    "The advisor must be at least as capable as the main model.",
+    "Works on the Anthropic API, not on Bedrock, Google Cloud's Agent Platform or Foundry."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/advisor"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.117",
+      "type": "introduced",
+      "note": "First changelog mention of the experimental advisor tool."
+    }
+  ]
+}

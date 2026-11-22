@@ -1,0 +1,39 @@
+{
+  "id": "github-actions",
+  "name": "GitHub Actions",
+  "area": "anywhere",
+  "summary": "Mention @claude in an issue or pull request and Claude Code does the work in a GitHub workflow.",
+  "what": "The Claude Code GitHub Action runs Claude in your repository's workflows. Mention @claude in a comment and it can answer, implement changes and push commits or open a pull request. With a prompt, it can also run on any GitHub event or schedule.",
+  "impact": [
+    {
+      "title": "Issues to pull requests",
+      "detail": "Turn a described issue into a ready change."
+    },
+    {
+      "title": "Fix from a comment",
+      "detail": "Ask for a fix right where the problem is discussed."
+    },
+    {
+      "title": "Automate chores",
+      "detail": "Run recurring tasks on a schedule."
+    }
+  ],
+  "howItWorks": [
+    "Run /install-github-app in Claude Code for the quick setup.",
+    "Or install the Claude GitHub App, add an API key or token secret, and add the example workflow.",
+    "Mention @claude in an issue or PR comment to start it.",
+    "Pass options like model and allowed tools through claude_args.",
+    "Runs use GitHub Actions minutes plus your API or plan usage."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/github-actions"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.7",
+      "type": "introduced",
+      "note": "First changelog mention of /install-github-app."
+    }
+  ]
+}

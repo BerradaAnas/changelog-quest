@@ -1,0 +1,38 @@
+{
+  "id": "desktop",
+  "name": "Desktop app",
+  "area": "anywhere",
+  "summary": "Use Claude Code in the Claude desktop app, with parallel sessions, diff review and a built-in browser.",
+  "what": "The Code tab of the Claude desktop app runs Claude Code sessions, each with its own chat, folder and changes, side by side. Sessions can run on your computer, over SSH or in the cloud. You review diffs with line comments, preview your app, and follow pull requests and CI.",
+  "impact": [
+    {
+      "title": "Visual review",
+      "detail": "Read diffs and comment on lines before accepting."
+    },
+    {
+      "title": "Several sessions at once",
+      "detail": "Each one isolated in its own folder or worktree."
+    },
+    {
+      "title": "See the result",
+      "detail": "A browser pane lets Claude check app changes."
+    }
+  ],
+  "howItWorks": [
+    "Install Claude for macOS or Windows (Linux is in beta) and open the Code tab.",
+    "Pick a folder, environment, permission mode and model, then send a task.",
+    "Press Cmd+N for a new session.",
+    "Review changes in the diff view and open a pull request from the app."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/desktop"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.0.51",
+      "type": "introduced",
+      "note": "Introduced Claude Code for Desktop."
+    }
+  ]
+}

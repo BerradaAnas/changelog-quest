@@ -1,0 +1,38 @@
+{
+  "id": "agent-view",
+  "name": "Agent view",
+  "area": "core",
+  "summary": "One screen to start, watch and answer all your background Claude Code sessions.",
+  "what": "Agent view lists your background sessions by state: working, waiting for you, or done. You can send new tasks, peek at a session, reply, or attach to see the whole conversation. It is a research preview.",
+  "impact": [
+    {
+      "title": "Run many tasks",
+      "detail": "Keep several sessions going in parallel."
+    },
+    {
+      "title": "Step in only when needed",
+      "detail": "See at a glance which session needs input."
+    },
+    {
+      "title": "Survives closing the terminal",
+      "detail": "Background sessions keep running on your machine."
+    }
+  ],
+  "howItWorks": [
+    "Run claude agents to open agent view.",
+    "Move a session to the background with the left arrow or /background.",
+    "Press Space to peek and Enter to attach.",
+    "Sessions run on your computer and use your plan's quota."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/agent-view"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.139",
+      "type": "introduced",
+      "note": "Added agent view (research preview), opened with claude agents."
+    }
+  ]
+}

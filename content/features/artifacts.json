@@ -1,0 +1,39 @@
+{
+  "id": "artifacts",
+  "name": "Artifacts",
+  "area": "core",
+  "summary": "Turn session output into live web pages on claude.ai that you can keep private or share.",
+  "what": "Claude can publish what it makes, such as a report, chart or small app, as an interactive page at a private claude.ai address. You decide whether to share it with your organization or publicly, and people can leave comments that Claude can answer.",
+  "impact": [
+    {
+      "title": "Share results easily",
+      "detail": "Send a link instead of a screenshot or file."
+    },
+    {
+      "title": "Live content",
+      "detail": "Pages can pull fresh data through connectors."
+    },
+    {
+      "title": "Feedback in place",
+      "detail": "Comment threads sit on the page itself."
+    }
+  ],
+  "howItWorks": [
+    "Ask Claude in plain words to make a page.",
+    "Run /artifacts to list or reopen your artifacts.",
+    "Pages start private; you choose who can see them.",
+    "Needs a claude.ai login on a Pro, Max, Ultra, Team or Enterprise plan.",
+    "Turn it off with enableArtifact set to false in /config."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/artifacts"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.259",
+      "type": "introduced",
+      "note": "First changelog mention of artifact publishing."
+    }
+  ]
+}

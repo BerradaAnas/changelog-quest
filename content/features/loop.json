@@ -1,0 +1,39 @@
+{
+  "id": "loop",
+  "name": "Loops and reminders",
+  "area": "core",
+  "summary": "Repeat a prompt on a schedule or set a reminder while your session is open.",
+  "what": "The /loop command reruns a prompt at a fixed interval or at a pace Claude picks, which is handy for watching a deploy or a pull request. You can also ask for one-off reminders in plain words. These tasks only run while Claude Code is open and idle.",
+  "impact": [
+    {
+      "title": "Hands-off polling",
+      "detail": "Check a build or deploy without asking again and again."
+    },
+    {
+      "title": "Reminders in plain words",
+      "detail": "Ask Claude to remind you at a time and it will."
+    },
+    {
+      "title": "Bounded",
+      "detail": "Recurring tasks end on their own after a set time."
+    }
+  ],
+  "howItWorks": [
+    "Run /loop 5m <prompt> to repeat every five minutes (s, m, h or d).",
+    "Run /loop <prompt> without an interval and Claude chooses the delay.",
+    "Ask in plain words for a reminder, such as at 3pm.",
+    "Press Esc, or ask Claude, to stop a loop.",
+    "For tasks that must run while your computer is off, use cloud scheduled tasks."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/scheduled-tasks"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.71",
+      "type": "introduced",
+      "note": "Added the /loop command to rerun a prompt on an interval."
+    }
+  ]
+}

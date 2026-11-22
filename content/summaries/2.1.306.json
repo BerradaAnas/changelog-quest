@@ -30,7 +30,8 @@
     "2.1.306#1b2cac7f": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "context"
       ]
     }
   },

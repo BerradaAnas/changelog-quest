@@ -438,7 +438,8 @@
       "kind": "fixed",
       "featureIds": [
         "mcp",
-        "headless"
+        "headless",
+        "agent-sdk"
       ]
     },
     "2.1.309#a73bb524": {
@@ -461,15 +462,21 @@
     },
     "2.1.309#facebeca": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "worktrees"
+      ]
     },
     "2.1.309#a33c7a0c": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "worktrees"
+      ]
     },
     "2.1.309#685ec124": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "worktrees"
+      ]
     },
     "2.1.309#44002e0d": {
       "kind": "fixed",
@@ -478,7 +485,8 @@
     "2.1.309#e9717ba4": {
       "kind": "fixed",
       "featureIds": [
-        "memory"
+        "memory",
+        "context"
       ]
     },
     "2.1.309#d6c85001": {
@@ -507,30 +515,41 @@
     },
     "2.1.309#b6714d0d": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "desktop"
+      ]
     },
     "2.1.309#a2bc17ff": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "desktop"
+      ]
     },
     "2.1.309#61befddf": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "status-line",
+        "remote-control"
+      ]
     },
     "2.1.309#284902aa": {
       "kind": "fixed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "agent-teams"
       ]
     },
     "2.1.309#79ded2cb": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "sessions"
+      ]
     },
     "2.1.309#d307c035": {
       "kind": "fixed",
       "featureIds": [
-        "checkpointing"
+        "checkpointing",
+        "code-review"
       ]
     },
     "2.1.309#4fbcc986": {
@@ -552,13 +571,15 @@
     "2.1.309#3047b8b7": {
       "kind": "fixed",
       "featureIds": [
-        "skills"
+        "skills",
+        "code-review"
       ]
     },
     "2.1.309#a1a49f65": {
       "kind": "fixed",
       "featureIds": [
-        "skills"
+        "skills",
+        "code-review"
       ]
     },
     "2.1.309#9b67b66f": {
@@ -587,7 +608,9 @@
     },
     "2.1.309#a4b3f082": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "mods"
+      ]
     },
     "2.1.309#aa4388ca": {
       "kind": "fixed",
@@ -598,19 +621,29 @@
     },
     "2.1.309#5387787d": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts",
+        "context"
+      ]
     },
     "2.1.309#abdd5316": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts",
+        "context"
+      ]
     },
     "2.1.309#f5037269": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.309#77e71023": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.309#6db987fe": {
       "kind": "fixed",
@@ -634,7 +667,10 @@
     },
     "2.1.309#03d6d5be": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review",
+        "self-hosted-environments"
+      ]
     },
     "2.1.309#69b33859": {
       "kind": "changed",
@@ -653,24 +689,32 @@
     "2.1.309#8b63e988": {
       "kind": "changed",
       "featureIds": [
-        "skills"
+        "skills",
+        "agent-sdk",
+        "monitoring"
       ]
     },
     "2.1.309#86be087c": {
       "kind": "changed",
       "featureIds": [
-        "skills"
+        "skills",
+        "agent-sdk",
+        "monitoring"
       ]
     },
     "2.1.309#febe3b26": {
       "kind": "changed",
       "featureIds": [
-        "skills"
+        "skills",
+        "agent-sdk",
+        "monitoring"
       ]
     },
     "2.1.309#95e06983": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.309#a79b2cd3": {
       "kind": "changed",
@@ -687,12 +731,15 @@
     },
     "2.1.309#a628abe3": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     },
     "2.1.309#1a754d22": {
       "kind": "changed",
       "featureIds": [
-        "permissions"
+        "permissions",
+        "desktop"
       ]
     },
     "2.1.309#12e23440": {
@@ -703,18 +750,23 @@
     },
     "2.1.309#6b7922d0": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "worktrees"
+      ]
     },
     "2.1.309#763fae49": {
       "kind": "changed",
       "featureIds": [
-        "skills"
+        "skills",
+        "agent-teams",
+        "workflows"
       ]
     },
     "2.1.309#ed99a9b7": {
       "kind": "added",
       "featureIds": [
-        "ide"
+        "ide",
+        "voice"
       ]
     },
     "2.1.309#d84d9b4b": {
@@ -732,31 +784,39 @@
     "2.1.309#6339e888": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "goal",
+        "mods"
       ]
     },
     "2.1.309#635b67b3": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "goal",
+        "mods"
       ]
     },
     "2.1.309#ab03120a": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "goal",
+        "mods"
       ]
     },
     "2.1.309#fdcddb96": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "keybindings"
       ]
     },
     "2.1.309#056ee29c": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "keybindings"
       ]
     },
     "2.1.309#b04e8653": {
@@ -768,25 +828,33 @@
     "2.1.309#814d181a": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks",
+        "self-hosted-environments"
       ]
     },
     "2.1.309#7c8ff036": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks",
+        "self-hosted-environments"
       ]
     },
     "2.1.309#f52acd48": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks",
+        "self-hosted-environments"
       ]
     },
     "2.1.309#238bbbc3": {
       "kind": "fixed",
       "featureIds": [
-        "web"
+        "web",
+        "cloud-scheduled-tasks",
+        "self-hosted-environments"
       ]
     },
     "2.1.309#62c8845f": {
@@ -813,15 +881,21 @@
     },
     "2.1.309#5ecb8850": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "slack"
+      ]
     },
     "2.1.309#80d629f0": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     },
     "2.1.309#ebee03d7": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     }
   },
   "status": "approved",

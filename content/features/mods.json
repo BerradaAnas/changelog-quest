@@ -1,0 +1,39 @@
+{
+  "id": "mods",
+  "name": "Mods",
+  "area": "extend",
+  "summary": "Plugins that change Claude Code itself: add panels, commands and rules for tool calls.",
+  "what": "A mod is a plugin with JavaScript or TypeScript code that runs inside Claude Code. It can watch, change or answer events like tool calls and prompts, draw panes or a band above the prompt, and add slash commands. Mods run with your permissions and aren't sandboxed.",
+  "impact": [
+    {
+      "title": "Custom interface",
+      "detail": "Add a chart, a panel or your own controls."
+    },
+    {
+      "title": "Guardrails",
+      "detail": "Hold risky commands for confirmation."
+    },
+    {
+      "title": "New commands",
+      "detail": "Add slash commands and tools of your own."
+    }
+  ],
+  "howItWorks": [
+    "Install a mod like any plugin with /plugin install.",
+    "Run /reload-plugins after installing from the shell.",
+    "Check what a mod hooks into with claude plugin validate before trusting it.",
+    "Start with --safe-mode to run without mods.",
+    "Works in the terminal, the desktop app and VS Code; drawing doesn't work in claude -p."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/plugins/mods/overview"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "2.1.287",
+      "type": "introduced",
+      "note": "Added mods: plugins that can change deeper behavior."
+    }
+  ]
+}

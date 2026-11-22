@@ -268,16 +268,21 @@
       "kind": "changed",
       "featureIds": [
         "plugins",
-        "permissions"
+        "permissions",
+        "desktop"
       ]
     },
     "2.1.305#f9e4a0cb": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "artifacts"
+      ]
     },
     "2.1.305#1993caf0": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "mods"
+      ]
     },
     "2.1.305#931b5150": {
       "kind": "changed",
@@ -291,26 +296,36 @@
     },
     "2.1.305#d9d94f2e": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "fullscreen",
+        "mods"
+      ]
     },
     "2.1.305#2662213f": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "remote-control"
+      ]
     },
     "2.1.305#95551c1f": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-providers"
+      ]
     },
     "2.1.305#03b90d8a": {
       "kind": "fixed",
       "featureIds": [
-        "settings"
+        "settings",
+        "models",
+        "context"
       ]
     },
     "2.1.305#c8a467a2": {
       "kind": "fixed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "worktrees"
       ]
     },
     "2.1.305#457da1a7": {
@@ -320,18 +335,23 @@
     "2.1.305#9dfb870c": {
       "kind": "fixed",
       "featureIds": [
-        "mcp"
+        "mcp",
+        "agent-sdk"
       ]
     },
     "2.1.305#35d0f121": {
       "kind": "fixed",
       "featureIds": [
-        "sub-agents"
+        "sub-agents",
+        "models"
       ]
     },
     "2.1.305#dc61fa2f": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "context",
+        "agent-teams"
+      ]
     },
     "2.1.305#ec267c82": {
       "kind": "fixed",
@@ -339,11 +359,16 @@
     },
     "2.1.305#8ae61123": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "workflows"
+      ]
     },
     "2.1.305#7a2fc51b": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "sessions",
+        "remote-control"
+      ]
     },
     "2.1.305#625dac49": {
       "kind": "fixed",
@@ -357,31 +382,41 @@
     },
     "2.1.305#da4b0768": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "accessibility"
+      ]
     },
     "2.1.305#320848b2": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.305#0362c0c9": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.305#befb8d3a": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "self-hosted-environments"
+      ]
     },
     "2.1.305#f0e6ad4e": {
       "kind": "added",
       "featureIds": [
         "ide",
-        "hooks"
+        "hooks",
+        "accessibility"
       ]
     },
     "2.1.305#d33fe6ba": {
       "kind": "fixed",
       "featureIds": [
-        "ide"
+        "ide",
+        "context"
       ]
     },
     "2.1.305#0d9079c7": {
@@ -399,24 +434,36 @@
     "2.1.305#92aec8d8": {
       "kind": "changed",
       "featureIds": [
-        "web"
+        "web",
+        "self-hosted-environments"
       ]
     },
     "2.1.305#334aa379": {
       "kind": "added",
-      "featureIds": []
+      "featureIds": [
+        "slack"
+      ]
     },
     "2.1.305#dd4c02e5": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-scheduled-tasks",
+        "slack"
+      ]
     },
     "2.1.305#586023e8": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-scheduled-tasks",
+        "slack"
+      ]
     },
     "2.1.305#5b1c3848": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "cloud-scheduled-tasks",
+        "slack"
+      ]
     },
     "2.1.305#28f9f0a5": {
       "kind": "changed",
@@ -424,11 +471,15 @@
     },
     "2.1.305#2620aadf": {
       "kind": "fixed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     },
     "2.1.305#3f9b7f29": {
       "kind": "changed",
-      "featureIds": []
+      "featureIds": [
+        "code-review"
+      ]
     }
   },
   "status": "approved",
