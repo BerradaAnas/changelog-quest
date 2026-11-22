@@ -87,4 +87,10 @@ describe("buildTimeline", () => {
     expect(estimated?.itemCount).toBe(3);
     expect(timelineStats(months)).toEqual({ releases: 4, summarized: 1 });
   });
+
+  it("leaves out releases published before the cut-off", () => {
+    const recent = buildTimeline(releases, new Map(), false, "2026-09-29T00:00:00Z");
+    const versions = recent.flatMap((m) => m.cards.flatMap((c) => c.entries.map((e) => e.version)));
+    expect(versions).toEqual(["2.0.2", "2.0.1", "2.0.0"]);
+  });
 });

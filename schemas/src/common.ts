@@ -47,3 +47,9 @@ export type ChangeKind = z.infer<typeof ChangeKind>;
 
 export const ReviewStatus = z.enum(["draft", "approved"]);
 export type ReviewStatus = z.infer<typeof ReviewStatus>;
+
+/**
+ * Releases published on or after this date get summaries and appear on the site's timeline;
+ * older ones are left out (ADRs 0013, 0015).
+ */
+export const SUMMARY_CUTOFF = "2026-10-20T00:00:00.000Z";

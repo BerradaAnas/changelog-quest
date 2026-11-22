@@ -1,3 +1,5 @@
+import { SUMMARY_CUTOFF } from "@cq/schemas";
+
 /** Pipeline settings. Changing any of these is a reviewed change, like content. */
 export const config = {
   changelogRepo: "anthropics/claude-code",
@@ -16,7 +18,7 @@ export const config = {
    * the "summary coming" card; an older summary that already exists is still redrafted when
    * its source changes.
    */
-  summaryCutoff: "2026-10-20T00:00:00.000Z",
+  summaryCutoff: SUMMARY_CUTOFF,
   /** The single branch the daily run updates; see docs/decisions/0006-pipeline-pull-requests.md. */
   ingestBranch: "bot/ingest",
 } as const;

@@ -1,12 +1,13 @@
 ---
+import { SUMMARY_CUTOFF } from "@cq/schemas";
 import FeatureGroups from "../components/FeatureGroups.astro";
 import WeekCard from "../components/WeekCard.astro";
 import Base from "../layouts/Base.astro";
 import { features, includeDrafts, releases, summaries } from "../lib/content";
-import { monthLabel } from "../lib/format";
+import { monthLabel, shortDate } from "../lib/format";
 import { buildTimeline, timelineStats } from "../lib/timeline";
 
-const months = buildTimeline(releases, summaries, includeDrafts);
+const months = buildTimeline(releases, summaries, includeDrafts, SUMMARY_CUTOFF);
 const stats = timelineStats(months);
 ---
 
@@ -25,7 +26,7 @@ const stats = timelineStats(months);
       <a class="soft" href="#timeline">See recent releases</a>
     </p>
     <p class="stats">
-      {stats.releases} releases tracked · {stats.summarized} summarized so far, newest first
+      {stats.releases} releases since {shortDate(SUMMARY_CUTOFF)} · {stats.summarized} summarized, newest first
     </p>
   </section>
 
@@ -56,5 +57,9 @@ const stats = timelineStats(months);
         </section>
       ))
     }
+    <p class="older">
+      Older releases are in the
+      <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">official changelog</a>.
+    </p>
   </section>
 </Base>

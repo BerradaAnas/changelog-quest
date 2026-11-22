@@ -4,7 +4,7 @@ Status on 2026-11-20. Code for build plan steps 0–9 is written (see `conceptio
 what is left is accounts, reviews, content and the launch. How-tos are in `operations.md`.
 
 **Scope for launch:** feature pages and demos are the core of the site. Release summaries
-cover only the last month; older releases keep the "summary coming" card linking to GitHub.
+cover only the last month; older releases are left off the timeline (ADR 0015).
 Launch early, then decide on more work based on whether people use it (ADR 0013).
 
 ## 1. Land the current branch
