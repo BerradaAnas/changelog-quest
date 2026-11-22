@@ -1137,3 +1137,18 @@ mark {
 .hero-actions .soft {
   color: var(--text);
 }
+
+/* Whether a feature has a hands-on example. */
+.tag.has-demo {
+  background: var(--info-bg);
+  color: var(--accent-text);
+}
+.tag.has-demo.draft {
+  color: var(--warn);
+}
+.tag.no-demo {
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  color: var(--faint);
+  font-weight: 400;
+}

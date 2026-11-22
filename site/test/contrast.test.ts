@@ -46,6 +46,7 @@ const PAIRS: [text: string, background: string][] = [
   ["bad", "surface"],
   ["bad", "subtle"],
   ["accent-text", "info-bg"],
+  ["warn", "info-bg"],
   ["text", "info-bg"],
   ["console-text", "console-bg"],
   ["console-dim", "console-bg"],
