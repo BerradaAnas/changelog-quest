@@ -1,0 +1,42 @@
+{
+  "id": "settings",
+  "name": "Settings",
+  "area": "core",
+  "summary": "Configure Claude Code with JSON settings files for you, your project and your team.",
+  "what": "Settings control things like the model, permission rules, hooks and environment variables. They live in JSON files at several levels: your user file for every project, a project file committed for the team, a local project file just for you, and managed settings an organization can enforce. When files disagree, the more specific or more official level wins, while lists such as permission rules are combined.",
+  "impact": [
+    {
+      "title": "One setup for the whole team",
+      "detail": "Commit .claude/settings.json and everyone gets the same permission rules and hooks."
+    },
+    {
+      "title": "Personal tweaks stay personal",
+      "detail": ".claude/settings.local.json holds your own overrides and is not shared."
+    },
+    {
+      "title": "Organization guardrails",
+      "detail": "Managed settings sit above every other level, so company rules can't be switched off locally."
+    }
+  ],
+  "howItWorks": [
+    "Put settings for all projects in ~/.claude/settings.json.",
+    "Put shared project settings in .claude/settings.json and your own in .claude/settings.local.json.",
+    "Change a value from inside a session with /config, for example /config verbose=true.",
+    "Order, highest first: managed, command line (--settings), local project, shared project, user.",
+    "Run /status to see which files were loaded; files must be strict JSON, without comments or trailing commas."
+  ],
+  "docUrls": ["https://code.claude.com/docs/en/settings"],
+  "status": "active",
+  "events": [
+    {
+      "version": "0.2.67",
+      "type": "introduced",
+      "note": "Shared project rules could be saved in .claude/settings.json."
+    },
+    {
+      "version": "1.0.7",
+      "type": "updated",
+      "note": "Settings moved into settings.json files, replacing the claude config commands."
+    }
+  ]
+}

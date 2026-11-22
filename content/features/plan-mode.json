@@ -1,0 +1,45 @@
+{
+  "id": "plan-mode",
+  "name": "Plan mode",
+  "area": "core",
+  "summary": "Have Claude explore the code and propose a plan before it changes anything.",
+  "what": "In plan mode Claude can read files and look around the project, but it does not edit your source files. When it has worked out an approach, it shows you a plan. You approve it, ask for changes, or edit it yourself; only after approval does Claude start making changes.",
+  "impact": [
+    {
+      "title": "Agree before code changes",
+      "detail": "You see the approach for a large or risky change and correct it while it is still cheap to change."
+    },
+    {
+      "title": "Safe exploration",
+      "detail": "Ask questions about an unfamiliar codebase without any risk of files being edited."
+    },
+    {
+      "title": "You choose how it continues",
+      "detail": "On approval you decide whether Claude then works with edits accepted automatically or checked one by one."
+    }
+  ],
+  "howItWorks": [
+    "Press Shift+Tab until the status bar shows plan mode, or start with claude --permission-mode plan.",
+    "Or type /plan followed by what you want, to plan a single request.",
+    "Claude reads files and explores, then presents its plan; press Ctrl+G to edit the plan in your editor.",
+    "Approve the plan to leave plan mode and choose the mode for the work, or choose to keep planning.",
+    "To leave without approving, press Shift+Tab when no approval prompt is open."
+  ],
+  "docUrls": [
+    "https://code.claude.com/docs/en/permission-modes",
+    "https://code.claude.com/docs/en/common-workflows"
+  ],
+  "status": "active",
+  "events": [
+    {
+      "version": "1.0.33",
+      "type": "introduced",
+      "note": "First changelog mention of plan mode; it shipped earlier without an entry."
+    },
+    {
+      "version": "2.0.28",
+      "type": "updated",
+      "note": "Plan mode gained a dedicated Plan subagent."
+    }
+  ]
+}
