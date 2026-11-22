@@ -1397,6 +1397,14 @@ mark {
 /* Feature pages: a clear way back to the home page, at the top and the bottom. */
 .feature .back-home {
   margin: 0 0 20px;
+  font-size: 16px;
+}
+.back-home a {
+  font-weight: 600;
+  text-decoration: none;
+}
+.back-home a:hover {
+  text-decoration: underline;
 }
 .feature > .back-home {
   margin: 0;
