@@ -1243,3 +1243,9 @@ mark {
 .history-lines[open] > summary::before {
   content: "− ";
 }
+
+.minor-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}

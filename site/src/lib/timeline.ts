@@ -11,6 +11,8 @@ export interface SummaryView {
   headline: string;
   sections: { kind: ChangeKind; label: string; lines: string[] }[];
   featureIds: string[];
+  /** Items counted instead of summarized (ADR 0016), by kind; empty when there are none. */
+  minor: { kind: ChangeKind; count: number }[];
   /** Only ever true in local preview. */
   draft: boolean;
 }
@@ -75,11 +77,19 @@ export function summaryView(
   const featureIds = [
     ...new Set(Object.values(visible.classifications).flatMap((c) => c.featureIds)),
   ];
+  const minorKinds = Object.values(visible.classifications)
+    .filter((c) => c.minor)
+    .map((c) => c.kind);
+  const minor = KINDS.map(({ kind }) => ({
+    kind,
+    count: minorKinds.filter((k) => k === kind).length,
+  })).filter((m) => m.count > 0);
   return {
     title: visible.title,
     headline: visible.headline,
     sections,
     featureIds,
+    minor,
     draft: visible.status !== "approved",
   };
 }

@@ -45,7 +45,8 @@ File names must equal the entity key; the validator enforces it.
 ## Invariants (enforced by `pnpm validate`)
 
 - Item ids belong to their release, are unique, and positions are 0..n-1.
-- Every item is covered by a summary line and classified; every `covers` id exists (5.1).
+- Every item is classified and covered by a summary line, unless marked minor (never added or
+  removed, never also covered; ADR 0016); every `covers` id exists (5.1).
 - A summary whose `sourceHash` differs from its release's is stale: a warning here, hidden on
   the site, and not checked for coverage (5.1.4, ADR 0012).
 - Feature, release and input references resolve; demo regexes compile.
