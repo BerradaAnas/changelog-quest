@@ -17,7 +17,11 @@ also still close to the mock-up's, which section 10 of `conception.md` left open
 - Body text at 17 px with a 1.65 line height; small text no smaller than 14 px.
 - A cool neutral palette with a cobalt accent, in light and dark, distinct from Anthropic's.
   Every text pair stays at WCAG AA or better (`site/test/contrast.test.ts`).
-- Demos on feature pages are collapsed by default and open on request.
+- Demos on feature pages are collapsed by default. Once opened, the setup and the result sit
+  side by side; the result appears only after a run, coloured by its outcome, with its trace
+  shown as a dark session log.
+- Each feature area has its own colour (core cobalt, extend violet, anywhere teal), used on
+  cards, area titles and feature pages.
 
 ## Consequences
 

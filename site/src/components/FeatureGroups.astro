@@ -15,7 +15,7 @@ const groups = featuresByArea(features.map((f) => featureView(f, ctx)));
 
 {
   groups.map((g) => (
-    <section class="area" aria-labelledby={`area-${g.area}`}>
+    <section class="area" data-area={g.area} aria-labelledby={`area-${g.area}`}>
       <Heading id={`area-${g.area}`}>{g.label}</Heading>
       <p class="blurb">{g.blurb}</p>
       <ul class="feature-grid">
