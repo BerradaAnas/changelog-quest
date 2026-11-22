@@ -9,9 +9,15 @@ const { demo } = Astro.props;
 const id = `demo-${demo.featureId}`;
 ---
 
-<section class="demo" data-demo={JSON.stringify(demo)} aria-labelledby={`${id}-title`}>
-  <span class="kicker">Hands-on example · scripted, no AI runs here</span>
-  <h2 id={`${id}-title`}>{demo.title}</h2>
+<details class="demo" data-demo={JSON.stringify(demo)}>
+  <summary>
+    <span class="demo-head">
+      <span class="kicker">Try it yourself: a scripted example, no AI runs here</span>
+      <h2 id={`${id}-title`}>{demo.title}</h2>
+    </span>
+    <span class="demo-toggle" aria-hidden="true"></span>
+  </summary>
+  <div class="demo-body">
   {demo.status !== "approved" && <p class="draft-note">Draft example, shown in local preview only.</p>}
   <p>{demo.intro}</p>
   <noscript><p class="pending-note">This example needs JavaScript. Everything else on the page works without it.</p></noscript>
@@ -84,7 +90,8 @@ const id = `demo-${demo.featureId}`;
     <button type="submit" class="soft">Check answer</button>
     <p class="quiz-result" data-quiz-result aria-live="polite" hidden></p>
   </form>
-</section>
+  </div>
+</details>
 <script>
   import "../scripts/demo.ts";
 </script>
