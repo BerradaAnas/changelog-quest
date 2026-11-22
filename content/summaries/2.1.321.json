@@ -435,7 +435,7 @@
     },
     {
       "kind": "changed",
-      "text": "Mods Claude writes turn on without asking in auto and bypass modes, even with managed allowUnsandboxedCommands: false or allowManagedDomainsOnly, and don't load in dontAsk mode. A mod's own tool calls ($.tool.call, $.mcp.call) raise no prompt, even under ask rules or in dontAsk and -p runs; deny rules and organization policy still apply.",
+      "text": "In auto and bypass modes, mods that Claude writes are enabled without a prompt, even under managed allowUnsandboxedCommands: false or allowManagedDomainsOnly, while dontAsk mode skips loading them. Tool calls a mod makes itself through $.tool.call or $.mcp.call never prompt, not even under your ask rules or in dontAsk and -p runs; deny rules and organization policy still win.",
       "covers": [
         "2.1.321#d63d2992",
         "2.1.321#2a7ec4fd"

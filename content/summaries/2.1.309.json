@@ -292,7 +292,7 @@
     },
     {
       "kind": "changed",
-      "text": "claude ultrareview now needs workspace trust: it asks in a terminal and refuses otherwise. Scripts pass --trust-workspace (no value; put a PR number or base branch before it) or set CLAUDE_CODE_DISABLE_ULTRAREVIEW_TRUST_CHECK=1.",
+      "text": "Running claude ultrareview in an untrusted folder now prompts you to trust it when you're at a terminal and stops otherwise. Unattended scripts can add --trust-workspace (it takes no value, so put any PR number or base branch first) or set CLAUDE_CODE_DISABLE_ULTRAREVIEW_TRUST_CHECK=1.",
       "covers": [
         "2.1.309#a628abe3"
       ]
@@ -376,7 +376,7 @@
     },
     {
       "kind": "changed",
-      "text": "Cloud sessions: the Changes pane says when it lists only pushed commits or only Claude's edits.",
+      "text": "Cloud sessions: if the Changes pane shows only pushed commits, or only edits made by Claude, it now tells you which.",
       "covers": [
         "2.1.309#62c8845f"
       ]

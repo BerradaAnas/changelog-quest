@@ -63,7 +63,7 @@
     },
     {
       "kind": "added",
-      "text": "New start-up warnings: Bash allow rules with * in a variable's value, such as Bash(PORT=* npm run dev), and a one-time notice naming CLAUDE_CODE_PERFORCE_MODE when Perforce settings exist but the mode is off.",
+      "text": "Claude Code now warns at startup about Bash allow rules that put * inside a variable's value (Bash(PORT=* npm run dev), for example), and once mentions CLAUDE_CODE_PERFORCE_MODE if it finds Perforce settings while that mode is off.",
       "covers": [
         "2.1.323#7958a738",
         "2.1.323#82ff10ee"
@@ -335,7 +335,7 @@
     },
     {
       "kind": "fixed",
-      "text": "A mod's hot reload no longer ignores a file created right after a failed reload.",
+      "text": "If a mod fails to reload and you then create a file, hot reload now notices the new file.",
       "covers": [
         "2.1.323#8523f037"
       ]

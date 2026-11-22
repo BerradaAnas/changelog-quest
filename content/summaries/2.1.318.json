@@ -300,7 +300,7 @@
     },
     {
       "kind": "changed",
-      "text": "/claude-api managed-agents-onboard gives a new agent's built-in tools, and a quickstart template's MCP tools, the auto permission policy (\"Judge risky actions\") by default, as the Claude Console does. Saying \"run without asking\" opts out.",
+      "text": "Agents set up with /claude-api managed-agents-onboard now default to the auto permission policy (\"Judge risky actions\") for their built-in tools and for a quickstart template's MCP tools, the same default as the Claude Console; ask to \"run without asking\" if you don't want it.",
       "covers": [
         "2.1.318#2196e38b"
       ]
