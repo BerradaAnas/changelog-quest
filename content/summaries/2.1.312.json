@@ -1,0 +1,426 @@
+{
+  "version": "2.1.312",
+  "sourceHash": "4034fa7f76d89f97423524e514174160767bd4c4b404ac237163315e16b137a4",
+  "title": "Safer writes to large CLAUDE.md files, shorter prompt for unknown models",
+  "headline": "Claude no longer overwrites large instruction files it only partly read, unrecognized models on cloud providers get the shorter system prompt, and hook limits are set.",
+  "lines": [
+    {
+      "kind": "added",
+      "text": "Claude apps gateway: oidc.user_id_claim identifies people by an id_token claim other than sub, such as the oid claim of Microsoft Entra ID.",
+      "covers": [
+        "2.1.312#dd91f149"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "In fullscreen, clicking the \"to send now\" hint under a queued message sends it immediately, like its key.",
+      "covers": [
+        "2.1.312#fe7941fd"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "After signing in from the VS Code extension, managed settings and organization policy keep being fetched for the rest of the session.",
+      "covers": [
+        "2.1.312#b1f2ba22"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude no longer overwrites a very large CLAUDE.md, rules file or @-included file in a subfolder after reading only its beginning; Write asks it to read the whole file or edit in place.",
+      "covers": [
+        "2.1.312#496eceae"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Skills tied to a folder or to paths: are found again after a Bash cd further into a git repository.",
+      "covers": [
+        "2.1.312#8e8b07b7"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Rarely, the first reply after resuming a session in the terminal could be gone the next time it was resumed. Fixed.",
+      "covers": [
+        "2.1.312#0a1e9a67"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A command with an invalid name no longer stops every command from loading, which could leave claude -p printing nothing.",
+      "covers": [
+        "2.1.312#5c64c8eb"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Reading PDF pages no longer sometimes fails with \"pdftoppm failed: Could not write image\" while old session files are being cleaned up.",
+      "covers": [
+        "2.1.312#e9b14820"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Effort changes during a task: the spinner, OpenTelemetry effort values and transcripts show the level actually in force, and the /model and /effort cache warning no longer claims the change always waits for your next message.",
+      "covers": [
+        "2.1.312#709fd417",
+        "2.1.312#588b55e1"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A session is no longer shown as waiting on you just because its last message mentioned something waiting on you mid-sentence.",
+      "covers": [
+        "2.1.312#25c1b0fa"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Agent view: text cleared with Ctrl+C right before exiting no longer comes back on the next launch, and exiting with Ctrl+D from an empty ! input no longer reopens in shell mode.",
+      "covers": [
+        "2.1.312#22e3cc37",
+        "2.1.312#433f9243"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Vim mode: d, c and y with a gj or gk count larger than the remaining lines now only move the cursor, as Vim does, instead of deleting or copying text.",
+      "covers": [
+        "2.1.312#c23827f4"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/help and the / menu show a short description for /verify instead of the long one written for Claude.",
+      "covers": [
+        "2.1.312#7fb6b5c1"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "The effort indicator in the prompt says when a mid-task change may wait for your next message, and drops the note once it no longer applies.",
+      "covers": [
+        "2.1.312#c5282bb7"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud sessions: when WebFetch can't resolve a host, the error suggests it may be outside the allowed network domains, so Claude tells you which host to allow.",
+      "covers": [
+        "2.1.312#fe0c6ed4"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "On Bedrock, Vertex, Foundry and Mantle, model names Claude Code doesn't recognize (custom deployment names, inference profile ARNs) get the shorter system prompt even if Sonnet or Haiku is behind them. CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT=0 keeps the full one.",
+      "covers": [
+        "2.1.312#a5469757"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "The automatic switch to another model after a flagged message now also applies to unrecognized model names such as custom deployments. CLAUDE_CODE_DISABLE_REFUSAL_FALLBACK=1 turns it off.",
+      "covers": [
+        "2.1.312#06815e0e"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Usage limit messages name the 5-hour window the \"5-hour limit\" rather than the \"session limit\". In VS Code, resets also show a clock time such as \"Resets at 3:10 PM\".",
+      "covers": [
+        "2.1.312#04be4cbe",
+        "2.1.312#a5d14575"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud sessions started from the CLI take their names and branch names from the server.",
+      "covers": [
+        "2.1.312#a1026f16"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Prompt and agent hooks now run at most 24 at once per session, subagents included, plus up to 12 that have waited past their event's timeout. A timeout under 1 second counts as 1 second.",
+      "covers": [
+        "2.1.312#eca145fd"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "A subagent's autoCompactWindow can now lower the window set by CLAUDE_CODE_AUTO_COMPACT_WINDOW (it was ignored before), though it still can't raise it.",
+      "covers": [
+        "2.1.312#81d37501"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "OpenTelemetry: mcp_server.name now reports the real name of fixed-URL remote MCP servers from plugins in the official Anthropic marketplace, not custom. The claude_code.safety_event event is no longer sent.",
+      "covers": [
+        "2.1.312#2bd95f63",
+        "2.1.312#135945e1"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: when organization settings can't load or are refused at startup, the tab explains why and offers Retry or Sign in again instead of ending on a bare exit code.",
+      "covers": [
+        "2.1.312#77c2087f"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "Cloud sessions: routines that run in the cloud get an effort level in the model picker, and the setup script box in environment settings becomes a Bash editor with colours, line numbers and a Copy button.",
+      "covers": [
+        "2.1.312#1a02cbc7",
+        "2.1.312#96f399b8"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud sessions: when Claude adds a repository, opening that step shows a short table of what happened rather than raw JSON.",
+      "covers": [
+        "2.1.312#b49a6a9c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Cloud sessions: resending an unchanged message after a failed send no longer sometimes runs it twice, a failed environment creation shows its error inside the dialog, and Edit in a routine's menu opens the edit dialog.",
+      "covers": [
+        "2.1.312#d729eb0b",
+        "2.1.312#a28d1b7c",
+        "2.1.312#5593fac1"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Remote Control: an unarchived session shows as idle instead of working until a computer reconnects.",
+      "covers": [
+        "2.1.312#d720694d"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Claude Tag: the retry notice in Slack names the model in use or says rate limits were hit, instead of a generic API error.",
+      "covers": [
+        "2.1.312#fa409274"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude Tag: a channel's switch and agent settings survive an older private channel going public with a new ID, Claude replies in channels whose environment has no network access, and files are posted in the right thread when Claude answers several threads in one channel.",
+      "covers": [
+        "2.1.312#219bc43c",
+        "2.1.312#96628ec0",
+        "2.1.312#5174a59f"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Code Review: when GitHub delivers a push event late, the pull request's current commit is reviewed, not an old one or none.",
+      "covers": [
+        "2.1.312#7fa84ea7"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.312#dd91f149": {
+      "kind": "added",
+      "featureIds": []
+    },
+    "2.1.312#fe7941fd": {
+      "kind": "added",
+      "featureIds": []
+    },
+    "2.1.312#b1f2ba22": {
+      "kind": "fixed",
+      "featureIds": [
+        "settings",
+        "ide"
+      ]
+    },
+    "2.1.312#496eceae": {
+      "kind": "fixed",
+      "featureIds": [
+        "memory"
+      ]
+    },
+    "2.1.312#8e8b07b7": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.312#0a1e9a67": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#5c64c8eb": {
+      "kind": "fixed",
+      "featureIds": [
+        "headless"
+      ]
+    },
+    "2.1.312#e9b14820": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#709fd417": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#588b55e1": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#25c1b0fa": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#22e3cc37": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#433f9243": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#c23827f4": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#7fb6b5c1": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.312#c5282bb7": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.312#fe0c6ed4": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#a5469757": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.312#06815e0e": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.312#04be4cbe": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.312#a5d14575": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.312#a1026f16": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#eca145fd": {
+      "kind": "changed",
+      "featureIds": [
+        "hooks"
+      ]
+    },
+    "2.1.312#81d37501": {
+      "kind": "changed",
+      "featureIds": [
+        "sub-agents"
+      ]
+    },
+    "2.1.312#2bd95f63": {
+      "kind": "changed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.312#135945e1": {
+      "kind": "changed",
+      "featureIds": [
+        "mcp"
+      ]
+    },
+    "2.1.312#77c2087f": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.312#1a02cbc7": {
+      "kind": "added",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#96f399b8": {
+      "kind": "added",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#b49a6a9c": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#d729eb0b": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#a28d1b7c": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#5593fac1": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.312#d720694d": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#fa409274": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.312#219bc43c": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#96628ec0": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#5174a59f": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.312#7fa84ea7": {
+      "kind": "fixed",
+      "featureIds": []
+    }
+  },
+  "status": "draft",
+  "model": "claude-opus-5-5",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-22T19:58:19.416Z"
+}

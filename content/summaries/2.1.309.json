@@ -1,0 +1,831 @@
+{
+  "version": "2.1.309",
+  "sourceHash": "574c9aff3f1a82aae4b3be36047210d4ff7a0f80a7362d398e16f641e1f0dc7c",
+  "title": "Sandbox and permission gaps closed, sed -i runs as Bash",
+  "headline": "Many sandbox, permission and worktree isolation gaps are closed, sed -i now runs as a normal Bash command, and claude ultrareview requires workspace trust.",
+  "lines": [
+    {
+      "kind": "fixed",
+      "text": "Sandbox on macOS and Linux: the shell's startup files no longer run outside the sandbox before each command, and macOS denyWrite globs now also apply at a path's real location when reached through a symlink.",
+      "covers": [
+        "2.1.309#77fcefe9",
+        "2.1.309#14935a5c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Sandboxed commands and auto-accepted edits can no longer change the MCP config file given with --mcp-config.",
+      "covers": [
+        "2.1.309#71bed76e"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "In print and SDK sessions, a later permission prompt no longer reconnects an MCP server you disabled.",
+      "covers": [
+        "2.1.309#f59f7c4f"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Bash permission checks: a variable set by a command whose redirect may fail to open is no longer trusted, compound commands that cd before git now prompt even when the cd is wrapped or prefixed, and an Edit(path) deny rule blocks a redirect to that path in commands containing a subshell.",
+      "covers": [
+        "2.1.309#a73bb524",
+        "2.1.309#97f27249",
+        "2.1.309#81d5c1d3"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Worktree isolation now refuses some locale-prefixed commands and, on zsh, some arithmetic commands it used to let through.",
+      "covers": [
+        "2.1.309#facebeca",
+        "2.1.309#a33c7a0c"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Worktrees and branch checkouts created by Claude Code ignore git replace refs, like its other git operations.",
+      "covers": [
+        "2.1.309#685ec124"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Write protection of the profile store now applies when the config directory is reached through a symlink.",
+      "covers": [
+        "2.1.309#44002e0d"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Reading files under a very large nested CLAUDE.md no longer causes repeated compaction: only the start of an oversized nested file loads.",
+      "covers": [
+        "2.1.309#e9717ba4"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Ctrl+Enter (send now) sends the message even after the response has started, and pressing it while a prompt's hooks run no longer restarts them and leaves the message queued.",
+      "covers": [
+        "2.1.309#d6c85001"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Slash commands bound to keys no longer run in the shell when you are in ! mode.",
+      "covers": [
+        "2.1.309#1baf2cf6"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Ctrl+O shows messages from other agents and sessions that are still waiting to be delivered, in full below the transcript and marked as waiting.",
+      "covers": [
+        "2.1.309#334f6a81"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Long tool output previews are no longer cut in the middle of an emoji, which left transcripts jq could not parse.",
+      "covers": [
+        "2.1.309#c95ebbfa"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Linux sandboxes that share the parent's /proc no longer make Read report \"File does not exist\" for PDF page ranges.",
+      "covers": [
+        "2.1.309#8ddf889d"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude desktop app: messages of a hosted session are no longer sometimes lost when its connection refreshes, and sessions no longer miss features when the terminal on the same computer is signed in to another account or organization.",
+      "covers": [
+        "2.1.309#b6714d0d",
+        "2.1.309#a2bc17ff"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "The claude remote-control status line no longer shows HEAD as the branch for a folder outside any git repository.",
+      "covers": [
+        "2.1.309#61befddf"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Split-pane agent teammates now inherit the tool deny and --tools rules from the leader's command line.",
+      "covers": [
+        "2.1.309#284902aa"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A session renamed with /rename keeps that name for other sessions after a VS Code window reload or a non-interactive --resume.",
+      "covers": [
+        "2.1.309#79ded2cb"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "The /rewind list no longer says \"No code changes\" for a turn that changed checkpointed files through /code-review --fix, a subagent or a shell command.",
+      "covers": [
+        "2.1.309#d307c035"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/privacy-settings shows the current \"Help improve our AI models\" value and says when it can't be fetched.",
+      "covers": [
+        "2.1.309#4fbcc986"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Feedback: when your organization doesn't accept feedback, you see the server's reason and where to report a bug instead of \"try again later\" (VS Code included), and oversized /feedback reports are resent without the transcript instead of failing.",
+      "covers": [
+        "2.1.309#f8de4938",
+        "2.1.309#8dd59b43",
+        "2.1.309#761423de"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Skills: one in an --add-dir folder whose name is taken is offered as <folder>:<name>, and /verify and /code-review find a nested package's own skill when its files were changed from the shell.",
+      "covers": [
+        "2.1.309#3047b8b7",
+        "2.1.309#a1a49f65"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "/claude-api skill corrections: ant beta:worker poll --on-work does not pass trace context to the command, C# tracing setup now includes spans from the cloud platform clients, and API spans for Claude Platform on AWS can join the caller's trace.",
+      "covers": [
+        "2.1.309#9b67b66f",
+        "2.1.309#623f54e5",
+        "2.1.309#c2a1f837"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Hooks run in PowerShell now block when the program exits with code 2, and on Windows, PreToolUse and PermissionRequest hooks with \"shell\": \"powershell\" no longer let calls through when Git for Windows is missing.",
+      "covers": [
+        "2.1.309#6dbbeaa6"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "A mod's turn.step hook that names a model by alias such as haiku now resolves it, instead of every request failing with a model error.",
+      "covers": [
+        "2.1.309#a4b3f082"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Plugins and skills synced from claude.ai are no longer removed, sometimes mid-session, after a disk read error.",
+      "covers": [
+        "2.1.309#aa4388ca"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Artifacts: publishes and updates are no longer refused for some ordinary pages, such as ones with certain minified scripts or that Claude couldn't read first, and after a compaction Claude stops asking permission for each update in the rest of the turn.",
+      "covers": [
+        "2.1.309#5387787d",
+        "2.1.309#abdd5316"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Amazon Bedrock: fine-grained tool streaming is on when ANTHROPIC_BEDROCK_BASE_URL points at the default bedrock-runtime.<region>.amazonaws.com endpoint.",
+      "covers": [
+        "2.1.309#f5037269"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Behind gateways that only send keepalive pings, the \"Waiting for API response\" hint stops flickering: routes not on Anthropic's backend wait 45 seconds.",
+      "covers": [
+        "2.1.309#77e71023"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude no longer pings unrelated GitHub users by writing role names or placeholders as @-mentions in pull requests, issues and comments.",
+      "covers": [
+        "2.1.309#6db987fe"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Linux: sandbox write denies stay in place when a background command outlives the session.",
+      "covers": [
+        "2.1.309#be16e341"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Windows: PowerShell Set-Location or cd commands aimed at the current folder with extra arguments now ask for approval instead of being approved automatically.",
+      "covers": [
+        "2.1.309#88cdaba8"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "macOS: on a Mac without Xcode or the Command Line Tools, the install dialog no longer pops up every time Claude Code starts.",
+      "covers": [
+        "2.1.309#c5a6ae88"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Self-hosted runners: --startup-timeout-min no longer stops a session whose first prompt, such as /code-review, is still busy in a subagent. Frozen processes are still stopped.",
+      "covers": [
+        "2.1.309#03d6d5be"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Git commands Claude Code runs for itself are faster on Windows, and their errors appear in English everywhere, even when git uses another language.",
+      "covers": [
+        "2.1.309#69b33859"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "A hooks module nested too deep to load now gets an error naming the file instead of a bare stack overflow.",
+      "covers": [
+        "2.1.309#fff229e5"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Full disks: a Bash command cut short says so and names the folder to clear, and starting on a full temp volume prints a clear message instead of a raw ENOSPC error.",
+      "covers": [
+        "2.1.309#d96c0d70"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "/claude-api skill: it offers API tracing next to SDK tracing when you ask for OpenTelemetry, checks the live docs before calling a feature unsupported, and explains that service account keys and Workload Identity Federation tokens can manage OpenTelemetry destinations.",
+      "covers": [
+        "2.1.309#8b63e988",
+        "2.1.309#86be087c",
+        "2.1.309#febe3b26"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Self-hosted runners: when a session moves to a new runner, Claude sees the interrupted tool call marked as outcome unknown.",
+      "covers": [
+        "2.1.309#95e06983"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "The bundled dataviz skill accepts APCA for text contrast (keeping WCAG 2 ratios where AA conformance is needed), adds an apca(text, background) check to its palette scripts, and says whether labels on a coloured fill should be white or near-black.",
+      "covers": [
+        "2.1.309#a79b2cd3"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "sed -i now gets the normal Bash prompt and runs as typed instead of a simulated edit preview. Like other Bash edits, /rewind does not undo it.",
+      "covers": [
+        "2.1.309#626c8d90"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "claude ultrareview now needs workspace trust: it asks in a terminal and refuses otherwise. Scripts pass --trust-workspace (no value; put a PR number or base branch before it) or set CLAUDE_CODE_DISABLE_ULTRAREVIEW_TRUST_CHECK=1.",
+      "covers": [
+        "2.1.309#a628abe3"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "In bypass permissions mode in the Desktop app and VS Code, a dangerous rm or rmdir is denied at once with a hint to rewrite it, so unattended sessions don't stall.",
+      "covers": [
+        "2.1.309#1a754d22"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "When the sandbox is enabled but can't run, commands excluded from it ask before writing to the sandbox's write-list paths, and the unsandboxed fallback is refused.",
+      "covers": [
+        "2.1.309#12e23440"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Creating or reusing worktrees no longer makes git fetch objects on demand, in ordinary clones and in partial clones with a Bash sandbox; such a partial clone fetches them up front.",
+      "covers": [
+        "2.1.309#6b7922d0"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "/claude-api builds Managed Agents subagent teams on multiagent_20261001 with dynamic workflows on by default, instead of coordinator.",
+      "covers": [
+        "2.1.309#763fae49"
+      ]
+    },
+    {
+      "kind": "added",
+      "text": "VS Code: a log warning explains what to do when dictation or the extension's own requests fail certificate checks, for example behind a TLS-inspecting proxy.",
+      "covers": [
+        "2.1.309#ed99a9b7"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: the panel recovers on its own, or says how to fix it, after the editor cached an incomplete copy of its files, and Session history no longer fills with empty \"Untitled\" sessions.",
+      "covers": [
+        "2.1.309#d84d9b4b",
+        "2.1.309#12552e10"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: long slash-command messages such as /goal fold behind Show more, long messages also fold after the panel gets narrower, and a mod's \"From the … plugin\" label no longer covers the slash command and @-mention menus.",
+      "covers": [
+        "2.1.309#6339e888",
+        "2.1.309#635b67b3",
+        "2.1.309#ab03120a"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "VS Code: Ctrl+J is left to VS Code and the OS when \"ctrl+j\" is null in the Chat context of ~/.claude/keybindings.json, and pasting copied LaTeX math no longer adds empty items or blocks or restarts list numbering.",
+      "covers": [
+        "2.1.309#fdcddb96",
+        "2.1.309#056ee29c"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "VS Code: after each Edit or Write in the chat panel, the wait for new problems is usually 0.75 seconds instead of 1 to 1.5.",
+      "covers": [
+        "2.1.309#b04e8653"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Cloud sessions: the routine Add connector list waits for loading before saying none are available, the environment editor keeps variable order and values with both kinds of quote, the self-hosted environment dialog keeps its title, tabs and buttons in view, and the \"read documentation\" row shows a readable page.",
+      "covers": [
+        "2.1.309#814d181a",
+        "2.1.309#7c8ff036",
+        "2.1.309#f52acd48",
+        "2.1.309#238bbbc3"
+      ]
+    },
+    {
+      "kind": "changed",
+      "text": "Cloud sessions: the Changes pane says when it lists only pushed commits or only Claude's edits.",
+      "covers": [
+        "2.1.309#62c8845f"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude Tag: a draft approved for a channel no longer lands in your DM, Allow and Deny on approval cards restart a stopped session, untagged channel messages are read again after a workspace moves to another Claude organization, and Claude reads a newer thread message before replying.",
+      "covers": [
+        "2.1.309#c990273f",
+        "2.1.309#401744ff",
+        "2.1.309#fde06950",
+        "2.1.309#e39bb6d9"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Claude Tag: the admin Slack page shows an error with Retry when the workspace list fails to load, instead of saying none are connected.",
+      "covers": [
+        "2.1.309#5ecb8850"
+      ]
+    },
+    {
+      "kind": "fixed",
+      "text": "Code Review: a finished review still gets a completed check on the pull request after earlier attempts failed, and a push queued behind a running review no longer starts one after @claude review stop; its check closes with a reason.",
+      "covers": [
+        "2.1.309#80d629f0",
+        "2.1.309#ebee03d7"
+      ]
+    }
+  ],
+  "classifications": {
+    "2.1.309#77fcefe9": {
+      "kind": "fixed",
+      "featureIds": [
+        "sandboxing"
+      ]
+    },
+    "2.1.309#14935a5c": {
+      "kind": "fixed",
+      "featureIds": [
+        "sandboxing"
+      ]
+    },
+    "2.1.309#71bed76e": {
+      "kind": "fixed",
+      "featureIds": [
+        "sandboxing",
+        "mcp"
+      ]
+    },
+    "2.1.309#f59f7c4f": {
+      "kind": "fixed",
+      "featureIds": [
+        "mcp",
+        "headless"
+      ]
+    },
+    "2.1.309#a73bb524": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.309#97f27249": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.309#81d5c1d3": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.309#facebeca": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#a33c7a0c": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#685ec124": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#44002e0d": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#e9717ba4": {
+      "kind": "fixed",
+      "featureIds": [
+        "memory"
+      ]
+    },
+    "2.1.309#d6c85001": {
+      "kind": "fixed",
+      "featureIds": [
+        "hooks"
+      ]
+    },
+    "2.1.309#1baf2cf6": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#334f6a81": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#c95ebbfa": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#8ddf889d": {
+      "kind": "fixed",
+      "featureIds": [
+        "sandboxing"
+      ]
+    },
+    "2.1.309#b6714d0d": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#a2bc17ff": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#61befddf": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#284902aa": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.309#79ded2cb": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#d307c035": {
+      "kind": "fixed",
+      "featureIds": [
+        "checkpointing"
+      ]
+    },
+    "2.1.309#4fbcc986": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#f8de4938": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#8dd59b43": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#761423de": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#3047b8b7": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#a1a49f65": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#9b67b66f": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#623f54e5": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#c2a1f837": {
+      "kind": "fixed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#6dbbeaa6": {
+      "kind": "fixed",
+      "featureIds": [
+        "hooks"
+      ]
+    },
+    "2.1.309#a4b3f082": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#aa4388ca": {
+      "kind": "fixed",
+      "featureIds": [
+        "plugins",
+        "skills"
+      ]
+    },
+    "2.1.309#5387787d": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#abdd5316": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#f5037269": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#77e71023": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#6db987fe": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#be16e341": {
+      "kind": "fixed",
+      "featureIds": [
+        "sandboxing"
+      ]
+    },
+    "2.1.309#88cdaba8": {
+      "kind": "fixed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.309#c5a6ae88": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#03d6d5be": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#69b33859": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.309#fff229e5": {
+      "kind": "changed",
+      "featureIds": [
+        "hooks"
+      ]
+    },
+    "2.1.309#d96c0d70": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.309#8b63e988": {
+      "kind": "changed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#86be087c": {
+      "kind": "changed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#febe3b26": {
+      "kind": "changed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#95e06983": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.309#a79b2cd3": {
+      "kind": "changed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#626c8d90": {
+      "kind": "changed",
+      "featureIds": [
+        "permissions",
+        "checkpointing"
+      ]
+    },
+    "2.1.309#a628abe3": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.309#1a754d22": {
+      "kind": "changed",
+      "featureIds": [
+        "permissions"
+      ]
+    },
+    "2.1.309#12e23440": {
+      "kind": "changed",
+      "featureIds": [
+        "sandboxing"
+      ]
+    },
+    "2.1.309#6b7922d0": {
+      "kind": "changed",
+      "featureIds": []
+    },
+    "2.1.309#763fae49": {
+      "kind": "changed",
+      "featureIds": [
+        "skills"
+      ]
+    },
+    "2.1.309#ed99a9b7": {
+      "kind": "added",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#d84d9b4b": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#12552e10": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#6339e888": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#635b67b3": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#ab03120a": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#fdcddb96": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#056ee29c": {
+      "kind": "fixed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#b04e8653": {
+      "kind": "changed",
+      "featureIds": [
+        "ide"
+      ]
+    },
+    "2.1.309#814d181a": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.309#7c8ff036": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.309#f52acd48": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.309#238bbbc3": {
+      "kind": "fixed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.309#62c8845f": {
+      "kind": "changed",
+      "featureIds": [
+        "web"
+      ]
+    },
+    "2.1.309#c990273f": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#401744ff": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#fde06950": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#e39bb6d9": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#5ecb8850": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#80d629f0": {
+      "kind": "fixed",
+      "featureIds": []
+    },
+    "2.1.309#ebee03d7": {
+      "kind": "fixed",
+      "featureIds": []
+    }
+  },
+  "status": "draft",
+  "model": "claude-opus-5-5",
+  "promptVersion": "draft-summary-v1",
+  "generatedAt": "2026-11-22T19:58:19.907Z"
+}
