@@ -53,6 +53,7 @@ const docLabel = (url: string) =>
   </nav>
   <article class="feature" data-area={feature.area} data-pagefind-body>
     <header class="hero">
+      <p class="back-home"><a class="soft" href="/">← Back to home</a></p>
       <p class="kicker">
         <a href="/features/">Features</a> · {place.section?.label} · since version {view.introducedIn}
         {feature.status !== "active" && <span class="tag">{feature.status}</span>}
@@ -163,6 +164,7 @@ const docLabel = (url: string) =>
       {prev ? <a href={`/features/${prev.id}/`}>← {prev.name}</a> : <span />}
       {next ? <a href={`/features/${next.id}/`}>{next.name} →</a> : <span />}
     </nav>
+    <p class="back-home"><a class="soft" href="/">← Back to home</a></p>
   </article>
   <nav class="doc-toc" aria-label="On this page">
     <p class="doc-toc-title">On this page</p>
