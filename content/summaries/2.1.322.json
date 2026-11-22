@@ -18,8 +18,9 @@
       "featureIds": []
     }
   },
-  "status": "draft",
+  "status": "approved",
   "model": "claude-fable-5-2",
   "promptVersion": "draft-summary-v1",
-  "generatedAt": "2026-11-15T01:44:51.971Z"
+  "generatedAt": "2026-11-15T01:44:51.971Z",
+  "approvedAt": "2026-11-22T19:55:10.000Z"
 }
