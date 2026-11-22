@@ -1355,3 +1355,11 @@ mark {
     margin-bottom: 12px;
   }
 }
+.doc-layout-index {
+  grid-template-columns: 230px minmax(0, 1fr);
+}
+@media (max-width: 860px) {
+  .doc-layout-index {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
