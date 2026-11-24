@@ -1,7 +1,10 @@
 import type { Demo, Outcome } from "@cq/schemas";
 import { fillOutcome, renderConfigPreview, runDemo } from "@cq/schemas/demo-engine";
-import { markQuiz, markTried } from "../lib/progress.ts";
+import { markTried } from "../lib/progress.ts";
 import { loadProgress, saveProgress } from "./store.ts";
+
+/** The demo as sent to the browser: the quiz is not shown on the site. */
+type ClientDemo = Omit<Demo, "quiz">;
 
 /**
  * Runs scripted demos in the browser. Visitor input is only matched against the demo's rules
@@ -21,7 +24,7 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, className: string, te
   return node;
 }
 
-function renderOutcome(target: HTMLElement, outcome: Outcome | null, demo: Demo) {
+function renderOutcome(target: HTMLElement, outcome: Outcome | null, demo: ClientDemo) {
   const kind = outcome?.outcome ?? "info";
   const nodes: HTMLElement[] = [
     el("span", `badge ${kind}`, outcome ? OUTCOME_LABELS[kind] : "Not scripted"),
@@ -42,7 +45,7 @@ function renderOutcome(target: HTMLElement, outcome: Outcome | null, demo: Demo)
 }
 
 function setUp(root: HTMLElement) {
-  const demo = JSON.parse(root.dataset.demo ?? "null") as Demo | null;
+  const demo = JSON.parse(root.dataset.demo ?? "null") as ClientDemo | null;
   const form = root.querySelector<HTMLFormElement>("[data-demo-form]");
   const outcome = root.querySelector<HTMLElement>("[data-demo-outcome]");
   if (!demo || !form || !outcome) return;
@@ -75,25 +78,6 @@ function setUp(root: HTMLElement) {
     renderOutcome(outcome, matched ? fillOutcome(matched, values) : null, demo);
     showConfig();
     if (matched) saveProgress(markTried(loadProgress(), demo.featureId));
-  });
-
-  const quiz = root.querySelector<HTMLFormElement>("[data-demo-quiz]");
-  const result = root.querySelector<HTMLElement>("[data-quiz-result]");
-  quiz?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const answer = new FormData(quiz).get("answer");
-    if (!result) return;
-    if (answer === null) {
-      result.replaceChildren(el("span", "", "Pick an answer first."));
-    } else {
-      const passed = Number(answer) === demo.quiz.answerIndex;
-      result.replaceChildren(
-        el("strong", passed ? "right" : "wrong", passed ? "Correct. " : "Not quite. "),
-        el("span", "", demo.quiz.explanation),
-      );
-      saveProgress(markQuiz(loadProgress(), demo.featureId, passed));
-    }
-    result.hidden = false;
   });
 
   root.dataset.ready = "true";

@@ -3,7 +3,6 @@ import { LOCAL_PROGRESS_KEY, LocalProgress, emptyProgress as schemaEmpty } from 
 import { describe, expect, it } from "vitest";
 import {
   emptyProgress,
-  markQuiz,
   markTried,
   nextTheme,
   PROGRESS_KEY,
@@ -49,12 +48,9 @@ describe("progress", () => {
     expect(LocalProgress.safeParse(parsed).success).toBe(true);
   });
 
-  it("records tries and quiz results without losing a pass", () => {
-    let p = markTried(markTried(emptyProgress(), "hooks"), "hooks");
+  it("records each try once", () => {
+    const p = markTried(markTried(emptyProgress(), "hooks"), "hooks");
     expect(p.tried).toEqual(["hooks"]);
-    p = markQuiz(markQuiz(p, "hooks", true), "hooks", false);
-    expect(p.quiz).toEqual({ hooks: true });
-    expect(markQuiz(p, "skills", false).quiz.skills).toBe(false);
   });
 
   it("cycles themes", () => {

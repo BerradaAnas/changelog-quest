@@ -720,8 +720,7 @@ a:hover {
   color: var(--text);
 }
 .outcome,
-.config,
-.quiz {
+.config {
   padding-top: 16px;
   border-top: 1px dashed var(--border-strong);
 }
@@ -782,12 +781,6 @@ pre {
   /* Long setting names wrap instead of hiding behind a scrollbar. */
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-}
-.quiz-result .right {
-  color: var(--ok);
-}
-.quiz-result .wrong {
-  color: var(--warn);
 }
 
 /* Search */
@@ -1092,21 +1085,6 @@ mark {
   color: var(--console-text);
 }
 
-/* Quiz */
-.quiz {
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--subtle);
-}
-.quiz-result .right,
-.quiz-result .wrong {
-  font-weight: 700;
-}
-.quiz-result .wrong {
-  color: var(--bad);
-}
-
 /* Release cards */
 .card {
   border-left: 4px solid transparent;
@@ -1192,6 +1170,7 @@ mark {
 
 /* Update history: collapsed until opened, like the demos. */
 .history-box {
+  max-width: 760px;
   border-radius: 14px;
   background: var(--surface);
   border: 1px solid var(--border-strong);
