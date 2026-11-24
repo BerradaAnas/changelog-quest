@@ -7,9 +7,11 @@ interface Props {
 }
 const { demo } = Astro.props;
 const id = `demo-${demo.featureId}`;
+// The quiz is not shown on the site, so it is left out of the data sent to the browser.
+const { quiz: _quiz, ...clientDemo } = demo;
 ---
 
-<details class="demo" data-demo={JSON.stringify(demo)}>
+<details class="demo" data-demo={JSON.stringify(clientDemo)}>
   <summary>
     <span class="demo-head">
       <span class="kicker">Try it yourself: a scripted example, no AI runs here</span>
@@ -82,21 +84,6 @@ const id = `demo-${demo.featureId}`;
   </div>
   </div>
 
-  <form class="quiz" data-demo-quiz>
-    <fieldset>
-      <legend>Quick check: {demo.quiz.question}</legend>
-      {
-        demo.quiz.options.map((option, n) => (
-          <label class="choice">
-            <input type="radio" name="answer" value={n} />
-            <span>{option}</span>
-          </label>
-        ))
-      }
-    </fieldset>
-    <button type="submit" class="soft">Check answer</button>
-    <p class="quiz-result" data-quiz-result aria-live="polite" hidden></p>
-  </form>
   </div>
 </details>
 <script>

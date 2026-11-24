@@ -37,11 +37,5 @@ export function parseProgress(text: string | null): LocalProgress {
 export const markTried = (p: LocalProgress, featureId: string): LocalProgress =>
   p.tried.includes(featureId) ? p : { ...p, tried: [...p.tried, featureId] };
 
-export const markQuiz = (p: LocalProgress, featureId: string, passed: boolean): LocalProgress => ({
-  ...p,
-  // A pass is kept even if the visitor answers wrongly later.
-  quiz: { ...p.quiz, [featureId]: p.quiz[featureId] === true || passed },
-});
-
 export const nextTheme = (theme: LocalProgress["theme"]): LocalProgress["theme"] =>
   THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length] ?? "system";

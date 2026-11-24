@@ -12,7 +12,7 @@ function holds(c: Condition, inputs: DemoInputs): boolean {
 }
 
 /** First matching rule's outcome, or null to show the demo's fallback. Input is never executed. */
-export function runDemo(demo: Demo, inputs: DemoInputs): Outcome | null {
+export function runDemo(demo: Pick<Demo, "rules">, inputs: DemoInputs): Outcome | null {
   for (const rule of demo.rules) {
     if (rule.when.every((c) => holds(c, inputs))) return rule.show;
   }
