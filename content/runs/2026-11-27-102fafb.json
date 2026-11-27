@@ -1,0 +1,12 @@
+{
+  "id": "2026-11-27-102fafb",
+  "startedAt": "2026-11-27T16:40:22.015Z",
+  "sourceCommit": "102fafb0953d90cff472b438e443485e7d131d36",
+  "newVersions": [
+    "2.1.332",
+    "2.1.331"
+  ],
+  "changedVersions": [],
+  "status": "ok",
+  "errors": []
+}
